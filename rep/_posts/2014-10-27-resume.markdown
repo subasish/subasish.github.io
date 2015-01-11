@@ -1,0 +1,12 @@
+---
+layout: post
+title: "Resume"
+date: 2014-10-27 22:39:29 +0200
+comments: true
+categories: 
+---
+Here is my Resume:
+
+http://www.alperunal.net/files/resume.pdf
+
+http://198.136.54.48/~elektro2/alperunal.net/files/resume.pdf

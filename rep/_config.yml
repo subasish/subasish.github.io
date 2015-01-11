@@ -1,0 +1,26 @@
+title:            Alper Unal
+description:      Weblog
+url:              http://www.alperunal.com
+signoff:          Alper
+disqus_shortname: # disqus comment thread for post header options. ( leave blank if unwanted. )
+facebook_appid:   # appid for like button, remove from /_includes/share.html if unwanted.
+google_analytics: # set tracking, remove from /javascripts/basic.js if unwanted.
+
+links:
+  - name:         About
+    url:          /about
+  - name:         Blog
+    url:          http://www.alperunal.com
+    external:     true
+  - name:         Email
+    url:          mailto:alper.91@hotmail.com
+    external:     true
+  - name:         Resume
+    url:          http://198.136.54.48/~elektro2/alperunal.net/files/resume.pdf
+    external:     true
+highlighter:      false
+permalink:        pretty
+markdown:         redcarpet
+redcarpet:
+  extensions:
+    - smart

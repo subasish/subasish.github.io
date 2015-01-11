@@ -16,8 +16,8 @@ html, body {
 
 a {
     background: transparent;
-    background-size: 2px 2px;
-    background-position: 0 20px;
+    background-size: 0 0;
+    background-position: 0 0;
     text-decoration: none;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0) 75%, rgba(0,0,0,0.8) 75%);
     background-repeat: repeat-x;
@@ -46,18 +46,22 @@ h1, h2 {
 }
 
 h1 {
-    font-size: 28px;
+    font-size: 24px;
     margin: 0;
     padding: 0;
+    padding-bottom: 0;
+    margin-top: -1em;
 }
 
 h2 {
-    font-size: 24px;
-    padding: 10px 30px 10px 25px;
-    margin: 50px -30px 20px -30px;
-    border-left: 5px solid #eee;
-    line-height: 1;
+    font-size: 20px;
+    margin: 0;
+    padding-top: 0.5em;
+    margin-top: 1em;
 }
+
+
+
 
 .page-title {
     padding: 15px 10px 15px 23px;
@@ -65,6 +69,44 @@ h2 {
     margin: 40px -30px 30px -30px;
     line-height: 1;
 }
+
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: 100%;
+}
+
+button,
+input {
+  line-height: normal;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+
+
+
+
+
 
 .page-title p {
     margin: 0;
