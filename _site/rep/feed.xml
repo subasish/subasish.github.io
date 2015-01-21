@@ -12,7 +12,8 @@
 
 &lt;p&gt;http://www.alperunal.net/files/resume.pdf&lt;/p&gt;
 
-&lt;p&gt;http://198.136.54.48/~elektro2/alperunal.net/files/resume.pdf&lt;/p&gt;</description>
+&lt;p&gt;http://198.136.54.48/~elektro2/alperunal.net/files/resume.pdf&lt;/p&gt;
+</description>
         <pubDate>Mon, 27 Oct 2014 15:39:29 -0500</pubDate>
         <link>/rep/2014/10/27/resume.html</link>
         <guid isPermaLink="true">/rep/2014/10/27/resume.html</guid>
@@ -22,7 +23,8 @@
         <title>Hosting a Personal Site on Github</title>
         <description>&lt;p&gt;A step-by-step beginner’s guide to creating a personal website and blog using Jekyll and hosting it for free using GitHub Pages.&lt;/p&gt;
 
-&lt;p&gt;Guide: http://jmcglone.com/guides/github-pages/&lt;/p&gt;</description>
+&lt;p&gt;Guide: http://jmcglone.com/guides/github-pages/&lt;/p&gt;
+</description>
         <pubDate>Sat, 25 Oct 2014 16:48:04 -0500</pubDate>
         <link>/rep/2014/10/25/hosting-a-personal-site-on-github.html</link>
         <guid isPermaLink="true">/rep/2014/10/25/hosting-a-personal-site-on-github.html</guid>
@@ -33,8 +35,8 @@
         <description>&lt;p&gt;File related:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;pwd: Print current working directory. In bash shell, the current working directory is also shown in the command prompt.
-cd pathname: Change current working directory. The pathname could be either absolute or relative (to the current working directory). Special notations &amp;quot;.&amp;quot; and &amp;quot;..&amp;quot; refer to the current and parent directories, respectively.
-ls: List files (in short-format). &amp;quot;ls -l&amp;quot; lists file in long-format; &amp;quot;ls -a&amp;quot; lists also the hidden files.
+cd pathname: Change current working directory. The pathname could be either absolute or relative (to the current working directory). Special notations &quot;.&quot; and &quot;..&quot; refer to the current and parent directories, respectively.
+ls: List files (in short-format). &quot;ls -l&quot; lists file in long-format; &quot;ls -a&quot; lists also the hidden files.
 cat: Concatenate files and print its content.
 less, more: View file in pages.
 head, tail: Print the first part or last part of the file.
@@ -42,11 +44,12 @@ mkdir, rmdir: Make directory or remove (delete) empty directory.
 touch filename: Create the file if it does not exist; otherwise, update the last-modified timestamp.
 cp, mv, rm: copy, move or remove (delete) files.
 chmod, chown, chgrp: change file mode, owner, or group.
-ln: Create link.&lt;/code&gt;&lt;/pre&gt;
+ln: Create link.
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Resource related:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;ps: List processes. &amp;quot;ps aux | grep process-name&amp;quot; to list the details of a particular process.
+&lt;pre&gt;&lt;code&gt;ps: List processes. &quot;ps aux | grep process-name&quot; to list the details of a particular process.
 df: Report file system disk space usage.
 export name=value: Set a variable and export to global environment.
 top: Print resource usage and top processes.
@@ -55,7 +58,8 @@ whoami: Print current login user.
 hostname: Print hostname.
 uptime: Print how long the system has been running.
 date: Print date/time.
-du: Print disk file space usage.&lt;/code&gt;&lt;/pre&gt;
+du: Print disk file space usage.
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Utilities:&lt;/p&gt;
 
@@ -65,20 +69,25 @@ which program-name: Print the location of the program-name.
 whereis program-name: List all files related to the program-name.
 whatis program-name: Print one-line description of program-name.
 locate filename: Search for files in local system.
-man command-name: Display manual pages for the command.&lt;/code&gt;&lt;/pre&gt;
+man command-name: Display manual pages for the command.
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Editors:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;vi/vim, nano, emacs: Console-based (text-based) editors.
-gedit: graphical text editor.&lt;/code&gt;&lt;/pre&gt;
+gedit: graphical text editor.
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Programming:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;make: Install programs.
-gcc, g++: GNU C/C++ compiler.&lt;/code&gt;&lt;/pre&gt;</description>
+gcc, g++: GNU C/C++ compiler.
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
         <pubDate>Thu, 23 Oct 2014 15:40:14 -0500</pubDate>
-        <link>/rep/2014/10/23/linux-useful-commands.html</link>
-        <guid isPermaLink="true">/rep/2014/10/23/linux-useful-commands.html</guid>
+        <link>/rep/linux/2014/10/23/linux-useful-commands.html</link>
+        <guid isPermaLink="true">/rep/linux/2014/10/23/linux-useful-commands.html</guid>
       </item>
     
   </channel>
