@@ -43,10 +43,10 @@
 
     </li>
         <font size="5" color="LightSlateGray">R and Docco</font>
-        <p><font size="3" color="Red">Jan 10, 2015</font></p>
+        <p><font size="3" color="Red">Jan 20, 2015</font></p>
         <p>
             <font size="3"> 
-                <a href="http://jashkenas.github.io/docco/">Docco</a> Docco is a quick-and-dirty documentation generator, written in <a href="http://coffeescript.org">Literate CoffeeScript</a>.  Yihui showes know-how of r-docco in a vignette of <a href="http://biovisualize.github.io/d3visualization/#author=all">knitr</a>. I am basically interested to get the linear style view. The code is <a href="https://github.com/yihui/knitr/blob/master/vignettes/docco-linear.Rmd">here</a>. We have to install docco first. <code>sudo npm install -g docco</code>. We can check the version by <code>docco version</code>. Steps are: make a folder → create a RMD file following Yihui Rmd file → in R code set the directory by <code>setwd("")</code> → run this in console <code>knitr::knit2html(input = "filename.Rmd", output = </code> <code>"filename.md", template = system.file("misc", "docco-template.html", package = "knitr"))</code> → go to the <code>terminal</code> and cd to the docco folder → run <code>docco filename.md</code>.
+                <a href="http://jashkenas.github.io/docco/">Docco</a> is a quick-and-dirty documentation generator, written in <a href="http://coffeescript.org">Literate CoffeeScript</a>.  Yihui showes know-how of r-docco in a vignette of <a href="http://biovisualize.github.io/d3visualization/#author=all">knitr</a>. I am basically interested to get the linear style view. The code is <a href="https://github.com/yihui/knitr/blob/master/vignettes/docco-linear.Rmd">here</a>. We have to install docco first. <code>sudo npm install -g docco</code>. We can check the version by <code>docco</code> <code>version</code>. Steps are: → make a folder → create a RMD file following Yihui Rmd file (first few lines) → in R console set the directory by <code>setwd("")</code> → run in console <code>knitr::knit2html(input = "filename.Rmd",</code> <code> output = "filename.md", template = system.file("misc", "docco-template.html", package = </code> <code>"knitr"))</code> → go to the <code>terminal</code> and cd to the docco folder → run <code>docco filename.md</code>.
             </font>
         </p>  
     <li>
