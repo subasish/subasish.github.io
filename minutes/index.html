@@ -29,7 +29,7 @@
 <br>
 <br>
 <br>
-    </li>
+    <li>
         <font size="5" color="LightSlateGray">Something about D3.js</font>
         <p><font size="3" color="Red">Jan 10, 2015</font></p>
         <p>
@@ -37,11 +37,11 @@
                 <a href="http://d3js.org">D3.js</a> is a JavaScript library for manipulating documents based on data. <a href="http://biovisualize.github.io/d3visualization/#author=all">Biovisualize</a> and <a href="http://christopheviau.com/d3list/gallery.html">christopheviau</a> provide two major list of the gallaries of D3.js websites. The github <a href="https://github.com/mbostock/d3/wiki/Gallery">repository</a> also contains a nice list of gallaries. D3.js is the brainchild of NY Times data visualizer <a href="http://bost.ocks.org/mike/">Mike Bostock</a>. Bostock also develops an awesome website for visualizating the gists. The web address is <a href=http://bl.ocks.org>bl.ocks.org</a>. It converts gists to live dynamic pages. For example, <a href="http://bl.ocks.org/mbostock/76da6085849bff8b6e03">Prim’s Algorithm IV</a> is a bl.ocks page developed by <a href="http://bl.ocks.org/mbostock">Mike</a>. The webpage link for this bl.ocks page is <code>http://bl.ocks.org/mbostock/</code> <code>76da6085849bff8b6e03</code>. We need to change the <code>bl.ocks.org</code> with <code>gist.github.com</code> to get <a href="https://gist.github.com/mbostock/76da6085849bff8b6e03">the gist</a> for that awesome visualization. I have also found that <a href="http://bl.ocks.org/ramnathv">Ramnath</a> also has few bl.ocks. Like to add that <a href="http://topics.nytimes.com/top/reference/timestopics/people/c/amanda_cox/index.html?action=click&contentCollection=The%20Upshot&module=Byline&region=Header&pgtype=article">Amanda Cox</a> also works with Mike in NY Times in their visualization team. NY Times visualization team creates many superb visualizations in the recent years. Nice listing of <a href="http://vudlab.com/#/learn">d3.js courses</a> is curated by VUDlab. 
             </font>
         </p>  
-    <li>
+    </li>
 <br>
 <br>
 
-    </li>
+    <li>
         <font size="5" color="LightSlateGray">R you Docco?</font>
         <p><font size="3" color="Red">Jan 20, 2015</font></p>
         <p>
@@ -49,11 +49,11 @@
                 <a href="http://jashkenas.github.io/docco/">Docco</a> is a quick-and-dirty documentation generator, written in <a href="http://coffeescript.org">Literate CoffeeScript</a>.  Yihui showes know-how of r-docco in a vignette of <a href="http://biovisualize.github.io/d3visualization/#author=all">knitr</a>. I am basically interested to get the linear style view. The code is <a href="https://github.com/yihui/knitr/blob/master/vignettes/docco-linear.Rmd">here</a>. We have to install docco first. <code>sudo npm install -g docco</code>. We can check the version by <code>docco</code> <code>version</code>. Steps are: → make a folder → create a RMD file following Yihui Rmd file (first few lines) → in R console set the directory by <code>setwd("")</code> → run in console <code>knitr::knit2html(input = "filename.Rmd", </code> <code>output = "filename.md", template = system.file</code> <code>("misc",  "docco-template.html", </code> <code>package = "knitr"))</code> → go to the <code>terminal</code> and cd to the docco folder → run <code>docco filename.md</code>.
             </font>
         </p>  
-    <li>
+    </li>
 
 <br>
 <br>
-        </li>
+        <li>
         <font size="5" color="LightSlateGray">Brewing Yosemite</font>
         <p><font size="3" color="Red">Jan 22, 2015</font></p>
         <p>
@@ -67,11 +67,11 @@
                 </ol>
             </font>
         </p>  
-    <li>
+    </li>
 
 <br>
 <br>
-        </li>
+        <li>
         <font size="5" color="LightSlateGray">Sputnik 1071D</font>
         <p><font size="3" color="Red">Jan 23, 2015</font></p>
         <p>
@@ -82,20 +82,30 @@
 
             </font>
         </p>  
-    <li>
+    </li>
 
 <br>
 <br>
-        </li>
+    <li>
         <font size="5" color="LightSlateGray">Slidification</font>
         <p><font size="3" color="Red">Jan 26, 2015</font></p>
         <p>
             <font size="3"> 
-                <a href="http://slidify.github.io">Slidify</a> is a nice tool to make slides using RStudio with various javascript templates. It's created and maintained by <a href="https://github.com/ramnathv?tab=repositories">Ramnath</a>. Steps are pretty simple: → install 'slidify' by using 'devtools' library → go to the folder where '.rmd' file resides → then in console run <code>slidify('filename.rmd')</code> [<font color="red">this step is crucial; as it makes the slidify ready html; if you run <code>knit html</code> you will not get the slidify ready slides</font>] → in console run browseURL('filename.html'). That's all. Here's his <a href="http://ramnathv.github.io/slidifyExamples/">slides</a>. I am trying lately using interactive d3 or rcharts in reveal.js. I have found a solution of using <a href="http://stackoverflow.com/questions/21115921/d3-js-code-in-reveal-js-slide">d3.js in reveal slides</a>. Another thing I have found is using interactive <a href="http://bl.ocks.org/ramnathv/7930511">rCharts in reveal slides</a>. I have failed to replicate the second one. 
+                <a href="http://slidify.github.io">Slidify</a> is a nice tool to make slides using RStudio with various javascript templates. It's created and maintained by <a href="https://github.com/ramnathv?tab=repositories">Ramnath</a>. Steps are pretty simple: → install 'slidify' by using 'devtools' library → go to the folder where '.rmd' file resides → then in console run <code>slidify('filename.rmd')</code> [<font color="red">this step is crucial; as it makes the slidify ready html; if you run <code>knit html</code> you will not get the slidify ready slides</font>] → in console run browseURL('filename.html'). That's all. Here's his <a href="http://ramnathv.github.io/slidifyExamples/">slides</a>. I am trying lately using interactive d3 or rcharts in reveal.js. I have found a solution of using <a href="http://stackoverflow.com/questions/21115921/d3-js-code-in-reveal-js-slide">d3.js in reveal slides</a>. Another thing I have found is using interactive <a href="http://bl.ocks.org/ramnathv/7930511">rCharts in reveal slides</a>. I am working on it tonight.
             </font>
         </p>  
+    </li>
+<br>
+<br>
     <li>
-
+        <font size="5" color="LightSlateGray">rCharts</font>
+        <p><font size="3" color="Red">Jan 26, 2015</font></p>
+        <p>
+            <font size="3"> 
+                <a href="http://rcharts.io">rCharts</a> to create, customize and publish interactive javascript visualizations from R using a familiar lattice style plotting interface. It's created and maintained by <a href="https://github.com/ramnathv?tab=repositories">Ramnath</a>. Here's a nice <a href="http://ramnathv.github.io/rCharts/">example</a>. rCharts <a href="http://rcharts.io/gallery/">gallery</a> will be a good start for the beginners. The <a href="https://media.readthedocs.org/pdf/rcharts/latest/rcharts.pdf">documentation</a> is very helpful to replicate and push the codes online. To publish in rpubs: <code>r1$publish('Scatterplot', host = ’rpubs’)</code>. To save html in a folder: <code>r1$save('mychart2.html', standalone = TRUE)</code>. Here's one of my <a href="http://rpubs.com/subasish/54098">attempt</a>. 
+            </font>
+        </p>  
+    </li>
     </ul>
 
 
