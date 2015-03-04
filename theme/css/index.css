@@ -5,7 +5,8 @@
 
     height: 100%;
     width: 100%;
-    background-image: url('out3.jpg');
+    background: #798E87;
+    background-image: url('out3.JPG');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% auto;
