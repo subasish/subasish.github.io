@@ -143,6 +143,23 @@
         </p>  
     </li>
 
+<br>
+<br>
+    <li>
+        <font size="5" color="LightSlateGray">git push Conflict</font>
+        <p><font size="3" color="Red">March 5, 2015</font></p>
+        <p>
+            <font size="3"> 
+                When you push a dropbox folder in github, sometimes it may happen that you fail to push it. Occasionally error shows up like this <code>Reference has invalid format: 'refs/heads/master (bla bla ..)'</code> <code>Unexpected end of command stream</code>. It happens when your dropbox folder is opened at a different pc/laptop and the pc/laptop is shut down before complete syncing. Then, the following lines will work like magic:
+                <ul>
+                    <li>- To check the conflicted files <code>find .git -name '*conflicted*'</code> </li>
+                    <li>- To remove the files<code>find . -type f -name "* conflicted copy*" -exec rm -f {} \;</code></li>
+                    <li>- Then push<code>git push remotename master</code> </li>  
+                </ul>             
+            </font>
+        </p>  
+    </li>
+
 
 </div>
     </ul>
