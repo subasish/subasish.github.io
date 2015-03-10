@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-gb">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>FreeBSD: Güncelleştirme, Bağlama ve Birkaç Tüyo</title>
+	<meta name="author" content="Eren Öğrül" />
+	<meta name="description" content="GNU/Linux, FreeBSD, Customization, Cinema, Music and more.">
+	<link rel="stylesheet" href="main1.css" type="text/css" media="all" />
+	<link rel="alternate" type="application/atom+xml" href="/atom.xml">
+</head>
+<body>
+	<div class="site">
+		<pre>
+=======================================================================================
+<a href="http://subasish.github.io">Subasish Das</a>                                                            [<a href="http://subasish.github.io/resume.pdf">CV</a>] [<a href="http://subasish.github.io/research">Research</a>]
+=======================================================================================
+</pre>
+
+<div id="post">
+	<h1>বিশেষ কিছু না </h1>
+	<p class="meta">মার্চ ৮, ২০১৫ </p>
+	<p>মার্চ ৮, ২০১৫
+
+রিসার্চের ব্যাপারে বাংলায় লিখি না কেন? আমি আমার রিসার্চের ব্যাপারগুলো নিয়মিত না হয় এখানে লিখে রাখি। পরে নিজেই মনে করতে পারবো- কি কি করছি। <a  href="http://www.chris.com/ascii/"> Punctuation Art </a>   একটা মজার ব্যাপার।  <a  href="http://eogrul.github.io">  Eren Öğrül </a>  এর মতো করে এই ব্লগটা তৈরি করলাম।  সোর্স যেহেতু গিটহাবে দেয়া, অনুকরণ করা তাহলে যেতেই পারে।  একটু অন্যরকম করে ডিজাইন করা। একেবারেই মিনিমালিস্ট।  যাই হোক আজ কি কি করলাম। ডাটা সায়েন্সের বেস্ট অ্যাওয়ার্ড পাওয়া পেপারগুলো <a  href="http://subasish.github.io/pages/data_sc_best_papers/">এক জায়গায় </a> এনে রাখছি।  এটাও প্রফেসর হুয়াঙ্গের ওয়াবসাইটের কার্বনকপি। তবে আমি বেশ কিছু জিনিস যোগ করছি। জোর দিয়েছি ডাটা সায়েন্সের কনফারেন্সগুলো দিকে। আর গুগল স্কলারের ওয়েবলিঙ্ক পালটে সরাসরি পিডিএফ লিঙ্ক যোগ করছি। বেশ বোরিং কাজ। কিন্তু হয়ে গেলে নিজের কাজে লাগবে। অন্যদেরও। এছাড়া লেখকদের ওয়েবপেইজের ঠিকানার ইউয়ারেলও পরে লাগিয়ে দেব। মাঝে মাঝেই r-bloggers এ ঢু মারি।  </p>
+
+<!--<p>Buradan sonrası kendim için hazırladığım özet bilgilerden oluşan bir kısım. Diğer yandan, basit bir şekilde açıklayarak herkesin faydalanabileceği bir rehber haline dönüştürdüm.</p>
+
+<p><strong>Güncelleştirme</strong></p>
+
+<p>FreeBSD’de Ports<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> için  Subversion<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> yöntemi yerine Portsnap<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>‘i kullanmaktayım. Bununla birlikte, Portsnap ile Ports’un güncelleştirilmesi şu şekildedir:</p>
+
+<pre><code>portsnap fetch update
+</code></pre>
+
+<p>Ayrıca, binary paketler için güncelleştirme:</p>
+
+<pre><code>pkg update &amp;&amp; pkg upgrade 
+</code></pre>
+
+<p>ile gerçekleştirilmektedir. FreeBSD kullanıcısının bilmesi gereken binary paketler Ports’un sürüm olarak biraz gerisinde kalmaktadır. Ayrıca, derleyerek kurma konusunda süre dışında sizi rahatsız eden herhangi bir durum yoksa bu yöntemle güncel pakatlere çok daha hızlı sahip olabilirsiniz. Sisteminizde yüklü olan paketleri güncel paket ağacı ile karşılaştırmak ve eski sürüme sahip olan paketleri sıralamak için:</p>
+
+<pre><code>pkg version -l "&lt;"
+</code></pre>
+
+<p>komutunu kullanabilirsiniz. Eğer, sisteminizde eski sürüme sahip yüklü olan paketler varsa, örneğin sonuç olarak şöyle bir çıktı alacasınız:</p>
+
+<pre><code>openjdk-7.60.19,1                  &lt;
+openjdk6-b31_3,1                  &lt;
+</code></pre>
+
+<p>Ports’u güncelleştirmek için Portmaster<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup> ve Portupgrade<sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup> araçları da kullanılabilir. Fakat, ben kafa karşılıklığı yaratmaması için kendim Portsnap yönetmi ile yoluma devam etmekteyim. Bununla birlikte, güncelleştirme konusunda FreeBSD birçok farklı araca sahiptir ve hangi aracın hangi amaçla ve nerede kullanılabileceği bir karmaşa halini alabilir. Yeni başlayan bir kullanıcının dikkat etmesi gereken en kolay ve hızlı şekilde güncelleştirme işlemini eksiksiz yerine getirecek aracı seçmek olacaktır. Son olarak, güvenlik yamalarının kurulması:</p>
+
+<pre><code>freebsd-update fetch
+freebsd-update install
+</code></pre>
+
+<p>Şunu da belirtmek lazım; sisteminizde yüklü olan paketlerdeki açıkları görmek isterseniz:</p>
+
+<pre><code>pkg audit -F
+</code></pre>
+
+<p>komutunu kullanabilirsiniz. Eğer, sisteminizde <em>bilinen</em> herhangi bir açığa sahip yüklü bir paket varsa çıktı olarak:</p>
+
+<pre><code>mplayer-1.1.r20140418_2 is vulnerable:
+mplayer -- potential buffer overrun when processing malicious lzo compressed input
+CVE: CVE-2014-4610
+WWW: http://portaudit.FreeBSD.org/9ab3a22c-feb8-11e3-b938-5404a68ad561.html
+
+1 problem(s) in the installed packages found
+</code></pre>
+
+<p>şeklinde açığın ne olduğuna dair bildirim ile bir sonuç alabilmeniz mümkündür. FreeBSD’nin en sevdiğim özelliklerinden biri de <em>denetim</em> (audit) yapısıdır. Bu şekilde çalışan sistemimin ne tür bir açığa sahip olduğuna ilişkin bilgiye sahip olarak karşılaşılabilecek tehlikeler konusunda fikir yürütmemi sağlamaktadır.</p>
+
+<p><strong>Bağlama</strong></p>
+
+<p>FreeBSD’yi kurup kullanmaya başladığım andan itibaren beni çok rahatsız eden USB bellek veya ikincil ext4<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup> bölümlerinin düzgün bir şekilde bağlanıp erişimiydi. Özellikle otomatik bağlama (tak-çalıştır) için belirli bir süre uğraştım fakat, iyi bir stabilite elde edemediğim için elle bağlama yöntemine yöneldim. Nitekim bu yöntem bağlama ve çıkarma konusunda beni kafa olarak daha çok rahatlattı diyebilirim. Kısaca, dosya sistemlerine göre bağlama şekillerini inceleyecek olursak:</p>
+
+<pre><code>mkdir -p /media/usb
+chown kullaniciadi:kullaniciadi /media/usb
+</code></pre>
+
+<p>komutları ile USB bellekleri bağlayacağımız bir dizin oluşturalım. Bu konuda /home/kullaniciadi altındaki bir dizini de kullanabilirsiniz. Seçim size kalmıştır. Daha sonra, NTFS<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup> dosya sistemi için:</p>
+
+<pre><code>ntfs-3g /dev/da0s1 /media/usb
+</code></pre>
+
+<p>FAT32<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup> için:</p>
+
+<pre><code>mount_msdosfs /dev/da0s1 /media/usb
+</code></pre>
+
+<p>Sisteminizde bir DVD-Rom mevcut ise aynı yöntemi kullanabilirsiniz.</p>
+
+<pre><code>mkdir -p /media/cdrom
+chown kullaniciadi:kullaniciadi /media/cdrom
+
+mount_cd9660 /dev/cd0 /media/cdrom
+</code></pre>
+
+<p>Elle bağlamak ilk başlarda rahatsız edebilir. En güzeli bash<sup id="fnref:9"><a href="#fn:9" class="footnote">9</a></sup> veya zsh<sup id="fnref:10"><a href="#fn:10" class="footnote">10</a></sup> (veya size ne kullanıyorsanız) altında kısayol şeklinde bunu tanımlamak olacaktır. Örneğin:</p>
+
+<pre><code>alias bagla='mount_msdosfs /dev/da0s1 /media/usb'
+</code></pre>
+
+<p>Elbette, bağlama noktaları değişebiliyor. Bu konuda dikkatli olmakta fayda var.</p>
+
+<p><strong>DVD Yazdırma</strong></p>
+
+<p>DVD yazdırmak için genellikle ve FreeBSD altında da Xfburn<sup id="fnref:11"><a href="#fn:11" class="footnote">11</a></sup> kullanmaktaydım. Fakat, son zamanlarda bağlama için kullandığım yöntemlerle birlikte yazdırma için de basit birkaç komutu kullanmaya başladım. Bu komutlar oldukça basit, arayüze sahip bir uygulamanın yapacağı işleri çok basit bir şekilde yerine getirmektedir.</p>
+
+<p>Herhangi bir dosyayı (veya dizini) DVD’ye yazdırmak:</p>
+
+<pre><code>growisofs -dvd-compat -Z /dev/cd0 -J -R /dosya
+</code></pre>
+
+<p>Bir kalıbı DVD’ye yazdırmak:</p>
+
+<pre><code>growisofs -dvd-compat -Z /dev/cd0=kalip.iso
+</code></pre>
+
+<p>Yeniden yazılabilir bir DVD’yi silmek:</p>
+
+<pre><code>dvd+rw-format -blank=full /dev/cd0
+</code></pre>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>http://www.freebsd.org/cgi/man.cgi?query=ports&amp;apropos=0&amp;sektion=0&amp;manpath=FreeBSD+10.0-RELEASE&amp;arch=default&amp;format=html       <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>https://subversion.apache.org/ <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>http://www.freebsd.org/cgi/man.cgi?query=portsnap&amp;apropos=0&amp;sektion=0&amp;manpath=FreeBSD+10.0-RELEASE&amp;arch=default&amp;format=html <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>http://portmaster.github.io/ <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p>https://wiki.freebsd.org/portupgrade <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>https://en.wikipedia.org/wiki/Ext4 <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>https://en.wikipedia.org/wiki/Ntfs <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+      <p>https://en.wikipedia.org/wiki/File_Allocation_Table <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:9">
+      <p>https://en.wikipedia.org/wiki/Bash_%28Unix_shell%29 <a href="#fnref:9" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:10">
+      <p>https://en.wikipedia.org/wiki/Zsh <a href="#fnref:10" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:11">
+      <p>http://goodies.xfce.org/projects/applications/xfburn <a href="#fnref:11" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>-->
+</div>
+
+</div>
+
+<!--<pre>=========================================================================================================</pre>
+
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>26 Jun 2014</span> <span class="seperator">~</span> <a href="/2014/06/26/gecmis-zaman-sepeti/">Geçmiş Zaman Sepeti</a></li>
+    
+  </ul>
+</div>
+
+		 <a href="http://github.com/eogrul"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" /></a>
+		<div class="footer">
+			<pre>=========================================================================================================</pre>
+			<div class="contact">
+				<p>
+					<a href="https://github.com/eogrul"><img src="/img/github.png"></a>
+					<a href="https://flickr.com/photos/yufkabulunur"><img src="/img/flickr.png"></a>
+					<a href="https://last.fm/user/saffah"><img src="/img/lastfm.png"></a>
+				</p>
+            </div>
+			<div class="rss">
+					<a href="/atom.xml"><img src="/img/rss.png"></a>
+			</div>
+		</div>
+	</div>-->
+<iframe width='740' height='400' src='http://r-fiddle.org/#/embed/eYsWfghB/1' allowfullscreen='allowfullscreen' frameborder='0'></iframe>
+
+
+</body>
+</html>
