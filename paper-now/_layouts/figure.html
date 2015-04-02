@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ site.baseurl }}/styles/figure.css">
+
+    {% if page.stylesheets %}
+        {% for stylesheet in page.stylesheets %}
+            <link rel="stylesheet" href="{{ stylesheet[1] }}">
+        {% endfor %}
+    {% endif %}
+
+    {% if page.javascripts %}
+        {% for javascript in page.javascripts %}
+            <script src="{{ javascript[1] }}"></script>
+        {% endfor %}
+    {% endif %}
+</head>
+<body>
+    <figure>{{ content }}</figure>
+</body>
+</html>
