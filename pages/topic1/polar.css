@@ -1,0 +1,200 @@
+/*HTML page*/
+
+body {
+  font-family: Corbel, "Trebuchet MS", sans-serif;
+  font-size: 15px;
+  background-color: #D3DDDC;
+}
+
+.navbar-inner {
+    background-color: #D3DDDC;
+    background-image: none;
+}
+
+.nav-collapse {
+    float: right;
+}
+
+.navbar .nav > li > a {
+  text-shadow : none;
+  color: #D3DDDC;
+}
+
+.navbar .nav > li > a:focus, .navbar .nav > li > a:hover{
+  color: #F0F0F0;
+}
+
+h1 {
+  text-align: center;
+  font-family: Corbel, "Trebuchet MS", Verdana, Arial, sans-serif;
+}
+
+#container {
+  margin-top: 80px;
+  width: 960px;
+}
+
+#main{
+  width: 960px;
+}
+
+#twitticone {
+  list-style-type: none;
+  display: inline;
+  text-decoration: none;
+}
+
+#faceicone {
+  list-style-type: none;
+  display: inline;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.content-minutiae {
+  margin-left: 850px;
+  margin-top: -35px;
+}
+
+label{
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 5px;
+  vertical-align: -2px;
+  font-weight: bold;
+}
+
+    /*Define Accordion box*/  
+.accordion {   
+  width:960px;  
+  overflow:hidden; 
+  margin:10px auto;   
+  color:#dcdbda;
+  background:#dcdbda; 
+}  
+
+.accordion section{   
+  float:left;  
+  overflow:hidden; 
+  color:#333; /* text color inside each section*/  
+  cursor:pointer;   
+  background: #dcdbda;  /*background color inside each section*/ 
+  border: 1px solid black;  
+}
+
+.accordion section:hover {  
+  background:#c4c3c2;  
+}
+
+.accordion section p {
+  display:none;   
+}
+
+.accordion section:target {   
+  background:#f5f4f3;/*graphics background*/
+  padding:3px; */ 
+}  
+
+.accordion section:target:hover {   
+  background:#f5f4f3; /*graphics background during hover*/  
+} 
+
+.accordion section:target h2 {  
+  width:100%;  
+}
+
+.accordion section:target h2 a{   
+  color:#000000;  /*section title color*/ 
+  padding:0;
+  font-size: 15px;
+  font-weight: bold;  
+}  
+    
+.accordion section:target p {  
+  display:block;  
+}  
+    
+.accordion section h2 a{ /*unselected titles*/ 
+  padding:8px 10px;  
+  display:block;   
+  font-size:16px;   
+  font-weight:normal;  
+  color:#000000;   
+  text-decoration:none;   
+} 
+
+.vertical section{   /*section button*/
+  width:958px;   
+  height:40px;   
+  -webkit-transition:height 0.2s ease-out;  
+  -moz-transition:height 0.2s ease-out;  
+  -o-transition:height 0.2s ease-out;  
+  transition:height 0.2s ease-out;  
+}  
+      
+/*Set height & width of the slide*/  
+.vertical :target{   
+  height:100%;   
+  width:952px;  
+} 
+
+.vertical section h2 { /*section title align*/ 
+  position:relative;   
+  left:0;   
+  top:-15px;   
+} 
+
+.vertical section:target:after{   
+  left:-9999px;  
+} 
+
+/*GRAPHS*/
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: corbel;
+    font-size: 11px;
+}
+
+.axis line,
+.axis circle {
+  fill: none;
+  stroke: #777;
+  stroke-dasharray: 1,4;
+}
+
+.line {
+  fill: none;
+  stroke: #000000;
+  stroke-width: 1px;
+}
+
+.animHII {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.highline {
+	fill : #a8c8dd;
+	opacity: .5;
+}
+
+.veryhighline {
+  fill : #e3c19f;
+  opacity: .5;
+}
+
+.night{
+  fill : #000000;
+  opacity: .1;
+}
