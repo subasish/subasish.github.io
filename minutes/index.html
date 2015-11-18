@@ -181,6 +181,26 @@
         </p>  
     </li>
 
+<br>
+<br>
+        <li>
+        <font size="5" color="LightSlateGray">creating pdf using Rstudio</font>
+        <p><font size="3" color="Red">November 18, 2015</font></p>
+        <p>
+            <font size="3"> 
+                The only thing need to focus is to creat the path (for mac or windows both)
+                <ol>
+                  <li>Go to the R console:
+                  <li>Type: <code>Sys.getenv("PATH")</code></li>  
+                  <li>Type: <code>Sys.which("pdflatex")</code></li>
+                  <li>If the location is not defined, then it will show <code>""</code></li>  
+                  <li>Check where 'pdflatex' location is. </li>
+                  <li>Then type (your location): <code>Sys.setenv(PATH = paste(Sys.getenv("PATH"), "/usr/local/texlive/2012/bin/x86_64-darwin", sep=.Platform$path.sep))</code></li>
+                </ol>
+            </font>
+        </p>  
+    </li>
+
 
 </div>
     </ul>
