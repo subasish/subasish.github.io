@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" href="style.css"/>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.csv.js"></script>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.layout.js"></script>
+    <style type="text/css">
+
+body { text-align: center; }
+p.source { font-style: italic; }
+a { color: blue; }
+
+svg {
+  display: block;
+  margin: auto;
+}
+
+text {
+  font-size: 11px;
+}
+
+rect {
+  fill: none;
+}
+
+    </style>
+  </head>
+  <body>
+    <h1>Counties of the United States</h1>
+    <p>A demonstration of using CSV data for treemaps, from <a href="http://bl.ocks.org/jasondavies/1319738">Jason Davies'</a> code.  Click to zoom!
+    <div id="body"></div>
+    <p>Treemap zooming based on <a href="http://mbostock.github.com/d3/talk/20111018/#23">a slide</a> by <a href="http://bost.ocks.org/mike">Mike Bostock</a>.
+    <p class="source">Data source: <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=11&cad=rja&uact=8&ved=0ahUKEwi4u87Wn9zKAhUY5GMKHfrJCfUQFghKMAo&url=http%3A%2F%2Fwww.schooldata.com%2Fpdfs%2FUS_FIPS_Codes.xls&usg=AFQjCNGqeU90_KRHsclrG4oz11O8QeG3WQ&sig2=z_pH_32jfuKaZDK8-LFK0A">schooldata</a>.
+
+    <script type="text/javascript">
+
+var w = 1400 - 80,
+    h = 700 - 180,
+    x = d3.scale.linear().range([0, w]),
+    y = d3.scale.linear().range([0, h]),
+    color = d3.scale.category20c(),
+    root,
+    node;
+
+var treemap = d3.layout.treemap()
+    .round(false)
+    .size([w, h])
+    .sticky(true)
+    .children(function(d) { return d.values; })
+    .value(function(d) { return 1; });
+
+var svg = d3.select("#body").append("svg:svg")
+    .attr("width", w)
+    .attr("height", h)
+  .append("svg:g")
+    .attr("transform", "translate(.5,.5)");
+
+d3.csv("us-counties_all.csv", function(data) {
+  node = root = {values: d3.nest()
+      .key(function(d) { return d.State; })
+      .rollup(function(d) {
+        return d.map(function(d) {
+          return {key: d.County};
+        });
+      })
+      .entries(data)};
+
+  var nodes = treemap.nodes(root)
+      .filter(function(d) { return !d.values; });
+
+  var cell = svg.selectAll("g")
+      .data(nodes)
+    .enter().append("svg:g")
+      .attr("class", "cell")
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+      .on("click", function(d) { return zoom(node == d.parent ? root : d.parent); });
+
+  cell.append("svg:rect")
+      .attr("width", function(d) { return d.dx - 1; })
+      .attr("height", function(d) { return d.dy - 1; })
+      .style("fill", function(d) { return color(d.parent.key); });
+
+  cell.append("svg:text")
+      .attr("x", function(d) { return d.dx / 2; })
+      .attr("y", function(d) { return d.dy / 2; })
+      .attr("dy", ".35em")
+      .attr("text-anchor", "middle")
+      .text(function(d) { return d.key; })
+      .style("opacity", function(d) { d.w = this.getComputedTextLength(); return d.dx > d.w ? 1 : 0; });
+
+  d3.select(window).on("click", function() { zoom(root); });
+
+});
+
+function zoom(d) {
+  var kx = w / d.dx, ky = h / d.dy;
+  x.domain([d.x, d.x + d.dx]);
+  y.domain([d.y, d.y + d.dy]);
+
+  var t = svg.selectAll("g.cell").transition()
+      .duration(d3.event.altKey ? 7500 : 750)
+      .attr("transform", function(d) { return "translate(" + x(d.x) + "," + y(d.y) + ")"; });
+
+  t.select("rect")
+      .attr("width", function(d) { return kx * d.dx - 1; })
+      .attr("height", function(d) { return ky * d.dy - 1; })
+
+  t.select("text")
+      .attr("x", function(d) { return kx * d.dx / 2; })
+      .attr("y", function(d) { return ky * d.dy / 2; })
+      .style("opacity", function(d) { return kx * d.dx > d.w ? 1 : 0; });
+
+  node = d;
+  d3.event.stopPropagation();
+}
+
+    </script>
+  </body>
+</html>
