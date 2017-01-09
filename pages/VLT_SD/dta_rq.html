@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<style>
+#map {
+    position: fixed;
+    width:50%;
+}
+#features {
+    width: 50%;
+    margin-left: 50%;
+    font-family: sans-serif;
+    overflow-y: scroll;
+    background-color: #fafafa;
+}
+section {
+    padding:  25px 50px;
+    line-height: 25px;
+    border-bottom: 1px solid #ddd;
+    opacity: 0.25;
+    font-size: 13px;
+}
+section.active {
+    opacity: 1;
+}
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 200px;
+}
+</style>
+
+<div id='map'></div>
+<div id='features'>
+    <section id='baker' class='active'>
+        <h3>CA_NewSite1</h3>
+        <p>It looks like that it satisfies the requirements but the point of crash seems to be on the ramp (within 2100 ft.). AADT: 73,000. Lanes: 3, no HOV.</p>
+    </section>
+    <section id='aldgate'>
+        <h3>CA_NewSite2</h3>
+        <p>It satisfies the requirements. The distance from ramp is around 2600 feet.ADT: 155,000. Lanes: 4, no HOV.</p>
+    </section>
+    <section id='london-bridge'>
+        <h3>TX_NewSite1</h3>
+        <p>It satisfies the requirements. AADT: 233,000. Lanes: 4, with HOV. </p>
+    </section>
+    <section id='woolwich'>
+        <h3>TX_NewSite2</h3>
+        <p>It looks like that HOV has been convereted to normal lane. HOV from top view but street view has dotted line markings for HOV. AADT: 159,000. Lanes: 4, with HOV. </p>
+    </section>
+    <section id='gloucester'>
+    <h3>TX_NewSite3</h3>
+        <p>Number of lanes: 6. AADT: 286,000. With HOV.</p>
+            <section id='woolwich'>
+        <h3>TX_ProsSite2</h3>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </section>
+    <section id='gloucester'>
+        <h3>TX_ProsSite3</h3>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <section id='woolwich'>
+        <h3>TX_ProsSite4</h3>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </section>
+    <section id='gloucester'>
+        <h3>TX_ProsSite5</h3>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoic3ViYXNpc2giLCJhIjoiY2lrNHd4bWUzMDAwcXB0a3M3bXgxcWd6NyJ9.fC5gF2IRl8W_GgrzNtt2fQ';
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [-121.9749, 38.3582],
+    zoom: 15.5,
+    bearing: 27,
+    pitch: 45
+});
+
+var chapters = {
+    'baker': {
+        bearing: 27,
+        center: [-121.9749, 38.3582],
+        zoom: 20,
+        pitch: 20
+    },
+    'aldgate': {
+        duration: 6000,
+        center: [-118.21238, 33.92578],
+        bearing: 150,
+        zoom: 20,
+        pitch: 0
+    },
+    'london-bridge': {
+        bearing: 90,
+        center: [-96.9284382, 32.9799786],
+        zoom: 20,
+        speed: 0.6,
+        pitch: 40
+    },
+    'woolwich': {
+        bearing: 90,
+        center: [-95.5724271, 29.7846431],
+        zoom: 20
+    },
+        'gloucester': {
+        bearing: 90,
+        center: [-95.5724271, 29.7846431],
+        zoom: 20
+    },
+        'woolwich': {
+        bearing: 90,
+        center: [-95.5724271, 29.7846431],
+        zoom: 20
+    },
+        'woolwich': {
+        bearing: 90,
+        center: [-95.5724271, 29.7846431],
+        zoom: 20
+    },
+        'woolwich': {
+        bearing: 90,
+        center: [-95.5724271, 29.7846431],
+        zoom: 20
+    }
+
+};
+
+// On every scroll event, check which element is on screen
+window.onscroll = function() {
+    var chapterNames = Object.keys(chapters);
+    for (var i = 0; i < chapterNames.length; i++) {
+        var chapterName = chapterNames[i];
+        if (isElementOnScreen(chapterName)) {
+            setActiveChapter(chapterName);
+            break;
+        }
+    }
+};
+
+var activeChapterName = 'baker';
+function setActiveChapter(chapterName) {
+    if (chapterName === activeChapterName) return;
+
+    map.flyTo(chapters[chapterName]);
+
+    document.getElementById(chapterName).setAttribute('class', 'active');
+    document.getElementById(activeChapterName).setAttribute('class', '');
+
+    activeChapterName = chapterName;
+}
+
+function isElementOnScreen(id) {
+    var element = document.getElementById(id);
+    var bounds = element.getBoundingClientRect();
+    return bounds.top < window.innerHeight && bounds.bottom > 0;
+}
+
+</script>
+
+</body>
+</html>
