@@ -1,0 +1,241 @@
+country,variable,value
+Australia,CO2 emissions,17.77324852
+Austria,CO2 emissions,8.147571324
+Belgium,CO2 emissions,9.829159629
+Canada,CO2 emissions,15.36481578
+Denmark,CO2 emissions,7.482175978
+Finland,CO2 emissions,10.32056288
+France,CO2 emissions,5.190746618
+Germany,CO2 emissions,9.139380131
+Greece,CO2 emissions,7.519412112
+Iceland,CO2 emissions,5.799127623
+Ireland,CO2 emissions,7.631979941
+Italy,CO2 emissions,6.54837368
+Japan,CO2 emissions,9.280510802
+Luxembourg,CO2 emissions,20.12169478
+Netherlands,CO2 emissions,10.45164251
+New Zealand,CO2 emissions,6.880817253
+Norway,CO2 emissions,7.692307692
+Portugal,CO2 emissions,4.554082572
+Spain,CO2 emissions,5.854300849
+Sweden,CO2 emissions,4.751718979
+Switzerland,CO2 emissions,5.037663677
+Turkey,CO2 emissions,3.849563484
+United Kingdom,CO2 emissions,7.000225962
+United States,CO2 emissions,16.96850775
+Australia,Education,44.61
+Austria,Education,21.16
+Belgium,Education,42.45
+Canada,Education,56.7
+Denmark,Education,38.58
+Finland,Education,39.37
+France,Education,43.01
+Germany,Education,27.67
+Greece,Education,32.52
+Iceland,Education,39.37
+Ireland,Education,47.19
+Italy,Education,20.98
+Japan,Education,58.7
+Luxembourg,Education,46.64
+Netherlands,Education,39.9
+New Zealand,Education,46.04
+Norway,Education,46.8
+Portugal,Education,26.92
+Spain,Education,39.15
+Sweden,Education,42.86
+Switzerland,Education,39.8
+Turkey,Education,18.87
+United Kingdom,Education,46.91
+United States,Education,43.13
+Australia,Employment to population ratio,72.3
+Austria,Employment to population ratio,72.5
+Belgium,Employment to population ratio,61.8
+Canada,Employment to population ratio,72.2
+Denmark,Employment to population ratio,72.6
+Finland,Employment to population ratio,69.5
+France,Employment to population ratio,63.9
+Germany,Employment to population ratio,72.8
+Greece,Employment to population ratio,51.3
+Iceland,Employment to population ratio,80.2
+Ireland,Employment to population ratio,58.8
+Italy,Employment to population ratio,57.6
+Japan,Employment to population ratio,70.6
+Luxembourg,Employment to population ratio,65.8
+Netherlands,Employment to population ratio,75.1
+New Zealand,Employment to population ratio,72.1
+Norway,Employment to population ratio,75.8
+Portugal,Employment to population ratio,61.8
+Spain,Employment to population ratio,56.2
+Sweden,Employment to population ratio,73.8
+Switzerland,Employment to population ratio,79.4
+Turkey,Employment to population ratio,48.9
+United Kingdom,Employment to population ratio,70.9
+United States,Employment to population ratio,67.1
+Australia,GDP per capita,44407.02
+Austria,GDP per capita,44141.3
+Belgium,GDP per capita,40838.06
+Canada,GDP per capita,42114.49
+Denmark,GDP per capita,42787.23
+Finland,GDP per capita,39130.04
+France,GDP per capita,36932.83
+Germany,GDP per capita,42682.16
+Greece,GDP per capita,25585.7
+Iceland,GDP per capita,39096.54
+Ireland,GDP per capita,43802.59
+Italy,GDP per capita,34140.73
+Japan,GDP per capita,35481.64
+Luxembourg,GDP per capita,89417.04
+Netherlands,GDP per capita,43347.62
+New Zealand,GDP per capita,32847.38
+Norway,GDP per capita,66135.07
+Portugal,GDP per capita,25801.55
+Spain,GDP per capita,32550.74
+Sweden,GDP per capita,42874.26
+Switzerland,GDP per capita,53641.07
+Turkey,GDP per capita,18314.72
+United Kingdom,GDP per capita,35670.57
+United States,GDP per capita,51688.63
+Australia,Health expenditures,8.9
+Austria,Health expenditures,10.8
+Belgium,Health expenditures,10.5
+Canada,Health expenditures,11.2
+Denmark,Health expenditures,10.9
+Finland,Health expenditures,9.1
+France,Health expenditures,11.6
+Germany,Health expenditures,11.3
+Greece,Health expenditures,9.1
+Iceland,Health expenditures,8.9
+Ireland,Health expenditures,8.9
+Italy,Health expenditures,9.2
+Japan,Health expenditures,9.6
+Luxembourg,Health expenditures,6.6
+Netherlands,Health expenditures,11.9
+New Zealand,Health expenditures,10.3
+Norway,Health expenditures,9.4
+Portugal,Health expenditures,10.2
+Spain,Health expenditures,9.3
+Sweden,Health expenditures,9.5
+Switzerland,Health expenditures,11.3
+Turkey,Health expenditures,6.1
+United Kingdom,Health expenditures,9.4
+United States,Health expenditures,17.7
+Australia,Income inequality,33.4
+Austria,Income inequality,26.7
+Belgium,Income inequality,26.2
+Canada,Income inequality,32
+Denmark,Income inequality,25.2
+Finland,Income inequality,26
+France,Income inequality,30.3
+Germany,Income inequality,28.6
+Greece,Income inequality,33.7
+Iceland,Income inequality,24.4
+Ireland,Income inequality,33.1
+Italy,Income inequality,31.9
+Japan,Income inequality,33.6
+Luxembourg,Income inequality,27
+Netherlands,Income inequality,28.8
+New Zealand,Income inequality,31.7
+Norway,Income inequality,24.9
+Portugal,Income inequality,34.4
+Spain,Income inequality,33.8
+Sweden,Income inequality,26.9
+Switzerland,Income inequality,29.8
+Turkey,Income inequality,41.1
+United Kingdom,Income inequality,34.1
+United States,Income inequality,38
+Australia,Infant mortality,3.8
+Austria,Infant mortality,3.6
+Belgium,Infant mortality,3.3
+Canada,Infant mortality,4.9
+Denmark,Infant mortality,3.6
+Finland,Infant mortality,2.4
+France,Infant mortality,3.5
+Germany,Infant mortality,3.6
+Greece,Infant mortality,3.4
+Iceland,Infant mortality,0.9
+Ireland,Infant mortality,3.5
+Italy,Infant mortality,3.4
+Japan,Infant mortality,2.3
+Luxembourg,Infant mortality,4.3
+Netherlands,Infant mortality,3.6
+New Zealand,Infant mortality,5.5
+Norway,Infant mortality,2.8
+Portugal,Infant mortality,3.1
+Spain,Infant mortality,3.2
+Sweden,Infant mortality,2.1
+Switzerland,Infant mortality,3.8
+Turkey,Infant mortality,7.7
+United Kingdom,Infant mortality,4.3
+United States,Infant mortality,6.1
+Australia,Poverty rate,14.5
+Austria,Poverty rate,8.1
+Belgium,Poverty rate,9.7
+Canada,Poverty rate,11.9
+Denmark,Poverty rate,6
+Finland,Poverty rate,7.3
+France,Poverty rate,7.9
+Germany,Poverty rate,8.8
+Greece,Poverty rate,14.3
+Iceland,Poverty rate,6.4
+Ireland,Poverty rate,9
+Italy,Poverty rate,13
+Japan,Poverty rate,16
+Luxembourg,Poverty rate,7.2
+Netherlands,Poverty rate,7.5
+New Zealand,Poverty rate,10.3
+Norway,Poverty rate,7.5
+Portugal,Poverty rate,11.4
+Spain,Poverty rate,15.4
+Sweden,Poverty rate,9.1
+Switzerland,Poverty rate,9.5
+Turkey,Poverty rate,19.3
+United Kingdom,Poverty rate,9.9
+United States,Poverty rate,17.4
+Australia,Public social spending,19.518
+Austria,Public social spending,28.293
+Belgium,Public social spending,30.728
+Canada,Public social spending,18.155
+Denmark,Public social spending,30.786
+Finland,Public social spending,30.534
+France,Public social spending,33.021
+Germany,Public social spending,26.183
+Greece,Public social spending,21.995
+Iceland,Public social spending,17.219
+Ireland,Public social spending,21.592
+Italy,Public social spending,28.44
+Japan,Public social spending,22.296
+Luxembourg,Public social spending,23.379
+Netherlands,Public social spending,24.299
+New Zealand,Public social spending,22.371
+Norway,Public social spending,22.88
+Portugal,Public social spending,26.383
+Spain,Public social spending,27.428
+Sweden,Public social spending,28.643
+Switzerland,Public social spending,19.097
+Turkey,Public social spending,12.8
+United Kingdom,Public social spending,23.773
+United States,Public social spending,20.033
+Australia,Tax revenue,26.507
+Austria,Tax revenue,43.175
+Belgium,Tax revenue,45.283
+Canada,Tax revenue,30.738
+Denmark,Tax revenue,47.957
+Finland,Tax revenue,44.083
+France,Tax revenue,45.285
+Germany,Tax revenue,37.593
+Greece,Tax revenue,33.755
+Iceland,Tax revenue,37.188
+Ireland,Tax revenue,28.283
+Italy,Tax revenue,44.42
+Japan,Tax revenue,28.627
+Luxembourg,Tax revenue,37.756
+Netherlands,Tax revenue,38.56
+New Zealand,Tax revenue,32.879
+Norway,Tax revenue,42.207
+Portugal,Tax revenue,32.484
+Spain,Tax revenue,32.866
+Sweden,Tax revenue,44.305
+Switzerland,Tax revenue,28.173
+Turkey,Tax revenue,27.659
+United Kingdom,Tax revenue,35.245
+United States,Tax revenue,24.347

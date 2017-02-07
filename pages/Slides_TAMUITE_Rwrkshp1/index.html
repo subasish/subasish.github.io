@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<!--<title>reveal.js - The HTML Presentation Framework</title>-->
+		<title>TAMU ITE R Workshop-- Day 1</title>
+
+		<meta name="description" content="TTI presentation">
+		<meta name="author" content="Subasish Das">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+		<font style="color:#D5D5D3">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-transition="slide" data-background="last.gif" data-background-transition="zoom">
+					<h3>R in Transportation Safety Research: Case Studies</h3>
+					<br>
+					<br>
+
+					<p style="color:#F98400">Subasish Das </p>
+					<p style="font-size:20px;color:white">Associate Transportation Researcher</p>
+					<p style="font-size:20px;color:white">Texas A&M Transportation Institute (TTI)</p>
+					<p style="font-size:18px;color:grey">February 7, 2017</p>
+					<br>
+					<br>
+					<br>
+					&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<img width="140" height="40" align="middle" data-src="tti_lg.jpg">
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+						<h3 style="color:#F98400">About me</h3>
+						<ul>
+							<li style="font-size:30px; color:#000000">Completed <font style="color:#CEAB07">MS in Civil Engg. (Transportation maj.)</font> from UL Lafayette in 2012. Completed <font style="color:#CEAB07">MS in Statistics [Non-thesis]</font> in Summer 2015. Completed <font style="color:#CEAB07">PhD in Civil Engg. (Transportation maj.)</font> in Summer 2015. </li>
+							<div class="fragment roll-in">	
+							<li style="font-size:30px; color:#000000">Started working at TTI from August 2015 as an Associate Transportation Researcher.</li>
+							</div>
+							</ul>
+				</section>
+
+								<section data-background="white" data-background-size="2200px">
+						<h3 style="color:#F98400">Highlights on Today's Presentation</h3>
+						<ul>
+							<li style="font-size:30px; color:#000000">Why R?</li>
+							<div class="fragment roll-in">	
+							<li style="font-size:30px; color:#000000">R in Statistical Modeling and Machine Learning</li>
+							</div>
+							<div class="fragment roll-in">	
+							<li style="font-size:30px; color:#000000">Hands on Coding</li>
+							</div>
+							</ul>
+				</section>
+
+
+
+				<section data-background="#3F5151" data-background-size="2200px">
+					<h3 style="color:#F98400">Outline</h3>
+					<p>
+						<ul>
+						    <li class="fragment">Basics of R</li>
+							<li class="fragment">Concepts of Safety Modeling</li>
+							<li class="fragment">Statistics vs. Machine Learning</li>
+							<li class="fragment">R for Statistical Modeling</li>
+							<li class="fragment">R for Machine Learning</li>
+							<li class="fragment">Case Studies</li>
+						</ul>
+					</p>
+				</section>
+
+<section data-background="white" data-background-size="2200px">
+						<h3 style="color:#F98400">Why R?</h3> 
+
+						<ul>
+						<font style="color:black">
+							<li style="font-size:30px" class="fragment roll-in">Over 10,000 packages. Handy in both cultures.</li>  
+							<li style="font-size:30px" class="fragment roll-in">Best tool for reproducible research and literate programming. </li>
+							<li style="font-size:30px" class="fragment roll-in">Efficient in big data management. </li>
+							<li style="font-size:30px" class="fragment roll-in">Pitfalls: R is good for data analytic problems but it is not for advanced programmers.</li>
+						</ul>
+						</font>
+				</section>
+
+
+			<section data-background="white" data-background-size="2200px">
+			<!--<p style="color:#F98400">Traffic crash data</p> 
+			<img  width="600" align="middle" data-src="tti_001.jpg">-->
+			<p style="font-size:36px; color:#F98400">Sample R Code</p> 
+
+			</ul>
+								<pre><code class="hljs" data-trim contenteditable>
+
+### SET WORKING DIRECTORY
+setwd("/Users/subasishdas1/....")
+
+### READ THE DATA
+mydata1 <- read.csv("data01.csv")
+
+### LOOK AT THE DATA
+dim(mydata1)
+[1] 1742    6
+
+head(mydata1)
+  Vis_Score OPSPEED RCISLDWTH2 RCIMEDWDTH SKIDNUMBER freq
+1         5      38          5         15         69    1
+2         4      44          7         33         53    1
+3         6      42         11         25         56    1
+4         9      25         18         23         72    1
+5         9      36          6         42         59    1
+6         6      38         11         35         67    1
+
+str(mydata1)
+str(mydata1)
+'data.frame':	1742 obs. of  6 variables:
+ $ Vis_Score : int  5 4 6 9 9 6 9 8 9 4 ...
+ $ OPSPEED   : int  38 44 42 25 36 38 21 4 23 16 ...
+ $ RCISLDWTH2: int  5 7 11 18 6 11 4 8 13 17 ...
+ $ RCIMEDWDTH: int  15 33 25 23 42 35 19 27 20 35 ...
+ $ SKIDNUMBER: int  69 53 56 72 59 67 62 63 78 55 ...
+ $ freq      : int  1 1 1 1 1 1 1 1 1 1 ...
+
+### INSTALL A PACKAGE
+install.packages("ggplot2")
+
+### LOAD THE LIBRARY
+library(ggplot2)
+		</code></pre>
+			</section>
+
+
+				<section data-background="white" data-background-size="2200px">
+					<h3 style="color:#F98400">Safety Modeling</h3>
+					<p>
+						<ul>
+						<li style="font-size:36px; color:black" class="fragment roll-in">The goal of transportation safety research is to reduce crashes frequencies and degree of crash severity through various actions.</li>
+						<li style="font-size:36px; color:black" class="fragment roll-in">Key research areas</li>
+						<ul>
+				<li class="fragment" style="font-size:32px; color:#00A08A">Effectiveness of crash countermeasure</li>
+					<ul>
+						<li style="font-size:24px;color:black" class="fragment roll-in">Statistical Modeling (before-after analysis; e.g. Naïve Bayes, Empirical Bayes)
+						</li>
+					</ul>
+			    <li class="fragment" style="font-size:32px; color:#00A08A">Crash frequency modeling</li>
+                    <ul>
+	                    <li style="font-size:24px;color:black" class="fragment roll-in">Statistical Modeling (e.g., Poisson, Negative-binomial)</li>
+	                    <li style="font-size:24px;color:black" class="fragment roll-in">Machine Learning and Data Mining (e.g., Neural networks, Support Vector Machine, Rules mining)</li>
+                    </ul>
+			    <li class="fragment" style="font-size:32px; color:#00A08A">Crash severity modeling</li>
+                    <ul>
+	                    <li style="font-size:24px;color:black" class="fragment roll-in">Statistical Modeling (e.g., Logistic, Probit)</li>
+	                    <li style="font-size:24px;color:black" class="fragment roll-in">Machine Learning and Data Mining (e.g., Cluster, K-nearest neighbor, Random forest)</li>
+                    </ul>				
+ 				<li class="fragment" style="font-size:32px; color:#00A08A">Safety risk modeling (e.g. crash prone driver risk modeling)</li>
+ 				<li class="fragment" style="font-size:32px; color:#00A08A">Topic modeling from traffic safety literature</li>
+				</ul>
+
+					</p>
+				</section>
+
+			<section data-background="white" data-background-size="2200px">
+			<!--<p style="color:#F98400">Traffic crash data</p> 
+			<img  width="600" align="middle" data-src="tti_001.jpg">-->
+			<p style="font-size:36px; color:#F98400">Statistical Modeling</p> 
+			<ul>
+			<li style="font-size:28px; color:black" class="fragment roll-in">Response variables = f(Predictor variables, Random noise, Parameters) </li>
+			<li style="font-size:28px; color:black" class="fragment roll-in">Assumption based. Estimation of the parameters.</li>
+			<li style="font-size:28px; color:black" class="fragment roll-in">Emphasis on inference.</li>
+			<p class="fragment roll-in"><img  height="90" width="600" align="middle" data-src="tti_002.jpg"></p>
+			</ul>
+			<p style="font-size:36px; color:#F98400">Machine Learning and Data Mining</p> 
+			<ul>
+			<li style="font-size:28px; color:black" class="fragment roll-in">Inside of the box complex and unknown.</li>
+			<li style="font-size:28px; color:black" class="fragment roll-in">Find a function f(x)—an algorithm that operates on x to predict y.</li>
+			<li style="font-size:28px; color:black" class="fragment roll-in">In many cases, no assumptions. Emphasis on prediction accuracy.</li>
+			<p class="fragment roll-in"><img  height="110" width="600" align="middle" data-src="tti_003.jpg"></p>
+			</ul>
+			</section>
+
+						<section data-background="white" data-background-size="2200px">
+			<!--<p style="color:#F98400">Traffic crash data</p> 
+			<img  width="600" align="middle" data-src="tti_001.jpg">-->
+			<p style="font-size:36px; color:#F98400">Terms</p> 
+
+			<div><img src="akdd2.jpg" class="imgNoBorder"/></div>
+			</section>
+
+
+			<section data-background="white" data-background-size="2200px">
+			<!--<p style="color:#F98400">Traffic crash data</p> 
+			<img  width="600" align="middle" data-src="tti_001.jpg">-->
+			<p style="font-size:36px; color:#F98400">Methods</p> 
+			<ul>
+			<li style="font-size:24px; color:black">Transportation safety literature is mainly based on two methods: 
+			<ul>
+			<li> 1) Crash frequency analysis (regression) </li>
+			<li> 2) Crash severity analysis (classification)</li>
+			</ul></li> 
+			</ul>
+			<div><img src="akdd3.jpg" class="imgNoBorder"/></div>
+			</section>
+
+</section>
+				<section data-transition="slide" data-background="bw_traff3.gif" data-background-transition="zoom">
+					<h1 style="font-size:60px; color:#D8A499">Part 1</h1>
+					<h3 style="font-size:50px; color:#CCC591">Statistical Modeling </h3>
+				</section>
+
+
+				<section>
+
+				<section data-background="white" data-background-size="2200px">
+						<h3 style="color:#F98400">Statistical Modeling</h3> 
+
+						<ul>
+						<font style="color:black">
+							<li style="font-size:36px" class="fragment roll-in">Statistical modeling is strictly based on assumptions. Violation of any assumption makes the model poor and unworthy.</li>  
+							<li style="font-size:36px" class="fragment roll-in">More focus on statistical inference. </li>
+						</ul>
+						</font>
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+						<h3 style="color:#29211F">Case Studies</h3> 
+					<p>
+						<ul>
+						<li class="fragment roll-in" style="color:#F98400">Safety Improvement from Edge Lines on Rural Two-Lane Highways. [LADOTD Project: 2010-2011]</li>
+						<ul>
+							<li class="fragment" style="color:#29211F">Observational before-after study</li>
+							<li class="fragment" style="color:#29211F">Used 'improved prediction before-after' method.</li>
+							<li class="fragment" style="color:#29211F">Pitfalls: This method fails to deal with regression-to-mean (RTM) bias.</li>
+						</ul>
+
+						<li class="fragment roll-in" style="color:#F98400">A Comprehensive Study on Pavement Edge Line Implementation [LADOTD Project: 2012-2013]</li>
+						<ul>
+							<li class="fragment" style="color:#29211F">Observational before-after study</li>
+							<li class="fragment" style="color:#29211F">This project won 2014 AASHTO High Impact Research 'Sweet Sixteen' award.</li>
+							<li class="fragment" style="color:#29211F">Used Empirical Bayes (EB) before-after analysis. </li>
+							<li class="fragment" style="color:#29211F">Advantages: EB helps to deal with the RTM bias.</li>
+						</ul>
+
+						</ul>
+					</p>
+
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+						<h3 style="color:#29211F">Case Studies</h3> 
+					<p>
+						<ul>
+						<li class="fragment roll-in" style="color:#F98400">Analysis of the Shoulder Widening Need on the State Highway System [TxDOT Project: 2015-2016]</li>
+						<ul>
+							<li class="fragment" style="color:#29211F">Defined the criteria for roadway shoulder suitability for pedestrians and bicycles.</li>
+							<li class="fragment" style="color:#29211F"> Used generalized linear mixed effect models to estimate pedestrian and bicycle crashes.</li>
+							<li class="fragment" style="color:#29211F">Developed a candidate list of potential target locations, coupled with the suitability criteria, to be incorporated into a Strategic Corridor Development Plan.</li>
+							<li class="fragment" style="color:#29211F">Advantages: Mixed effect model considers the random effect of the spatial discrepencies.</li>
+						</ul>
+
+						</ul>
+					</p>
+
+				</section>
+
+
+				<section data-background="white" data-background-size="2200px">
+						<h3 style="color:#29211F">Case Studies</h3> 
+					<p>
+					<ul>
+						<li class="fragment roll-in" style="color:#F98400">Is Age a Factor in Crashes at Channelized Right-Turn Lanes? [Atlas project: 2015-16]</li>
+						<ul>
+							<li class="fragment" style="color:#29211F">Incorporate manually collected geometric database with six years of CRIS crash database.</li>
+							<li class="fragment" style="color:#29211F">Use NHTS database to determine age specific miles driven by Texas drivers.</li>
+							<li class="fragment" style="color:#29211F">Perform exploratory data analysis to investigate the association between crashes and geometric features of right turn lanes.</li>
+						</ul>
+						<li class="fragment roll-in" style="color:#F98400">Safety Impacts of Reduced Visibility in Inclement Weather</li>
+						<ul>
+							<li class="fragment" style="color:#29211F">Incorporate SHRP-2 RID and NDS data with hourly NOAA maintained weather data.</li>
+							<li class="fragment" style="color:#29211F">Anticipate using multinomial logistic regression models to identify the increased likelihood of a crash under different levels of visibility.</li>
+						</ul>
+						</ul>
+					</p>
+				</section>
+
+
+
+
+</section>
+
+
+				<section data-transition="slide" data-background="Ceric6.gif" data-background-transition="zoom">
+					<h1 style="font-size:60px; color:#D8A499">Part 2</h1>
+					<h3 style="font-size:50px; color:#CCC591">Machine learning and Data Mining </h3>
+				</section>
+
+
+
+				<section data-background="white" data-background-size="2200px">
+						<h3 style="color:#F98400">Why Machine learning and Data Mining?</h3> 
+
+						<ul>
+						<font style="color:black"> 
+							<li style="font-size:36px" class="fragment roll-in">Most of the algorithmic models are not based on any assumption.  </li>
+							<li style="font-size:36px" class="fragment roll-in">In the recent years, big data and machine learning are the buzz words. Machine learning tools can deal with big and messy data efficiently. </li>
+							<li style="font-size:36px" class="fragment roll-in">More focus on prediction accuracy. </li>
+						</ul>
+						</font>
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+						<h3 style="color:#F98400">What is Machine learning?</h3> 
+						<blockquote style="color:black">
+						&ldquo;A computer program is said to learn from <strong style="color:#046C9A">experience E</strong> with respect to some <strong style="color:#00A08A">task T</strong> and some <strong style="color:#FF0000">performance measure P</strong>, if its <strong style="color:#FF0000">performance measure P</strong>, improves with <strong style="color:#046C9A">experience E</strong>.&rdquo;-Tom Mitchell (1997)
+					    </blockquote>
+
+						<h4 style="color:#C7B19C" class="fragment roll-in">Example: Estimate Crash proneness of at-fault drivers</h4> 
+						<ul>
+						<font style="color:black"> 
+							<li style="font-size:28px" class="fragment roll-in"><strong style="color:#00A08A">Task </strong>: Increase prediction accuracy</li>
+							<li style="font-size:28px" class="fragment roll-in"><strong style="color:#FF0000">Performance Measure</strong>: Classification (at-fault and not-at-fault)</li>
+							<li style="font-size:28px" class="fragment roll-in"><strong style="color:#046C9A">Experience</strong>: Significant explanatory variables (X) and crash proneness (Y)</li>
+						</ul>
+						</font>
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+				<h3 style="color:#00A08A">Task</h3>
+
+				<div><img src="akde3.jpg" class="imgNoBorder"/></div>
+				<p style="font-size:16px; color:#899DA4">&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;[Source: T T Um, University of Waterloo]</p>
+
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+				<h3 style="color:#FF0000">Performance Measure</h3>
+
+				<div><img src="akde2.jpg" class="imgNoBorder"/></div>
+				<p style="font-size:16px; color:#899DA4">&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;[Source: T T Um, University of Waterloo]</p>
+
+				</section>
+
+								<section data-background="white" data-background-size="2200px">
+				<h3 style="color:#046C9A">Experience</h3>
+
+				<div><img src="akde1.jpg" class="imgNoBorder"/></div>
+				<p style="font-size:16px; color:#899DA4">&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;[Source: T T Um, University of Waterloo]</p>
+
+				</section>
+
+
+
+				<section data-background="white" data-background-size="2200px">
+						<h3 style="color:#29211F">Case Studies</h3> 
+					<p>
+						<ul>
+						<li class="fragment roll-in" style="color:#F98400">Developing a Method for Estimating Traffic Volumes for safety improvement in Louisiana Local Roads. [LADOTD Project: 2013-2014]</li>
+						<ul>
+							<li class="fragment" style="color:#29211F">Used Support Vector Regression </li>
+							<li class="fragment" style="color:#29211F">Developed prediction models for eight parishes in Louisiana</li>
+							<li class="fragment" style="color:#29211F">Advantages: Trainset accuracy: 90%</li>
+							<li class="fragment" style="color:#29211F">Pitfalls: Test accuracy: 40% to 60%.</li>
+						</ul>
+						<li class="fragment roll-in" style="color:#F98400"> User Sentiment Analysis with Louisiana Social Media Data for Better and Effective Crash Countermeasures [LADOTD Project: 2014-2015]</li>
+						<ul>
+							<li class="fragment" style="color:#29211F">Used social media mining approach to conduct the sentiment analysis</li>
+							<li class="fragment" style="color:#29211F">Pitfalls: Due to the limitation of geolocation infomation of the tweets, the outcomes are not unbiased.</li>
+
+						</ul>
+						</ul>
+					</p>
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+						<h3 style="color:#29211F">Case Studies</h3> 
+					<p>
+						<ul>
+						<li class="fragment roll-in" style="color:#F98400">Mining Potentially Interesting Positive and Negative Association Patterns from Traffic Safety Data. [LADOTD Project: 2012-2013]</li>
+						<ul>
+							<li class="fragment" style="color:#29211F">Used two recent data mining methods, association rules mining and action rules, to generate rules for both segment and intersection related traffic crashes in Louisiana.</li>
+							<li class="fragment" style="color:#29211F">Advantages: Quick and efficent method to deal with larger datasets</li>
+							<li class="fragment" style="color:#29211F">Pitfalls: The thresholds of support and confidence are not optimized.</li>
+
+						</ul>
+						<li class="fragment roll-in" style="color:#F98400"> Factor Association using Multiple Correspondence Analysis in Vehicle-pedestrian Crashes [ULL Project: 2014]</li>
+						<ul>
+							<li class="fragment" style="color:#29211F">Used Multiple Correspondence Analysis to generate significant association groups of traffic crash variables from large dataset of pedestrian crash transactions. </li>
+							<li class="fragment" style="color:#29211F">Pitfalls: The first two dimension only explained 20% of the total data.</li>
+						</ul>
+						</ul>
+					</p>
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+						<h3 style="color:#29211F">Case Studies</h3> 
+					<p>
+						<ul>
+						<li class="fragment roll-in" style="color:#F98400">Using Random Forest and Support Vector Machine in Pedestrian Crash Severity Analysis</li>
+						<ul>
+							<li class="fragment" style="color:#29211F">This study uses ten years (2004-2014) of pedestrian crashes in Louisiana to predict crash severities based on algorithmic modeling (random forest and support vector machine).</li>
+						</ul>
+						<li class="fragment roll-in" style="color:#F98400"> Topic Mining on TRB Annual Meeting Compendium Papers </li>
+						<ul>
+							<li class="fragment" style="color:#29211F">This study uses all papers included in TRB annual meeting compendium for ten years of period. Latent Dirichlet Allocation (LDA) and Structural Topic Modeling are used to develop the research trends and topic modeling.</li>
+						</ul>
+						</ul>
+					</p>
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+						<h3 style="color:#29211F">Case Studies</h3> 
+					<p>
+						<ul>
+						<li class="fragment roll-in" style="color:#F98400">Non-motorized crash prediction in Texas using spatial and geometric factors</li>
+						<ul>
+							<li class="fragment" style="color:#29211F">This study will use machine learning methods to predict the macro level (US Census Block group) non-motorized crash prediction in Texas.</li>
+						</ul>
+						<li class="fragment roll-in" style="color:#F98400">Reconfiguring Chicago Walkscores based on the Crime Data in Chicago</li>
+						<ul>
+							<li class="fragment" style="color:#29211F">Chicago open data maintains a comprehensive geo tagged database on crimes from 2001. This study will use Chicago crime data, NHTS data, ACS data to reconfigure the available walkscores in Chicago.</li>
+						</ul>
+						</ul>
+					</p>
+				</section>
+
+				
+				</section>
+<section>
+
+
+
+
+
+				<section data-transition="slide" data-background="work.gif" data-background-transition="zoom">
+					<h2>Open R or Rstudio</h2>
+				    </section>
+</section>
+
+			</div>
+</font>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme || 'night', // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				parallaxBackgroundImage: 'bw_traff3.gif',
+				parallaxBackgroundSize: '28400px 42200px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+        <script src="js/raphael-min.js"></script>
+        <script src="js/underscore-min.js"></script>
+        <script src="js/sequence-diagram-min.js"></script>
+
+
+	</body>
+</html>
