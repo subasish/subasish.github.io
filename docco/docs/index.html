@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>index.md</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>index.md</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <!--
+%\VignetteEngine{knitr::docco_linear}
+%\VignetteIndexEntry{R Markdown with the Docco Linear Style}
+-->
+
+<h1 id="not-preface">Not Preface</h1>
+<p>R is now a <span style="color:red">large community</span>. Today we have <del>4,567</del> 6,139 R packages. My attempt here is to jot down the code snippets  based on the newer packages (by following <a href="http://cran.r-project.org/web/packages/available_packages_by_date.html">table of available packages, sorted by date of publication</a>). </p>
+<hr>
+<p>The chunk of the codes will be taken either from the Vignette or from the main package documentation pdf. I also like to include <a href="http://stackoverflow.com/questions/tagged/r">stack overflow threads</a> if there are interesting questions. These interesting and easy-to-apply codes will be applied to different data sets to develop models and assumptions. </p>
+<h3 id="packages">Packages</h3>
+<p>Packages used in this post are:</p>
+<blockquote>
+<p>pander, DT, data.table </p>
+</blockquote>
+<h4 id="pander">pander</h4>
+<ol>
+<li><a href="http://cran.r-project.org/web/packages/pander/pander.pdf">Package pdf</a>.</li>
+<li><a href="http://rapporter.github.io/pander/">Github</a></li>
+<li>Last updated: 2014-XX-XX</li>
+</ol>
+<pre><code class="lang-r"><span class="hljs-keyword">library</span>(pander)
+pandoc.table(mtcars[<span class="hljs-number">1</span>:<span class="hljs-number">3</span>, <span class="hljs-number">1</span>:<span class="hljs-number">4</span>])
+</code></pre>
+<pre><code><span class="hljs-header">## </span>
+<span class="hljs-header">## -------------------------------------------</span>
+<span class="hljs-header">##       &amp;nbsp;          mpg   cyl   disp   hp</span>
+<span class="hljs-header">## ------------------- ----- ----- ------ ----</span>
+<span class="hljs-header">##    **Mazda RX4**       21     6    160  110</span>
+<span class="hljs-header">## </span>
+<span class="hljs-header">##  **Mazda RX4 Wag**     21     6    160  110</span>
+<span class="hljs-header">## </span>
+<span class="hljs-header">##   **Datsun 710**     22.8     4    108   93</span>
+<span class="hljs-header">## -------------------------------------------</span>
+</code></pre><pre><code class="lang-r">pandoc.table(mtcars[<span class="hljs-number">1</span>:<span class="hljs-number">2</span>, ], style = <span class="hljs-string">"grid"</span>, caption = <span class="hljs-string">"Hello caption!"</span>)
+</code></pre>
+<pre><code><span class="hljs-header">## </span>
+<span class="hljs-header">## </span>
+<span class="hljs-header">## +---------------------+-------+-------+--------+------+--------+-------+</span>
+<span class="hljs-header">## |       &amp;nbsp;        |   mpg |   cyl |   disp |   hp |   drat |    wt |</span>
+<span class="hljs-header">## +=====================+=======+=======+========+======+========+=======+</span>
+<span class="hljs-header">## |    **Mazda RX4**    |    21 |     6 |    160 |  110 |    3.9 |  2.62 |</span>
+<span class="hljs-header">## +---------------------+-------+-------+--------+------+--------+-------+</span>
+<span class="hljs-header">## |  **Mazda RX4 Wag**  |    21 |     6 |    160 |  110 |    3.9 | 2.875 |</span>
+<span class="hljs-header">## +---------------------+-------+-------+--------+------+--------+-------+</span>
+<span class="hljs-header">## </span>
+<span class="hljs-header">## Table: Hello caption! (continued below)</span>
+<span class="hljs-header">## </span>
+<span class="hljs-header">##  </span>
+<span class="hljs-header">## </span>
+<span class="hljs-header">## +---------------------+--------+------+------+--------+--------+</span>
+<span class="hljs-header">## |       &amp;nbsp;        |   qsec |   vs |   am |   gear |   carb |</span>
+<span class="hljs-header">## +=====================+========+======+======+========+========+</span>
+<span class="hljs-header">## |    **Mazda RX4**    |  16.46 |    0 |    1 |      4 |      4 |</span>
+<span class="hljs-header">## +---------------------+--------+------+------+--------+--------+</span>
+<span class="hljs-header">## |  **Mazda RX4 Wag**  |  17.02 |    0 |    1 |      4 |      4 |</span>
+<span class="hljs-header">## +---------------------+--------+------+------+--------+--------+</span>
+</code></pre><pre><code class="lang-r">pander(prcomp(USArrests))
+</code></pre>
+<pre><code><span class="hljs-header">## Error in pandoc.table.return(...): Wrong number of parameters (17 instead of *5*) passed: justify</span>
+</code></pre><pre><code class="lang-r">counts &lt;- c(<span class="hljs-number">18</span>, <span class="hljs-number">17</span>, <span class="hljs-number">15</span>, <span class="hljs-number">20</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>, <span class="hljs-number">25</span>, <span class="hljs-number">13</span>, <span class="hljs-number">12</span>)
+outcome &lt;- gl(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">9</span>)
+treatment &lt;- gl(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>)
+m &lt;- glm(counts ~ outcome + treatment, family = poisson())
+</code></pre>
+<h4 id="dt">DT</h4>
+<ol>
+<li><a href="http://cran.r-project.org/web/packages/knitr/vignettes/datatables.html">jQuery DataTables</a>.</li>
+<li><a href="https://github.com/rstudio/DT">DT Github Repo.</a></li>
+<li><a href="http://rpubs.com/holidayworking/knitr_and_datatables">Rpubs 1: knitr と DataTables</a></li>
+<li><a href="http://rpubs.com/muuankarski/52544">Rpubs 2: countrycode</a></li>
+</ol>
+<p>DT package is not on CRAN yet, and you can install it with devtools. Need to do following:</p>
+<blockquote>
+<p>install.packages(“devtools”)</p>
+<p>library(devtools)</p>
+<p>devtools::install_github(‘rstudio/DT’)</p>
+</blockquote>
+<pre><code><span class="hljs-header">## Warning in file(file, "rt"): cannot open file 'aa.csv': No such file or</span>
+<span class="hljs-header">## directory</span>
+</code></pre><pre><code><span class="hljs-header">## Error in file(file, "rt"): cannot open the connection</span>
+</code></pre><pre><code><span class="hljs-header">## Error in datatable(data): 'data' must be either a matrix or a data frame</span>
+</code></pre><h4 id="data-table">data.table</h4>
+<ol>
+<li><a href="http://cran.r-project.org/web/packages/data.table/data.table.pdf">Package pdf</a>.</li>
+<li><a href="ww.datacamp.com/courses/data-analysis-the-data-table-way">DATA ANALYSIS THE DATA.TABLE WAY</a></li>
+</ol>
+<pre><code class="lang-r"><span class="hljs-keyword">library</span>(data.table)
+DF = data.frame(x=rep(c(<span class="hljs-string">"a"</span>,<span class="hljs-string">"b"</span>,<span class="hljs-string">"c"</span>),each=<span class="hljs-number">3</span>), y=c(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">6</span>), v=<span class="hljs-number">1</span>:<span class="hljs-number">9</span>)
+DT = data.table(x=rep(c(<span class="hljs-string">"a"</span>,<span class="hljs-string">"b"</span>,<span class="hljs-string">"c"</span>),each=<span class="hljs-number">3</span>), y=c(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">6</span>), v=<span class="hljs-number">1</span>:<span class="hljs-number">9</span>)
+DF
+</code></pre>
+<pre><code><span class="hljs-header">##   x y v</span>
+<span class="hljs-header">## 1 a 1 1</span>
+<span class="hljs-header">## 2 a 3 2</span>
+<span class="hljs-header">## 3 a 6 3</span>
+<span class="hljs-header">## 4 b 1 4</span>
+<span class="hljs-header">## 5 b 3 5</span>
+<span class="hljs-header">## 6 b 6 6</span>
+<span class="hljs-header">## 7 c 1 7</span>
+<span class="hljs-header">## 8 c 3 8</span>
+<span class="hljs-header">## 9 c 6 9</span>
+</code></pre><pre><code class="lang-r">DT
+</code></pre>
+<pre><code><span class="hljs-header">##    x y v</span>
+<span class="hljs-header">## 1: a 1 1</span>
+<span class="hljs-header">## 2: a 3 2</span>
+<span class="hljs-header">## 3: a 6 3</span>
+<span class="hljs-header">## 4: b 1 4</span>
+<span class="hljs-header">## 5: b 3 5</span>
+<span class="hljs-header">## 6: b 6 6</span>
+<span class="hljs-header">## 7: c 1 7</span>
+<span class="hljs-header">## 8: c 3 8</span>
+<span class="hljs-header">## 9: c 6 9</span>
+</code></pre><pre><code class="lang-r">data(mtcars)
+head(mtcars)
+</code></pre>
+<pre><code><span class="hljs-header">##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb</span>
+<span class="hljs-header">## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4</span>
+<span class="hljs-header">## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</span>
+<span class="hljs-header">## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</span>
+<span class="hljs-header">## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span>
+<span class="hljs-header">## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span>
+<span class="hljs-header">## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</span>
+</code></pre><pre><code class="lang-r">mtcars.dt &lt;- data.table(mtcars)
+head(mtcars.dt)
+</code></pre>
+<pre><code><span class="hljs-header">##     mpg cyl disp  hp drat    wt  qsec vs am gear carb</span>
+<span class="hljs-header">## 1: 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4</span>
+<span class="hljs-header">## 2: 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</span>
+<span class="hljs-header">## 3: 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</span>
+<span class="hljs-header">## 4: 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span>
+<span class="hljs-header">## 5: 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span>
+<span class="hljs-header">## 6: 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</span>
+</code></pre><pre><code class="lang-r">mtcars.dt1 &lt;- data.table(mtcars, keep.rownames = <span class="hljs-literal">TRUE</span>)
+head(mtcars.dt1)
+</code></pre>
+<pre><code><span class="hljs-header">##                   rn  mpg cyl disp  hp drat    wt  qsec vs am gear carb</span>
+<span class="hljs-header">## 1:         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4</span>
+<span class="hljs-header">## 2:     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</span>
+<span class="hljs-header">## 3:        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</span>
+<span class="hljs-header">## 4:    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span>
+<span class="hljs-header">## 5: Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span>
+<span class="hljs-header">## 6:           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</span>
+</code></pre><p>That’s all for this docco. :)</p>
+
+            </div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

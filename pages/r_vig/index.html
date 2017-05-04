@@ -1,0 +1,577 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>R vignettes</title>
+<meta id="viewport" name="viewport" content="width=400" />
+
+<link rel="stylesheet" href="../../theme/css/normalize.css" type="text/css" />
+<link rel="stylesheet" href="../../theme/css/base.css" type="text/css" />
+<link rel="stylesheet" href="../../theme/css/code.css" type="text/css" />
+<link rel="stylesheet" href="../../theme/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="../../theme/css/custom.css" type="text/css" />
+<link rel="stylesheet" href="../../theme/css/page.css" type="text/css" />
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="topavatar">
+        <img src="../../theme/images/avatar.png" alt="me">
+    </div>
+
+<div class="topbar">
+    <span><a href="..">subasish das</a></span>
+    <ul>
+        <li><a href="/research">research</a></li>
+        <li><a href="/resume.pdf" target="_blank">cv</a></li>
+        <li><a href="/blogs">blogs</a></li>
+        <li><a href="/loop">links</a></li>
+        <!--<li><a href="/blog">বাংলা</a></li>-->
+    </ul></div>
+</div></div><div class="container">
+
+<style type="text/css">
+
+    
+    a {
+    background: transparent;
+    background-size: 0 0;
+    background-position: 0 0;
+    text-decoration: none;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0) 75%, rgba(0,0,0,0.8) 75%);
+    background-repeat: repeat-x;
+    color: #F0F8FF;
+}
+</style>
+
+<h3 style="color:#046C9A"> R Vignettes</h3>
+        
+        <h4>Reproducible Research</h4>
+        <div class="colors mini">
+            <div style="background-color:#F1BB7B; border:1px white">
+                <font color=white>
+                <a href="http://cran.r-project.org/web/packages/apsrtable/vignettes/guide.pdf"> &nbsp;apsrtable</a> &nbsp;  
+                <a href="http://cran.r-project.org/web/packages/exams/vignettes/exams.pdf">exams</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/hwriter/vignettes/hwriter.pdf">hwriter</a> &nbsp; 
+                <a href="https://github.com/harrelfe/Hmisc">Hmisc</a> [git] &nbsp; 
+                <a href="https://github.com/talgalili/installr/">installr</a> [git]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/knitr/vignettes/docco-linear.html">knitr</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/markdown/vignettes/markdown-examples.html">markdown</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/memisc/vignettes/anes48.pdf">memisc</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/NMOF/vignettes/DEnss.pdf">NMOF</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/odfWeave/vignettes/odfWeave.pdf">OdfWeave</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/quantreg/vignettes/rq.pdf">quantreg</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/R.rsp/vignettes/Dynamic_document_creation_using_RSP.pdf">R.rsp</a> 
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+
+
+            <div style="background-color:#FD6467; border:1px white">
+                <font color=white>
+                <a href="https://github.com/nalimilan/R2HTML"> &nbsp;R2HTML</a> [git]&nbsp;  
+                <a href="https://github.com/Rapporter/rapport">rapport</a> [git]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/reporttools/vignettes/reporttools.pdf">reporttools</a> &nbsp; 
+                <a href="http://biostat.mc.vanderbilt.edu/wiki/Main/RmS">rms</a> [web]&nbsp; 
+                <a href="http://thomasleeper.com/software.html">sparktex</a> [web]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rtf/vignettes/rtf.pdf">rtf</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/stargazer/vignettes/stargazer.pdf">stargazer</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/tables/vignettes/tables.pdf">tables</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/texreg/vignettes/v55i08.pdf">texreg</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/tikzDevice/vignettes/tikzDevice.pdf">tikzDevice</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/xtable/vignettes/xtableGallery.pdf">xtable</a> &nbsp; 
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+        </div>
+        <br>
+
+        <h4>Web Technologies and Services</h4>
+        <div class="colors mini">
+            <div style="background-color:#5B1A18; border:1px white">
+                                <font color=white>
+                <a href="http://cran.r-project.org/web/packages/alm/vignettes/alm_vignette.html"> &nbsp;alm</a> &nbsp;  
+                <a href="http://cran.r-project.org/web/packages/aRxiv/vignettes/aRxiv.html">aRxiv</a>&nbsp; 
+                <a href="https://github.com/dirkschumacher/RBerlinData">BerlinData</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/boilerpipeR/vignettes/ShortIntro.pdf">boilerpipeR</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/cgdsr/vignettes/cgdsr.pdf">cgdsr</a> &nbsp; 
+                <a href="https://github.com/ropensci/chromer">chromer</a> [git]&nbsp; 
+                <a href="https://github.com/leeper/colourlovers">colourlovers</a> [git]&nbsp; 
+                <a href="https://github.com/jeroenooms/curl">curl</a> [git]&nbsp; 
+                <a href="http://christophergandrud.github.io/d3Network/">d3Network</a> [web]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/dataRetrieval/vignettes/dataRetrieval.pdf">dataRetrieval</a> &nbsp; 
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#D67236; border:1px white">
+                                                <font color=white>
+                <a href="http://cran.r-project.org/web/packages/dismo/vignettes/brt.pdf"> &nbsp;dismo</a> &nbsp;
+                <a href="https://github.com/wch/downloader">downloader</a> [git]&nbsp; 
+                <a href="https://github.com/leeper/dvn">dvn</a> [git]&nbsp; 
+                <a href="https://github.com/ropensci/ecoengine">ecoengine</a> [git]&nbsp; 
+                <a href="https://github.com/ropensci/ecoretriever">ecoretriever</a> [git]&nbsp;   
+                <a href="http://cran.r-project.org/web/packages/enigma/vignettes/enigma_vignette.html">enigma</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/FAOSTAT/vignettes/FAOSTAT.pdf">FAOSTAT</a>&nbsp; 
+                <a href="http://www.exmachinatech.net/projects/factualR/">factualR</a> [web] &nbsp; 
+                                <a href="http://cran.r-project.org/web/packages/fbRanks/vignettes/Basic_team_ranking.pdf">fbRanks</a> &nbsp; 
+ 
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#E6A0C4; border:1px white">
+                                                                <font color=white>
+                <a href="https://github.com/rOpenGov/federalregister"> &nbsp;federalregister</a> [git] &nbsp; 
+                <a href="https://www.rmetrics.org">fImport</a> [web]&nbsp;
+                <a href="https://github.com/gustavobio/flora">flora</a> [git] &nbsp;   
+                <a href="https://github.com/dkahle/ggmap">ggmap</a>  [git]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/ggvis/vignettes/overview.html">ggvis</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/gistr/vignettes/gistr_vignette.html">gistr</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/gmailr/vignettes/sending_messages.html">gmailr</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/googleVis/vignettes/googleVis_examples.html">googleVis</a>&nbsp; 
+                <a href="https://github.com/rstudio/httpuv">httpuv</a> [git]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/httr/vignettes/api-packages.html">httr</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/IBrokers/vignettes/IBrokers.pdf">IBrokers</a>&nbsp; </font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#C6CDF7; border:1px white">
+                                                                                <font color=white>
+                <a href="http://jsonstudio.com"> &nbsp;jSonarR</a> [web] &nbsp;  
+                <a href="http://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html">jsonlite</a> &nbsp; 
+                <a href="https://github.com/chgrl/leafletR">leafletR</a> [git]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html">magrittr</a>&nbsp; 
+                <a href="https://github.com/rpremraj/mailR">mailR</a> [git] &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/marmap/vignettes/marmap-DataAnalysis.pdf">marmap</a> &nbsp; 
+                <a href="https://github.com/oscarperpinan/meteoForecast">meteoForecast</a> &nbsp; 
+                <a href="https://github.com/leeper/MTurkR">MTurkR</a> [git]&nbsp; 
+                <a href="https://github.com/seancarmody/ngramr">ngramr</a> [git]&nbsp; 
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#D8A499; border:1px white">
+                                                                                                <font color=white>
+                <a href="http://cran.r-project.org/web/packages/OAIHarvester/vignettes/oaih.pdf">&nbsp;OAIHarvester</a> &nbsp;  
+                <a href="http://cran.r-project.org/web/packages/opencpu/vignettes/opencpu-server.pdf">opencpu</a> &nbsp; 
+                <a href="http://osmar.r-forge.r-project.org">osmar</a> &nbsp; 
+                <a href="https://github.com/ropensci/paleobioDB">paleobioDB</a> [git]&nbsp; 
+                <a href="http://cpsievert.github.io/pitchRx/">pitchRx</a> [web] &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/plotKML/vignettes/jss1079.pdf">plotKML</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/polidata/vignettes/release.html">polidata</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/pollstR/vignettes/introduction.html">pollstR</a> &nbsp; 
+                <a href="https://github.com/floswald/psidR">psidR</a> [git]&nbsp; 
+                <a href="https://github.com/briandconnelly/pushoverr">pushoverr</a> [git]&nbsp; 
+            </font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#7294D4; border:1px white">
+                <font color=white>
+                <a href="http://www.quantmod.com"> &nbsp;quantmod</a> [web] &nbsp;  
+                <a href="http://cran.r-project.org/web/packages/raincpc/vignettes/raincpc_demo.html">raincpc</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rainfreq/vignettes/rainfreq_demo.html">rainfreq</a> [git]&nbsp; 
+                <a href="https://github.com/ropensci/rAltmetric">rAltmetric</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rbhl/vignettes/rbhl_vignette.pdf">rbhl</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rbison/vignettes/rbison_vignette.html">rbison</a> &nbsp; 
+                <a href="https://github.com/jangorecki/Rbitcoin">Rbitcoin</a> [git]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rclinicaltrials/vignettes/basics.html">rclinicaltrials</a> &nbsp; 
+                <a href="https://github.com/kylehamilton/RCryptsy">RCryptsy</a> [git]&nbsp; 
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+
+
+
+            <div style="background-color:#F3DF6C; border:1px white">
+                <font color=white>
+                <a href="https://github.com/DataCanvasIO/RDataCanvas"> &nbsp;RDataCanvas</a> [git] &nbsp;  
+                <a href="https://github.com/ropensci/rebird">rebird</a> [git]&nbsp; 
+                <a href="https://github.com/rOpenGov/recalls">recalls</a> [git]&nbsp; 
+                <a href="https://github.com/nutterb/redcapAPI">redcapAPI</a> [git]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/RefManageR/vignettes/manual.pdf">RefManageR</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rentrez/vignettes/rentrez_tutorial.html">rentrez</a> &nbsp; 
+                <a href="https://github.com/christophergandrud/repmis">repmis</a> [git]&nbsp; 
+                <a href="https://github.com/gschofl/reutils">reutils</a> [git]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rfigshare/vignettes/README.html">rfigshare</a> &nbsp; 
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+
+
+            <div style="background-color:#CEAB07; border:1px white">
+                <font color=white>
+                <a href="https://github.com/ropensci/rfishbase"> &nbsp;rfishbase</a> [git] &nbsp;  
+                <a href="https://github.com/ropensci/rfisheries">rfisheries</a> [git]&nbsp; 
+                <a href="http://rforcecom.plavox.info">rforcecom</a> [web]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/RGA/vignettes/reporting-api.html">RGA</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rgauges/vignettes/rgauges_vignette.pdf">rgauges</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rgbif/vignettes/issues_vignette.html">rgbif</a> &nbsp; 
+                <a href="https://github.com/Tatvic/RGoogleAnalytics">RGoogleAnalytics</a> [git]&nbsp; 
+                <a href="https://github.com/amattioc/SDMX">RJSDMX</a> [git]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rnbn/vignettes/rnbn_vignette.html">rnbn</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rnoaa/vignettes/storms_vignette.html">rnoaa</a> &nbsp; 
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#D5D5D3; border:1px white">
+                <font color=white>
+                <a href="http://cran.r-project.org/web/packages/rplos/vignettes/rplos_vignette.html"> &nbsp;rplos</a> &nbsp;  
+                <a href="https://github.com/rOpenGov/RPublica">RPublica</a> [git]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/RSelenium/vignettes/shinytesting.html">RSelenium</a> &nbsp; 
+                <a href="https://github.com/randyzwitch/RSiteCatalyst">RSiteCatalyst</a> [git]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rsunlight/vignettes/rsunlight_vignette.html">rsunlight</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rvertnet/vignettes/rvertnet_vignette.html">rvertnet</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rYoutheria/vignettes/vignette.pdf">rYoutheria</a>&nbsp; 
+                <a href="https://github.com/yihui/servr">servr</a> [git]&nbsp; 
+                <a href="https://github.com/charliebone/shopifyr/">shopifyr</a> [git] &nbsp; 
+                <a href="https://github.com/hrbrmstr/slackr">slackr</a> [git] &nbsp; 
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#24281A; border:1px white">
+                <font color=white>
+                <a href="http://cran.r-project.org/web/packages/sos4R/vignettes/sos4R.pdf"> &nbsp;sos4R</a> &nbsp;  
+                <a href="http://cran.r-project.org/web/packages/spocc/vignettes/spocc_vignette.html">spocc</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/taxize/vignettes/taxize_vignette.html">taxize</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/tm.plugin.webmining/vignettes/ShortIntro.pdf">tm.plugin.webmining</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/translate/vignettes/vignette.pdf">translate</a> &nbsp; 
+                <a href="https://github.com/ropensci/treebase">treebase</a> [git]&nbsp; 
+                <a href="https://github.com/Ironholds/urltools">urltools</a> [git]&nbsp; 
+                <a href="https://github.com/mrbcuda/ustyc">ustyc</a> [git]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/waterData/vignettes/vignette.pdf">waterData</a> [git] &nbsp; 
+                <a href="https://github.com/vincentarelbundock/WDI">WDI</a> [git] &nbsp; 
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#798E87; border:1px white">
+                <font color=white>
+                <a href="http://ram-n.github.io/weatherData/"> &nbsp;weatherData</a> [web]&nbsp;  
+                <a href="https://github.com/jeroenooms/webutils">webutils</a> [git]&nbsp; 
+                <a href="https://github.com/edwindj/whisker">whisker</a> [git]&nbsp; 
+                <a href="https://github.com/petermeissner/wikipediatrend">wikipediatrend</a> [git]&nbsp; 
+                <a href="https://github.com/Ironholds/WikipediR">WikipediR</a> [git]&nbsp; 
+                <a href="http://www.omegahat.org/RSXML">XML</a> [web]&nbsp; 
+                <a href="https://github.com/cpsievert/XML2R">XML2R</a> [git]&nbsp; 
+                <a href="https://github.com/yhat/yhatr">yhatr</a> [git]&nbsp; 
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+
+
+        </div>
+
+        <br>
+
+
+        <h4>Multivariate Statistics</h4>
+        <div class="colors mini">
+                    <div style="background-color:#C27D38; border:1px white">
+                <font color=white>
+                <a href="http://cran.r-project.org/web/packages/amap/vignettes/amap.pdf"> &nbsp;amap</a>&nbsp;  
+                <a href="http://cran.r-project.org/web/packages/aplpack/vignettes/sliderfns.pdf">aplpack</a>&nbsp; 
+                <a href="http://www.perossi.org/home/bsm-1">bayesm</a> [web]&nbsp; 
+                <a href="http://www.carme-n.org/">ca</a> [web]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/calibrate/vignettes/CalibrationGuide.pdf">calibrate</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/car/vignettes/embedding.pdf">car</a> &nbsp; 
+                <a href="http://www.stats.ox.ac.uk/pub/MASS4/">class</a> [web]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/clue/vignettes/clue.pdf">clue</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/copula/vignettes/nacopula-pkg.pdf">copula</a> &nbsp; 
+                <a href="https://github.com/gavinsimpson/cocorresp">cocorresp</a> [git]&nbsp; 
+                <a href="http://strimmerlab.org/software/corpcor/">corpcor</a> [web]&nbsp;
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+
+
+
+
+            <div style="background-color:#CCC591; border:1px white">
+                <font color=white>
+                <a href="http://www.rni.helsinki.fi/~jsk/denpro/"> &nbsp;denpro</a> [web]&nbsp;  
+                <a href="http://cran.r-project.org/web/packages/desirability/vignettes/desirability.pdf">desirability</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/dr/vignettes/overview.pdf">dr</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/e1071/vignettes/svmdoc.pdf">e1071</a>&nbsp; 
+                <a href="http://www.milbo.users.sonic.net/earth/">earth</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/eRm/vignettes/eRm.pdf">eRm</a> &nbsp; 
+                <a href="http://factominer.free.fr">FactoMineR</a> [web]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/FAiR/vignettes/FAiR.pdf">FAiR</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/feature/vignettes/feature.pdf">feature</a> &nbsp; 
+                <a href="http://ecology.msu.montana.edu/labdsv/R/labs/lab11/lab11.html">fso</a> [web]&nbsp; 
+                <a href="http://streaming.stat.iastate.edu/~dicook/geometric-data/">geozoo</a> [web]&nbsp;
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#29211F; border:1px white">
+                <font color=white>
+                <a href="http://www.rni.helsinki.fi/~jsk/denpro/"> &nbsp;denpro</a> [web]&nbsp;  
+                <a href="http://cran.r-project.org/web/packages/desirability/vignettes/desirability.pdf">desirability</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/dr/vignettes/overview.pdf">dr</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/e1071/vignettes/svmdoc.pdf">e1071</a>&nbsp; 
+                <a href="http://www.milbo.users.sonic.net/earth/">earth</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/eRm/vignettes/eRm.pdf">eRm</a> &nbsp; 
+                <a href="http://factominer.free.fr">FactoMineR</a> [web]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/FAiR/vignettes/FAiR.pdf">FAiR</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/feature/vignettes/feature.pdf">feature</a> &nbsp; 
+                <a href="http://ecology.msu.montana.edu/labdsv/R/labs/lab11/lab11.html">fso</a> [web]&nbsp; 
+                <a href="http://streaming.stat.iastate.edu/~dicook/geometric-data/">geozoo</a> [web]&nbsp;
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+
+
+            <div style="background-color:#85D4E3; border:1px white">
+                <font color=white>
+                 <a href="http://cran.r-project.org/web/packages/GPArotation/vignettes/Guide.pdf">&nbsp;GPArotation</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/hddplot/vignettes/QUICKhddplot.pdf"> &nbsp;hddplot</a> &nbsp;  
+                <a href="https://github.com/harrelfe/Hmisc">Hmisc</a> [git]&nbsp; 
+                <a href="http://www.rosuda.org/iplots/">iplots</a> [web]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/kernlab/vignettes/kernlab.pdf">kernlab</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/ks/vignettes/kde.pdf">ks</a>&nbsp; 
+                <a href="http://lmdvr.r-forge.r-project.org/figures/figures.html">lattice</a> [web]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/Matrix/vignettes/Comparisons.pdf">Matrix</a> &nbsp; 
+                <a href="http://www.stat.washington.edu/mclust/">mclust</a> &nbsp; 
+                <a href="http://mcmcpack.berkeley.edu">mcmcpack</a> [web]&nbsp; 
+                <a href="http://www.stefvanbuuren.nl/mi/">mice</a> [web]&nbsp; 
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#F4B5BD; border:1px white">
+                <font color=white>
+               <a href="http://cran.r-project.org/web/packages/mitools/vignettes/smi.pdf">&nbsp;mitools</a> &nbsp;
+                <a href="http://imai.princeton.edu/software/MNP.html"> &nbsp;MNP</a> &nbsp;  
+                <a href="http://cran.r-project.org/web/packages/mvtnorm/vignettes/MVT_Rnews.pdf">mvtnorm</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/pan/vignettes/pan-tr.pdf">pan</a> &nbsp; 
+                <a href="http://doyenne.com/Software/files/PA_for_PCA_vs_FA.pdf">paran</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/party/vignettes/party.pdf">party</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/pcaPP/vignettes/matlab.pdf">pcaPP</a> [web]&nbsp; 
+                <a href="http://mevik.net/work/software/pls.html">pls</a> [web]&nbsp; 
+                <a href="http://dlinzer.github.io/poLCA/">poLCA</a> [web]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/prim/vignettes/prim-3d.pdf">prim</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/proxy/vignettes/overview.pdf">proxy</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rgl/vignettes/rgl.html">rgl</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/robustbase/vignettes/psi_functions.pdf">robustbase</a>&nbsp; 
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#9C964A; border:1px white">
+                <font color=white>
+                <a href="http://rocr.bioinf.mpi-sb.mpg.de">&nbsp;rocr</a> [web]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/rpart/vignettes/usercode.pdf">rpart</a> &nbsp;  
+                <a href="http://cran.r-project.org/web/packages/rrcov/vignettes/rrcov.pdf">rrcov</a>&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/scatterplot3d/vignettes/s3d.pdf">scatterplot3d</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/seriation/vignettes/seriation.pdf">seriation</a>&nbsp; 
+                <a href="http://azzalini.stat.unipd.it/SN/">sn</a> [web]&nbsp; 
+                <a href="http://cran.r-project.org/web/packages/tsfa/vignettes/Guide.pdf">tsfa</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/vcd/vignettes/strucplot.pdf">vcd</a> &nbsp; 
+                <a href="http://cran.r-project.org/web/packages/vegan/vignettes/intro-vegan.pdf">vegan</a> &nbsp; 
+                <a href="https://www.stat.auckland.ac.nz/~yee/VGAM/">VGAM</a>&nbsp; 
+                <a href="https://github.com/alexkowa/VIM">VIM</a> [git]&nbsp; 
+                </font><span style="color:#6F6C64;"></span>
+            </div>
+        </div>
+
+        <br>
+
+        <h4>Machine Learning</h4>
+        <div class="colors mini">
+        <div style="background-color:#FAD77B; border:1px white">
+                <font color=white>#FAD77B</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#DD8D29; border:1px white">
+                <font color=white>#DD8D29</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#E2D200; border:1px white">
+                <font color=white>#E2D200</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#46ACC8; border:1px white">
+                <font color=white>#46ACC8</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#E58601; border:1px white">
+                <font color=white>#E58601</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#B40F20; border:1px white">
+                <font color=white>#B40F20</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#FF0000; border:1px white">
+                <font color=white>#FF0000</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#00A08A; border:1px white">
+                <font color=white>#00A08A</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#F2AD00; border:1px white">
+                <font color=white>#F2AD00</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#F98400; border:1px white">
+                <font color=white>#F98400</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div class="colors mini">
+            <div style="background-color:#5BBCD6; border:1px white">
+                <font color=white>#5BBCD6</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#ECCBAE; border:1px white">
+                <font color=white>#ECCBAE</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#046C9A; border:1px white">
+                <font color=white>#046C9A</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#D69C4E; border:1px white">
+                <font color=white>#D69C4E</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#ABDDDE; border:1px white">
+                <font color=white>#ABDDDE</font><span style="color:#6F6C64;"></span>
+            </div>    
+        </div>
+
+        <br>
+
+
+        <h4>Hotel Chevalier</h4>
+        <div class="colors mini">
+            <div style="background-color:#446455; border:1px white">
+                <font color=white>#446455</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#FDD262; border:1px white">
+                <font color=white>#FDD262</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#D3DDDC; border:1px white">
+                <font color=white>#D3DDDC</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#C7B19C; border:1px white">
+                <font color=white>#C7B19C</font><span style="color:#6F6C64;"></span>
+            </div>
+        </div>
+
+
+
+        <br>
+
+        <h4>The Life Aquatic with Steve Zissou</h4>
+        <div class="colors mini">
+            <div style="background-color:#3B9AB2; border:1px white">
+                <font color=white>#3B9AB2</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#78B7C5; border:1px white">
+                <font color=white>#78B7C5</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#EBCC2A; border:1px white">
+                <font color=white>#EBCC2A</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#E1AF00; border:1px white">
+                <font color=white>#E1AF00</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#F21A00; border:1px white">
+                <font color=white>#F21A00</font><span style="color:#6F6C64;"></span>
+            </div>
+        </div>
+
+        <br>
+
+        <h4>The Royal Tenenbaums</h4>
+        <div class="colors mini">
+            <div style="background-color:#899DA4; border:1px white">
+                <font color=white>#899DA4</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#C93312; border:1px white">
+                <font color=white>#C93312</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#FAEFD1; border:1px white">
+                <font color=white>#FAEFD1</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#DC863B; border:1px white">
+                <font color=white>#DC863B</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div class="colors mini">
+            <div style="background-color:#9A8822; border:1px white">
+                <font color=white>#9A8822</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#F5CDB4; border:1px white">
+                <font color=white>#F5CDB4</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#F8AFA8; border:1px white">
+                <font color=white>#F8AFA8</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#FDDDA0; border:1px white">
+                <font color=white>#FDDDA0</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#74A089; border:1px white">
+                <font color=white>#74A089</font><span style="color:#6F6C64;"></span>
+            </div>
+        </div>
+
+        <br>
+
+        <h4>Castello Cavalcanti</h4>
+        <div class="colors mini">
+            <div style="background-color:#D8B70A; border:1px white">
+                <font color=white>#D8B70A</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#02401B; border:1px white">
+                <font color=white>#02401B</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#A2A475; border:1px white">
+                <font color=white>#A2A475</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#81A88D; border:1px white">
+                <font color=white>#81A88D</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#972D15; border:1px white">
+                <font color=white>#972D15</font><span style="color:#6F6C64;"></span>
+            </div>
+        </div>
+
+
+        <br>
+
+
+        <h4>Rushmore</h4>
+        <div class="colors mini">
+            <div style="background-color:#E1BD6D; border:1px white">
+                <font color=white>#E1BD6D</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#EABE94; border:1px white">
+                <font color=white>#EABE94</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#0B775E; border:1px white">
+                <font color=white>#0B775E</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#35274A; border:1px white">
+                <font color=white>#35274A</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#F2300F; border:1px white">
+                <font color=white>#F2300F</font><span style="color:#6F6C64;"></span>
+            </div>
+        </div>
+
+        <br>
+        <h4> Bottle Rocket</h4>
+        <div class="colors mini">
+            <div style="background-color:#A42820; border:1px white">
+                <font color=white>#A42820</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#5F5647; border:1px white">
+                <font color=white>#5F5647</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#9B110E; border:1px white">
+                <font color=white>#9B110E</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#4E2A1E; border:1px white">
+                <font color=white>#4E2A1E</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#3F5151; border:1px white">
+                <font color=white>#3F5151</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#550307; border:1px white">
+                <font color=white>#550307</font><span style="color:#6F6C64;"></span>
+            </div>
+            <div style="background-color:#0C1707; border:1px white">
+                <font color=white#0C1707</font><span style="color:#6F6C64;"></span>
+            </div>
+        </div>
+
+
+
+
+<div class="container bottom">
+    <hr>
+      <p>
+        -☆-._.-★_°☆ ‧°‧°☆∴° ★-._. ¤º…`•.¸.•´ ☆™ 
+    </p>
+    <p>
+    Find me on <a href="https://twitter.com/purloined">twitter</a>,
+    <a href="https://www.linkedin.com/in/subasishdas">linkedIn</a>,
+    or <a href="mailto:subasishsn@gmail.com">✉</a>.
+    </p>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-22909046-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>

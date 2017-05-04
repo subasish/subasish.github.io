@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<meta charset="utf-8">
+<html>
+<head>
+
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400italic,600italic,700italic,200,300,400,600,700,900">
+<script type="text/javascript" src="d3.min.js"></script>
+
+<style>
+
+body, h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1em;
+  color: #333;
+  font-weight: 400;
+}
+
+
+#content {
+  margin: 5px;
+  padding: 20px;
+  width: 775px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+h1 {
+  line-height: 1em;
+  font-size: 1.75em;
+  font-weight: 900;
+  color: #000;
+}
+
+p {
+  margin: 5px 0px 0px 0px;
+}
+
+.domain {
+  fill: none;
+  stroke-width: 0;
+}
+
+#menu {
+  margin: 5px 0px 0px 0px;
+  display: block;
+}
+
+#unit {
+  margin: 10px 0px 5px 0px;
+  font-size: 0.9em;
+}
+
+select {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 0.9em;
+  color: #333;
+  font-weight: 400;
+}
+
+.bar {
+  fill: #2980B9;
+}
+
+.bar:hover {
+  fill: #2C3E50;
+}
+
+.axis line {
+  stroke: #eee;
+  stroke-width: 0.5;
+  opacity: 0.5;
+  shape-rendering: crispEdges;
+}
+
+.g-baseline line {
+  stroke: #333;
+  stroke-width: 0.5;
+  opacity: 1;
+  shape-rendering: crispEdges;
+}
+
+.x.axis .tick text, .y.axis .tick text {
+  fill: #333;
+  font-size: 1em;
+}
+
+</style>
+
+</head>
+
+<body>
+<div id="content">
+<h1>Louisiana Pedestrian Crashes (2004-2011)</h1>
+  <select id="menu">
+	<option>Ped. Severity</option>
+	<option>Ped. Condition</option>
+  <option>Ped. Age</option>
+  <option>Dr. Condition</option>
+  <option>Dr. Age</option>
+  <option>Num. Occupant</option>
+  </select>
+
+
+
+<div id="chart"></div>
+</div>
+<div>
+<script src="chart.js"></script>
+</div>
+
+
+<script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+<script src="topojson.js"></script>
+<script>
+
+var map = d3.map(),
+    barchart;
+
+d3.csv("data.csv", function(error, data) {
+
+  data = d3.nest()
+      .key(function(d){ return d.variable; })
+      .entries(data);
+
+  data.forEach(function(d){
+    d.value = +d.value;
+    d.values.sort(function(a, b){ return d3.ascending(+a.value, +b.value); });
+    map.set(d.key, d.values);
+  });
+
+  barchart = d3.svg.barchart()
+      .margin({top: 0, right: 10, bottom:110, left: 40})
+      .tickFormat(d3.format(",.0f"))
+      .x(function(d){ return d.country; })
+      .y(function(d){ return d.value; });
+
+  d3.select("#chart")
+      .datum(map.get("Ped. Gender"))
+      .call(barchart);
+
+});
+
+
+d3.select("#menu").on("change", function() {
+
+  d3.select("#chart")
+      .datum(map.get(this.value))
+      .call(barchart);
+
+  var unit;
+  var selectedVariable = document.getElementById("menu").value;
+  switch (selectedVariable)
+    	{
+    	case "Ped. Severity": unit = "b"; break;
+    	case "Ped. Condition": unit = "c"; break;
+      case "Ped. Age": unit = "a"; break;
+      case "Dr. Condition": unit = "b"; break;
+      case "Dr. Age": unit = "c"; break;
+      case "Num. Occupant": unit = "b"; break;
+    	}
+  d3.select("#unit")
+      .html(unit);
+
+});
+
+d3.select(self.frameElement).style("height", "900px");
+
+</script>
+</body>
+</html>

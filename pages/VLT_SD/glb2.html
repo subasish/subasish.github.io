@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-geo-projection/0.2.9/d3.geo.projection.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+<style>
+  svg {
+    margin: 22px;
+  }
+  select {
+    margin-left: 20px;
+  }
+  path.foreground {
+    fill: none;
+    stroke: #333;
+    stroke-width: 1.5px;
+  }
+  path.graticule {
+    fill: none;
+    stroke: #aaa;
+    stroke-width: .5px;
+  }
+  #left {
+    cursor: move;
+  }
+  #left .land {
+    fill: #d7c7ad;
+    stroke: #a5967e;
+  }
+  #right .land {
+    fill: #cfcece;
+    stroke: #a5967e;
+  }
+  
+  #left circle {
+    fill: #d8355e;
+  }
+  #right circle {
+    stroke: #d8355e;
+    fill: none;
+  }
+</style>
+</head>
+
+<body>
+  <svg id="left"></svg>
+  <svg id="right"></svg>
+  <select></select>
+  
+  <script>
+    var map_width = 400;
+    var map_height = 400;
+    var center = [-90, 37];
+    var scale0 = (map_width - 1) / 2 / Math.PI * 6
+    var scale1 = (map_width - 1) / 2 / Math.PI * 3
+    
+    var zoom = d3.behavior.zoom()
+    .translate([map_width / 2, map_height / 2])
+    .scale(scale0)
+    .scaleExtent([scale0, 8 * scale0])
+    .on("zoom", zoomed)
+    
+    
+    var projectionLeft = d3.geo.aitoff()
+    .center(center)
+    
+    var projectionRight = d3.geo.orthographic()
+    .center(center)
+    .translate([map_width/5, map_height / 5])
+    .scale(scale1)
+    .clipAngle(90)
+
+    var pathLeft = d3.geo.path()
+        .projection(projectionLeft);
+    var pathRight = d3.geo.path()
+        .projection(projectionRight);
+    
+    function zoomed() {
+      projectionLeft
+          .translate(zoom.translate())
+          .scale(zoom.scale())
+      
+      var newCenter = projectionLeft.invert([map_width/2,map_height/2]);
+      projectionRight
+        .rotate([-newCenter[0], -newCenter[1]])
+
+      update();
+    }
+    
+    function update() {
+      d3.selectAll("#left path")
+          .attr("d", pathLeft);
+      d3.selectAll("#right path")
+          .attr("d", pathRight);
+      
+      d3.selectAll("#left circle")
+      .attr({
+        cx: function(d,i) { return d.x },
+        cy: function(d,i) { return d.y }
+      })
+      
+      d3.selectAll("#right circle")
+      .attr({
+        cx: function(d,i) {
+          var latlon = projectionLeft.invert([d.x, d.y])
+          return projectionRight(latlon)[0] 
+        },
+        cy: function(d,i) {
+          var latlon = projectionLeft.invert([d.x, d.y])
+          return projectionRight(latlon)[1]
+        }
+      })
+    }
+    
+    
+
+    var graticule = d3.geo.graticule();
+    var svgLeft = d3.select("#left")
+        .attr("width", map_width)
+        .attr("height", map_height);
+    var svgRight = d3.select("#right")
+        .attr("width", map_width + 40)
+        .attr("height", map_height);
+
+    svgLeft
+      .call(zoom)
+      .call(zoom.event);
+   
+
+    svgLeft.append("path")
+        .datum(graticule)
+        .attr("class", "graticule")
+        .attr("d", pathLeft);
+    
+    svgRight.append("path")
+        .datum(graticule)
+        .attr("class", "graticule")
+        .attr("d", pathRight);
+
+    d3.json("world-110m.json", function(error,world) {
+      if (error) throw error;
+
+      svgLeft.insert("path", ".graticule")
+          .datum(topojson.feature(world, world.objects.land))
+          .attr("class", "land")
+          .attr("d", pathLeft);
+      
+      svgRight.insert("path", ".graticule")
+          .datum(topojson.feature(world, world.objects.land))
+          .attr("class", "land")
+          .attr("d", pathRight);
+      
+      var points = generateRect(100, 25, 25, map_width - 50, map_height - 50);
+      
+      svgLeft.selectAll("circle")
+        .data(points)
+        .enter().append("circle")
+        .attr({
+          r: 3
+        })
+      
+      svgRight.selectAll("circle")
+        .data(points)
+        .enter().append("circle")
+        .attr({
+          r: 2
+        })
+      
+      zoomed();
+    });
+    
+    var projections = {
+      "Aitoff": d3.geo.aitoff().scale(90),
+      "Boggs Eumorphic": d3.geo.boggs().scale(90),
+      "Craster Parabolic (Putnins P4)": d3.geo.craster().scale(90),
+      "Cylindrical Equal-Area": d3.geo.cylindricalEqualArea().scale(120),
+      "Eckert I": d3.geo.eckert1().scale(95),
+      "Eckert III": d3.geo.eckert3().scale(105),
+      "Eckert IV": d3.geo.eckert4().scale(105),
+      "Eckert V": d3.geo.eckert5().scale(100),
+      "Equidistant Cylindrical (Plate Carrée)": d3.geo.equirectangular().scale(90),
+      "Fahey": d3.geo.fahey().scale(75),
+      "Foucaut Sinusoidal": d3.geo.foucaut().scale(80),
+      "Gall (Gall Stereographic)": d3.geo.cylindricalStereographic().scale(70),
+      "Ginzburg VIII (TsNIIGAiK 1944)": d3.geo.ginzburg8().scale(75),
+      "Kavraisky VII": d3.geo.kavrayskiy7().scale(90),
+      "Larrivée": d3.geo.larrivee().scale(55),
+      "McBryde-Thomas Flat-Pole Sine (No. 2)": d3.geo.mtFlatPolarSinusoidal().scale(95),
+      "Mercator": d3.geo.mercator().scale(50),
+      "Miller Cylindrical I": d3.geo.miller().scale(60),
+      "Mollweide": d3.geo.mollweide().scale(100),
+      "Natural Earth": d3.geo.naturalEarth().scale(100),
+      "Nell-Hammer": d3.geo.nellHammer().scale(120),
+      "Quartic Authalic": d3.geo.hammer().coefficient(Infinity).scale(95),
+      "Robinson": d3.geo.robinson().scale(90),
+      "Sinusoidal": d3.geo.sinusoidal().scale(90),
+      "van der Grinten (I)": d3.geo.vanDerGrinten().scale(50),
+      "Wagner VI": d3.geo.wagner6().scale(90),
+      "Wagner VII": d3.geo.wagner7().scale(90),
+      "Winkel Tripel": d3.geo.winkel3().scale(90),
+      "Wiechel": d3.geo.wiechel().scale(90)
+    };
+    var selector = d3.select("select")
+    selector.selectAll("option")
+      .data(Object.keys(projections))
+      .enter().append("option")
+      .attr({
+        value: function(d) { return d }
+      }).text(function(d) { return d })
+    
+    selector.on("change", function(d) {
+      console.log("sup", d3.event)
+      var proj = d3.event.target.selectedOptions[0].value;
+      projectionLeft = projections[proj].center(center);
+      pathLeft = d3.geo.path()
+        .projection(projectionLeft);
+      zoomed();
+    })
+    
+    
+    function generateRect(num, x, y, width, height) {
+      var points = []
+      var sideNum = Math.floor(num/4) + 1;
+      // top
+      d3.range(sideNum).forEach(function(i) {
+        points.push({ x: x + i * width/sideNum, y: y })
+      })
+      // right
+      d3.range(sideNum).forEach(function(i) {
+        points.push({ x: x + width, y: y + i * height/sideNum })
+      })
+      // bottom
+      d3.range(sideNum).forEach(function(i) {
+        points.push({ x: x + width - i * width/sideNum, y: y + height })
+      })
+      // left
+      d3.range(sideNum).forEach(function(i) {
+        points.push({ x: x, y: y + height - i * height/sideNum })
+      })
+      return points;
+    }
+    
+  </script>
+</body>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-67666917-1', 'auto');
+  ga('send', 'pageview');
+</script>

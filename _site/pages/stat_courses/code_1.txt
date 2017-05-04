@@ -1,0 +1,1394 @@
+###############################################
+## Author: Joshua M. Tebbs
+## Date: 11 December 2011
+## Update: 30 November 2014
+## STAT 509 course notes: R Code
+## Chapter 1
+###############################################
+ 
+# Example 1.1
+# Page 3
+# MATH 141 example
+# Simulate data
+x1 = runif(50,400,800) # SAT MATH
+x2 = rnorm(50,3,0.3) # HS GPA
+y = rnorm(50,75,10) # MATH 141 score
+ 
+# The data in Example 1.1 are not real (I simulated them).
+# You will get a different picture (than in the notes) if you run the code below.
+ 
+# Produce 3d scatterplot (point cloud)
+# Need to install (then load) scatterplot3d package in R
+# Packages --> install; Packages --> load
+ 
+scatterplot3d(x1,x2,y,
+     highlight.3d=FALSE,axis=TRUE,col.grid="lightblue",
+     xlab="SAT MATH",ylab="HS GPA",zlab="MATH 141 SCORE",main="",
+     box=FALSE,pch=20)
+
+
+###############################################
+## Date: 11 December 2011
+## Update: 30 November 2014
+## STAT 509 course notes: R Code
+## Chapter 2
+###############################################
+ 
+# Example 2.2
+# Page 8-9
+# 2002 Oakland A's example
+# Simulate each game during the season
+game.outcome = rbinom(162,1,0.571)
+# Create plot of relative frequencies
+# Initialise
+winning.percentage = game.outcome*0
+for (i in 1:162){
+     winning.percentage[i] = sum(game.outcome[1:i])/i
+     }
+plot(winning.percentage,ylab="Winning Percentage",xlab="Game",type="o",pch=20)
+abline(h=0.571)
+ 
+# Simulate one 20-game stretch
+games = rbinom(20,1,0.571)
+games
+sum(games)
+ 
+# Simulate 1000 20-game stretches
+games = rbinom(1000,20,0.571)
+# Number of times (out of 1000) that 20 straight games are won
+length(games[games>19])
+
+
+###############################################
+## Date: 11 December 2011
+## Update: 30 November 2014
+## STAT 509 course notes: R Code
+## Chapter 3
+###############################################
+ 
+# Example 3.1
+# Page 19-20
+# Discrete PMF and CDF
+y = c(0,1,2,3,4,5,6)
+prob = c(0.10,0.15,0.20,0.25,0.20,0.06,0.04)
+# Plot PMF
+plot(y,prob,type="h",xlab="y",ylab="PMF",ylim=c(0,0.26))
+abline(h=0)
+# Plot CDF
+cdf = c(0,cumsum(prob))
+cdf.plot = stepfun(y,cdf,f=0)
+plot.stepfun(cdf.plot,xlab="y",ylab="CDF",verticals=FALSE,do.points=TRUE,main="",pch=16)
+ 
+ 
+# Example 3.2
+# Page 22-23
+# Discrete PMF and CDF
+y = c(0,1,2,3)
+prob = c(0.20,0.30,0.30,0.20)
+# Plot PMF
+plot(y,prob,type="h",xlab="y",ylab="PMF",ylim=c(0,0.325),
+     xaxp=c(0, 3, 3))
+abline(h=0)
+# Plot CDF
+cdf = c(0,cumsum(prob))
+cdf.plot = stepfun(y,cdf,f=0)
+plot.stepfun(cdf.plot,xlab="y",ylab="CDF",verticals=FALSE,do.points=TRUE,main="",pch=16)
+ 
+ 
+# Example 3.3
+# Page 26-27
+# Binomial PMF and CDF
+y = c(0,1,2,3,4)
+prob = dbinom(y,4,0.4)
+# Plot PMF
+plot(y,prob,type="h",xlab="y",ylab="PMF",ylim=c(0,0.375))
+abline(h=0)
+# Plot CDF
+cdf = c(0,cumsum(prob))
+cdf.plot = stepfun(y,cdf,f=0)
+plot.stepfun(cdf.plot,xlab="y",ylab="CDF",verticals=FALSE,do.points=TRUE,main="",pch=16)
+ 
+ 
+# Example 3.4
+# Page 27-28
+# Binomial PMF and CDF
+y = seq(0,30,1)
+prob = dbinom(y,30,0.1)
+# Plot PMF
+plot(y,prob,type="h",xlab="y",ylab="PMF",ylim=c(0,0.25))
+abline(h=0)
+# Plot CDF
+cdf = c(0,cumsum(prob))
+cdf.plot = stepfun(y,cdf,f=0)
+plot.stepfun(cdf.plot,xlab="y",ylab="CDF",verticals=FALSE,do.points=TRUE,main="",pch=16)
+ 
+ 
+# Example 3.5
+# Page 30-31
+# Geometric PMF and CDF
+y = seq(1,25,1)
+prob = dgeom(y-1,0.25)
+# Plot PMF
+plot(y,prob,type="h",xlab="y",ylab="PMF",ylim=c(0,0.25))
+abline(h=0)
+# Plot CDF
+cdf = c(0,cumsum(prob))
+cdf.plot = stepfun(y,cdf,f=0)
+plot.stepfun(cdf.plot,xlab="y",ylab="CDF",verticals=FALSE,do.points=TRUE,main="",pch=16)
+ 
+ 
+# Example 3.6
+# Page 32-33
+# Negative binomial PMF and CDF
+y = seq(3,70,1)
+prob = dnbinom(y-3,3,0.15)
+# Plot PMF
+plot(y,prob,type="h",xlab="y",ylab="PMF",ylim=c(0,0.05))
+abline(h=0)
+# Plot CDF
+cdf = c(0,cumsum(prob))
+cdf.plot = stepfun(y,cdf,f=0)
+plot.stepfun(cdf.plot,xlab="y",ylab="CDF",verticals=FALSE,do.points=TRUE,main="",pch=16)
+ 
+ 
+# Example 3.7
+# Page 35-36
+# Hypergeometric PMF and CDF
+y = seq(0,5,1)
+prob = dhyper(y,10,100-10,5)
+# Plot PMF
+plot(y,prob,type="h",xlab="y",ylab="PMF",ylim=c(0,0.6))
+abline(h=0)
+# Plot CDF
+cdf = c(0,cumsum(prob))
+cdf.plot = stepfun(y,cdf,f=0)
+plot.stepfun(cdf.plot,xlab="y",ylab="CDF",verticals=FALSE,do.points=TRUE,main="",pch=16)
+ 
+ 
+# Example 3.8
+# Page 37-38
+# Poisson PMF and CDF
+y = seq(0,10,1)
+prob = dpois(y,2.5)
+# Plot PMF
+plot(y,prob,type="h",xlab="y",ylab="PMF",ylim=c(0,0.275))
+abline(h=0)
+# Plot CDF
+cdf = c(0,cumsum(prob))
+cdf.plot = stepfun(y,cdf,f=0)
+plot.stepfun(cdf.plot,xlab="y",ylab="CDF",verticals=FALSE,do.points=TRUE,main="",pch=16)
+ 
+ 
+
+
+###############################################
+## Date: 11 December 2011
+## Update: 30 November 2014
+## STAT 509 course notes: R Code
+## Chapter 4
+###############################################
+ 
+# Example 4.1
+# Page 40-41
+# Continuous PDF and CDF
+# Plot PDF
+y = seq(0,1,0.01)
+pdf = 3*y^2
+plot(y,pdf,type="l",xlab="y",ylab="PDF",ylim=c(0,3))
+abline(h=0)
+abline(v=1,lty=2)
+# Plot CDF
+y0 = seq(-0.25,1.25,0.01)
+y = seq(0,1,0.01)
+cdf = c(rep(0,25),y^3,rep(1,25))
+plot(y0,cdf,type="l",xlab="y",ylab="CDF",ylim=c(0,1))
+abline(h=0)
+ 
+ 
+# Example 4.2
+# Page 43-44
+# Continuous PDF and CDF
+# Plot PDF
+y = seq(12.5,13,0.01)
+pdf = 20*exp(-20*(y-12.5))
+plot(y,pdf,type="l",xlab="y",ylab="PDF",xlim=c(12.5,13))
+abline(h=0)
+abline(v=12.5,lty=2)
+# Plot CDF
+y = seq(12.5,13,0.01)
+cdf = 1-exp(-20*(y-12.5))
+plot(y,cdf,type="l",xlab="y",ylab="CDF",xlim=c(12.4,13),ylim=c(0,1))
+abline(h=0)
+ 
+# Calculate E(Y)
+integrand.1 <- function(y){y*20*exp(-20*(y-12.5))}
+integrate(integrand.1,lower=12.5,upper=Inf)
+# Calculate var(Y)
+integrand.2 <- function(y){(y-12.55)^2*20*exp(-20*(y-12.5))}
+integrate(integrand.2,lower=12.5,upper=Inf)
+ 
+ 
+# Figure 4.3
+# Page 45
+# Exponential PDFs
+y = seq(0,8,0.01)
+# Plot exponential pdf with lambda = 2
+plot(y,dexp(y,2),type="l",lty=1,xlab="y",ylab="PDF")
+# Add other pdfs
+lines(y,dexp(y,1),lty=4)
+lines(y,dexp(y,1/2),lty=8)
+abline(h=0)
+abline(v=0,lty=2)
+# Add legend
+legend(3,1,lty = c(1,4,8),
+     c(
+     expression(paste(lambda, "=2")),
+     expression(paste(lambda, "=1")),
+     expression(paste(lambda, "=1/2"))
+     ))
+ 
+ 
+# Example 4.3
+# Page 46-47
+# Exponential PDF and CDF
+# Plot PDF
+y = seq(0,15,0.01)
+pdf = dexp(y,0.4)
+plot(y,pdf,type="l",xlab="y",ylab="PDF",ylim=c(0,0.4))
+abline(h=0)
+abline(v=0,lty=2)
+# Plot CDF
+cdf = pexp(y,0.4)
+plot(y,cdf,type="l",xlab="y",ylab="CDF",ylim=c(0,1))
+abline(h=0)
+ 
+ 
+# Figure 4.5
+# Page 50
+# Gamma PDFs
+y = seq(0,25,0.01)
+# Plot gamma pdf with alpha = 1.5 and lambda = 0.6
+plot(y,dgamma(y,1.5,0.6),type="l",lty=1,xlab="y",ylab="PDF")
+# Add other pdfs
+lines(y,dgamma(y,2,0.5),lty=4)
+lines(y,dgamma(y,2.5,0.4),lty=8)
+abline(h=0)
+# Add legend
+legend(10,0.20,lty = c(1,4,8),
+     c(
+     expression(paste(alpha, "=1.5, ", lambda, "=0.6")),
+     expression(paste(alpha, "=2.0, ", lambda, "=0.5")),
+     expression(paste(alpha, "=2.5, ", lambda, "=0.4"))
+     ))
+ 
+ 
+# Example 4.5
+# Page 50-51
+# Gamma PDF and CDF
+# Plot PDF
+y = seq(0,80,0.01)
+pdf = dgamma(y,4,1/6)
+plot(y,pdf,type="l",xlab="y",ylab="PDF",ylim=c(0,0.04))
+abline(h=0)
+# Plot CDF
+cdf = pgamma(y,4,1/6)
+plot(y,cdf,type="l",xlab="y",ylab="CDF",ylim=c(0,1))
+abline(h=0)
+ 
+ 
+# Figure 4.7
+# Page 53
+# Normal PDFs
+y = seq(-10,10,0.01)
+# Plot normal pdf with mu = 0 and sigma = 1 (standard normal pdf)
+plot(y,dnorm(y,0,1),type="l",lty=1,xlab="y",ylab="PDF")
+# Add other pdfs
+lines(y,dnorm(y,-2,2),lty=4)
+lines(y,dnorm(y,1,3),lty=8)
+abline(h=0)
+# Add legend
+legend(3.5,0.30,lty = c(1,4,8),
+     c(
+     expression(paste(mu, "=0, ", sigma, "=1")),
+     expression(paste(mu, "=-2, ", sigma, "=2")),
+     expression(paste(mu, "=1, ", sigma, "=3"))
+     ))
+ 
+ 
+# Example 4.6
+# Page 53-54
+# Normal PDF and CDF
+# Plot PDF
+y = seq(0,3,0.01)
+pdf = dnorm(y,1.5,sqrt(0.16))
+plot(y,pdf,type="l",xlab="y",ylab="PDF",ylim=c(0,1))
+abline(h=0)
+# Plot CDF
+cdf = pnorm(y,1.5,sqrt(0.16))
+plot(y,cdf,type="l",xlab="y",ylab="CDF",ylim=c(0,1))
+abline(h=0)
+
+
+###############################################
+## Date: 11 December 2011
+## Update: 30 November 2014
+## STAT 509 course notes: R Code
+## Chapter 5
+###############################################
+ 
+# Figure 5.1
+# Page 57
+# Weibull PDFs
+y = seq(0,25,0.01)
+# Plot Weibull pdf with beta = 2 and eta = 5
+plot(y,dweibull(y,2,5),type="l",lty=1,xlab="y",ylab="PDF")
+# Add other pdfs
+lines(y,dweibull(y,2,10),lty=4)
+lines(y,dweibull(y,3,10),lty=8)
+abline(h=0)
+# Add legend
+legend(15,0.15,lty = c(1,4,8),
+     c(
+     expression(paste(beta, "=2, ", eta, "=5")),
+     expression(paste(beta, "=2, ", eta, "=10")),
+     expression(paste(beta, "=3, ", eta, "=10"))
+     ))
+ 
+ 
+# Example 5.1
+# Page 58-59
+# Weibull PDF and CDF
+# Plot PDF
+t = seq(0,30,0.01)
+pdf = dweibull(t,2,10)
+plot(t,pdf,type="l",xlab="t",ylab="PDF",ylim=c(0,0.09))
+abline(h=0)
+# Plot CDF
+cdf = pweibull(t,2,10)
+plot(t,cdf,type="l",xlab="t",ylab="CDF",ylim=c(0,1))
+abline(h=0)
+ 
+ 
+# Example 5.2
+# Weibull hazard functions
+# Page 62
+t = seq(0,4,0.01)
+haz.1 = 3*t^2
+haz.2 = 1.5*t^(0.5)
+haz.3 = 1+t*0
+haz.4 = 0.5*t^(-0.5)
+# Make 2 by 2 figure
+par(mfrow=c(2,2))
+plot(t,haz.1,type='l',xlab="t",ylab="HAZARD")
+abline(h=0,lty=2)
+plot(t,haz.2,type='l',xlab="t",ylab="HAZARD")
+abline(h=0,lty=2)
+plot(t,haz.3,type='l',xlab="t",ylab="HAZARD")
+abline(h=0,lty=2)
+plot(t,haz.4,type='l',xlab="t",ylab="HAZARD",ylim=c(0,5))
+abline(h=0,lty=2)
+ 
+ 
+# Example 5.3
+# Pages 63-67
+# Need to install (then load) MASS package in R
+# Enter data
+cart.data = c(3.9,4.2,5.4,6.5,7.0,8.8,9.2,11.4,14.3,15.1,15.3,15.5,17.9,18.0,19.0,19.0,23.9,24.8,26.0,34.2)
+# Fit Weibull model
+fitdistr(cart.data,densfun="weibull")
+# Maximum likelihood estimates
+beta.hat = 1.99
+eta.hat = 16.94
+ 
+# Page 65
+# Plot PDF, CDF, survivor, and hazard
+# I constructed each function separately
+# Use estimates beta.hat, eta.hat above
+t = seq(0,50,0.01)
+# Plot PDF
+pdf = dweibull(t,beta.hat,eta.hat)
+plot(t,pdf,type="l",xlab="t",ylab="PDF",ylim=c(0,0.05))
+abline(h=0)
+# Plot CDF
+cdf = pweibull(t,beta.hat,eta.hat)
+plot(t,cdf,type="l",xlab="t",ylab="CDF",ylim=c(0,1))
+abline(h=0)
+# Plot survivor function
+survivor = 1-pweibull(t,beta.hat,eta.hat)
+plot(t,survivor,type="l",xlab="t",ylab="SURVIVOR",ylim=c(0,1))
+abline(h=0)
+abline(v=0,lty=2)
+# Plot hazard function
+hazard = pdf/survivor
+plot(t,hazard,type="l",xlab="t",ylab="HAZARD",ylim=c(0,0.35))
+abline(h=0)
+ 
+# Page 67
+# Weibull qqplot
+# Need to install (then load) car package in R
+qqPlot(cart.data,distribution="weibull",shape=beta.hat,scale=eta.hat,
+     xlab="Weibull quantiles",ylab="Cart data",pch=16)
+ 
+ 
+
+###############################################
+## Date: 11 December 2011
+## Update: 1 December 2014
+## STAT 509 course notes: R Code
+## Chapter 6
+###############################################
+ 
+# Example 6.1
+# Battery lifetime data
+# Page 69-70
+battery = c(4285,2066,2584,1009,318,1429,981,1402,1137,414,
+     564,604,14,4152,737,852,1560,1786,520,396,
+     1278,209,349,478,3032,1461,701,1406,261,83,
+     205,602,3770,726,3894,2662,497,35,2778,1379,
+     3920,1379,99,510,582,308,3367,99,373,454)
+# Page 70
+# Create histogram
+hist(battery,xlab="Lifetime (in hours)",ylab="Count",main="")
+# Create boxplot
+boxplot(battery,xlab="",ylab="Lifetime (in hours)",col="grey")
+# Calculate summary statistics
+# Page 72
+mean(battery) ## sample mean
+var(battery) ## sample variance
+sd(battery) ## sample standard deviation
+ 
+ 
+# Example 6.2
+# Brake time example
+# Page 75-76
+y = seq(0,3,0.01)
+# Plot population distribution
+plot(y,dnorm(y,1.5,sqrt(0.16)),type="l",lty=1,xlab="Brake times (sec)",ylab="PDF",ylim=c(0,5))
+# Add sampling distribution when n=5
+lines(y,dnorm(y,1.5,sqrt(0.16/5)),lty=4)
+# Add sampling distribution when n=25
+lines(y,dnorm(y,1.5,sqrt(0.16/25)),lty=8)
+abline(h=0)
+# Add legend
+legend(0,5,lty = c(1,4,8),
+     c(
+     expression(paste("Population distribution")),
+     expression(paste("Sample mean, n=5")),
+     expression(paste("Sample mean, n=25"))
+     ))
+ 
+ 
+# Example 6.3
+# Rat example
+# Page 77-78
+y = seq(0,20,0.01)
+# Plot population distribution
+plot(y,dexp(y,1/5),type="l",lty=1,xlab="Time to death (in days)",ylab="PDF",ylim=c(0,0.4))
+# Add sampling distribution when n=5
+lines(y,dgamma(y,5,1),lty=4)
+# Add sampling distribution when n=5
+lines(y,dgamma(y,25,5),lty=8)
+abline(h=0)
+abline(v=0,lty=2)
+# Add legend
+legend(10,0.3,lty = c(1,4,8),
+     c(
+     expression(paste("Population distribution")),
+     expression(paste("Sample mean, n=5")),
+     expression(paste("Sample mean, n=25"))
+     ))
+ 
+ 
+ 
+# Figure 6.4
+# Page 80
+# N(0,1) and t PDFs
+y = seq(-5,5,0.01)
+# Plot N(0,1) pdf
+plot(y,dnorm(y,0,1),type="l",lty=1,xlab="",ylab="PDF",ylim=c(0,0.4))
+# Add other pdfs
+lines(y,dt(y,2),lty=4)
+lines(y,dt(y,10),lty=8)
+abline(h=0)
+# Add legend
+legend(2,0.35,lty = c(1,4,8),
+     c(
+     expression(paste("N(0,1)")),
+     expression(paste("t(2)")),
+     expression(paste("t(10)"))
+     ))
+ 
+ 
+# Example 6.5
+# Page 81-84
+# Pipe diameter data
+pipes = c(1.296,1.320,1.311,1.298,1.315,1.305,1.278,1.294,1.311,1.290,1.284,1.287,1.289,1.292,1.301,
+     1.298,1.287,1.302,1.304,1.301,1.313,1.315,1.306,1.289,1.291)
+# Calculate summary statistics
+mean(pipes) ## sample mean
+sd(pipes) ## sample standard deviation
+ 
+# Page 82
+# Plot t(24) pdf
+t = seq(-5,5,0.001)
+pdf = dt(t,24)
+plot(t,pdf,type="l",lty=1,xlab="t",ylab="PDF",ylim=c(0,0.4))
+abline(h=0)
+# Add points
+points(x=4.096,y=0,pch=4,cex=1.5)
+ 
+# Page 84
+# Create normal qqplot
+# Need to install (then load) car package in R
+qqPlot(pipes,distribution="norm",xlab="N(0,1) quantiles",ylab="Pipe data",pch=16)
+ 
+
+
+
+###############################################
+## Date: 11 December 2011
+## Update: 4 December 2014
+## STAT 509 course notes: R Code
+## Chapter 7
+###############################################
+ 
+# Figure 7.1
+# Page 87
+# t pdf with quantiles and shading
+x = seq(-4,4,0.001)
+pdf = dt(x,10)
+plot(x,pdf,type="l",lty=1,xlab="t",ylab="PDF",ylim=c(0,0.4))
+abline(h=0)
+x = seq(-4,qt(0.025,10),0.001)
+y = dt(x,10)
+polygon(c(-4,x,qt(0.025,10)),c(0,y,0),col="grey")
+# Add points
+points(x=qt(0.025,10),y=0,pch=19,cex=1.5)
+x = seq(qt(0.975,10),4,0.001)
+y = dt(x,10)
+polygon(c(qt(0.975,10),x,4),c(0,y,0),col="grey")
+# Add points
+points(x=qt(0.975,10),y=0,pch=19,cex=1.5)
+# Add text
+text(-0.025,0.1,expression(1-alpha))
+text(-3.5,0.05,expression(alpha/2))
+text(3.5,0.05,expression(alpha/2))
+ 
+ 
+# Example 7.1
+# Cadmium data
+# Page 89-90
+cadmium = c(0.044,0.030,0.052,0.044,0.046,0.020,0.066,
+     0.052,0.049,0.030,0.040,0.045,0.039,0.039,
+     0.039,0.057,0.050,0.056,0.061,0.042,0.055,
+     0.037,0.062,0.062,0.070,0.061,0.061,0.058,
+     0.053,0.060,0.047,0.051,0.054,0.042,0.051)
+# Calculate summary statistics
+mean(cadmium) ## sample mean
+sd(cadmium) ## sample standard deviation
+ 
+# Calculate confidence interval directly
+# Page 91
+t.test(cadmium,conf.level=0.99)$conf.int
+ 
+# Create normal qqplot
+# Page 92
+# Need to install (then load) car package in R
+qqPlot(cadmium,distribution="norm",xlab="N(0,1) quantiles",ylab="Cadmium data",pch=16)
+ 
+ 
+# Figure 7.3
+# Page 94
+# Chi-square PDFs
+y = seq(0,45,0.01)
+# Plot chi-square pdf with 5 df
+plot(y,dchisq(y,5),type="l",lty=1,xlab=expression(chi^2),ylab="PDF",ylim=c(0,0.16))
+# Add other pdfs
+lines(y,dchisq(y,10),lty=4)
+lines(y,dchisq(y,20),lty=8)
+abline(h=0)
+# Add legend
+legend(25,0.125,lty = c(1,4,8),
+     c(
+     expression(paste(nu, "=5")),
+     expression(paste(nu, "=10")),
+     expression(paste(nu, "=20"))
+     ))
+ 
+ 
+# Figure 7.4
+# Page 95
+# chi-square pdf with quantiles and shading
+x = seq(0,30,0.001)
+pdf = dchisq(x,10)
+plot(x,pdf,type="l",lty=1,xlab=expression(chi^2),ylab="PDF",ylim=c(0,0.1))
+abline(h=0)
+x = seq(0,qchisq(0.025,10),0.001)
+y = dchisq(x,10)
+polygon(c(0,x,qchisq(0.025,10)),c(0,y,0),col="grey")
+# Add points
+points(x=qchisq(0.025,10),y=0,pch=19,cex=1.5)
+x = seq(qchisq(0.975,10),30,0.001)
+y = dchisq(x,10)
+polygon(c(qchisq(0.975,10),x,30),c(0,y,0),col="grey")
+# Add points
+points(x=qchisq(0.975,10),y=0,pch=19,cex=1.5)
+# Add text
+text(9.8,0.02,expression(1-alpha))
+text(0.5,0.01,expression(alpha/2))
+text(25,0.0075,expression(alpha/2))
+ 
+ 
+# Example 7.2
+# IKEA diameter data
+# Page 97
+diameters = c(1.206,1.190,1.200,1.195,1.201,1.200,1.198,1.196,1.195,
+     1.202,1.203,1.210,1.206,1.193,1.207,1.201,1.199,1.200,1.199,
+     1.204,1.194,1.203,1.194,1.199,1.203,1.200,1.197,1.208,1.199,
+     1.205,1.199,1.204,1.202,1.196,1.211,1.204)
+ 
+# R does not have an internal function to calculate CI for population variance
+# I wrote this function to do it
+var.interval = function(data,conf.level=0.95){
+     df = length(data)-1
+     chi.lower = qchisq((1-conf.level)/2,df)
+     chi.upper = qchisq((1+conf.level)/2,df)
+     s2 = var(data)
+     c(df*s2/chi.upper,df*s2/chi.lower)
+     }
+ 
+# CI for population variance
+var.interval(diameters)
+# CI for population standard deviation
+sd.interval = sqrt(var.interval(diameters))
+sd.interval
+ 
+# Create normal qqplot
+# Page 99
+# Need to install (then load) car package in R
+qqPlot(diameters,distribution="norm",xlab="N(0,1) quantiles",ylab="Diameter data",pch=16)
+ 
+ 
+# Figure 7.6
+# Page 102
+# N(0,1) pdf with quantiles and shading
+x = seq(-4,4,0.001)
+pdf = dnorm(x,0,1)
+plot(x,pdf,type="l",lty=1,xlab="z",ylab="PDF",ylim=c(0,0.4))
+abline(h=0)
+x = seq(-4,qnorm(0.025,0,1),0.001)
+y = dnorm(x,0,1)
+polygon(c(-4,x,qnorm(0.025,0,1)),c(0,y,0),col="grey")
+# Add points
+points(x=qnorm(0.025,0,1),y=0,pch=19,cex=1.5)
+x = seq(qnorm(0.975,0,1),4,0.001)
+y = dnorm(x,0,1)
+polygon(c(qnorm(0.975,0,1),x,4),c(0,y,0),col="grey")
+# Add points
+points(x=qnorm(0.975,0,1),y=0,pch=19,cex=1.5)
+# Add text
+text(-0.025,0.1,expression(1-alpha))
+text(-2.8,0.04,expression(alpha/2))
+text(2.8,0.04,expression(alpha/2))
+ 
+ 
+ 
+
+###############################################
+## Date: 11 December 2011
+## Update: 7 December 2014
+## STAT 509 course notes: R Code
+## Chapter 8
+###############################################
+ 
+# Figure 8.1
+# Page 111
+y = seq(35,75,0.01)
+plot(y,dnorm(y,50,3),type="l",lty=1,xlab="y",ylab="PDF",ylim=c(0,0.15))
+lines(y,dnorm(y,60,3),lty=4)
+abline(h=0)
+# Add legend
+legend(63,0.15,lty = c(1,4),
+     c(
+     expression(paste("Population 1")),
+     expression(paste("Population 2"))
+     ))
+ 
+ 
+# Figure 8.2
+# Page 112
+# t pdf with quantiles and shading
+x = seq(-4,4,0.001)
+pdf = dt(x,10)
+plot(x,pdf,type="l",lty=1,xlab="t",ylab="PDF",ylim=c(0,0.4))
+abline(h=0)
+x = seq(-4,qt(0.025,10),0.001)
+y = dt(x,10)
+polygon(c(-4,x,qt(0.025,10)),c(0,y,0),col="grey")
+# Add points
+points(x=qt(0.025,10),y=0,pch=19,cex=1.5)
+x = seq(qt(0.975,10),4,0.001)
+y = dt(x,10)
+polygon(c(qt(0.975,10),x,4),c(0,y,0),col="grey")
+# Add points
+points(x=qt(0.975,10),y=0,pch=19,cex=1.5)
+# Add text
+text(-0.025,0.1,expression(1-alpha))
+text(-3.5,0.05,expression(alpha/2))
+text(3.5,0.05,expression(alpha/2))
+ 
+ 
+# Example 8.1
+# Fish weight data
+# Page 113-116
+loc.1 = c(21.9,18.5,12.3,16.7,21.0,15.1,18.2,23.0,36.8,26.6)
+loc.2 = c(21.0,19.6,14.4,16.9,23.4,14.6,10.4,16.5)
+# Create side by side boxplots
+boxplot(loc.1,loc.2,xlab="",names=c("Location 1","Location 2"),ylab="Weight (in ounces)",ylim=c(0,40),col="grey")
+# Calculate confidence interval
+t.test(loc.1,loc.2,conf.level=0.90,var.equal=TRUE)$conf.int
+ 
+# Page 116
+# Create normal qqplots for each sample
+# Need to install (then load) car package in R
+qqPlot(loc.1,distribution="norm",xlab="N(0,1) quantiles",ylab="Location 1",pch=16)
+qqPlot(loc.2,distribution="norm",xlab="N(0,1) quantiles",ylab="Location 2",pch=16)
+ 
+ 
+# Example 8.2
+# White paper data
+# Page 117-119
+plant.1 = c(3.01,2.58,3.04,1.75,2.87,2.57,2.51,2.93,2.85,3.09,
+         1.43,3.36,3.18,2.74,2.25,1.95,3.68,2.29,1.86,2.63,
+         2.83,2.04,2.23,1.92,3.02)
+plant.2 = c(3.99,2.08,3.66,1.53,4.27,4.31,2.62,4.52,3.80,5.30,
+         3.41,0.82,3.03,1.95,6.45,1.86,1.87,3.98,2.74,4.81)
+# Create side by side boxplots
+boxplot(plant.1,plant.2,xlab="",names=c("Plant 1","Plant 2"),ylab="Weight (in 100s lb)",ylim=c(0,8),col="grey")
+# Calculate confidence interval
+t.test(plant.1,plant.2,conf.level=0.95,var.equal=FALSE)$conf.int
+ 
+# Page 119
+# Create normal qqplots for each sample
+# Need to install (then load) car package in R
+qqPlot(plant.1,distribution="norm",xlab="N(0,1) quantiles",ylab="Plant 1",pch=16)
+qqPlot(plant.2,distribution="norm",xlab="N(0,1) quantiles",ylab="Plant 2",pch=16)
+ 
+ 
+# Example 8.3
+# Ergonomics data: Matched pairs analysis
+# Page 119-124
+before = c(81.3,87.2,86.1,82.2,90.8,86.9,96.5,73.0,84.2,74.5,72.0,73.8,74.2,
+     74.9,75.8,72.6,80.8,66.5,72.2,56.5,82.4,88.8,80.0,91.1,97.5,70.0)
+after = c(78.9,91.4,78.3,78.3,84.4,67.4,92.8,69.9,63.8,69.7,68.4,71.8,58.3,
+     58.3,62.5,70.2,58.7,66.6,60.7,65.0,73.7,80.4,78.8,81.8,91.6,74.2)
+# Create data differences
+diff = before-after
+# Calculate confidence interval
+t.test(diff,conf.level=0.95)$conf.int
+ 
+# Page 124
+# Create normal qqplots for each sample
+# Need to install (then load) car package in R
+qqPlot(diff,distribution="norm",xlab="N(0,1) quantiles",ylab="Data differences",pch=16)
+ 
+ 
+# Figure 8.8
+# Page 125
+# F PDFs
+y = seq(0,8,0.01)
+plot(y,df(y,5,10),type="l",lty=1,xlab="F",ylab="PDF",ylim=c(0,0.85))
+# Add other F pdfs
+lines(y,df(y,5,20),lty=4)
+lines(y,df(y,10,20),lty=8)
+abline(h=0)
+# Add legend
+legend(4,0.5,lty = c(1,4,8),
+     c(
+     expression(paste(nu[1], "=5, ", nu[2], "=10")),
+     expression(paste(nu[1], "=5, ", nu[2], "=20")),
+     expression(paste(nu[1], "=10, ", nu[2], "=20"))
+     ))
+ 
+ 
+# Figure 8.9
+# Page 127
+# F pdf with quantiles and shading
+x = seq(0,6,0.001)
+pdf = df(x,10,10)
+plot(x,pdf,type="l",lty=1,xlab="F",ylab="PDF",ylim=c(0,0.8))
+abline(h=0)
+x = seq(0,qf(0.025,10,10),0.001)
+y = df(x,10,10)
+polygon(c(0,x,qf(0.025,10,10)),c(0,y,0),col="grey")
+# Add points
+points(x=qf(0.025,10,10),y=0,pch=19,cex=1.5)
+x = seq(qf(0.975,10,10),6,0.001)
+y = df(x,10,10)
+polygon(c(qf(0.975,10,10),x,6),c(0,y,0),col="grey")
+# Add points
+points(x=qf(0.975,10,10),y=0,pch=19,cex=1.5)
+# Add text
+text(1.2,0.15,expression(1-alpha))
+text(0.0,0.2,expression(alpha/2))
+text(4.5,0.05,expression(alpha/2))
+ 
+ 
+# Example 8.4
+# Paint fill volume data
+# Page 128-130
+process.1 = c(127.75,127.87,127.86,127.92,128.03,127.94,127.91,128.10,128.01,128.11,127.79,127.93,
+           127.89,127.96,127.80,127.94,128.02,127.82,128.11,127.92,127.74,127.78,127.85,127.96)
+process.2 = c(127.90,127.90,127.74,127.93,127.62,127.76,127.63,127.93,127.86,127.73,127.82,127.84,
+           128.06,127.88,127.85,127.60,128.02,128.05,127.95,127.89,127.82,127.92,127.71,127.78)
+# Create side by side boxplots
+boxplot(process.1,process.2,xlab="",names=c("Process 1","Process 2"),
+     ylab="Fluid ounces",ylim=c(127.5,128.25),col="grey")
+ 
+# R does not have an internal function to calculate CI for the ratio of population variances
+# I wrote this function to do it
+ratio.var.interval = function(data.1,data.2,conf.level=0.95){
+     df.1 = length(data.1)-1
+     df.2 = length(data.2)-1
+     F.lower = qf((1-conf.level)/2,df.1,df.2)
+     F.upper = qf((1+conf.level)/2,df.1,df.2)
+     s2.1 = var(data.1)
+     s2.2 = var(data.2)
+     c((s2.2/s2.1)*F.lower,(s2.2/s2.1)*F.upper)
+     }
+ 
+# CI for ratio of population variances
+ratio.var.interval(process.1,process.2)
+ 
+# Page 130
+# Create normal qqplots for each sample
+# Need to install (then load) car package in R
+qqPlot(process.1,distribution="norm",xlab="N(0,1) quantiles",ylab="Process 1",pch=16)
+qqPlot(process.2,distribution="norm",xlab="N(0,1) quantiles",ylab="Process 2",pch=16)
+ 
+ 
+# Example 8.5
+# Irish HBV data
+# Page 133
+# R does not have an internal function to calculate CI for the difference of two population proportions
+# I wrote this function to do it
+proportion.diff.interval = function(y.1,n.1,y.2,n.2,conf.level=0.95){
+     z.upper = qnorm((1+conf.level)/2)
+     var.1 = (y.1/n.1)*(1-y.1/n.1)/n.1
+     var.2 = (y.2/n.2)*(1-y.2/n.2)/n.2
+     se = sqrt(var.1+var.2)
+     moe = z.upper*se
+     c((y.1/n.1-y.2/n.2)-moe,(y.1/n.1-y.2/n.2)+moe)
+     }
+# CI for difference of two population proportions
+proportion.diff.interval(18,82,28,555)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+###############################################
+## Date: 11 December 2011
+## Update: 7 December 2014
+## STAT 509 course notes: R Code
+## Chapter 9
+###############################################
+ 
+# Example 9.1
+# Mortar strength data
+# Page 136-137
+OCM = c(51.45,42.96,41.11,48.06,38.27,38.88,42.74,49.62)
+PIM = c(64.97,64.21,57.39,52.79,64.87,53.27,51.24,55.87,61.76,67.15)
+RM = c(48.95,62.41,52.11,60.45,58.07,52.16,61.71,61.06,57.63,56.80)
+PCM = c(35.28,38.59,48.64,50.99,51.52,52.85,46.75,48.31)
+# Create side-by-side boxplots
+boxplot(OCM,PIM,RM,PCM,
+ xlab="",names=c("OCM","PIM","RM","PCM"),ylab="Strength (MPa)",col="grey")
+ 
+# Perform F test/Create ANOVA table
+# Page 143
+# Create response with all data
+strength = c(OCM,PIM,RM,PCM)
+# Create a treatment indicator variable
+mortar.type = c(
+     rep("OCM",length(OCM)),
+     rep("PIM",length(PIM)),
+     rep("RM",length(RM)),
+     rep("PCM",length(PCM))
+     )
+mortar.type = factor(mortar.type)
+# Analysis of variance
+anova(lm(strength ~ mortar.type))
+ 
+# Plot F(3,32) pdf
+# Page 143
+f = seq(0,18,0.01)
+plot(f,df(f,3,32),type="l",lty=1,xlab="F",ylab="PDF",ylim=c(0,0.75))
+abline(h=0)
+# Add points
+points(x=16.848,y=0,pch=4,cex=1.5)
+ 
+# Follow-up analysis
+# Page 150
+# Tukey confidence intervals
+TukeyHSD(aov(lm(strength ~ mortar.type)),conf.level=0.95)
+ 
+
+
+ ###############################################
+## Author: Joshua M. Tebbs
+## Date: 11 December 2011
+## Update: 11 December 2014
+## STAT 509 course notes: R Code
+## Chapter 10
+###############################################
+ 
+# Example 10.1.
+# Sewage sludge data
+# Page 154-155
+filtration.rate=c(125.3,98.2,201.4,147.3,145.9,124.7,112.2,120.2,161.2,178.9,
+            159.5,145.8,75.1,151.4,144.2,125.0,198.8,132.5,159.6,110.7)
+moisture=c(77.9,76.8,81.5,79.8,78.2,78.3,77.5,77.0,80.1,80.2,
+         79.9,79.0,76.7,78.2,79.5,78.1,81.5,77.0,79.0,78.6)
+# Construct scatterplot
+plot(filtration.rate,moisture,xlab="Filtration rate (kg-DS/m/hr)",
+      ylab="Moisture (Percentage)",pch=16)
+ 
+# Page 156-157
+# Fit the model
+fit = lm(moisture~filtration.rate)
+fit
+# Page 157
+# Construct scatterplot (with least squares line superimposed)
+plot(filtration.rate,moisture,xlab="Filtration rate (kg-DS/m/hr)",
+      ylab="Moisture (Percentage)",pch=16)
+abline(fit)
+ 
+# Page 160-162
+# Calculate fitted values and residuals
+fitted.values = predict(fit)
+residuals = moisture-fitted.values
+# Show residuals sum to 0
+sum(residuals)
+# Calculate MSres
+MSres = sum(residuals^2)/(length(moisture)-2)
+MSres
+# Calculate residual standard error
+resid.std.error = sqrt(MSres)
+resid.std.error
+ 
+# Page 163
+# Confidence interval for beta0 and beta1
+fit = lm(moisture~filtration.rate)
+confint(fit,level=0.95)
+ 
+# Page 164-165
+# Regression output for inference
+fit = lm(moisture~filtration.rate)
+summary(fit)
+ 
+# Page 165
+# Plot t(18) pdf
+t = seq(-9,9,0.01)
+pdf = dt(t,18)
+plot(t,pdf,type="l",lty=1,xlab="t",ylab="PDF",ylim=c(0,0.4))
+abline(h=0)
+points(x=8.484,y=0,pch=4,cex=1.5)
+ 
+# Page 168
+# Calculate confidence/prediction intervals
+fit = lm(moisture~filtration.rate)
+predict(fit,data.frame(filtration.rate=150),level=0.95,interval="confidence")
+predict(fit,data.frame(filtration.rate=150),level=0.95,interval="prediction")
+ 
+# Page 169
+# Confidence/Prediction bands
+fit = lm(moisture~filtration.rate)
+x.not = seq(80,200,1)
+conf = predict(fit,data.frame(filtration.rate=x.not),level=0.95,interval="confidence")
+pred = predict(fit,data.frame(filtration.rate=x.not),level=0.95,interval="prediction")
+plot(filtration.rate,moisture,xlab = "Filtration rate (kg-DS/m/hr)",
+      ylab = "Moisture (Percentage)",pch=16,
+      xlim=c(min(filtration.rate),max(filtration.rate)),
+      ylim=c(min(moisture),max(moisture)))
+abline(fit)
+par(new=T)
+plot(x.not,conf[,2],type="l",lty=2,xlab="",ylab="",
+      xlim=c(min(filtration.rate),max(filtration.rate)),
+      ylim=c(min(moisture),max(moisture)))
+par(new=T)
+plot(x.not,conf[,3],type="l",lty=2,xlab="",ylab="",
+      xlim=c(min(filtration.rate),max(filtration.rate)),
+      ylim=c(min(moisture),max(moisture)))
+par(new=T)
+plot(x.not,pred[,2],type="l",lty=4,xlab="",ylab="",
+      xlim=c(min(filtration.rate),max(filtration.rate)),
+      ylim=c(min(moisture),max(moisture)))
+par(new=T)
+plot(x.not,pred[,3],type="l",lty=4,xlab="",ylab="",
+      xlim=c(min(filtration.rate),max(filtration.rate)),
+      ylim=c(min(moisture),max(moisture)))
+# Create legend
+# You MUST "click" where you want it to go (on figure)
+names = c("95% confidence","95% prediction")
+legend(locator(1),legend=names,lty=c(2,4),bty="n")
+ 
+ 
+ 
+ 
+ 
+ 
+ ###############################################
+## Date: 11 December 2011
+## Update: 14 December 2014
+## STAT 509 course notes: R Code
+## Chapter 11
+###############################################
+ 
+# Example 11.1
+# Cheese data
+# Page 170-171
+ 
+## Find data web site
+## Cut and paste the data set into a Notepad file
+## Save this file (e.g., cheese.txt) to a directory that you know
+## Use R to import the data from a directory on your computer
+cheese = read.table(
+     "C:\\Users\\Tebbs\\Documents\\texfiles\\Classes\\USC\\stat509\\s15\\data\\cheese.txt",header=TRUE)
+ 
+# Define variables
+taste<-cheese[,1]
+acetic<-cheese[,2]
+h2s<-cheese[,3]
+lactic<-cheese[,4]
+ 
+# Page 174
+# Fit the model
+fit = lm(taste~acetic+h2s+lactic)
+fit
+ 
+# Page 175
+# Calculate fitted values and residuals
+fit = lm(taste~acetic+h2s+lactic)
+fitted.values = predict(fit)
+residuals = taste-fitted.values
+ 
+# Figure 11.1
+# Page 179
+# F(3,26) pdf with F statistic
+f = seq(0,20,0.01)
+pdf = df(f,3,26)
+plot(f,pdf,type="l",lty=1,xlab="F",ylab="PDF",ylim=c(0,0.7))
+abline(h=0)
+# Add points
+points(x=16.22,y=0,pch=4,cex=1.5)
+ 
+# Page 181
+# R's ANOVA with sequential SS
+fit = lm(taste~acetic+h2s+lactic)
+anova(fit)
+ 
+# Page 182
+# Different ordering
+fit.2 = lm(taste~h2s+lactic+acetic)
+anova(fit.2)
+ 
+# Page 184
+# Confidence intervals for regression parameters
+fit = lm(taste~acetic+h2s+lactic)
+confint(fit,level=0.95)
+ 
+# Page 185
+# Confidence/Prediction intervals
+fit = lm(taste~acetic+h2s+lactic)
+predict(fit,data.frame(acetic=5.5,h2s=6.0,lactic=1.4),level=0.95,interval="confidence")
+predict(fit,data.frame(acetic=5.5,h2s=6.0,lactic=1.4),level=0.95,interval="prediction")
+ 
+# Page 187
+# Create normal qqplots for residuals
+# Need to install (then load) car package in R
+fit = lm(taste~acetic+h2s+lactic)
+qqPlot(residuals(fit),distribution="norm",xlab="N(0,1) quantiles",ylab="Residuals",pch=16)
+ 
+ 
+#####################
+# Example 11.2
+#####################
+ 
+# Electricity data
+# Page 189
+electricity = read.table(
+     "C:\\Users\\Tebbs\\Documents\\texfiles\\Classes\\USC\\stat509\\s15\\data\\electricity.txt",header=TRUE)
+ 
+# Define variables
+monthly.usage = electricity[,1]
+peak.demand = electricity[,2]
+ 
+# Fit the model
+fit = lm(peak.demand ~ monthly.usage)
+fit
+ 
+# Page 190
+# Plots were constructed separately
+# Scatterplot
+plot(monthly.usage,peak.demand,xlab = "Monthly Usage (kWh)",
+      ylab = "Peak Demand (kWh)", pch=16)
+abline(fit)
+# Residual plot
+plot(fitted(fit),residuals(fit),pch=16,
+     xlab="Fitted values",ylab="Residuals")
+abline(h=0)
+ 
+# Page 191
+# Fit the transformed model
+# Square-root transformation
+fit.2 = lm(sqrt(peak.demand) ~ monthly.usage)
+fit.2
+# Confidence intervals for regression parameters
+confint(fit.2,level=0.95)
+ 
+# Page 192
+# Transformed model (square-root transformation)
+# Plots were constructed separately
+# Scatterplot
+plot(monthly.usage,sqrt(peak.demand),xlab = "Monthly Usage (kWh)",
+      ylab = "Peak Demand (kWh): Square root scale", pch=16)
+abline(fit.2)
+# Residual plot
+plot(fitted(fit.2),residuals(fit.2),pch=16,
+     xlab="Fitted values",ylab="Residuals")
+abline(h=0)
+ 
+# Create normal qqplots for residuals (not shown in notes)
+# Need to install (then load) car package in R
+fit.2 = lm(sqrt(peak.demand) ~ monthly.usage)
+qqPlot(residuals(fit.2),distribution="norm",xlab="N(0,1) quantiles",ylab="Residuals",pch=16)
+ 
+ 
+#####################
+# Example 11.3
+#####################
+ 
+# Windmill data
+# Page 193
+wind.velocity = c(5,6,3.4,2.7,10,9.7,9.55,3.05,8.15,6.2,2.9,6.35,4.6,5.8,7.4,3.6,7.85,8.8,7,5.45,9.1,10.2,
+     4.1,3.95,2.45)
+DC.output = c(1.582,1.822,1.057,0.5,2.236,2.386,2.294,0.558,2.166,1.866,0.653,1.93,1.562,1.737,2.088,1.137,
+     2.179,2.112,1.8,1.501,2.303,2.31,1.194,1.144,0.123)
+# Fit the model
+fit = lm(DC.output ~ wind.velocity)
+fit
+anova(fit)
+ 
+# Page 193
+# Plots were constructed separately
+# Scatterplot with simple linear regression model fit
+plot(wind.velocity,DC.output,xlab = "Wind Velocity (mph)",
+      ylab = "DC Output", pch=16)
+abline(fit)
+# Residual plot
+plot(fitted(fit),residuals(fit),pch=16,
+     xlab="Fitted values",ylab="Residuals")
+abline(h=0)
+ 
+# Page 194
+# Fit quadratic model
+wind.velocity.sq = wind.velocity^2
+fit.2 = lm(DC.output ~ wind.velocity + wind.velocity.sq)
+fit.2
+ 
+# Page 195
+# Plots were constructed separately
+# Scatterplot with quadratic regression model fit
+plot(wind.velocity,DC.output,xlab = "Wind Velocity (mph)",
+      ylab = "DC Output", pch=16)
+curve(expr = fit.2$coefficients[1] +
+             fit.2$coefficients[2]*x +
+             fit.2$coefficients[3]*x^2, col = "black", 
+             lty = "solid", lwd = 1, add = TRUE)
+# Residual plot
+plot(fitted(fit.2),residuals(fit.2),pch=16,
+     xlab="Fitted values",ylab="Residuals")
+abline(h=0)
+ 
+# Page 195
+# Confidence intervals for regression parameters
+fit.2 = lm(DC.output ~ wind.velocity + wind.velocity.sq)
+confint(fit.2,level=0.95)
+ 
+# Page 196
+# Create normal qqplots for residuals
+# Need to install (then load) car package in R
+# Simple linear regression fit
+qqPlot(residuals(fit),distribution="norm",xlab="N(0,1) quantiles",ylab="Residuals",pch=16)
+# Quadratic regression fit
+qqPlot(residuals(fit.2),distribution="norm",xlab="N(0,1) quantiles",ylab="Residuals",pch=16)
+ 
+
+
+ ###############################################
+## Date: 11 December 2011
+## Update: 14 December 2014
+## STAT 509 course notes: R Code
+## Chapter 12
+###############################################
+ 
+# Example 12.2
+# Corn yield data
+# Page 199-200
+# Enter the data
+a1b1 = c(35, 26, 25, 33, 31)
+a1b2 = c(39, 33, 41, 31, 36)
+a2b1 = c(37, 27, 35, 27, 34)
+a2b2 = c(49, 39, 39, 47, 46)
+ 
+# Page 200
+# One way ANOVA/Overall F test
+# Create response with all data
+yield = c(a1b1,a1b2,a2b1,a2b2)
+# Create treatment indicator variable
+treatment = c(
+     rep("a1b1",length(a1b1)),
+     rep("a1b2",length(a1b2)),
+     rep("a2b1",length(a2b1)),
+     rep("a2b2",length(a2b2))
+     )
+treatment = factor(treatment)
+# One way analysis
+anova(lm(yield ~ treatment))
+ 
+# Page 201
+# Construct side by side boxplots
+boxplot(a1b1,a1b2,a2b1,a2b2,xlab="",names=c("a1b1","a1b2","a2b1","a2b2"),
+     ylab="Yield (bushels/plot)",col="grey")
+ 
+# Page 202
+# Two way ANOVA with interaction
+nitrogen = c(
+     rep("a1",length(a1b1)),
+     rep("a1",length(a1b2)),
+     rep("a2",length(a2b1)),
+     rep("a2",length(a2b1))
+     )
+phosphorus = c(
+     rep("b1",length(a1b1)),
+     rep("b2",length(a1b2)),
+     rep("b1",length(a2b1)),
+     rep("b2",length(a2b1))    
+     )
+nitrogen = factor(nitrogen)
+phosphorus = factor(phosphorus)
+fit = lm(yield ~ nitrogen + phosphorus + nitrogen*phosphorus)
+anova(fit)
+ 
+# Page 203
+# Plot F(1,16) pdf
+f = seq(0,8,0.01)
+pdf = df(f,1,16)
+plot(f,pdf,type="l",lty=1,xlab="F",ylab="PDF",ylim=c(0,1))
+abline(h=0)
+# Add points
+points(x=2.25,y=0,pch=4,cex=1.5)
+ 
+# Page 204
+# Interaction plot
+interaction.plot(nitrogen,phosphorus,yield,fun = mean,
+     ylab="Mean yield (bushels/plot)",ylim=c(20,50))
+ 
+# Page 206
+# Two way ANOVA with no interaction
+fit.2 = lm(yield ~ nitrogen + phosphorus)
+anova(fit.2)
+ 
+# Page 206
+# Confidence intervals for difference of factor means
+# MSE = mean squared residuals from no interaction model
+MSE = 21.47
+# Aggregate Factor A data
+nitrogen.1 = c(a1b1,a1b2)
+nitrogen.2 = c(a2b1,a2b2)
+# Aggregate Factor B data
+phosphorus.1 = c(a1b1,a2b1)
+phosphorus.2 = c(a1b2,a2b2)
+# Nitrogen CI
+est = mean(nitrogen.1)-mean(nitrogen.2)
+moe = qt(0.975,17)*sqrt(MSE*0.2)
+c(est-moe,est+moe)
+# Phospherus CI
+est = mean(phosphorus.1)-mean(phosphorus.2)
+moe = qt(0.975,17)*sqrt(MSE*0.2)
+c(est-moe,est+moe)
+ 
+# Page 207
+# Individual factor side by side boxplots
+# Plots were constructed separately
+boxplot(nitrogen.1,nitrogen.2,
+     xlab="",names=c("Nitrogen.1","Nitrogen.2"),ylab="Yield (bushels/plot)",ylim=c(20,50),col="grey")
+boxplot(phosphorus.1,phosphorus.2,
+     xlab="",names=c("Phosphorus.1","Phosphorus.2"),ylab="Yield (bushels/plot)",ylim=c(20,50),col="grey")
+ 
+ 
+##############
+# Example 12.3
+##############
+ 
+# Filtration rate data
+# Page 208
+# Enter the data
+filtration = c(45,71,48,65,68,60,80,65,43,100,45,104,75,86,70,96)
+A = c("a1","a2","a1","a2","a1","a2","a1","a2","a1","a2","a1","a2","a1","a2","a1","a2")
+B = c("b1","b1","b2","b2","b1","b1","b2","b2","b1","b1","b2","b2","b1","b1","b2","b2")
+C = c("c1","c1","c1","c1","c2","c2","c2","c2","c1","c1","c1","c1","c2","c2","c2","c2")
+D = c("d1","d1","d1","d1","d1","d1","d1","d1","d2","d2","d2","d2","d2","d2","d2","d2")
+A = factor(A)
+B = factor(B)
+C = factor(C)
+D = factor(D)
+ 
+# Page 210
+# Fit full model
+fit = lm(filtration ~ A*B*C*D)
+anova(fit)
+ 
+# Page 211
+# Fit smaller model
+fit = lm(filtration ~ A + C + D + A*C + A*D)
+anova(fit)
+ 
+# Page 211
+# Interaction plots
+# Plots were constructed separately
+# AC Interaction plot
+Factor.A = factor(A)
+Factor.C = factor(C)
+interaction.plot(Factor.A,Factor.C,filtration,fun = mean,
+     ylab="Filtration rate (gal/hr)",ylim=c(40,100))
+# AD Interaction plot
+Factor.A = factor(A)
+Factor.D = factor(D)
+interaction.plot(Factor.A,Factor.D,filtration,fun = mean,
+     ylab="Filtration rate (gal/hr)",ylim=c(40,100))
+ 
+# Page 212
+# Multiple linear regression model
+filtration = c(45,71,48,65,68,60,80,65,43,100,45,104,75,86,70,96)
+temp = c(-1,1,-1,1,-1,1,-1,1,-1,1,-1,1,-1,1,-1,1)
+conc = c(-1,-1,-1,-1,1,1,1,1,-1,-1,-1,-1,1,1,1,1)
+stir = c(-1,-1,-1,-1,-1,-1,-1,-1,1,1,1,1,1,1,1,1)
+fit = lm(filtration~temp+conc+stir+temp:conc+temp:stir)
+fit
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

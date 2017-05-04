@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Light up! Denver</title>
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,300italic' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+
+	body{
+		background-color: black;
+	}
+	#container{
+		width: 100%;
+		height: 100%;
+	}
+	section{
+		width: 300px;
+		float: left;
+		margin: 20px;
+		color: #cccccc;
+		font-family: 'Ubuntu', Helvetica, 'Sans Serif';
+		line-height: 24px;
+	}
+
+
+	h1{
+		font-weight: 300;
+		font-size: 34px;
+	}
+
+	h2{
+		font-weight: 300;
+		font-style: italic;
+		font-size: 16px;
+	}
+
+	p{
+		font-weight: 300;
+		font-size: 20px;	
+	}
+
+	a{
+		text-decoration: none;
+		color: grey;
+		 -o-transition:.5s;
+  		-ms-transition:.5s;
+  		-moz-transition:.5s;
+  		-webkit-transition:.5s;
+		transition: .5s;
+	}
+
+	a:hover{
+		color: white;
+
+	}
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<section>
+			<h1>Light up! Denver</h1>
+			<h2>By Glenna Xie</h2>
+			<p>This project maps the locations of every traffic signals in the City of Denver, and randomly generates the light-switching effect every five seconds. By parsing the GeoJSON data of the traffic signals in relation to each other, this visualization looks at how the city is connected through this nonstop flow produced by the transportation infrastructure.</p>
+			<p>This project is created using the data from the <a href="http://data.denvergov.org/" target="_blank">Denver Open Data Catalog</a> and the JavaScript library <a href="http://d3js.org/" target="_blank">d3.js</a>.</p>
+		</section>
+	</div>
+
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="d3.js"></script>
+	
+</body>
+</html>

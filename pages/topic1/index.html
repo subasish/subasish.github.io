@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<title>Distract Driving</title>
+
+  <meta name="description" content="Statistical models">
+  <meta name="author" content="Subasish Das">
+  <meta name="keywords" content="pedestrian safety, d3.js">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!--<link rel="shortcut icon" href="../pics/fav05b.png">-->
+
+  <!-- CSS -->
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="polar.css">
+  <link rel="stylesheet" href="animation.css">
+  <link rel="stylesheet" href="fontello.css">
+  <link rel="stylesheet" href="fontello-codes.css">
+  <link rel="stylesheet" href="fontello-embedded.css">
+
+  <!-- JS -->
+  <script>window.jQuery || document.write('<script src="jquery.js"><\/script>')</script>
+  <script type="text/javascript" src="./jq_custom.js"></script>
+  <script src="d3.v3.js"></script>
+  <script src="underscore.js"></script>
+  <script src="dat.gui.min.js"></script>
+
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js"></script>
+ <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"></script>
+            
+            <script type="text/javascript">
+              $(document).ready(function () {
+                $("#Pop1").popover({
+                  'selector': '',
+                  'trigger':'hover',
+                  'content': 'Hermida R.C., Ayala D.E., Fernandez J.R., <i>et al</i>. <i>Chronobiol. Int.</i>, 2002, <b>19</b>: 461-81.',
+                  'placement': 'top',
+                  'html': 'true'
+                });
+                $("#Pop2").popover({
+                  'selector': '',
+                  'trigger':'hover',
+                  'content': 'Fagard R.H., Thijs L., Staessen J.A., <i>et al</i>. <i>J. Hum. Hypertens.</i>, 2009, <b>23</b>: 645-53.',
+                  'placement': 'top',
+                  'html': 'true'
+                });
+                $("#Pop3").popover({
+                  'selector': '',
+                  'trigger':'hover',
+                  'content': 'Albert P.S., Hunsberger S. <i>Biometrics</i>, 2005, <b>61</b>: 1115-22.',
+                  'placement': 'top',
+                  'html': 'true'
+                });
+                $("#Pop4").popover({
+                  'selector': '',
+                  'trigger':'hover',
+                  'content': 'Hempel G., Karlsson M.O., de Alwis D., <i>et al</i>. <i>Clin. Pharmacol. Ther.</i>, 1998, <b>64</b>: 622-35.',
+                  'placement': 'top',
+                  'html': 'true'
+                });
+                $("#Pop5").popover({
+                  'selector': '',
+                  'trigger':'hover',
+                  'content': 'Dehez M., Chenel M., Jochemsen R., <i>et al</i>. <i>Poster presented at the PAGE meeting 2008.',
+                  'placement': 'top',
+                  'html': 'true'
+                });
+                $("#Pop6").popover({
+                  'selector': '',
+                  'trigger':'hover',
+                  'content': 'Diehl S., Beck F., Burch M. <i>IEEE Trans. Vis. Comp. Graph.</i>, 2010, <b>16</b>',
+                  'placement': 'top',
+                  'html': 'true'
+                });
+                $("#Pop7").popover({
+                  'selector': '',
+                  'trigger':'hover',
+                  'content': 'Hermida R.C., Ayala D.E., Fernandez J.R., <i>et al</i>. <i>Chronobiol. Int.</i>, 2002, <b>19</b>: 461-81.',
+                  'placement': 'top',
+                  'html': 'true'
+                });
+              });
+  </script>
+
+  <!-- TeX config -->
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true},
+    "HTML-CSS": { availableFonts: [ "STIX", "TeX"] }});
+  </script>
+  <script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  <!-- Google analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31065124-1']);
+  _gaq.push(['_setDomainName', 'mgrafit.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container" id="top">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"> </span>
+          <span class="icon-bar"> </span>
+          <span class="icon-bar"> </span>
+        </button>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li><a href="http://subasish.github.io">Home</a></li>
+            <li><a href="http://subasish.github.io/research">Research</a></li>
+            <li><a href="http://subasish.github.io/blogs">Blog</a></li>
+            <li><a href="http://subasish.github.io/loop">Links</a></li>
+          </ul>
+        </div><!--/.nav-collapse--> 
+      </div>
+    </div>
+  </div>
+  <div id="container" class="container">
+    <header>
+      <h2>Distracted Driving</h2>
+      <!--<aside class="content-minutiae">
+          <li id="twitticone" title="Spread the word"><a href="http://twitter.com/intent/tweet?url=http://bit.ly/ZvBS7q&text=A+statistical+model+for+blood+pressure+in+patients+with+hypertension&via=mercifr1"><i class="icon-twitter"></i></a></li>
+          <li id="faceicone"title="Share This"><a href="http://www.facebook.com/sharer.php?u=http://bit.ly/ZvBS7q&t=A+statistical+model+for+blood+pressure+in+patients+with+hypertension"><i class="icon-facebook"></i></a></li>    
+      </aside><br><br>-->
+    </header>
+    
+    <p><h4>Introduction</h4>
+      The Department of Transportation works to reduce the occurrence of distracted driving and raise awareness of the dangers of distracted driving. This risky behavior poses a danger to vehicle occupants as well as nonoccupants such as pedestrians and bicyclists. Driver distraction is a specific type of driver inattention. Distraction occurs when drivers divert their attention from the driving task to focus on some other activity. <font color="red">Oftentimes, discussions regarding distracted driving</font> center around cell phone use and texting, but distracted driving also includes other activities such as eating, talking to other passengers, or adjusting the radio or climate controls, to name but a few. A distraction-affected crash is any crash in which a driver was identified as distracted at the time of the crash.
+      </p>
+      <ul>
+        <li>
+          <font color="red">Ten</font> percent of fatal crashes, <font color="red">18</font> percent of injury crashes, and 16 percent of all police-reported motor vehicle traffic crashes in 2013 were reported as distraction-affected crashes.
+        </li>
+        <li>
+        <font color="red">In 2013, there were 3,154 people killed and an estimated additional 424,000 injured </font> in motor vehicle crashes involv- ing distracted drivers.</li>
+        <li>
+          <font color="red">Ten percent of all drivers 15 to 19 years old involved in fatal crashes were reported as</font> distracted at the time of the crashes. This age group has the largest proportion of driv- ers who were distracted at the time of the crashes. In 2013, there were 480 nonoccupants killed in distraction- affected crashes.
+        </li>
+      </ul>
+      <p><font color="red">FARS contains data on a census of fatal traffic crashes from all 50 States, the District of Columbia, and Puerto Rico. There are inherent limitations in the data</font> for distraction- affected crashes and the resulting injuries and fatalities. In 2013, there were a total of 30,057 fatal crashes in the United States involving 44,574 drivers. As a result of those fatal crashes, 32,719 people were killed [<a href="http://www-nrd.nhtsa.dot.gov/Pubs/812132.pdf">1</a>]. </p>
+      <a href="http://www-nrd.nhtsa.dot.gov/CATS/listpublications.aspx?Id=A&ShowBy=DocType">NHTSA Traffic Safety Fact Sheets ➶</a>
+      <p><h4>Papers</h4>
+    <em><p><font color="#F98400">Identification of common features of vehicle motion under drowsy/ distracted driving: A case study in Wuhan, China by Zhijun Chen et al. | AAAP 2015</font></p></em>
+    <p>The objective of this study is to extract the common features for identifying drowsy/distracted driving through a set of common vehicle motion parameters. </p><br>
+
+    <br>
+    <em><p><font color="#F98400">Driver sleepiness and risk of motor vehicle crash injuries: A population-based case control study in Fiji by Josephine Herman et al. | Injury 45, 2015</font></p></em>
+   <p> The state department of trasportation and local transportation agencies traditionally use AADT count programs to collected traffic information.  The focus of these traffic count programs is on higher classes of roadways, which consists mainly of interstates and arterials. Due to the budgetary and administrive constraints, regular traffic counting is only conducted on state highways network (generally every three years). The traffic counting for non-state roadways is highly selective and irregular. With increased amphasises on non-state roadway safety and publication of the Highway Safety Manual (HSM), AADT is becoming a “must-have” element in roadway safety evulation.  Lack of AADT information hinders roadway safety assessment and makes it hard to develop cost-efective safety improvement projects.  </p><br>
+    <p>In this study, we have introduced a modified support vector machine for regression (SVR) to estimate AADT in non-state roadways. We have used Louisiana as a case study in this research. Out of 61,335 miles of roadways in Louisiana, 44,814 miles of the roadways (73%) are non-state roads [1]. Infeasibility to collect traffic data for all non-state roadways makes the AADT estimation the only option for the Louisiana Department of Transportation and Development (LaDOTD). The LaDOTD maintains traffic count in few count stations in non-state roadways throughout the state.  Most of the major cities in Louisiana,  such as  New Orleans, Baton Rouge, Lafayette, Lake Charles and etc. have the traffic volume data collected or estimated by their respective Metropolitan Planning Organization (MPO). Other non-state roadways in rural and small urban areas do not have an AADT collection or estimation programs. Since approximately three-fourths of all roadway mileage in Louisiana is non-state maintained by local governments (parishes and municipalities), estimating AADT on non-state roadways is important. Often times the AADT estimation is made based on comparisons to similar types of roadways. This rough estimation results in major discrenpancy due to a variety of reason such as false assumptions, and may not be repeated often enough to remain current. The available count station traffic count is used as our parish wise training data. This method predicts parish wise block level AADT based on the distribution of the training data and performs better than conventional statistical methods. This approach works better than any convensional statistical models and good estimates of AADT can be used for travel demand and forecasting.
+
+      </p>
+
+
+      <p>A primary risk factor for adverse cardiovascular events is elevated arterial blood pressure. This is the main reason why regulatory authorities require 24-hour ambulatory blood pressure measurements (ABPM) to be included in any New Drug Application submission. <br> 
+      Studying blood pressure (BP) is not an easy task as both circadian and inter-subject variability have to be accounted for, when analyzing this type of data, to extract a clinical meaningful ‘signal’ from the noise.<br>
+      
+      The concepts of <a href="#section1">circadian rhythm</a> and <a href="#section2">inter-subject variability</a> are introduced in the first two panels before moving to the core topic of BP statistical modeling. The third panel presents the <a href="#section3">data and models</a>, while the fourth panel gives you the possibility to <a href="#section4">experiment the effect of changing dose on the SBP response</a>. In the last panel we discuss the value of radial <i>vs.</i> Cartesian display with circadian data.<br>
+      
+      <br><span style="font-weight:bold; color: #8B362F">*Click on a section header*</span> to open the panel. The below charts are best rendered on <b>modern browsers</b> (Chrome, Safari, Firefox).
+    </p>
+
+    <div id="main" class="container">
+      <div id="circadian" class="accordion vertical">
+      <!-- ============  beg #section1  ============= -->
+      <section id="section1">
+        <h2><a href="#section1">I. Circadian rhythm and normal range</a></h2>
+        <div id="graph1"><!-- ====  beg #graph1  ==== -->
+        <p style="font-weight:bold; color: #8B362F">*In this panel, a typical time profile of systolic blood pressure (SBP) is displayed.*</p>
+        <p>Blood pressure, like other human biological markers, is characterized by predictable changes during the 24 hours, for the most part in synchrony with the rest-activity cycle <a href="http://www.ncbi.nlm.nih.gov/pubmed/12025936" target=" blank" id="Pop1" rel="popover" title="Reference:">[1]</a>. This circadian variation represents the influence of:
+          <ul>
+            <li>intrinsic factors: gender, autonomic nervous system tone, vasoactive hormones, and hematologic and renal variables,</li>
+            <li>extrinsic factors: sleep/wake routine, physical activity, ambient temperature/humidity, emotional state, alcohol or caffeine consumption, and of course, medical treatment - in treated patients.</li>
+          </ul>
+        Over a 24-hour period, a sinusoidal rhythm is observed that varies about the mean (MESOR) and generally peaks during the waking hours and deeps during sleep. Medicinal treatments affect the MESOR, and sometimes the time to peak (acrophase).
+        </p>
+        </div><!-- ====  end #graph1  ==== -->
+        <div>
+        <p>Some specific features of the 24h BP pattern are linked to the triggering of cardiac and cerebrovascular events. The day/night variation of blood pressure (BP) has been used to classify patients into nocturnal ‘dippers’ (≥10% drop in BP overnight – 23:00 to 07:00) and ‘non-dippers’. It has been shown that non-dippers, as well as patients with increased morning surge, are at increased risk for serious cardiovascular adverse events <a href="http://www.ncbi.nlm.nih.gov/pubmed/19225527" id="Pop2" rel="popover" title="Reference:" target=" blank">[2]</a>.</p>
+        </div>
+        <p><a href="#Ref">:Close panel:</a></p>
+      </section>
+      <!-- ============  end #section1  ============= -->
+      
+      <!-- ============  beg #section2  ============= --> 
+      <section id="section2" >
+        <div id="graph2"><!-- ====  beg #graph2  ==== -->
+        <h2><a href="#section2">II. Inter-individual variability</a></h2>
+        <p style="font-weight:bold; color: #8B362F">*Click on the button to get new SBP profiles.*</p>
+        <p>The purpose of this animation is to give you a sense of the differences in BP time profiles between patients.<br>
+        Despite the circadian rhythm of BP being typically described as sinusoidal, a large inter-subject variability is usually observed in clinical setting. Each patient is following a different time profile, with her/his own mean SBP level (MESOR), amplitude, and peaks or nadirs. To identify the sources of variability in the data and quantify them, we use statistical models with random effects.
+        </p>
+        <div><button id="transition1" style="font-family: Corbel">Draw New Profiles</button></div>
+        </div><!-- ====  end #graph2  ==== -->
+        <p><a href="#Ref">:Close panel:</a></p>
+      </section>
+      <!-- ============  end #section2  ============= -->
+
+      <!-- ============  beg #section3  ============= -->
+      <section id="section3">
+        <h2><a href ="#section3">III. SBP data and ‘cosinor’ model</a></h2>
+        <div id="graph3"><!-- ====  beg #graph3  ==== -->
+          <p style="font-weight:bold; color: #8B362F">*Click on a check-box to add or remove data and model corresponding to each dose group.*</p>
+          <p>In the below figure, we display the SBP data observed at end-of-study in patients who have received a medical treatment, either at dose 0.4 mg, 2 mg, 10 mg, or placebo once daily for 12 weeks. The observed data are plotted as dots, and the best-fitting model to describe these data is plotted as a plain curve.</p>
+          <p>As you can see, as the dose increases, the MESOR decreases; these patients receive an anti-hypertensive treatment :). The SBP of each participant was measured every 15 minutes over 24h at the occasion of each visit to the physician during the trial.</p>
+          <div id="checkbox">
+            <span><div style = "width : 75px; height : 50px; display:inline-block">
+              <p style= "margin-bottom:-20px"><b>Data :</b></p></br>
+              <p style= "margin-bottom:-5px"><b>Model :</b></p>
+            </span></div>
+            <span><div style = "width : 100px; height : 100px; display:inline-block">
+                <p style = ""><b>Placebo</b></p>
+                <input type="checkbox" id="plbogrpHIII" onClick="click" value="" checked></br>
+                <input type="checkbox" id="model1HIII" onClick="click">
+            </span></div>
+            <span><div style = "width : 100px; height : 100px; display:inline-block">
+                <p><b>0.4 mg qd</b></p>
+                <input type="checkbox" id="grp1HIII" onClick="click"></br>
+                <input type="checkbox" id="model2HIII" onClick="click">         
+            </span></div>
+            <span><div style = "width : 100px; height : 100px; display:inline-block">
+                <p><b>2 mg qd</b></p>
+                <input type="checkbox" id="grp2HIII" onClick="click"></br>
+                <input type="checkbox" id="model3HIII" onClick="click">           
+            </span></div>
+            <span><div style = "width : 100px; height : 100px; display:inline-block">
+                <p><b>10 mg qd</b></p>
+                <input type="checkbox" id="grp3HIII" onClick="click"></br>
+                <input type="checkbox" id="model4HIII" onClick="click">
+            </span></div>
+          </div>
+        </div>
+        <div>
+        <p>The model we use to describe the data consists in a series of harmonic terms <a href="http://www.ncbi.nlm.nih.gov/pubmed/16401286" id="Pop3" rel="popover" title="Reference:" target=" blank">[3]</a>:<br>
+        <div style="margin: 1em 0; text-align:left">
+          \(\displaystyle{
+            Y_{ij}=MESOR_i \times 
+              \left( 
+                1+\sum_{k=1}^K Amp_{ik} \times cos 
+                \left(
+                  \frac{2\pi}{24} \times k \times 
+                  \left(
+                    t_j-\phi_{ik}
+                  \right)
+                \right)
+              \right)  + \varepsilon_{ij} \\
+            MESOR_i=MESOR \times exp\left( \eta_{1i} \right) \\
+            Amp_{ik}=Amp_k \times exp\left( \eta_{2ki} \right) \\
+            \phi_{ik}=\phi_k \times exp\left( \eta_{(2k+1)i} \right)
+          }\)
+        </div>
+        where $Y_{ij}$ is the SBP observed at time $t_j$ in patient <i>i</i>, $MESOR_i$ represents the mean level over 24h, $Amp_{ik}$ are amplitudes and $\phi_{ik}$ are phase shifts of the cosine terms. The terms $\eta_{1i}$, $\eta_{2ki}$, and $\eta_{(2k+1)i}$ reflect the differences in BP profiles between individuals. These terms are drawn from a multivariate normal distribution centered on zero. An additional term, $\varepsilon$, is capturing the residual unexplained variance in BP and is assumed to be independent identically distributed normal: $\varepsilon_{ij}$~ iid N(0, $\sigma^2$). <br>
+        The number of harmonic, <i>K</i>, is usually equal to 2 or 3 depending on the clinical setting, amount and quality of data.</p>
+        <p>This type of model can be easily implemented in any statistical programming environment <i>e.g.</i> R/nlme, NONMEM, Phoenix/nlme, SAS/NLMIXED.</p>
+        </div>
+        <p><a href="#Ref">:Close panel:</a></p>
+      </section>
+      <!-- ============  end #section3  ============= -->
+
+      <!-- ============  beg #section4  ============= -->
+      <section id="section4" >
+        <div id="graph4"><!-- ====  beg #graph4  ==== -->
+        <h2><a href ="#section4">IV. Predicting dose effect on SBP dynamics</a></h2>
+        <p style="font-weight:bold; color: #8B362F">*Experiment by yourself:*</p>
+          <ul style="font-weight:bold; color: #8B362F">
+            <li>mouse over the dose-MESOR (figure on the right)</li>
+            <li>change the model parameter values (in the control panel)</li>
+          </ul>
+        <p>In early development, a major objective of the analysis BP data is to define the dose-concentration-effect relationship for the drug, in order to guide dosage form development (<i>e.g.</i> extended-release <i>vs</i> immediate-release) and to define the dosing regimen for the pivotal phase III trials.</p>
+        <p>The effect of drugs on phase shifts (<i>i.e.</i> changes in peak and nadir locations on the x-axis) has rarely been modeled, but to study chronotherapy <a href="http://www.ncbi.nlm.nih.gov/pubmed/12025936" id="Pop7" rel="popover" title="Reference:" target=" blank">[1]</a>. More frequent are the cases where the drug effect – <i>i.e.</i> dose-response – is factored in the BP model as a covariate influencing the MESOR.</p>
+        </div><!-- ====  end #graph4  ==== -->
+        <p><a href="#Ref">:Close panel:</a></p>
+      </section>
+      <!-- ============  end #section4  ============= -->
+
+      <!-- ============  beg #section5  ============= -->
+      <section id="section5">
+        <div id="graph5"><!-- ====  beg #graph5  ==== -->
+        <h2><a href ="#section5">V. Cartesian vs. radial plot</a></h2>
+        <p style="font-weight:bold; color: #8B362F">*Use your mouse to get your head around the radial plot (on the right)*</p>
+        <p>In this last panel, two graphical representations of the same phenomenon are presented. One the left-hand side, the ‘conventional’ plot displays the SBP data using Cartesian coordinates. On the right-hand side, the ‘radial’ plot (<i>a.k.a.</i> polar plot) displays the same data using polar coordinates. Many criticisms have been formulated towards polar plots <a href="http://www.ncbi.nlm.nih.gov/pubmed/20975130" id="Pop6" rel="popover" title="Reference:" target=" blank">[6]</a>. However, there are conditions under which this format may be acceptable; depiction of circadian data is one as it mirrors the cognitive image we have of a clock. In addition, a (24h) loop can be displayed in a radial plot; something a Cartesian plot cannot do.
+        </p>
+        </div><!-- ====  end #graph5  ==== -->
+        <p><a href="#Ref">:Close panel:</a></p>
+      </section>
+      <!-- ============  end #section5  ============= -->
+      
+      </div><!-- end #circadian-->
+
+      <!--<div id="Ref"><br><h5>References</h5>     
+      <p>
+        [1] Hermida R.C., Ayala D.E., Fernandez J.R., <i>et al</i>. Modeling the circadian variability of ambulatory monitored blood pressure by multiple component analysis. <i>Chronobiol. Int.</i>, 2002, <b>19</b>: 461-81.<br>
+        [2] Fagard R.H., Thijs L., Staessen J.A., <i>et al</i>. Night-day blood pressure ratio and dipping pattern as predictors of death and cardiovascular events in hypertension. <i>J. Hum. Hypertens.</i>, 2009, <b>23</b>: 645-53.<br>
+        [3] Albert P.S., Hunsberger S. On analyzing circadian rhythms data using nonlinear mixed models with harmonic terms. <i>Biometrics</i>, 2005, <b>61</b>: 1115-22.<br>
+        [4] Hempel G., Karlsson M.O., de Alwis D., <i>et al</i>. Population pharmacokinetic-pharmacodynamic modeling of moxonidine using 24-hour ambulatory blood pressure measurements. <i>Clin. Pharmacol. Ther.</i>, 1998, <b>64</b>: 622-35.<br>
+        [5] Dehez M., Chenel M., Jochemsen R., <i>et al</i>. Population modeling approach of circadian blood pressure variations using ambulatory monitoring in dippers and non-dippers. <i>Poster presented at the PAGE meeting 2008.</i> - <a href="http://www.page-meeting.org/page/page2006/P2006III_01.pdf">PDF</a><br>
+        [6] Diehl S., Beck F., Burch M. Uncovering strengths and weaknesses of radial visualizations – an empirical approach. <i>IEEE Trans. Vis. Comp. Graph.</i>, 2010, <b>16</b> - <a href="http://www.st.uni-trier.de/~diehl/pubs/infovis10.pdf">PDF</a><br>
+      </p>
+      </div> -->   
+    </div><!-- end #main-->
+    <p><br>This page was created by Francois Mercier. The interactive graphics are made by <a href="http://khawai.com/" target=" blank">Khawai</a>. We thank <a href="https://github.com/syntagmatic/" target=" blank">Kai Chang</a> and <a href="http://enja.org/" target=" blank">Ian Johnson</a> for their advices regarding the programming of the radial plot.</p>
+  </div><!-- end #container-->
+
+  <script src="h1.js"></script>
+  <script src="h2.js"></script>
+  <script src="h3.js"></script>
+  <script src="h4.js"></script>
+  <script src="h5.js"></script>
+</body>
+</html>

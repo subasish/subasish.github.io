@@ -1,0 +1,193 @@
+<htmL>
+<head>
+</head>
+
+<style>
+#chartdiv {background: #3f3f4f;color:#ffffff;	
+	width	: 100%;
+	height	: 700;
+}			
+</style>
+
+<script type="text/javascript" src="http://www.amcharts.com/lib/3/ammap.js"></script>
+<script type="text/javascript" src="http://www.amcharts.com/lib/3/maps/js/usaLow.js"></script>
+<script type="text/javascript" src="http://www.amcharts.com/lib/3/themes/dark.js"></script>
+<body>
+<div id="chartdiv"></div>	
+<script>
+var map = AmCharts.makeChart("chartdiv", {
+	type: "map",
+    "theme": "dark",
+    pathToImages: "http://www.amcharts.com/lib/3/images/",
+
+	colorSteps: 10,
+
+	dataProvider: {
+		map: "usaLow",
+		areas: [{
+			id: "US-AL",
+			value: 493782
+		}, {
+			id: "US-AK",
+			value:  493782
+		}, {
+			id: "US-AZ",
+			value: 493782
+		}, {
+			id: "US-AR",
+			value:  493782
+		}, {
+			id: "US-CA",
+			value: 493782
+		}, {
+			id: "US-CO",
+			value:  493782
+		}, {
+			id: "US-CT",
+			value:  493782
+		}, {
+			id: "US-DE",
+			value:  493782
+		}, {
+			id: "US-FL",
+			value:  33871648
+		}, {
+			id: "US-GA",
+			value: 493782
+		}, {
+			id: "US-HI",
+			value:  493782
+		}, {
+			id: "US-ID",
+			value:  493782
+		}, {
+			id: "US-IL",
+			value: 33871648
+		}, {
+			id: "US-IN",
+			value: 493782
+		}, {
+			id: "US-IA",
+			value:  493782
+		}, {
+			id: "US-KS",
+			value:  493782
+		}, {
+			id: "US-KY",
+			value: 493782
+		}, {
+			id: "US-LA",
+			value: 493782
+		}, {
+			id: "US-ME",
+			value: 493782
+		}, {
+			id: "US-MD",
+			value:  493782
+		}, {
+			id: "US-MA",
+			value:  493782
+		}, {
+			id: "US-MI",
+			value: 493782
+		}, {
+			id: "US-MN",
+			value: 493782
+		}, {
+			id: "US-MS",
+			value:  493782
+		}, {
+			id: "US-MO",
+			value: 493782
+		}, {
+			id: "US-MT",
+			value:  493782
+		}, {
+			id: "US-NE",
+			value:  493782
+		}, {
+			id: "US-NV",
+			value:493782
+		}, {
+			id: "US-NH",
+			value:  493782
+		}, {
+			id: "US-NJ",
+			value:493782
+		}, {
+			id: "US-NM",
+			value: 493782
+		}, {
+			id: "US-NY",
+			value: 33871648
+		}, {
+			id: "US-NC",
+			value: 33871648
+		}, {
+			id: "US-ND",
+			value:  493782
+		}, {
+			id: "US-OH",
+			value: 493782
+		}, {
+			id: "US-OK",
+			value:  493782
+		}, {
+			id: "US-OR",
+			value: 493782
+		}, {
+			id: "US-PA",
+			value:  33871648
+		}, {
+			id: "US-RI",
+			value:  493782
+		}, {
+			id: "US-SC",
+			value: 493782
+		}, {
+			id: "US-SD",
+			value:  493782
+		}, {
+			id: "US-TN",
+			value: 493782
+		}, {
+			id: "US-TX",
+			value:  493782
+		}, {
+			id: "US-UT",
+			value: 493782
+		}, {
+			id: "US-VT",
+			value:  493782
+		}, {
+			id: "US-VA",
+			value:  493782
+		}, {
+			id: "US-WA",
+			value: 33871648
+		}, {
+			id: "US-WV",
+			value: 493782
+		}, {
+			id: "US-WI",
+			value: 493782
+		}, {
+			id: "US-WY",
+			value: 493782
+		}]
+	},
+
+	areasSettings: {
+		autoZoom: true
+	},
+
+	valueLegend: {
+		right: 10,
+		minValue: "little",
+		maxValue: "a lot!"
+	}
+
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1513 @@
+############################
+# Author: Joshua M. Tebbs  #
+# Date: 20 Dec 2009        #
+# Update: 25 Jul 2011      #
+# Purpose: STAT 520 R code #
+# CHAPTER 1                #
+############################
+ 
+# Example 1.1.
+# Page 2
+globaltemps <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\globaltemps.txt"),start=1856)
+plot(globaltemps,ylab="Global temperature deviations",xlab="Year",type="o")
+ 
+# Example 1.2.
+# Page 3
+data(milk)
+plot(milk,ylab="Amount of milk produced",xlab="Year",type="o")
+ 
+# Example 1.3.
+# Page 4
+data(CREF)
+plot(CREF,ylab="CREF stock values",type="o")
+ 
+# Example 1.4.
+# Page 5
+homeruns <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\homeruns.txt"),start=1909)
+plot(homeruns,ylab="Number of homeruns",xlab="Year",type="o")
+ 
+# Example 1.5.
+# Page 6
+earthquake <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\earthquake.txt"),start=1900)
+plot(earthquake,ylab="Number of earthquakes (7.0 or greater)",xlab="Year",type="o")
+ 
+# Example 1.6.
+# Page 7
+enrollment <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\enrollment.txt"),start=1954)
+plot(enrollment,ylab="USC Columbia fall enrollment",xlab="Year",type="o")
+ 
+# Example 1.7.
+# Page 8
+data(star)
+plot(star,ylab="Star brightness",type="o")
+ 
+# Example 1.8.
+# Page 9
+data(airmiles)
+plot(airmiles,ylab="Airline miles",xlab="Year",type="o")
+ 
+# Example 1.9.
+# Page 10
+sp500 <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\sp500.txt"))
+plot(sp500,ylab="SP500 Index",xlab="Time",type="o")
+ 
+# Example 1.10.
+# Page 11
+ventilation <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\ventilation.txt"))
+plot(ventilation,ylab="Ventilation (L/min)",xlab="Observation time",type="o")
+ 
+# Example 1.11.
+# Page 12
+exchangerate <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\exchangerate.txt"),start=1980,frequency=52)
+plot(exchangerate,ylab="British pounds",xlab="Year",type="o")
+ 
+# Example 1.12.
+# Page 13
+data(oil.price)
+plot(oil.price,ylab="Oil prices",xlab="Year",type="o")
+ 
+# Example 1.13.
+# Page 14
+data(larain)
+plot(larain,ylab="LA rainfall amounts",xlab="Year",type="o")
+ 
+# Example 1.14.
+# Page 15
+brick <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\brick.txt"),start=1956,freq=4)
+plot(brick,ylab="Australian clay brick production (in millions)",xlab="Time",type="o")
+ 
+# Example 1.15.
+# Page 16
+supremecourt <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\supremecourt.txt"),start=1926)
+plot(supremecourt,ylab="Percentage granted review",xlab="Time",type="o")
+ 
+# Example 1.8.
+# Add special plotting symbols for months
+# Page 19
+data(airmiles)
+plot(airmiles,ylab="Airline miles",xlab="Year",type='l')
+points(y=airmiles,x=time(airmiles),pch=as.vector(season(airmiles)),cex=1)
+
+
+
+
+
+
+############################
+# Author: Joshua M. Tebbs  #
+# Date: 20 Dec 2009        #
+# Update: 25 Jul 2011      #
+# Purpose: STAT 520 R code #
+# CHAPTER 2                #
+############################
+ 
+# Example 2.1.
+# Page 30
+white.noise <- rnorm(150,0,1)
+plot(white.noise,ylab="Simulated white noise process",xlab="Time",type="o")
+ 
+# Example 2.2.
+# Uses white noise process from Example 2.1.
+# Page 33
+random.walk <- white.noise*0
+for(i in 1:length(white.noise)){
+      random.walk[i]<-sum(white.noise[1:i])
+      }
+plot(random.walk,ylab="Simulated random walk process",xlab="Time",type="o")
+ 
+# Example 2.3.
+# Uses white noise process from Example 2.1.
+# Page 36
+moving.average <- filter(x = white.noise, filter = rep(x = 1/3, times = 3), method = "convolution", sides = 1)
+plot(moving.average,ylab="Simulated moving average process",xlab="Time",type="o")
+ 
+# Example 2.4.
+# Autoregressive model simulation
+# Page 37
+autoregressive <- arima.sim(model = list(ar = c(0.75)), n = 150, rand.gen = rnorm, sd = 1)
+plot(autoregressive,ylab="Simulated autoregressive process",xlab="Time",type="o")
+ 
+# Example 2.5.
+# Sinusoidal process
+# Page 38
+mean.function <- 2*sin(2*pi*1:156/52+0.6*pi)
+w <- rnorm(156,0,1)
+par(mfrow=c(2,2))
+plot(mean.function,ylab="",xlab="Time",type="l")
+plot(mean.function+w,ylab="",xlab="Time",type="o")
+plot(mean.function+2*w,ylab="",xlab="Time",type="o")
+plot(mean.function+4*w,ylab="",xlab="Time",type="o")
+
+
+
+############################
+# Author: Joshua M. Tebbs  #
+# Date: 20 Dec 2009        #
+# Update: 25 Jul 2011      #
+# Purpose: STAT 520 R code #
+# CHAPTER 3                #
+############################
+ 
+# Example 3.4.
+# Global temperature data from 1900
+# Page 53
+globaltemps <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\globaltemps.txt"),start=1856)
+globaltemps.1900 <- window(globaltemps,start=1900)
+plot(globaltemps.1900,ylab="Global temperature deviations (since 1900)",xlab="Year",type="o")
+ 
+# Example 3.4.
+# Global temperature data from 1900
+# Straight line model fit with output
+# Page 54
+globaltemps <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\globaltemps.txt"),start=1856)
+globaltemps.1900 <- window(globaltemps,start=1900)
+fit <- lm(globaltemps.1900~time(globaltemps.1900))
+summary(fit)
+plot(globaltemps.1900,ylab="Global temperature deviations (since 1900)",xlab="Year",type="o")
+abline(fit)
+ 
+# Example 3.4.
+# Global temperature data from 1900
+# Residuals from straight line model fit
+# Page 55
+globaltemps <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\globaltemps.txt"),start=1856)
+globaltemps.1900 <- window(globaltemps,start=1900)
+fit <- lm(globaltemps.1900~time(globaltemps.1900))
+plot(resid(fit),ylab="Residuals",xlab="Year",type="o")
+ 
+# Example 3.4.
+# Global temperature data from 1900
+# Plot of first data differences
+# Page 57
+globaltemps <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\globaltemps.txt"),start=1856)
+globaltemps.1900 <- window(globaltemps,start=1900)
+plot(diff(globaltemps.1900),ylab="Global temperature deviation differences",xlab="Year",type="o")
+ 
+# Example 3.5.
+# Gold price data
+# Page 59
+data(gold)
+plot(gold,ylab="Price",xlab="Time",type="o")
+ 
+# Example 3.5.
+# Gold price data
+# Quadratic model fit with output
+# Page 59-60
+data(gold)
+t <- time(gold)
+t.sq <- t^2
+fit <- lm(gold ~ t + t.sq)
+summary(fit)
+plot(gold,ylab="Price",xlab="Time",type="o")
+curve(expr = fit$coefficients[1] +
+             fit$coefficients[2]*x +
+             fit$coefficients[3]*x^2, col = "black", 
+             lty = "solid", lwd = 1, add = TRUE)
+ 
+# Example 3.5.
+# Gold price data
+# Residuals from quadratic model fit
+# Page 61
+data(gold)
+t <- time(gold)
+t.sq <- t^2
+fit <- lm(gold ~ t + t.sq)
+plot(resid(fit),ylab="Residuals",xlab="Time",type="o")
+ 
+# Example 3.6.
+# Beer sales data
+# Monthly plotting symbols added
+# Regression output included
+# Page 62-63
+data(beersales)
+b.sales<-window(beersales,start=1980)
+plot(b.sales,ylab="Sales",xlab="Year",type='l')
+points(y=b.sales,x=time(b.sales),pch=as.vector(season(b.sales)))
+month.<-season(b.sales)
+fit<-lm(b.sales ~ month.-1)
+summary(fit)
+ 
+# Example 3.6.
+# Beer sales data
+# Residuals from seasonal means model fit
+# Page 64
+data(beersales)
+b.sales<-window(beersales,start=1980)
+fit<-lm(b.sales ~ month.-1)
+plot(resid(fit),ylab="Residuals",xlab="Time",type="o")
+ 
+# Example 3.6.
+# Beer sales data
+# Cosine trend model fit and output
+# Page 66-67
+data(beersales)
+b.sales<-window(beersales,start=1980)
+har. <- harmonic(b.sales,1)
+fit <- lm(b.sales~har.)
+summary(fit)
+plot(ts(fitted(fit),freq=12,start=c(1980,1)),ylab="Sales",type='l',ylim=range(c(fitted(fit),b.sales)))
+points(b.sales)
+ 
+# Example 3.6.
+# Beer sales data
+# Residuals from cosine trend model fit
+data(beersales)
+# Page 68
+b.sales<-window(beersales,start=1980)
+har. <- harmonic(b.sales,1)
+fit <- lm(b.sales~har.)
+plot(resid(fit),ylab="Residuals",xlab="Time",type="o")
+ 
+# Example 3.4.
+# Global temperature data from 1900
+# Standardised residuals from straight line model fit
+# Histogram and qq plot
+# Figures were constructed separately
+# Page 72
+globaltemps <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\globaltemps.txt"),start=1856)
+globaltemps.1900 <- window(globaltemps,start=1900)
+fit <- lm(globaltemps.1900~time(globaltemps.1900))
+hist(rstudent(fit),main="Histogram of standardized residuals",xlab="Standardized residuals")
+qqnorm(rstudent(fit),main="QQ plot of standardized residuals")
+ 
+# Example 3.4.
+# Global temperature data from 1900
+# Shapiro-Wilk test for normality
+# Page 73
+globaltemps <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\globaltemps.txt"),start=1856)
+globaltemps.1900 <- window(globaltemps,start=1900)
+fit <- lm(globaltemps.1900~time(globaltemps.1900))
+shapiro.test(rstudent(fit))
+ 
+# Example 3.4.
+# Global temperature data from 1900
+# Standardised residuals from straight line model fit
+# Horizontal line added at 0
+# Page 74
+globaltemps <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\globaltemps.txt"),start=1856)
+globaltemps.1900 <- window(globaltemps,start=1900)
+fit <- lm(globaltemps.1900~time(globaltemps.1900))
+plot(rstudent(fit),ylab="Residuals",xlab="Year",type="o")
+abline(h=0)
+ 
+# Example 3.4.
+# Global temperature data from 1900
+# Runs test for independence on standardised residuals
+# Page 75
+globaltemps <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\globaltemps.txt"),start=1856)
+globaltemps.1900 <- window(globaltemps,start=1900)
+fit <- lm(globaltemps.1900~time(globaltemps.1900))
+runs(rstudent(fit))
+ 
+# Example 3.4.
+# Global temperature data from 1900
+# Calculate sample ACF for standardised residuals
+# Page 78
+globaltemps <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\globaltemps.txt"),start=1856)
+globaltemps.1900 <- window(globaltemps,start=1900)
+fit <- lm(globaltemps.1900~time(globaltemps.1900))
+acf(rstudent(fit),main="Sample ACF for standardized residuals")
+ 
+# Simulation exercise
+# Simulate white noise processes and plot ACFs
+# Page 79
+w.n.1 <- rnorm(100,0,1)
+w.n.2 <- rnorm(100,0,1)
+par(mfrow=c(2,2))
+plot(w.n.1,ylab="White noise process.1",xlab="Time",type="o")
+acf(w.n.1,main="Sample ACF")
+plot(w.n.2,ylab="White noise process.2",xlab="Time",type="o")
+acf(w.n.2,main="Sample ACF")
+
+
+
+############################
+# Author: Joshua M. Tebbs  #
+# Date: 20 Dec 2009        #
+# Update: 25 Jul 2011      #
+# Purpose: STAT 520 R code #
+# CHAPTER 4                #
+############################
+ 
+# Example 4.1.
+# MA(1) simulation
+# Important! R's convention is to use positive thetas for MA models (so we have to negate)
+# E.g., ma = 0.9 means theta = -0.9.
+# Page 83
+ma.sim <- arima.sim(list(order = c(0,0,1), ma = 0.9), n = 100)
+par(mfrow=c(2,2))
+plot(ma.sim,ylab=expression(Y[t]),xlab="Time",type="o",main="MA(1) simulation")
+acf(ma.sim,main="Sample ACF")
+plot(y=ma.sim,x=zlag(ma.sim,1),ylab=expression(Y[t]),xlab=expression(Y[t-1]),type='p',main="Lag 1 scatterplot")
+plot(y=ma.sim,x=zlag(ma.sim,2),ylab=expression(Y[t]),xlab=expression(Y[t-2]),type='p',main="Lag 2 scatterplot")
+ 
+# Example 4.1.
+# MA(1) simulation
+# Important! R's convention is to use positive thetas for MA models (so we have to negate)
+# E.g., ma = -0.9 means theta = 0.9.
+# Page 84
+ma.sim <- arima.sim(list(order = c(0,0,1), ma = -0.9), n = 100)
+par(mfrow=c(2,2))
+plot(ma.sim,ylab=expression(Y[t]),xlab="Time",type="o",main="MA(1) simulation")
+acf(ma.sim,main="Sample ACF")
+plot(y=ma.sim,x=zlag(ma.sim,1),ylab=expression(Y[t]),xlab=expression(Y[t-1]),type='p',main="Lag 1 scatterplot")
+plot(y=ma.sim,x=zlag(ma.sim,2),ylab=expression(Y[t]),xlab=expression(Y[t-2]),type='p',main="Lag 2 scatterplot")
+ 
+# Example 4.2.
+# MA(2) simulation
+# Important! R's convention is to use positive thetas for MA models (so we have to negate)
+# Page 87
+ma.sim <- arima.sim(list(order = c(0,0,2), ma = c(-0.9,0.7)), n = 100)
+par(mfrow=c(2,2))
+plot(ma.sim,ylab=expression(Y[t]),xlab="Time",type="o",main="MA(2) simulation")
+acf(ma.sim,main="Sample ACF")
+plot(y=ma.sim,x=zlag(ma.sim,1),ylab=expression(Y[t]),xlab=expression(Y[t-1]),type='p',main="Lag 1 scatterplot")
+plot(y=ma.sim,x=zlag(ma.sim,2),ylab=expression(Y[t]),xlab=expression(Y[t-2]),type='p',main="Lag 2 scatterplot")
+ 
+# Example 4.3.
+# True AR(1) autocorrelation functions (out to k=20 lags)
+# Uses ARMAacf function
+# ARMAacf function includes the k=0 lag
+# Use y = y[2:21] to remove k=0 lag from ARMAacf output
+# Page 91
+par(mfrow=c(2,2))
+y = ARMAacf(ar = c(0.9), lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ar = c(-0.9), lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ar = c(0.5), lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ar = c(-0.5), lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+ 
+# Example 4.3.
+# AR(1) simulations
+# Page 92
+par(mfrow=c(2,2))
+ar.sim.1 <- arima.sim(list(order = c(1,0,0), ar = 0.9), n = 100)
+ar.sim.2 <- arima.sim(list(order = c(1,0,0), ar = -0.9), n = 100)
+ar.sim.3 <- arima.sim(list(order = c(1,0,0), ar = 0.5), n = 100)
+ar.sim.4 <- arima.sim(list(order = c(1,0,0), ar = -0.5), n = 100)
+plot(ar.sim.1,ylab=expression(Y[t]),xlab="Time",type="o")
+plot(ar.sim.2,ylab=expression(Y[t]),xlab="Time",type="o")
+plot(ar.sim.3,ylab=expression(Y[t]),xlab="Time",type="o")
+plot(ar.sim.4,ylab=expression(Y[t]),xlab="Time",type="o")
+# AR(1) sample ACFs
+# Page 93
+par(mfrow=c(2,2))
+acf(ar.sim.1,main="Sample ACF")
+acf(ar.sim.2,main="Sample ACF")
+acf(ar.sim.3,main="Sample ACF")
+acf(ar.sim.4,main="Sample ACF")
+ 
+# Figure 4.7.
+# AR(2) stationarity region
+# Page 97
+par(xaxs = "i", yaxs = "i")
+plot(x = -2, y = -1, xlim = c(-2,2), ylim = c(-1,1),
+    type = "n", frame.plot = FALSE, xlab = expression(phi[1]), ylab = expression(phi[2]))
+#abline() draws y = mx + b      
+abline(a = 1, b = -1) #Draw line of phi2 = 1 – phi1
+abline(a = 1, b =  1) #Draw line of phi2 = 1 + phi1
+#Plot the phi1 and phi2 values
+points(x = 0, y = 0.5, pch = 1, col = "red")
+points(x = 0, y = -0.5, pch = 2, col = "darkgreen")
+points(x = -0.2, y = -0.5, pch = 2, col = "darkgreen")
+points(x = -1, y = -0.5, pch = 2, col = "darkgreen")
+points(x = -1.8, y = -0.9, pch = 2, col = "darkgreen")
+points(x = 0.5, y = 0.25, pch = 1, col = "red")
+points(x = 1.8, y = 0.9, pch = 3, col = "blue")
+points(x = -1.2, y = 0.8, pch = 3, col = "blue")
+legend(locator(1), legend = c("Real roots",
+      "Complex roots", "Outside stationarity region"), pch =
+      c(1,2,3), col = c("red", "darkgreen", "blue"), cex =
+      0.75, bty = "n")
+ 
+# Example 4.4.
+# True AR(2) autocorrelation functions (out to k=20 lags)
+# Uses ARMAacf function
+# ARMAacf function includes the k=0 lag
+# Use y = y[2:21] to remove k=0 lag from ARMAacf output
+# Page 100
+par(mfrow=c(2,2))
+y = ARMAacf(ar = c(0.5,-0.5), lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ar = c(1.1,-0.3), lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ar = c(-0.5,0.25), lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ar = c(1,-0.5), lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+ 
+# Example 4.4.
+# AR(2) simulations
+# Page 101
+par(mfrow=c(2,2))
+ar2.sim.1 <- arima.sim(list(order = c(2,0,0), ar = c(0.5,-0.5)), n = 100)
+ar2.sim.2 <- arima.sim(list(order = c(2,0,0), ar = c(1.1,-0.3)), n = 100)
+ar2.sim.3 <- arima.sim(list(order = c(2,0,0), ar = c(-0.5,-0.25)), n = 100)
+ar2.sim.4 <- arima.sim(list(order = c(2,0,0), ar = c(1,-0.5)), n = 100)
+plot(ar2.sim.1,ylab=expression(Y[t]),xlab="Time",type="o")
+plot(ar2.sim.2,ylab=expression(Y[t]),xlab="Time",type="o")
+plot(ar2.sim.3,ylab=expression(Y[t]),xlab="Time",type="o")
+plot(ar2.sim.4,ylab=expression(Y[t]),xlab="Time",type="o")
+# AR(2) sample ACFs
+# Page 102
+par(mfrow=c(2,2))
+acf(ar2.sim.1,main="Sample ACF")
+acf(ar2.sim.2,main="Sample ACF")
+acf(ar2.sim.3,main="Sample ACF")
+acf(ar2.sim.4,main="Sample ACF")
+ 
+# Figure 4.11.
+# True ARMA(1,1) autocorrelation functions (out to k=20 lags)
+# Uses ARMAacf function
+# ARMAacf function includes the k=0 lag
+# Use y = y[2:21] to remove k=0 lag from ARMAacf output
+# Page 112
+par(mfrow=c(2,2))
+y = ARMAacf(ar = 0.9, ma = 0.25, lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ar = -0.9, ma = 0.25, lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ar = 0.5, ma = 0.25, lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ar = -0.5, ma = 0.25, lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+
+
+
+
+
+############################
+# Author: Joshua M. Tebbs  #
+# Date: 20 Dec 2009        #
+# Update: 25 Jul 2011      #
+# Purpose: STAT 520 R code #
+# CHAPTER 5                #
+############################
+ 
+# Example 5.2.
+# Random walk and WN (difference) processes with ACFs
+# Page 115
+wn <- rnorm(150,0,1)
+rw <- wn*0
+for(i in 1:length(wn)){rw[i]<-sum(wn[1:i])}
+par(mfrow=c(2,2))
+plot(rw,ylab="",xlab="Time",type="o")
+acf(rw,main="Sample ACF")
+plot(diff(rw),ylab="",xlab="Time",type="o")
+acf(diff(rw),main="Sample ACF")
+ 
+# Example 5.2.
+# Ventilation data and first differences
+# Page 117
+ventilation <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\ventilation.txt"))
+plot(ventilation,ylab="Ventilation (L/min)",xlab="Observation time",type="o")
+acf(ventilation,main="Sample ACF")
+plot(diff(ventilation),ylab="First differences",xlab="Time",type="o")
+acf(diff(ventilation),main="Sample ACF: 1st differences")
+ 
+# Example 5.3.
+# ARI(1,1) simulation
+# Page 120
+par(mfrow=c(2,2))
+ari11.sim <- arima.sim(list(order = c(1,1,0), ar = c(0.7)), n = 150)
+plot(ari11.sim,ylab=expression(Y[t]),xlab="Time",type="o")
+acf(ari11.sim,main="Sample ACF: ARI(1,1)")
+plot(diff(ari11.sim),ylab=expression(Y[t]-Y[t-1]),xlab="Time",type="o")
+acf(diff(ari11.sim),main="Sample ACF: 1st differences")
+ 
+# Example 5.3.
+# IMA(1,1) simulation
+# Page 122
+par(mfrow=c(2,2))
+ima11.sim <- arima.sim(list(order = c(0,1,1), ma = c(-0.5)), n = 150)
+plot(ima11.sim,ylab=expression(Y[t]),xlab="Time",type="o")
+acf(ima11.sim,main="Sample ACF: IMA(1,1)")
+plot(diff(ima11.sim),ylab=expression(Y[t]-Y[t-1]),xlab="Time",type="o")
+acf(diff(ima11.sim),main="Sample ACF: 1st differences")
+ 
+# Figure 5.5.
+# IMA(2,2) simulation
+# Page 124
+par(mfrow=c(3,2))
+ima22.sim <- arima.sim(list(order = c(0,2,2), ma = c(-0.3,0.3)), n=150)
+plot(ima22.sim,ylab=expression(Y[t]),xlab="Time",type="o")
+acf(ima22.sim,main="Sample ACF: IMA(2,2)")
+plot(diff(ima22.sim),ylab="First differences",xlab="Time",type="o")
+acf(diff(ima22.sim),main="Sample ACF: 1st differences")
+plot(diff(diff(ima22.sim)),ylab="2nd differences",xlab="Time",type="o")
+acf(diff(diff(ima22.sim)),main="Sample ACF: 2nd differences")
+ 
+# Figure 5.6.
+# ARIMA(1,1,1) simulation
+# Page 126
+par(mfrow=c(2,2))
+arima111.sim <- arima.sim(list(order = c(1,1,1), ar = c(0.5), ma = c(0.5)), n = 150)
+plot(arima111.sim,ylab=expression(Y[t]),xlab="Time",type="o")
+acf(arima111.sim,main="Sample ACF: ARIMA(1,1,1)")
+plot(diff(arima111.sim),ylab="First differences",xlab="Time",type="o")
+acf(diff(arima111.sim),main="Sample ACF: 1st differences")
+ 
+# Example 5.4.
+# Electricity data
+# Page 130
+data(electricity)
+plot(electricity,ylab="Electricity usage",xlab="Time",type="o")
+# Page 133
+# Profile log-likelihood of lambda (for Box Cox transformation)
+# This can be computationally intense (time consuming)
+BoxCox.ar(electricity)
+ 
+# Example 5.4.
+# Electricity data
+# Time series plot of the log-transformed data
+# Page 134
+data(electricity)
+plot(log(electricity),ylab="(Log) electricity usage",xlab="Time",type="o")
+ 
+# Example 5.4.
+# Electricity data
+# First differences of log-transformed data and sample ACF
+# Plots were constructed separately
+# Page 135
+data(electricity)
+plot(diff(log(electricity)),ylab="First differences of log(Electricity)",xlab="Time",type="o")
+acf(as.vector(diff(log(electricity))),main="",ylab="ACF of the 1st differences of the logged series",lag.max=36)
+
+
+
+
+
+############################
+# Author: Joshua M. Tebbs  #
+# Date: 20 Dec 2009        #
+# Update: 25 Jul 2011      #
+# Purpose: STAT 520 R code #
+# CHAPTER 6                #
+############################
+ 
+# Example 6.2.
+# Monte Carlo simulation
+# MA(1) with theta = -0.7
+# Simulate sampling distribution of r_1, r_2, r_5, and r_10
+# n = 200 (sample size)
+# M = 2000 (number of MC simulations)
+# Page 141
+M<-2000
+r.1<-rep(0,M)
+r.2<-rep(0,M)
+r.5<-rep(0,M)
+r.10<-rep(0,M)
+for(i in 1:M){ts <- arima.sim(list(order = c(0,0,1), ma = 0.7), n =
+200)
+        temp<-as.numeric(acf(ts,plot=FALSE)[[1]])
+        r.1[i]<-temp[2]
+      r.2[i]<-temp[3]
+      r.5[i]<-temp[6]
+      r.10[i]<-temp[11]}
+par(mfrow=c(2,2))
+hist(r.1,xlab=expression(r[1]),main="")
+hist(r.2,xlab=expression(r[2]),main="")
+hist(r.5,xlab=expression(r[5]),main="")
+hist(r.10,xlab=expression(r[10]),main="")
+ 
+# Example 6.3.
+# MA(1) and MA(2) simulations and ACFs
+# MA margin of error bounds are used
+# Page 142
+ma1.sim <- arima.sim(list(order = c(0,0,1), ma = c(-0.5)), n = 100)
+ma2.sim <- arima.sim(list(order = c(0,0,2), ma = c(-0.5,0.5)), n = 100)
+par(mfrow=c(2,2))
+plot(ma1.sim,ylab=expression(Y[t]),main="MA(1) process",xlab="Time",type="o")
+acf(ma1.sim,ci.type='ma',main="Sample ACF")
+plot(ma2.sim,ylab=expression(Y[t]),main="MA(2) process",xlab="Time",type="o")
+acf(ma2.sim,ci.type='ma',main="Sample ACF")
+ 
+# Example 6.4.
+# AR(1) and AR(2) population ACF/PACF
+# Uses ARMAacf function
+# ARMAacf function includes the k=0 lag for ACF
+# Use y = y[2:21] to remove k=0 lag from ARMAacf output; only for ACF
+# Not needed for PACF
+# Page 149
+par(mfrow=c(2,2))
+y = ARMAacf(ar = c(0.9), lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ar = c(0.9), lag.max = 20, pacf=TRUE)
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Partial autocorrelation", main = "Population PACF")
+abline(h = 0)
+y = ARMAacf(ar = c(-0.5,0.25), lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ar = c(-0.5,0.25), lag.max = 20, pacf=TRUE)
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Partial autocorrelation", main = "Population PACF")
+abline(h = 0)
+ 
+# Example 6.4.
+# AR(1) and AR(2) simulated ACFs and PACFs
+# Page 150
+ar1.sim <- arima.sim(list(order = c(1,0,0), ar = c(0.9)), n = 150)
+ar2.sim <- arima.sim(list(order = c(2,0,0), ar = c(-0.5,0.25)), n = 150)
+par(mfrow=c(3,2))
+plot(ar1.sim,ylab=expression(Y[t]),main="AR(1) process",xlab="Time",type="o")
+plot(ar2.sim,ylab=expression(Y[t]),main="AR(2) process",xlab="Time",type="o")
+acf(ar1.sim,main="AR(1) sample ACF")
+acf(ar2.sim,main="AR(2) sample ACF")
+pacf(ar1.sim,main="AR(1) sample PACF")
+pacf(ar2.sim,main="AR(2) sample PACF")
+ 
+# Example 6.5.
+# MA(1) and MA(2) population ACF/PACF
+# Uses ARMAacf function
+# ARMAacf function includes the k=0 lag for ACF
+# Use y = y[2:21] to remove k=0 lag from ARMAacf output; only for ACF
+# Not needed for PACF
+# Page 151
+par(mfrow=c(2,2))
+y = ARMAacf(ma = c(-0.9), lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ma = c(-0.9), lag.max = 20, pacf=TRUE)
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Partial autocorrelation", main = "Population PACF")
+abline(h = 0)
+y = ARMAacf(ma = c(0.5,-0.25), lag.max = 20)
+y = y[2:21]
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ma = c(0.5,-0.25), lag.max = 20, pacf=TRUE)
+plot(y, x = 1:20, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Partial autocorrelation", main = "Population PACF")
+abline(h = 0)
+ 
+# Example 6.5.
+# MA(1) and MA(2) simulated ACFs and PACFs
+# Page 152
+ma1.sim <- arima.sim(list(order = c(0,0,1), ma = c(-0.9)), n = 150)
+ma2.sim <- arima.sim(list(order = c(0,0,2), ma = c(0.5,-0.25)), n = 150)
+par(mfrow=c(3,2))
+plot(ma1.sim,ylab=expression(Y[t]),main="MA(1) process",xlab="Time",type="o")
+plot(ma2.sim,ylab=expression(Y[t]),main="MA(2) process",xlab="Time",type="o")
+acf(ma1.sim,main="MA(1) sample ACF")
+acf(ma2.sim,main="MA(2) sample ACF")
+pacf(ma1.sim,main="MA(1) sample PACF")
+pacf(ma2.sim,main="MA(2) sample PACF")
+ 
+# Example 6.6.
+# ARMAacf function to compute theoretical ACF and PACF
+# AR(2) and MA(2) calculations
+# Page 154
+round(ARMAacf(ar = c(0.6,-0.4), lag.max = 10),digits=3)
+round(ARMAacf(ar = c(0.6,-0.4), lag.max = 10, pacf=TRUE),digits=3)
+round(ARMAacf(ma = c(0.6,-0.4), lag.max = 10),digits=3)
+round(ARMAacf(ma = c(0.6,-0.4), lag.max = 10, pacf=TRUE),digits=3)
+ 
+# Example 6.7.
+# Sample EACF calculation
+# Page 162-163
+#ARMA(1,1)
+arma11.sim <- arima.sim(list(order = c(1,0,1), ar = c(0.6), ma = c(0.8)), n = 200)
+eacf(arma11.sim)
+#ARMA(2,2)
+arma22.sim <- arima.sim(list(order = c(2,0,2), ar = c(0.5,-0.5), ma = c(0.8,-0.2)), n = 200)
+eacf(arma22.sim)
+#ARMA(3,3)
+arma33.sim <- arima.sim(list(order = c(3,0,3), ar = c(0.8,0.8,-0.9), ma = c(-0.9,0.8,-0.2)), n = 200)
+eacf(arma33.sim)
+ 
+# Example 6.8.
+# Global temperature and LA rainfall data
+# Time series plots
+# Plots were constructed separately
+# Page 168
+globaltemps <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\globaltemps.txt"),start=1856)
+plot(globaltemps,ylab="Global temperature deviations",xlab="Year",type="o")
+data(larain)
+plot(larain,ylab="LA rainfall amounts",xlab="Year",type="o")
+ 
+# Example 6.8.
+# Global temperature and LA rainfall data
+# Augmented Dickey-Fuller unit root test output
+# The user must install uroot package first!!
+# Page 168-169
+# Global temperature data
+library(uroot)
+globaltemps <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\globaltemps.txt"),start=1856)
+# Run this command to get best value of k (here, k=3)
+ar(diff(globaltemps))
+ADF.test(globaltemps,selectlags=list(mode=c(1,2,3),Pmax=3),itsd=c(1,0,0))
+# LA rainfall data
+library(uroot)
+data(larain)
+# Run this command to get best value of k (here, k=4)
+ar(diff(larain))
+ADF.test(larain,selectlags=list(mode=c(1,2,3,4),Pmax=4),itsd=c(1,0,0))
+ 
+# Example 6.9.
+# Ventilation data
+# Plots were created separately
+# Page 171
+ventilation <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\ventilation.txt"))
+plot(ventilation,ylab="Ventilation (L/min)",xlab="Observation time",type="o")
+plot(diff(ventilation),ylab="Ventilation differences",xlab="Observation time",type="o")
+# Perform Dickey-Fuller unit root test
+library(uroot)
+ar(diff(ventilation))
+# Last command suggests k=4
+ADF.test(ventilation,selectlags=list(mode=c(1,2,3,4),Pmax=4),itsd=c(1,0,0))
+# Last command gives p-value > 0.10 (original series is not stationary)
+# Therefore, use BIC on data differences
+# ARMA best subsets
+# Arranged according to BIC
+# Using first differences
+# Page 172
+res=armasubsets(y=diff(ventilation),nar=6,nma=6,y.name='diff.temp',ar.method='ols')
+plot(res)
+
+
+
+
+
+
+
+############################
+# Author: Joshua M. Tebbs  #
+# Date: 20 Dec 2009        #
+# Update: 25 Jul 2011      #
+# Purpose: STAT 520 R code #
+# CHAPTER 7                #
+############################
+ 
+# Example 7.1.
+# Page 180-181
+# Function that computes MOM estimate in MA(1) model
+estimate.ma1.mom=function(x){
+      r=acf(x,plot=F)$acf[1]; if (abs(r)<0.5) return((-1+sqrt(1-4*r^2))/(2*r))
+      else return(NA)
+      }
+# Number of MC simulations
+M=2000
+ma.mom = rep(0,M)
+wn.var.mom = rep(0,M)
+for (i in 1:M){
+      ma.sim <- arima.sim(list(order = c(0,0,1), ma = c(-0.7)), n = 100)
+      ma.mom[i] <- estimate.ma1.mom(ma.sim)
+      wn.var.mom[i] <- var(ma.sim)/(1+(estimate.ma1.mom(ma.sim))^2)
+      }
+# Create historgrams (separately)
+hist(ma.mom,xlab=expression(theta),main="")
+hist(wn.var.mom,xlab=expression(sigma[e]^2),main="")
+# Count how many times (out of M=2000) MOM estimate does not exist
+M-length(ma.mom[ma.mom>1])
+ 
+# Example 7.2
+# Lake Huron elevation data
+# Page 182
+huron <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\huron.txt"),start=1880)
+plot(huron,ylab="Elevation level (in feet)",xlab="Year",type="o")
+# Sample ACF and PACF
+# Plots are constructed separately
+# Page 183
+acf(huron,main="Sample ACF")
+pacf(huron,main="Sample PACF")
+# Compute sample statistics
+# First two sample autocorrelations
+acf(huron,lag.max=2,plot=FALSE)
+# Sample mean and variance
+mean(huron)
+var(huron)
+# Fit AR(1) and AR(2) models automatically to Huron data
+ar(huron,order.max=1,AIC=F,method='yw') # method of moments
+ar(huron,order.max=2,AIC=F,method='yw') # method of moments
+ 
+# Example 7.3
+# Gota river discharge data
+# Page 190
+gota <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\gota.txt"),start=1807)
+plot(gota,ylab="Water discharge rate",xlab="Year",type="o")
+# Sample ACF and PACF
+# Plots are constructed separately
+# Page 191
+acf(gota,main="Sample ACF")
+pacf(gota,main="Sample PACF")
+# First sample autocorrelation
+acf(gota,lag.max=1,plot=FALSE)
+# Sample mean and variance
+mean(gota)
+var(gota)
+# Fit MA(1) model using CLS
+arima(gota,order=c(0,0,1),method='CSS') # conditional least squares
+ 
+# Example 7.4
+# Lake Huron elevation data
+# CLS estimation
+# Page 192-193
+huron <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\huron.txt"),start=1880)
+# Fit AR(1) and AR(2) models using CLS
+arima(huron,order=c(1,0,0),method='CSS') # conditional least squares
+arima(huron,order=c(2,0,0),method='CSS') # conditional least squares
+# ARMA best subsets
+# Arranged according to BIC
+# This figure is not shown in the notes
+res=armasubsets(y=huron,nar=6,nma=6,y.name='huron',ar.method='ols')
+plot(res)
+ 
+# Example 7.5
+# Bovine blood sugar data
+# Page 195
+cows<- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\cows.txt"))
+plot(cows,ylab="Blood sugar level (mg/100ml blood)",xlab="Days",type="o")
+# Sample ACF and PACF
+# Plots are constructed separately
+# Page 196
+acf(cows,main="Sample ACF")
+pacf(cows,main="Sample PACF")
+# Fit ARMA(1,1) model using CLS
+arima(cows,order=c(1,0,1),method='CSS') # conditional least squares
+# This figure is not shown in the notes
+res=armasubsets(y=cows,nar=6,nma=6,y.name='cows',ar.method='ols')
+plot(res)
+ 
+# Example 7.6
+# Gota river discharge data
+# ML estimation
+# Page 202
+gota <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\gota.txt"),start=1807)
+arima(gota,order=c(0,0,1),method='ML') # maximum likelihood
+ 
+# Example 7.7.
+# Earthquake data
+# Page 203-204
+# Plots were constructed separately
+earthquake <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\earthquake.txt"),start=1900)
+plot(earthquake,ylab="Number of earthquakes (7.0 or greater)",xlab="Year",type="o")
+BoxCox.ar(earthquake)
+# Square root transformed series
+# Sample ACF/PACF and armasubsets output
+# Page 205
+par(mfrow=c(2,2))
+plot(sqrt(earthquake),ylab="No. of earthquakes (Square-root scale)",xlab="Year",type="o")
+res=armasubsets(y=sqrt(earthquake),nar=6,nma=6,y.name='sqrt(e.qu.)',ar.method='ols')
+plot(res)
+acf(sqrt(earthquake),main="Sample ACF")
+pacf(sqrt(earthquake),main="Sample PACF")
+# Fit ARMA(1,1) model to square-root transformed data
+arima(sqrt(earthquake),order=c(1,0,1),method='ML') # maximum likelihood
+ 
+# Example 7.8.
+# Supreme Court data
+# Page 206-207
+supremecourt <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\supremecourt.txt"),start=1926)
+par(mfrow=c(2,2))
+plot(supremecourt,ylab="Percentage granted review",xlab="Time",type="o")
+BoxCox.ar(supremecourt)
+plot(log(supremecourt),ylab="Percentage granted review (Log scale)",xlab="Year",type="o")
+plot(diff(log(supremecourt)),ylab="Difference of logarithms",xlab="Year",type="o")
+# These results are not shown in the notes
+acf(diff(log(supremecourt)))
+pacf(diff(log(supremecourt)))
+eacf(diff(log(supremecourt)))
+res=armasubsets(y=diff(log(supremecourt)),nar=6,nma=6,y.name='LD(SC)',ar.method='ols')
+plot(res)
+# Fit ARIMA(0,1,1) model to the log-transformed data
+arima(log(supremecourt),order=c(0,1,1),method='ML') # ML
+
+
+
+
+############################
+# Author: Joshua M. Tebbs  #
+# Date: 20 Dec 2009        #
+# Update: 25 Jul 2011      #
+# Purpose: STAT 520 R code #
+# CHAPTER 8                #
+############################
+ 
+# Example 8.1
+# Gota River discharge data
+# Residual analysis
+# Page 212-213
+gota <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\gota.txt"),start=1807)
+gota.ma1.fit = arima(gota,order=c(0,0,1),method='ML')
+gota.ma1.fit
+par(mfrow=c(2,2))
+plot(gota,ylab="Water discharge rate",xlab="Year",type="o")
+plot(rstandard(gota.ma1.fit),xlab="Time",ylab="Standardised residuals",type='o')
+abline(h=0)
+hist(rstandard(gota.ma1.fit),xlab="Standardised residuals",main="")
+qqnorm(rstandard(gota.ma1.fit),main="")
+qqline(rstandard(gota.ma1.fit))
+# Shapiro-Wilk and runs tests
+shapiro.test(rstandard(gota.ma1.fit))
+runs(rstandard(gota.ma1.fit))
+ 
+# Example 8.2
+# Lake Huron elevation data
+# Residual analysis
+# Page 213-215
+huron <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\huron.txt"),start=1880)
+huron.ar1.fit = arima(huron,order=c(1,0,0),method='ML')
+huron.ar1.fit
+par(mfrow=c(2,2))
+plot(huron,ylab="Elevation level (in feet)",xlab="Year",type="o")
+plot(rstandard(huron.ar1.fit),xlab="Time",ylab="Standardised residuals",type='o')
+abline(h=0)
+hist(rstandard(huron.ar1.fit),xlab="Standardised residuals",main="")
+qqnorm(rstandard(huron.ar1.fit),main="")
+qqline(rstandard(huron.ar1.fit))
+# Shapiro-Wilk and runs tests
+shapiro.test(rstandard(huron.ar1.fit))
+runs(rstandard(huron.ar1.fit))
+ 
+# Example 8.3
+# Gota River discharge data
+# Sample ACF for residuals
+# Page 218-219
+gota <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\gota.txt"),start=1807)
+gota.ma1.fit = arima(gota,order=c(0,0,1),method='ML')
+acf(residuals(gota.ma1.fit),main="Sample ACF for MA(1) residuals")
+acf(residuals(gota.ma1.fit),plot=F,lag.max=10)
+acf(residuals(arima(gota,order=c(0,0,1))),plot=F,lag.max=10)
+ 
+# Example 8.4
+# Gota River discharge data
+# Ljung-Box test for model adequacy
+# tsdiag output
+# Page 221-222
+gota <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\gota.txt"),start=1807)
+gota.ma1.fit = arima(gota,order=c(0,0,1),method='ML')
+Box.test(residuals(gota.ma1.fit),lag = 10,type="Ljung-Box",fitdf=1)
+tsdiag(gota.ma1.fit,gof=20,omit.initial=F)
+ 
+# Example 8.5.
+# Earthquake data
+# tsdiag output
+# Page 223
+earthquake <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\earthquake.txt"),start=1900)
+# Fit ARMA(1,1) model to square-root transformed data
+arima(sqrt(earthquake),order=c(1,0,1),method='ML') # maximum likelihood
+sqrt.earthquake.arma11.fit = arima(sqrt(earthquake),order=c(1,0,1),method='ML') # maximum likelihood
+tsdiag(sqrt.earthquake.arma11.fit,gof=20,omit.initial=F)
+# Shapiro-Wilk and runs tests
+shapiro.test(rstandard(sqrt.earthquake.arma11.fit))
+runs(rstandard(sqrt.earthquake.arma11.fit))
+ 
+# Example 8.6.
+# Supreme Court data
+# tsdiag output
+# Page 224
+supremecourt <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\supremecourt.txt"),start=1926)
+# Fit ARIMA(0,1,1) model to the log-transformed data
+log.supremecourt.ima11.fit = arima(log(supremecourt),order=c(0,1,1),method='ML') # ML
+tsdiag(log.supremecourt.ima11.fit,gof=20,omit.initial=F)
+# Shapiro-Wilk and runs tests
+shapiro.test(rstandard(log.supremecourt.ima11.fit))
+runs(rstandard(log.supremecourt.ima11.fit))
+ 
+# Example 8.7
+# Oil price data
+# Residual analysis for log-transformed IMA(1,1) model
+# Page 225
+data(oil.price)
+ima11.log.oil.fit = arima(log(oil.price),order=c(0,1,1),method='ML')
+# Page 226
+par(mfrow=c(2,2))
+plot(diff(log(oil.price)),ylab="1st differences of logarithms",xlab="Year",type="o")
+plot(rstandard(ima11.log.oil.fit),xlab="Time",ylab="Standardised residuals",type='o')
+abline(h=0)
+hist(rstandard(ima11.log.oil.fit),xlab="Standardised residuals",main="")
+qqnorm(rstandard(ima11.log.oil.fit),main="")
+qqline(rstandard(ima11.log.oil.fit))
+## Shapiro-Wilk and runs tests
+shapiro.test(rstandard(ima11.log.oil.fit))
+runs(rstandard(ima11.log.oil.fit))
+# Page 227
+tsdiag(ima11.log.oil.fit,gof=20,omit.initial=F)
+ 
+# Example 8.8
+# Gota River discharge data
+# Overfitting
+# Page 229
+gota <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\gota.txt"),start=1807)
+gota.ma1.fit = arima(gota,order=c(0,0,1),method='ML')
+# Two overfit models
+gota.ma2.overfit = arima(gota,order=c(0,0,2),method='ML')
+gota.arma11.overfit = arima(gota,order=c(1,0,1),method='ML')
+gota.ma1.fit
+gota.ma2.overfit
+gota.arma11.overfit
+
+
+
+
+############################
+# Author: Joshua M. Tebbs  #
+# Date: 20 Dec 2009        #
+# Update: 25 Jul 2011      #
+# Purpose: STAT 520 R code #
+# CHAPTER 9                #
+############################
+ 
+# Examples 9.1 and 9.2
+# Global temperature and beer sales data
+# Fitted trend models added
+# See Chapter 3 notes for R code
+# Page 234-235
+ 
+# Example 9.3
+# Lake Huron elevation data (1880-2006)
+# AR(1) forecasting
+# Page 241
+huron <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\huron.txt"),start=1880)
+# Fit AR(1) model using ML
+huron.ar1.fit <- arima(huron,order=c(1,0,0),method='ML')
+huron.ar1.fit
+# Obtain MMSE forecasts
+huron.ar1.predict <- predict(huron.ar1.fit,n.ahead=20)
+round(huron.ar1.predict$pred,3)
+round(huron.ar1.predict$se,3)
+# Create lower and upper prediction interval bounds
+lower.pi<-huron.ar1.predict$pred-qnorm(0.975,0,1)*huron.ar1.predict$se
+upper.pi<-huron.ar1.predict$pred+qnorm(0.975,0,1)*huron.ar1.predict$se
+# Display prediction intervals (2007-2026)
+data.frame(Year=c(2007:2026),lower.pi,upper.pi)
+# Original series starts at Year = 1880
+# Note: Argument n1=1940 starts plot at 1940
+# Note: Argument pch=16 produces a small black circle (for MMSE forecasts)
+plot(huron.ar1.fit,n.ahead=20,col='red',type='b',pch=16,n1=1940,ylab="Elevation level (in feet)",xlab="Year")
+# Put horizontal line at ML estimate of overall mean
+abline(h=coef(huron.ar1.fit)[names(coef(huron.ar1.fit))=='intercept'])
+# Put prediction interval lines on plot (darker than default)
+lines(y=lower.pi,x=2007:2026,lwd=2,col="red",lty="dashed")
+lines(y=upper.pi,x=2007:2026,lwd=2,col="red",lty="dashed")
+ 
+# Example 9.4
+# Gota River discharge data (1807-1956)
+# MA(1) forecasting
+# Page 246
+gota <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\gota.txt"),start=1807)
+gota.ma1.fit = arima(gota,order=c(0,0,1),method='ML')
+gota.ma1.fit
+# Obtain MMSE forecasts
+gota.ma1.predict <- predict(gota.ma1.fit,n.ahead=10)
+round(gota.ma1.predict$pred,3)
+round(gota.ma1.predict$se,3)
+# Create lower and upper prediction interval bounds
+lower.pi<-gota.ma1.predict$pred-qnorm(0.975,0,1)*gota.ma1.predict$se
+upper.pi<-gota.ma1.predict$pred+qnorm(0.975,0,1)*gota.ma1.predict$se
+# Display prediction intervals (1957-1966)
+data.frame(Year=c(1957:1966),lower.pi,upper.pi)
+# Original series starts at Year = 1807
+# Note: Argument n1=1890 starts plot at 1890
+# Note: Argument pch=16 produces a small black circle (for MMSE forecasts)
+plot(gota.ma1.fit,n.ahead=10,col='red',type='b',pch=16,n1=1890,ylab="Water discharge rate",xlab="Year")
+# Put horizontal line at ML estimate of overall mean
+abline(h=coef(gota.ma1.fit)[names(coef(gota.ma1.fit))=='intercept'])
+# Put prediction interval lines on plot (darker than default)
+lines(y=lower.pi,x=1957:1966,lwd=2,col="red",lty="dashed")
+lines(y=upper.pi,x=1957:1966,lwd=2,col="red",lty="dashed")
+ 
+# Example 9.5
+# Bovine blood sugar data (176 observations)
+# ARMA(1,1) forecasting
+# Page 251
+cows<- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\cows.txt"))
+cows.arma11.fit = arima(cows,order=c(1,0,1),method='ML')
+cows.arma11.fit
+# Obtain MMSE forecasts
+cows.arma11.predict <- predict(cows.arma11.fit,n.ahead=10)
+round(cows.arma11.predict$pred,3)
+round(cows.arma11.predict$se,3)
+# Create lower and upper prediction interval bounds
+lower.pi<-cows.arma11.predict$pred-qnorm(0.975,0,1)*cows.arma11.predict$se
+upper.pi<-cows.arma11.predict$pred+qnorm(0.975,0,1)*cows.arma11.predict$se
+# Display prediction intervals (Days 177-186)
+data.frame(Day=c(177:186),lower.pi,upper.pi)
+# Original series starts at Day = 1
+# Note: Argument n1=80 starts plot at Day = 81
+# Note: Argument pch=16 produces a small black circle (for MMSE forecasts)
+plot(cows.arma11.fit,n.ahead=10,col='red',type='b',pch=16,n1=81,ylab="Blood sugar level (mg/100ml blood)",xlab="Day")
+# Put horizontal line at ML estimate of overall mean
+abline(h=coef(cows.arma11.fit)[names(coef(cows.arma11.fit))=='intercept'])
+# Put prediction interval lines on plot (darker than default)
+lines(y=lower.pi,x=177:186,lwd=2,col="red",lty="dashed")
+lines(y=upper.pi,x=177:186,lwd=2,col="red",lty="dashed")
+ 
+# Example 9.6
+# Oil price data (1/86-1/06)
+# IMA(1,1) forecasting
+# Log transformed
+# Page 255
+data(oil.price)
+ima11.log.oil.fit = arima(log(oil.price),order=c(0,1,1),method='ML')
+ima11.log.oil.fit
+# Obtain MMSE forecasts (on log scale)
+ima11.log.oil.predict <- predict(ima11.log.oil.fit,n.ahead=12)
+round(ima11.log.oil.predict$pred,3)
+round(ima11.log.oil.predict$se,3)
+# Create lower and upper prediction interval bounds
+lower.pi<-ima11.log.oil.predict$pred-qnorm(0.975,0,1)*ima11.log.oil.predict$se
+upper.pi<-ima11.log.oil.predict$pred+qnorm(0.975,0,1)*ima11.log.oil.predict$se
+# Display prediction intervals (12 months ahead)
+year.temp = c(2006.083,2006.166,2006.250,2006.333,2006.416,2006.500,2006.583,2006.666,2006.750,2006.833,2006.916,2007)
+data.frame(Month=year.temp,lower.pi,upper.pi)
+# Original series starts at Month = Jan 1986
+# Note: Argument n1=c(1998,1) starts plot at Time = Jan 1998
+# Note: Argument pch=16 produces a small black circle (MMSE prediction)
+plot(ima11.log.oil.fit,n.ahead=12,col='red',type='b',pch=16,n1=c(1998,1),ylab="Oil prices (on log scale)",xlab="Year")
+# Put prediction interval lines on plot (darker than default)
+lines(y=lower.pi,x=year.temp,lwd=2,col="red",lty="dashed")
+lines(y=upper.pi,x=year.temp,lwd=2,col="red",lty="dashed")
+ 
+# Example 9.7
+# USC Fall enrollment data (1954-2010)
+# ARI(1,1) forecasting
+# Page 256
+enrollment <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\enrollment.txt"),start=1954)
+enrollment.ari11.fit = arima(enrollment,order=c(1,1,0),method='ML')
+enrollment.ari11.fit
+# Obtain predictions
+enrollment.ari11.predict <- predict(enrollment.ari11.fit,n.ahead=10)
+round(enrollment.ari11.predict$pred,3)
+round(enrollment.ari11.predict$se,3)
+# Create lower and upper prediction interval bounds
+lower.pi<-enrollment.ari11.predict$pred-qnorm(0.975,0,1)*enrollment.ari11.predict$se
+upper.pi<-enrollment.ari11.predict$pred+qnorm(0.975,0,1)*enrollment.ari11.predict$se
+# Display prediction intervals (10 years ahead)
+data.frame(Year=c(2011:2020),lower.pi,upper.pi)
+# Original series starts at 1954
+# Note: Argument n1=1974 starts plot at 1974
+# Note: Argument pch=16 produces a small black circle (MMSE prediction)
+plot(enrollment.ari11.fit,n.ahead=10,col='red',type='b',pch=16,n1=1974,ylab="USC Columbia fall enrollment",xlab="Year")
+# Put prediction interval lines on plot (darker than default)
+lines(y=lower.pi,x=c(2011:2020),lwd=2,col="red",lty="dashed")
+lines(y=upper.pi,x=c(2011:2020),lwd=2,col="red",lty="dashed")
+ 
+# Example 9.8
+# Global temperature data
+# Linear trend model fit
+# See Chapter 3 notes for R code
+# Page 260
+ 
+# Example 9.9
+# Lake Huron elevation data (1880-2006)
+# Prediction limits
+# See prediction limit code in Example 9.3
+# Page 262
+ 
+# Example 9.10
+# Oil price data (1/86-1/06)
+# IMA(1,1) forecasting
+# Log transformed
+# Prediction limits
+# Page 265
+data(oil.price)
+ima11.log.oil.fit = arima(log(oil.price),order=c(0,1,1),method='ML')
+# MMSE forecasts on log scale
+ima11.log.oil.predict <- predict(ima11.log.oil.fit,n.ahead=12)
+round(ima11.log.oil.predict$pred,3)
+round(ima11.log.oil.predict$se,3)
+# MMSE forecasts back-transformed (to original scale)
+oil.price.predict <- round(exp(ima11.log.oil.predict$pred + (1/2)*(ima11.log.oil.predict$se)^2),3)
+oil.price.predict
+# Compute prediction intervals (on original scale)
+lower.pi<-ima11.log.oil.predict$pred-qnorm(0.975,0,1)*ima11.log.oil.predict$se
+upper.pi<-ima11.log.oil.predict$pred+qnorm(0.975,0,1)*ima11.log.oil.predict$se
+year.temp = c(2006.083,2006.166,2006.250,2006.333,2006.416,2006.500,2006.583,2006.666,2006.750,2006.833,2006.916,2007)
+data.frame(Month=year.temp,lower.pi=exp(lower.pi),upper.pi=exp(upper.pi))
+
+
+
+
+
+
+############################
+# Author: Joshua M. Tebbs  #
+# Date: 20 Dec 2009        #
+# Update: 25 Jul 2011      #
+# Purpose: STAT 520 R code #
+# CHAPTER 10               #
+############################
+ 
+# Example 10.1.
+# US milk production data
+# Page 268
+data(milk)
+plot(milk,ylab="Amount of milk produced",xlab="Year",type="o")
+# Page 269
+plot(diff(milk),ylab="Amount of milk produced: First differences",xlab="Year",type="o")
+points(y=diff(milk),x=time(diff(milk)),pch=as.vector(season(diff(milk))),cex=1) 
+ 
+# Example 10.2.
+# MA(1) simulation with s=12
+# Page 271
+seasonal.ma1.sim <- arima.sim(list(order = c(0,0,12), ma = c(rep(0,11),0.9)), n = 200)
+plot(seasonal.ma1.sim,ylab=expression(Y[t]),xlab="Time",type="o")
+# ACF/PACF: Population and sample
+# ARMAacf function includes the k=0 lag for ACF
+# Use y = y[2:51] to remove k=0 lag from ARMAacf output; only for ACF
+# Page 272
+par(mfrow=c(2,2))
+y = ARMAacf(ma = c(rep(0,11),0.9), lag.max = 50)
+y = y[2:51]
+plot(y, x = 1:50, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ma = c(rep(0,11),0.9), lag.max = 50, pacf=TRUE)
+plot(y, x = 1:50, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Partial autocorrelation", main = "Population PACF")
+abline(h = 0)
+acf(seasonal.ma1.sim,main="Sample ACF",lag.max=50)
+pacf(seasonal.ma1.sim,main="Sample PACF",lag.max=50)
+ 
+# Example 10.3.
+# AR(1) simulation with s=12
+# Page 275
+seasonal.ar1.sim <- arima.sim(list(order = c(12,0,0), ar = c(rep(0,11),0.9)), n = 200)
+plot(seasonal.ar1.sim,ylab=expression(Y[t]),xlab="Time",type="o")
+# ACF/PACF: Population and sample
+# ARMAacf function includes the k=0 lag for ACF
+# Use y = y[2:51] to remove k=0 lag from ARMAacf output; only for ACF
+# Page 276
+par(mfrow=c(2,2))
+y = ARMAacf(ar = c(rep(0,11),0.8), lag.max = 50)
+y = y[2:51]
+plot(y, x = 1:50, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "Population ACF")
+abline(h = 0)
+y = ARMAacf(ar = c(rep(0,11),0.8), lag.max = 50, pacf=TRUE)
+plot(y, x = 1:50, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Partial autocorrelation", main = "Population PACF")
+abline(h = 0)
+acf(seasonal.ar1.sim,main="Sample ACF",lag.max=50)
+pacf(seasonal.ar1.sim,main="Sample PACF",lag.max=50)
+ 
+# MA(1) x MA(1)_12 process
+# MA(1) x AR(1)_12 process
+# Theoretical ACF and PACF
+# Page 282
+par(mfrow=c(2,2))
+phi.ar12=c(rep(0,11),0.9)
+theta.Theta=c(-0.5,rep(0,10),-0.9,0.45)
+# ARMAacf function includes the k=0 lag for ACF
+# Use y = y[2:51] to remove k=0 lag from ARMAacf output; only for ACF
+y = acf.ma.ma = ARMAacf(ma=theta.Theta,lag.max=50)
+y = y[2:51]
+plot(y, x = 1:50, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "MA1*MA1(12) ACF")
+abline(h=0)
+pacf.ma.ma = ARMAacf(ma=theta.Theta,lag.max=50,pacf=T)
+plot(pacf.ma.ma,type='h',xlab="k",ylab="PACF",main = "MA1*MA1(12) PACF")
+abline(h=0)
+y = acf.ma.ar = ARMAacf(ar=phi.ar12,ma=-0.5,lag.max=50)
+y = y[2:51]
+plot(y, x = 1:50, type = "h", ylim = c(-1,1), xlab = "k",
+      ylab = "Autocorrelation", main = "MA1*AR1(12) ACF")
+abline(h=0)
+pacf.ma.ar = ARMAacf(ar=phi.ar12,ma=-0.5,lag.max=50,pacf=T)
+plot(pacf.ma.ar,type='h',xlab="k",ylab="PACF",main = "MA1*AR1(12) PACF")
+abline(h=0)
+ 
+# Example 10.4
+# Denver, CO Bus/Rail boarding data
+# Log-transformed
+# Page 283
+data(boardings)
+# "boardings" is a multivariate dataset (2 series)
+# Number of boardings is the first series
+boardings = boardings[,1]
+plot(boardings,ylab="Number of boardings (log-transformed)",xlab="Year",type="o")
+points(y=boardings,x=time(boardings),pch=as.vector(season(boardings)))
+# Sample ACF and PACF
+# Plots were constructed separately
+# Page 285
+acf(as.vector(boardings),main="Sample ACF",lag.max=40)
+pacf(as.vector(boardings),main="Sample PACF",lag.max=40)
+# Fit ARMA(0,3) x ARMA(1,0)_{12}
+boardings.arma03.arma10 = arima(boardings,order=c(0,0,3),method='ML',seasonal=list(order=c(1,0,0),period=12))
+boardings.arma03.arma10
+# Residual analysis
+hist(rstandard(boardings.arma03.arma10),xlab="Standardised residuals",main="")
+qqnorm(rstandard(boardings.arma03.arma10),main="")
+qqline(rstandard(boardings.arma03.arma10))
+# Shapiro-Wilk and runs tests
+shapiro.test(rstandard(boardings.arma03.arma10))
+runs(rstandard(boardings.arma03.arma10))
+tsdiag(boardings.arma03.arma10,gof=20,omit.initial=F)
+# Overfitting
+arima(boardings,order=c(1,0,3),method='ML',seasonal=list(order=c(1,0,0),period=12))
+arima(boardings,order=c(0,0,4),method='ML',seasonal=list(order=c(1,0,0),period=12))
+arima(boardings,order=c(0,0,3),method='ML',seasonal=list(order=c(2,0,0),period=12))
+arima(boardings,order=c(0,0,3),method='ML',seasonal=list(order=c(1,0,1),period=12))
+# Forecasting
+# Full data set: 8/00-3/06
+boardings.arma03.arma10.fit = arima(boardings,order=c(0,0,3),method='ML',seasonal=list(order=c(1,0,0),period=12))
+# MMSE forecasts on log scale
+boardings.arma03.arma10.predict <- predict(boardings.arma03.arma10.fit,n.ahead=12)
+round(boardings.arma03.arma10.predict$pred,3)
+round(boardings.arma03.arma10.predict$se,3)
+# Display prediction intervals (12 months ahead) on log scale
+year.temp = c(2006.250,2006.333,2006.416,2006.500,2006.583,2006.666,2006.750,2006.833,2006.916,2007,2007.083,2007.166)
+# Compute prediction intervals (on log scale)
+lower.pi<-boardings.arma03.arma10.predict$pred-qnorm(0.975,0,1)*boardings.arma03.arma10.predict$se
+upper.pi<-boardings.arma03.arma10.predict$pred+qnorm(0.975,0,1)*boardings.arma03.arma10.predict$se
+data.frame(Month=year.temp,lower.pi,upper.pi)
+# Original series starts at Month = Aug 2000
+# Note: Argument n1=c(2003,1) starts plot at Time = Jan 2003
+# Note: Argument pch=16 produces a small black circle (MMSE prediction)
+plot(boardings.arma03.arma10.fit,n.ahead=12,col='red',type='b',pch=16,n1=c(2003,1),ylab="Number of boardings (log-transformed)",xlab="Year")
+# Put horizontal line at ML estimate of overall mean
+abline(h=coef(boardings.arma03.arma10.fit)[names(coef(boardings.arma03.arma10.fit))=='intercept'])
+# Put prediction interval lines on plot (darker than default)
+lines(y=lower.pi,x=year.temp,lwd=2,col="red",lty="dashed")
+lines(y=upper.pi,x=year.temp,lwd=2,col="red",lty="dashed")
+# MMSE forecasts back-transformed (to original scale)
+denver.boardings.predict <- round(exp(boardings.arma03.arma10.predict$pred + (1/2)*(boardings.arma03.arma10.predict$se)^2),3)
+denver.boardings.predict
+# Compute prediction intervals (on original scale)
+data.frame(Month=year.temp,lower.pi=exp(lower.pi),upper.pi=exp(upper.pi))
+ 
+# Example 10.5.
+# US milk production data
+# Plots were constructed separately
+# Page 292
+data(milk)
+plot(milk,ylab="Amount of milk produced",xlab="Year",type="o")
+plot(diff(milk),ylab="First differences",xlab="Year",type="o")
+plot(diff(milk,lag=12),ylab="First seasonal differences (s=12)",xlab="Year",type="o")
+plot(diff(diff(milk),lag=12),ylab="Combined first differences",xlab="Year",type="o")
+# Model specification
+# d=1, D=1, and s=12
+# Plots were constructed separately
+# Page 295
+# Combined differences
+milk.diff = diff(diff(milk,lag=12))
+acf(as.vector(milk.diff),main="Sample ACF",lag.max = 48)
+pacf(as.vector(milk.diff),main="Sample PACF",lag.max = 48)
+# Fit and diagnosis
+# This model was considered but not displayed in the notes.
+# ARIMA(0,1,0) x ARIMA(0,1,1)_{12}
+milk.arima010.arima011 = arima(milk,order=c(0,1,0),method='ML',seasonal=list(order=c(0,1,1),period=12))
+milk.arima010.arima011
+# ARIMA(0,1,0) x ARIMA(3,1,0)_{12}
+milk.arima010.arima310 = arima(milk,order=c(0,1,0),method='ML',seasonal=list(order=c(3,1,0),period=12))
+milk.arima010.arima310
+# Residual analysis
+hist(rstandard(milk.arima010.arima310),xlab="Standardised residuals",main="")
+qqnorm(rstandard(milk.arima010.arima310),main="")
+qqline(rstandard(milk.arima010.arima310))
+# Shapiro-Wilk and runs tests
+shapiro.test(rstandard(milk.arima010.arima310))
+runs(rstandard(milk.arima010.arima310))
+tsdiag(milk.arima010.arima310,gof=30,omit.initial=T)
+# Overfitting
+arima(milk,order=c(1,1,0),method='CLS',seasonal=list(order=c(3,1,0),period=12))
+arima(milk,order=c(0,1,1),method='ML',seasonal=list(order=c(3,1,0),period=12))
+arima(milk,order=c(0,1,0),method='ML',seasonal=list(order=c(4,1,0),period=12))
+arima(milk,order=c(0,1,0),method='ML',seasonal=list(order=c(3,1,1),period=12))
+# Forecasting
+# Full data set: 1/94-12/05
+milk.arima010.arima310.fit = arima(milk,order=c(0,1,0),method='ML',seasonal=list(order=c(3,1,0),period=12))
+# MMSE forecasts
+milk.arima010.arima310.predict <- predict(milk.arima010.arima310.fit,n.ahead=24)
+round(milk.arima010.arima310.predict$pred,3)
+round(milk.arima010.arima310.predict$se,3)
+# Display prediction intervals (24 months ahead)
+year.temp = c(2006,2006.083,2006.166,2006.250,2006.333,2006.416,2006.500,2006.583,2006.666,2006.750,2006.833,2006.916)
+year.temp.2 = c(year.temp,year.temp+1)
+# Compute prediction intervals
+lower.pi<-milk.arima010.arima310.predict$pred-qnorm(0.975,0,1)*milk.arima010.arima310.predict$se
+upper.pi<-milk.arima010.arima310.predict$pred+qnorm(0.975,0,1)*milk.arima010.arima310.predict$se
+data.frame(Month=year.temp.2,lower.pi,upper.pi)
+# Original series starts at Month = Jan 1994
+# Note: Argument n1=c(2004,1) starts plot at Time = Jan 2004
+# Note: Argument pch=16 produces a small black circle (MMSE prediction)
+plot(milk.arima010.arima310.fit,n.ahead=24,col='red',type='b',pch=16,n1=c(2004,1),ylab="Amount of milk produced",xlab="Year")
+# Put prediction interval lines on plot (darker than default)
+lines(y=lower.pi,x=year.temp.2,lwd=2,col="red",lty="dashed")
+lines(y=upper.pi,x=year.temp.2,lwd=2,col="red",lty="dashed")
+ 
+# Example 10.6
+# Australian clay brick production
+# Page 301
+brick <- ts(read.table(file = "C:\\Users\\Tebbs\\My Documents\\texfiles\\Classes\\USC\\stat520\\f11\\data\\brick.txt"),start=1956,freq=4)
+plot(brick,ylab="Australian clay brick production (in millions)",xlab="Time",type="o")
+# Box Cox analysis
+BoxCox.ar(brick)
+# Square root transformation
+sqrt.brick = sqrt(brick)
+# Plots were constructed separately
+plot(sqrt.brick,ylab="Brick production (Square-root transformed)",xlab="Time",type="o")
+plot(diff(sqrt.brick),ylab="First differences",xlab="Year",type="o")
+plot(diff(sqrt.brick,lag=4),ylab="First seasonal differences (s=4)",xlab="Year",type="o")
+plot(diff(diff(sqrt.brick),lag=4),ylab="Combined first differences",xlab="Year",type="o")
+# Combined differences of sqrt.brick
+sqrt.brick.diff = diff(diff(sqrt.brick),lag=4)
+# Plots were constructed separately
+acf(as.vector(sqrt.brick.diff),main="Sample ACF",lag.max=32)
+pacf(as.vector(sqrt.brick.diff),main="Sample PACF",lag.max=32)
+# Initial model choice
+sqrt.brick.arima010.arima410 = arima(sqrt.brick,order=c(0,1,0),method='ML',seasonal=list(order=c(4,1,0),period=4))
+sqrt.brick.arima010.arima410
+# Residual analysis
+hist(rstandard(sqrt.brick.arima010.arima410),xlab="Standardised residuals",main="")
+qqnorm(rstandard(sqrt.brick.arima010.arima410),main="")
+qqline(rstandard(sqrt.brick.arima010.arima410))
+# Shapiro-Wilk and runs tests
+shapiro.test(rstandard(sqrt.brick.arima010.arima410))
+runs(rstandard(sqrt.brick.arima010.arima410))
+tsdiag(sqrt.brick.arima010.arima410,gof=20,omit.initial=T)
+# Overfitting
+arima(sqrt.brick,order=c(1,1,0),method='ML',seasonal=list(order=c(4,1,0),period=4))
+arima(sqrt.brick,order=c(0,1,1),method='ML',seasonal=list(order=c(4,1,0),period=4))
+arima(sqrt.brick,order=c(0,1,0),method='ML',seasonal=list(order=c(5,1,0),period=4))
+arima(sqrt.brick,order=c(0,1,0),method='ML',seasonal=list(order=c(4,1,1),period=4))
+ 

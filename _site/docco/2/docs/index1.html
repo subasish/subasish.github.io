@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>index1.md</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>index1.md</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <hr>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>title: “Random R Codes Part-5”
+date: “2015-01-29”
+output:
+html_document:
+css: bootstrap.css
+toc: true
+toc_depth: 4
+theme: cosmo</p>
+<h2 id="highlight-haddock">highlight: haddock</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <h3 id="not-preface">Not Preface</h3>
+<p>R is now a <span style="color:red">large community</span>. Today we have <del>4,567</del> 6,139 R packages. My attempt here is to jot down the code snippets  based on the newer packages (by following <a href="http://cran.r-project.org/web/packages/available_packages_by_date.html">table of available packages, sorted by date of publication</a>)[^1]. </p>
+<hr>
+<p>The chunk of the codes will be taken either from the Vignette or from the main package documentation pdf. I also like to include <a href="http://stackoverflow.com/questions/tagged/r">stack overflow threads</a> if there are interesting questions. These interesting and easy-to-apply codes will be applied to different data sets to develop models and assumptions. </p>
+<p>[^1]: Compiled by <a href="http://subasish.tumblr.com">Subasish Das</a></p>
+<p align="center">
+<img src="http://38.media.tumblr.com/d7c5eb7ca7cda33643d490ed0cc82aac/tumblr_ncirefgkm71tv4k5po1_500.gif" alt="">
+</p>
+
+
+<blockquote>
+<p>Web Scraping U Thou!!!</p>
+</blockquote>
+<h4 id="rvest">rvest</h4>
+<ol>
+<li><a href="http://cran.r-project.org/web/packages/rvest/rvest.pdf">Package pdf</a>.</li>
+<li><a href="https://github.com/hadley/rvest">Github</a></li>
+<li>Last updated: 2014-27-01</li>
+</ol>
+<pre><code class="lang-r"><span class="hljs-keyword">library</span>(rvest)
+<span class="hljs-keyword">library</span>(rvest)
+lego_movie &lt;- html(<span class="hljs-string">"http://www.imdb.com/title/tt1490017/"</span>)
+
+rating &lt;- lego_movie %&gt;% 
+html_nodes(<span class="hljs-string">"strong span"</span>) %&gt;%
+html_text() %&gt;%
+as.numeric()
+rating
+</code></pre>
+<pre><code><span class="hljs-header">## [1] 7.8</span>
+</code></pre><pre><code class="lang-r">cast &lt;- lego_movie %&gt;%
+html_nodes(<span class="hljs-string">"#titleCast .itemprop span"</span>) %&gt;%
+html_text()
+cast
+</code></pre>
+<pre><code><span class="hljs-header">##  [1] "Will Arnett"     "Elizabeth Banks" "Craig Berry"    </span>
+<span class="hljs-header">##  [4] "Alison Brie"     "David Burrows"   "Anthony Daniels"</span>
+<span class="hljs-header">##  [7] "Charlie Day"     "Amanda Farinos"  "Keith Ferguson" </span>
+<span class="hljs-header">## [10] "Will Ferrell"    "Will Forte"      "Dave Franco"    </span>
+<span class="hljs-header">## [13] "Morgan Freeman"  "Todd Hansen"     "Jonah Hill"</span>
+</code></pre><pre><code class="lang-r">poster &lt;- lego_movie %&gt;%
+html_nodes(<span class="hljs-string">"#img_primary img"</span>) %&gt;%
+html_attr(<span class="hljs-string">"src"</span>)
+
+<span class="hljs-keyword">library</span>(rvest)
+<span class="hljs-keyword">library</span>(httr)
+<span class="hljs-keyword">library</span>(jpeg)
+
+lego_movie &lt;- html(<span class="hljs-string">"http://www.imdb.com/title/tt1490017/"</span>)
+
+poster &lt;- lego_movie %&gt;%
+html_nodes(<span class="hljs-string">"#img_primary img"</span>) %&gt;%
+html_attr(<span class="hljs-string">"src"</span>)
+</code></pre>
+<h4 id="web-scraping-from-kiva">Web Scraping from kiva</h4>
+<h4 id="replicating-the-rpubs-https-rpubs-com-aammd-kivascrape">Replicating the rpubs: <a href="https://rpubs.com/aammd/kivascrape">https://rpubs.com/aammd/kivascrape</a></h4>
+<pre><code class="lang-r"><span class="hljs-keyword">library</span>(dplyr)
+<span class="hljs-keyword">library</span>(tidyr)
+<span class="hljs-keyword">library</span>(magrittr)
+<span class="hljs-keyword">library</span>(rvest)
+
+
+site &lt;- html(<span class="hljs-string">"http://www.kiva.org/lend/774331"</span>)
+
+
+kiva_name &lt;- <span class="hljs-keyword">function</span>(.site){
+.site %&gt;%
+html_nodes(<span class="hljs-string">"#pageHeader h2"</span>) %&gt;%
+html_text
+}
+
+kiva_name(site)
+</code></pre>
+<pre><code><span class="hljs-header">## [1] "Resineros De San José De Cañas Group"</span>
+</code></pre><pre><code class="lang-r">kiva_place &lt;- <span class="hljs-keyword">function</span>(.site){
+.site %&gt;%
+html_nodes(<span class="hljs-string">"#pageHeader .country"</span>) %&gt;%
+html_text
+}
+
+kiva_place(site)
+</code></pre>
+<pre><code><span class="hljs-header">## [1] "San José de Cañas, Mexico"</span>
+</code></pre><pre><code class="lang-r">kiva_amt &lt;- <span class="hljs-keyword">function</span>(.site){
+.site %&gt;%
+html_nodes(<span class="hljs-string">".loanExcerpt"</span>) %&gt;%
+html_text %&gt;%
+gsub(<span class="hljs-string">"[^0-9.]+"</span>, <span class="hljs-string">""</span>, .) %&gt;%
+gsub(<span class="hljs-string">"\\.*$"</span>, <span class="hljs-string">""</span>, .) %&gt;%        <span class="hljs-comment">## remove trailing .</span>
+gsub(<span class="hljs-string">"^\\.*"</span>, <span class="hljs-string">""</span>, .) %&gt;%           <span class="hljs-comment">## remove leading .</span>
+as.numeric
+}
+
+kiva_amt(site)
+</code></pre>
+<pre><code><span class="hljs-header">## [1] 29050</span>
+</code></pre><pre><code class="lang-r">kiva_percent &lt;- <span class="hljs-keyword">function</span>(.site){
+.site %&gt;%
+html_nodes(<span class="hljs-string">"#loanSummary .number"</span>) %&gt;%
+html_text %&gt;%
+gsub(<span class="hljs-string">"[^0-9.]+"</span>, <span class="hljs-string">""</span>, .) %&gt;%
+as.numeric
+}
+
+kiva_percent(site)
+</code></pre>
+<pre><code><span class="hljs-header">## [1] 0</span>
+</code></pre><pre><code class="lang-r">kiva_funded &lt;- <span class="hljs-keyword">function</span>(.site){
+.site %&gt;%
+html_nodes(<span class="hljs-string">".fullyFundedNotice"</span>) %&gt;%
+html_text %&gt;%
+identical(., character(<span class="hljs-number">0</span>)) %&gt;%
+not
+}
+
+kiva_funded(site)
+</code></pre>
+<pre><code><span class="hljs-header">## [1] TRUE</span>
+</code></pre><pre><code class="lang-r">loansum &lt;- html(site) %&gt;%
+html_nodes(<span class="hljs-string">"#loanSummary dl"</span>)
+
+
+loansum %&gt;%
+html_text
+</code></pre>
+<pre><code><span class="hljs-header">## [1] "Repayment Term:\n\t\t\t\t\t\t120 months (more info)\n\t\n\t\t\t\t\t\tRepayment Schedule:\n\t\t\t\t\t\tIrregularly\n\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPre-Disbursed:\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAug 25, 2014\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\tListed\n\t\t\t\t\t\t\tOct 21, 2014\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tCurrency Exchange Loss:\n\t\t\t\t\t\tN/A \n\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t"</span>
+</code></pre><pre><code class="lang-r">loansum %&gt;%
+html_nodes(<span class="hljs-string">"dt"</span>) %&gt;%
+html_text
+</code></pre>
+<pre><code><span class="hljs-header">## [1] "Repayment Term:"         "Repayment Schedule:"    </span>
+<span class="hljs-header">## [3] "Pre-Disbursed:"          "Listed"                 </span>
+<span class="hljs-header">## [5] "Currency Exchange Loss:"</span>
+</code></pre><pre><code class="lang-r">loansum %&gt;%
+html_nodes(<span class="hljs-string">"dd"</span>) %&gt;%
+html_text
+</code></pre>
+<pre><code><span class="hljs-header">## [1] "120 months (more info)" "Irregularly"           </span>
+<span class="hljs-header">## [3] "Aug 25, 2014"           "Oct 21, 2014"          </span>
+<span class="hljs-header">## [5] "N/A "</span>
+</code></pre><pre><code class="lang-r">deflist_to_df &lt;- <span class="hljs-keyword">function</span>(.site){
+<span class="hljs-keyword">require</span>(rvest)
+<span class="hljs-keyword">require</span>(dplyr)
+
+deflist_xml &lt;- .site %&gt;%
+html_nodes(<span class="hljs-string">"#loanSummary dl"</span>)
+
+terms &lt;- deflist_xml %&gt;%
+html_nodes(<span class="hljs-string">"dt"</span>) %&gt;%
+html_text
+
+defs &lt;- loansum %&gt;%
+html_nodes(<span class="hljs-string">"dd"</span>) %&gt;%
+html_text
+
+names(defs) &lt;- terms
+
+data.frame(t(defs))
+}
+
+deflist_to_df(site)
+</code></pre>
+<pre><code><span class="hljs-header">##          Repayment.Term. Repayment.Schedule. Pre.Disbursed.       Listed</span>
+<span class="hljs-header">## 1 120 months (more info)         Irregularly   Aug 25, 2014 Oct 21, 2014</span>
+<span class="hljs-header">##   Currency.Exchange.Loss.</span>
+<span class="hljs-header">## 1                    N/A</span>
+</code></pre><pre><code class="lang-r">numvec2 &lt;- c(<span class="hljs-number">786671</span>,<span class="hljs-number">785489</span>)
+
+set.seed(<span class="hljs-number">5</span>)
+numvec &lt;- sample(<span class="hljs-number">5000</span>:<span class="hljs-number">7914</span>, size = <span class="hljs-number">10</span>)+<span class="hljs-number">780000</span>
+
+download &lt;- data.frame(startnum = numvec) %&gt;%
+mutate(url = paste0(<span class="hljs-string">"http://www.kiva.org/lend/"</span>, startnum)) %&gt;%
+group_by(url) %&gt;%
+do(site = failwith(<span class="hljs-literal">NULL</span>, html)(.$url))
+
+clean_download &lt;- download %&gt;%
+mutate(test = <span class="hljs-keyword">try</span>(kiva_name(site))) %&gt;%
+filter(!grepl(<span class="hljs-string">"Error"</span>, x = test))
+output &lt;- clean_download %&gt;%
+group_by(url) %&gt;% 
+mutate(name = kiva_name(site[[<span class="hljs-number">1</span>]]),
+funded = kiva_funded(site[[<span class="hljs-number">1</span>]]),
+percent = kiva_percent(site[[<span class="hljs-number">1</span>]]),
+amount = kiva_amt(site[[<span class="hljs-number">1</span>]]),
+place = kiva_place(site[[<span class="hljs-number">1</span>]])) %&gt;%
+<span class="hljs-comment">#separate(place, c("city", "country"), sep = ", ") %&gt;%</span>
+do(data.frame(., deflist_to_df(.[[<span class="hljs-string">"site"</span>]][[<span class="hljs-number">1</span>]]))) %&gt;%
+select(-site)
+<span class="hljs-keyword">library</span>(knitr)
+kable(as.data.frame(output[<span class="hljs-number">1</span>:<span class="hljs-number">4</span>]))
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">url</th>
+<th style="text-align:left">test</th>
+<th style="text-align:left">name</th>
+<th style="text-align:left">funded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="http://www.kiva.org/lend/785304">http://www.kiva.org/lend/785304</a></td>
+<td style="text-align:left">Manjurani</td>
+<td style="text-align:left">Manjurani</td>
+<td style="text-align:left">TRUE</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.kiva.org/lend/785320">http://www.kiva.org/lend/785320</a></td>
+<td style="text-align:left">Janet</td>
+<td style="text-align:left">Janet</td>
+<td style="text-align:left">TRUE</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.kiva.org/lend/785583">http://www.kiva.org/lend/785583</a></td>
+<td style="text-align:left">San Valentin Group</td>
+<td style="text-align:left">San Valentin Group</td>
+<td style="text-align:left">TRUE</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.kiva.org/lend/785828">http://www.kiva.org/lend/785828</a></td>
+<td style="text-align:left">Djiguiya Group</td>
+<td style="text-align:left">Djiguiya Group</td>
+<td style="text-align:left">TRUE</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.kiva.org/lend/786535">http://www.kiva.org/lend/786535</a></td>
+<td style="text-align:left">Hanifan</td>
+<td style="text-align:left">Hanifan</td>
+<td style="text-align:left">TRUE</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.kiva.org/lend/786996">http://www.kiva.org/lend/786996</a></td>
+<td style="text-align:left">Anonymous</td>
+<td style="text-align:left">Anonymous</td>
+<td style="text-align:left">FALSE</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.kiva.org/lend/787040">http://www.kiva.org/lend/787040</a></td>
+<td style="text-align:left">Savoeun’s Group</td>
+<td style="text-align:left">Savoeun’s Group</td>
+<td style="text-align:left">TRUE</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.kiva.org/lend/787349">http://www.kiva.org/lend/787349</a></td>
+<td style="text-align:left">Goutami</td>
+<td style="text-align:left">Goutami</td>
+<td style="text-align:left">TRUE</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.kiva.org/lend/787670">http://www.kiva.org/lend/787670</a></td>
+<td style="text-align:left">Marjhory Rosa Derita</td>
+<td style="text-align:left">Marjhory Rosa Derita</td>
+<td style="text-align:left">TRUE</td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="http://www.kiva.org/lend/787780">http://www.kiva.org/lend/787780</a></td>
+<td style="text-align:left">Zenie</td>
+<td style="text-align:left">Zenie</td>
+<td style="text-align:left">TRUE</td>
+</tr>
+</tbody>
+</table>
+
+            </div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

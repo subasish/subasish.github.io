@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Not Preface</title>
+<link rel="stylesheet" media="all" href="http://jashkenas.github.io/docco/resources/linear/public/stylesheets/normalize.css" />
+<link rel="stylesheet" media="all" href="http://jashkenas.github.io/docco/resources/linear/docco.css" />
+<link href='http://yihui.name/media/css/docco-linear.css' rel='stylesheet' type='text/css'>
+<style type="text/css">
+img{display:block;margin:auto;}
+.container{width:auto;max-width:920px;}
+.page{width:auto;max-width:800px;}
+.page pre{width:100%;max-width:768px;}
+pre, code{font-size:90%;}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/languages/r.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="http://yihui.name/media/js/center-images.js"></script>
+
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="page">
+<!--
+%\VignetteEngine{knitr::docco_linear}
+%\VignetteIndexEntry{R Markdown with the Docco Linear Style}
+-->
+
+<h1>Not Preface</h1>
+
+<p>R is now a <span style="color:red">large community</span>. Today we have <del>4,567</del> 6,139 R packages. My attempt here is to jot down the code snippets  based on the newer packages (by following <a href="http://cran.r-project.org/web/packages/available_packages_by_date.html">table of available packages, sorted by date of publication</a>). </p>
+
+<hr/>
+
+<p>The chunk of the codes will be taken either from the Vignette or from the main package documentation pdf. I also like to include <a href="http://stackoverflow.com/questions/tagged/r">stack overflow threads</a> if there are interesting questions. These interesting and easy-to-apply codes will be applied to different data sets to develop models and assumptions. </p>
+
+<h3>Packages</h3>
+
+<p>Packages used in this post are:</p>
+
+<blockquote>
+<p>pander, DT, data.table </p>
+</blockquote>
+
+<h4>pander</h4>
+
+<ol>
+<li><a href="http://cran.r-project.org/web/packages/pander/pander.pdf">Package pdf</a>.</li>
+<li><a href="http://rapporter.github.io/pander/">Github</a></li>
+<li>Last updated: 2014-XX-XX</li>
+</ol>
+
+<pre><code class="r">library(pander)
+pandoc.table(mtcars[1:3, 1:4])
+</code></pre>
+
+<pre><code>## 
+## -------------------------------------------
+##       &amp;nbsp;          mpg   cyl   disp   hp
+## ------------------- ----- ----- ------ ----
+##    **Mazda RX4**       21     6    160  110
+## 
+##  **Mazda RX4 Wag**     21     6    160  110
+## 
+##   **Datsun 710**     22.8     4    108   93
+## -------------------------------------------
+</code></pre>
+
+<pre><code class="r">pandoc.table(mtcars[1:2, ], style = &quot;grid&quot;, caption = &quot;Hello caption!&quot;)
+</code></pre>
+
+<pre><code>## 
+## 
+## +---------------------+-------+-------+--------+------+--------+-------+
+## |       &amp;nbsp;        |   mpg |   cyl |   disp |   hp |   drat |    wt |
+## +=====================+=======+=======+========+======+========+=======+
+## |    **Mazda RX4**    |    21 |     6 |    160 |  110 |    3.9 |  2.62 |
+## +---------------------+-------+-------+--------+------+--------+-------+
+## |  **Mazda RX4 Wag**  |    21 |     6 |    160 |  110 |    3.9 | 2.875 |
+## +---------------------+-------+-------+--------+------+--------+-------+
+## 
+## Table: Hello caption! (continued below)
+## 
+##  
+## 
+## +---------------------+--------+------+------+--------+--------+
+## |       &amp;nbsp;        |   qsec |   vs |   am |   gear |   carb |
+## +=====================+========+======+======+========+========+
+## |    **Mazda RX4**    |  16.46 |    0 |    1 |      4 |      4 |
+## +---------------------+--------+------+------+--------+--------+
+## |  **Mazda RX4 Wag**  |  17.02 |    0 |    1 |      4 |      4 |
+## +---------------------+--------+------+------+--------+--------+
+</code></pre>
+
+<pre><code class="r">pander(prcomp(USArrests))
+</code></pre>
+
+<pre><code>## Error in pandoc.table.return(...): Wrong number of parameters (17 instead of *5*) passed: justify
+</code></pre>
+
+<pre><code class="r">counts &lt;- c(18, 17, 15, 20, 10, 20, 25, 13, 12)
+outcome &lt;- gl(3, 1, 9)
+treatment &lt;- gl(3, 3)
+m &lt;- glm(counts ~ outcome + treatment, family = poisson())
+</code></pre>
+
+<h4>DT</h4>
+
+<ol>
+<li><a href="http://cran.r-project.org/web/packages/knitr/vignettes/datatables.html">jQuery DataTables</a>.</li>
+<li><a href="https://github.com/rstudio/DT">DT Github Repo.</a></li>
+<li><a href="http://rpubs.com/holidayworking/knitr_and_datatables">Rpubs 1: knitr と DataTables</a></li>
+<li><a href="http://rpubs.com/muuankarski/52544">Rpubs 2: countrycode</a></li>
+</ol>
+
+<p>DT package is not on CRAN yet, and you can install it with devtools. Need to do following:</p>
+
+<blockquote>
+<p>install.packages(&ldquo;devtools&rdquo;)</p>
+
+<p>library(devtools)</p>
+
+<p>devtools::install_github(&#39;rstudio/DT&#39;)</p>
+</blockquote>
+
+<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file &#39;aa.csv&#39;: No such file or
+## directory
+</code></pre>
+
+<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection
+</code></pre>
+
+<pre><code>## Error in datatable(data): &#39;data&#39; must be either a matrix or a data frame
+</code></pre>
+
+<h4>data.table</h4>
+
+<ol>
+<li><a href="http://cran.r-project.org/web/packages/data.table/data.table.pdf">Package pdf</a>.</li>
+<li><a href="ww.datacamp.com/courses/data-analysis-the-data-table-way">DATA ANALYSIS THE DATA.TABLE WAY</a></li>
+</ol>
+
+<pre><code class="r">library(data.table)
+DF = data.frame(x=rep(c(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;),each=3), y=c(1,3,6), v=1:9)
+DT = data.table(x=rep(c(&quot;a&quot;,&quot;b&quot;,&quot;c&quot;),each=3), y=c(1,3,6), v=1:9)
+DF
+</code></pre>
+
+<pre><code>##   x y v
+## 1 a 1 1
+## 2 a 3 2
+## 3 a 6 3
+## 4 b 1 4
+## 5 b 3 5
+## 6 b 6 6
+## 7 c 1 7
+## 8 c 3 8
+## 9 c 6 9
+</code></pre>
+
+<pre><code class="r">DT
+</code></pre>
+
+<pre><code>##    x y v
+## 1: a 1 1
+## 2: a 3 2
+## 3: a 6 3
+## 4: b 1 4
+## 5: b 3 5
+## 6: b 6 6
+## 7: c 1 7
+## 8: c 3 8
+## 9: c 6 9
+</code></pre>
+
+<pre><code class="r">data(mtcars)
+head(mtcars)
+</code></pre>
+
+<pre><code>##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+</code></pre>
+
+<pre><code class="r">mtcars.dt &lt;- data.table(mtcars)
+head(mtcars.dt)
+</code></pre>
+
+<pre><code>##     mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## 1: 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## 2: 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## 3: 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## 4: 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## 5: 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## 6: 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+</code></pre>
+
+<pre><code class="r">mtcars.dt1 &lt;- data.table(mtcars, keep.rownames = TRUE)
+head(mtcars.dt1)
+</code></pre>
+
+<pre><code>##                   rn  mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## 1:         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## 2:     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## 3:        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## 4:    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## 5: Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## 6:           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+</code></pre>
+
+<p>That&#39;s all for this docco. :)</p>
+
+      <div class="fleur">h</div>
+    </div>
+  </div>
+</body>
+</html>

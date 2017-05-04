@@ -1,0 +1,334 @@
+<h3 id="not-preface">Not Preface</h3>
+
+<p>R is now a <span style="color:red">large community</span>. Today we have ~~4,567~~ 6,139 R packages. My attempt here is to jot down the code snippets  based on the newer packages (by following <a href="http://cran.r-project.org/web/packages/available_packages_by_date.html">table of available packages, sorted by date of publication</a>)<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>. </p>
+
+<hr />
+
+<p>The chunk of the codes will be taken either from the Vignette or from the main package documentation pdf. I also like to include <a href="http://stackoverflow.com/questions/tagged/r">stack overflow threads</a> if there are interesting questions. These interesting and easy-to-apply codes will be applied to different data sets to develop models and assumptions. </p>
+
+<p align="center">
+![](http://38.media.tumblr.com/d7c5eb7ca7cda33643d490ed0cc82aac/tumblr_ncirefgkm71tv4k5po1_500.gif)
+</p>
+
+<blockquote>
+  <p>Web Scraping U Thou!!!</p>
+</blockquote>
+
+<h4 id="rvest">rvest</h4>
+
+<ol>
+  <li><a href="http://cran.r-project.org/web/packages/rvest/rvest.pdf">Package pdf</a>.</li>
+  <li><a href="https://github.com/hadley/rvest">Github</a></li>
+  <li>Last updated: 2014-27-01</li>
+</ol>
+
+<p>```r
+library(rvest)
+library(rvest)
+lego_movie &lt;- html(“http://www.imdb.com/title/tt1490017/”)</p>
+
+<p>rating &lt;- lego_movie %&gt;% 
+  html_nodes(“strong span”) %&gt;%
+  html_text() %&gt;%
+  as.numeric()
+rating
+```</p>
+
+<p><code>
+## [1] 7.8
+</code></p>
+
+<p><code>r
+cast &lt;- lego_movie %&gt;%
+  html_nodes("#titleCast .itemprop span") %&gt;%
+  html_text()
+cast
+</code></p>
+
+<p><code>
+##  [1] "Will Arnett"     "Elizabeth Banks" "Craig Berry"    
+##  [4] "Alison Brie"     "David Burrows"   "Anthony Daniels"
+##  [7] "Charlie Day"     "Amanda Farinos"  "Keith Ferguson" 
+## [10] "Will Ferrell"    "Will Forte"      "Dave Franco"    
+## [13] "Morgan Freeman"  "Todd Hansen"     "Jonah Hill"
+</code></p>
+
+<p>```r
+poster &lt;- lego_movie %&gt;%
+  html_nodes(“#img_primary img”) %&gt;%
+  html_attr(“src”)</p>
+
+<p>library(rvest)
+library(httr)
+library(jpeg)</p>
+
+<p>lego_movie &lt;- html(“http://www.imdb.com/title/tt1490017/”)</p>
+
+<p>poster &lt;- lego_movie %&gt;%
+  html_nodes(“#img_primary img”) %&gt;%
+  html_attr(“src”)
+```</p>
+
+<h4 id="web-scraping-from-kiva">Web Scraping from kiva</h4>
+<p>#### Replicating the rpubs: https://rpubs.com/aammd/kivascrape</p>
+
+<p>```r
+library(dplyr)
+library(tidyr)
+library(magrittr)
+library(rvest)</p>
+
+<p>site &lt;- html(“http://www.kiva.org/lend/774331”)</p>
+
+<p>kiva_name &lt;- function(.site){
+  .site %&gt;%
+    html_nodes(“#pageHeader h2”) %&gt;%
+    html_text
+  }</p>
+
+<p>kiva_name(site)
+```</p>
+
+<p><code>
+## [1] "Resineros De San José De Cañas Group"
+</code></p>
+
+<p>```r
+kiva_place &lt;- function(.site){
+  .site %&gt;%
+    html_nodes(“#pageHeader .country”) %&gt;%
+    html_text
+  }</p>
+
+<p>kiva_place(site)
+```</p>
+
+<p><code>
+## [1] "San José de Cañas, Mexico"
+</code></p>
+
+<p>```r
+kiva_amt &lt;- function(.site){
+.site %&gt;%
+  html_nodes(“.loanExcerpt”) %&gt;%
+  html_text %&gt;%
+  gsub(“[^0-9.]+”, “”, .) %&gt;%
+  gsub(“\.<em>$”, “”, .) %&gt;%        ## remove trailing .
+  gsub(“^\.</em>”, “”, .) %&gt;%           ## remove leading .
+  as.numeric
+}</p>
+
+<p>kiva_amt(site)
+```</p>
+
+<p><code>
+## [1] 29050
+</code></p>
+
+<p>```r
+kiva_percent &lt;- function(.site){
+.site %&gt;%
+  html_nodes(“#loanSummary .number”) %&gt;%
+  html_text %&gt;%
+  gsub(“[^0-9.]+”, “”, .) %&gt;%
+  as.numeric
+}</p>
+
+<p>kiva_percent(site)
+```</p>
+
+<p><code>
+## [1] 0
+</code></p>
+
+<p>```r
+kiva_funded &lt;- function(.site){
+  .site %&gt;%
+    html_nodes(“.fullyFundedNotice”) %&gt;%
+    html_text %&gt;%
+    identical(., character(0)) %&gt;%
+    not
+}</p>
+
+<p>kiva_funded(site)
+```</p>
+
+<p><code>
+## [1] TRUE
+</code></p>
+
+<p>```r
+loansum &lt;- html(site) %&gt;%
+  html_nodes(“#loanSummary dl”)</p>
+
+<p>loansum %&gt;%
+  html_text
+```</p>
+
+<p><code>
+## [1] "Repayment Term:\n\t\t\t\t\t\t120 months (more info)\n\t\n\t\t\t\t\t\tRepayment Schedule:\n\t\t\t\t\t\tIrregularly\n\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPre-Disbursed:\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tAug 25, 2014\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\tListed\n\t\t\t\t\t\t\tOct 21, 2014\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\tCurrency Exchange Loss:\n\t\t\t\t\t\tN/A \n\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t"
+</code></p>
+
+<p><code>r
+loansum %&gt;%
+  html_nodes("dt") %&gt;%
+  html_text
+</code></p>
+
+<p><code>
+## [1] "Repayment Term:"         "Repayment Schedule:"    
+## [3] "Pre-Disbursed:"          "Listed"                 
+## [5] "Currency Exchange Loss:"
+</code></p>
+
+<p><code>r
+loansum %&gt;%
+  html_nodes("dd") %&gt;%
+  html_text
+</code></p>
+
+<p><code>
+## [1] "120 months (more info)" "Irregularly"           
+## [3] "Aug 25, 2014"           "Oct 21, 2014"          
+## [5] "N/A "
+</code></p>
+
+<p>```r
+deflist_to_df &lt;- function(.site){
+  require(rvest)
+  require(dplyr)</p>
+
+<p>deflist_xml &lt;- .site %&gt;%
+    html_nodes(“#loanSummary dl”)</p>
+
+<p>terms &lt;- deflist_xml %&gt;%
+  html_nodes(“dt”) %&gt;%
+  html_text</p>
+
+<p>defs &lt;- loansum %&gt;%
+  html_nodes(“dd”) %&gt;%
+  html_text</p>
+
+<p>names(defs) &lt;- terms</p>
+
+<p>data.frame(t(defs))
+}</p>
+
+<p>deflist_to_df(site)
+```</p>
+
+<p><code>
+##          Repayment.Term. Repayment.Schedule. Pre.Disbursed.       Listed
+## 1 120 months (more info)         Irregularly   Aug 25, 2014 Oct 21, 2014
+##   Currency.Exchange.Loss.
+## 1                    N/A
+</code></p>
+
+<p>```r
+numvec2 &lt;- c(786671,785489)</p>
+
+<p>set.seed(5)
+numvec &lt;- sample(5000:7914, size = 10)+780000</p>
+
+<p>download &lt;- data.frame(startnum = numvec) %&gt;%
+  mutate(url = paste0(“http://www.kiva.org/lend/”, startnum)) %&gt;%
+  group_by(url) %&gt;%
+  do(site = failwith(NULL, html)(.$url))</p>
+
+<p>clean_download &lt;- download %&gt;%
+  mutate(test = try(kiva_name(site))) %&gt;%
+  filter(!grepl(“Error”, x = test))
+output &lt;- clean_download %&gt;%
+  group_by(url) %&gt;% 
+  mutate(name = kiva_name(site[[1]]),
+         funded = kiva_funded(site[[1]]),
+         percent = kiva_percent(site[[1]]),
+         amount = kiva_amt(site[[1]]),
+         place = kiva_place(site[[1]])) %&gt;%
+  #separate(place, c(“city”, “country”), sep = “, “) %&gt;%
+  do(data.frame(., deflist_to_df(.[[“site”]][[1]]))) %&gt;%
+  select(-site)
+library(knitr)
+kable(as.data.frame(output[1:4]))
+```</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">url</th>
+      <th style="text-align: left">test</th>
+      <th style="text-align: left">name</th>
+      <th style="text-align: left">funded</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">http://www.kiva.org/lend/785304</td>
+      <td style="text-align: left">Manjurani</td>
+      <td style="text-align: left">Manjurani</td>
+      <td style="text-align: left">TRUE</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">http://www.kiva.org/lend/785320</td>
+      <td style="text-align: left">Janet</td>
+      <td style="text-align: left">Janet</td>
+      <td style="text-align: left">TRUE</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">http://www.kiva.org/lend/785583</td>
+      <td style="text-align: left">San Valentin Group</td>
+      <td style="text-align: left">San Valentin Group</td>
+      <td style="text-align: left">TRUE</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">http://www.kiva.org/lend/785828</td>
+      <td style="text-align: left">Djiguiya Group</td>
+      <td style="text-align: left">Djiguiya Group</td>
+      <td style="text-align: left">TRUE</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">http://www.kiva.org/lend/786535</td>
+      <td style="text-align: left">Hanifan</td>
+      <td style="text-align: left">Hanifan</td>
+      <td style="text-align: left">TRUE</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">http://www.kiva.org/lend/786996</td>
+      <td style="text-align: left">Anonymous</td>
+      <td style="text-align: left">Anonymous</td>
+      <td style="text-align: left">FALSE</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">http://www.kiva.org/lend/787040</td>
+      <td style="text-align: left">Savoeun’s Group</td>
+      <td style="text-align: left">Savoeun’s Group</td>
+      <td style="text-align: left">TRUE</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">http://www.kiva.org/lend/787349</td>
+      <td style="text-align: left">Goutami</td>
+      <td style="text-align: left">Goutami</td>
+      <td style="text-align: left">TRUE</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">http://www.kiva.org/lend/787670</td>
+      <td style="text-align: left">Marjhory Rosa Derita</td>
+      <td style="text-align: left">Marjhory Rosa Derita</td>
+      <td style="text-align: left">TRUE</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">http://www.kiva.org/lend/787780</td>
+      <td style="text-align: left">Zenie</td>
+      <td style="text-align: left">Zenie</td>
+      <td style="text-align: left">TRUE</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Compiled by <a href="http://subasish.tumblr.com">Subasish Das</a> <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>

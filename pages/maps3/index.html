@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+<div id="map"></div>
+
+<script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script>
+// get the viz.json url from the CartoDB Editor
+// - click on visualize
+// - create new visualization
+// - make visualization public
+// - click on publish
+// - go to API tab
+
+window.onload = function() {
+  cartodb.createVis('map', 'https://subasishsn.cartodb.com/api/v2/viz/44c5e488-c9d2-11e5-9b62-0e3ff518bd15/viz.json');
+}
+</script>
