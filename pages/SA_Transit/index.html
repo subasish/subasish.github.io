@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<!--<title>reveal.js - The HTML Presentation Framework</title>-->
+		<title>Sentiment Analysis Application to Transit</title>
+
+		<meta name="description" content="TTI presentation">
+		<meta name="author" content="Subasish Das">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+		<font style="color:#D5D5D3">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-transition="slide" data-background="twmap.gif" data-background-transition="zoom">
+					<h2>Sentiment Analysis Application to Transit</h3>
+					<br>
+					<br>
+<br>
+					<br><br>
+					<br>
+					<br>
+					<p style="color:#F98400">Subasish Das, Ph.D. </p>
+					<p style="font-size:20px;color:white">Associate Transportation Researcher</p>
+					<p style="font-size:20px;color:white">Texas A&M Transportation Institute (TTI)</p>
+					<p style="font-size:18px;color:grey">June 14, 2018</p>
+					<br>
+					<br>
+					<br>
+
+				</section>
+				<section data-background="white" data-background-size="1700px">
+					<h2 style="color:#F98400">Outline</h2>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Sentiment Analysis</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Twitter Mining</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Use of Historical Tweets</li>
+                        <li style="color:black; font-size:38px;" class="fragment roll-in">Twitter Streaming and Transit</li>
+						</ul>
+					</p>
+				</section>
+
+
+				<section data-background="white" data-background-size="2200px">
+					<h2 style="color:#F98400">Sentiment Analysis</h2>
+					<img  align="right" class="fragment roll-in" height=440 width=1000 data-src="IMG02.jpg">
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+					<h2 style="color:#F98400"> </h2>
+					<img  align="right" class="fragment roll-in" height=350 width=900 data-src="IMG06.jpg">
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+					<h2 style="color:#F98400">Growth of Twitter</h2>
+					<img  align="right" class="fragment roll-in" height=500 width=9000 data-src="IMG05.jpg"><p style="color: black ; font-size:16px;" class="fragment roll-in">    &ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp;&ensp;Source: Twitter 2018 Annual Report</p>
+				</section>
+
+
+				<section data-background="white" data-background-size="2200px">
+					<h2 style="color:#F98400">Why Twitter Mining?</h2>
+					<img  align="right" class="fragment roll-in" height=500 width=9000 data-src="IMG07.jpg">
+				</section>
+
+
+
+				<section data-background="white" data-background-size="2200px">
+					<h2 style="color:#F98400">Mining Historical Tweets</h2>
+					<img  align="right" class="fragment roll-in" height=500 width=9000 data-src="IMG09.jpg"><p style="color: black ; font-size:16px;" class="fragment roll-in">    &ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp;&ensp;Source: Das et al. (2018). Social Media Hashtags Associated with Bike Commuting: Applying 3 Natural Language Processing Tools. 2018 TRB Annual Meeting, Washington D.C.</p>
+				</section>
+
+
+				<section data-background="white" data-background-size="2200px">
+					<h2 style="color:#F98400">Sentiment Analysis</h2>
+					<img  align="right" class="fragment roll-in" height=530 width=9000 data-src="IMG10.jpg"><p style="color: black ; font-size:16px;" class="fragment roll-in">    &ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp;&ensp;Source: Das et al. (2018). Social Media Hashtags Associated with Bike Commuting: Applying 3 Natural Language Processing Tools. 2018 TRB Annual Meeting, Washington D.C.</p>
+				</section>
+
+				<section data-background="white" data-background-size="1700px">
+					<h2 style="color:#F98400">Application to Transit</h2>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Can change the way transit agencies measure rider satisfaction</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Can decipher enormous amount of rider inputs in real-time</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Can deliver real-time information on disruptions and disturbances</li>
+						</ul>
+					</p>
+				</section>
+
+                <section data-background="white" data-background-size="2200px">
+					<h2 style="color:#F98400">Word Cloud on #CTA Tweets</h2>
+					<img  align="right" class="fragment roll-in" height=400 width=900 data-src="IMG11.jpg"><p style="color: black ; font-size:16px;" class="fragment roll-in">    &ensp;&ensp;&ensp; &ensp;&ensp;&ensp;&ensp;&ensp;Source: Collins et al. (2013). A Novel Transit Rider Satisfaction Metric: Rider Sentiments Measured from Online Social Media Data. Public Transportation. Journal of Public Transportation.</p>
+				</section>
+
+				<section data-background="white" data-background-size="1700px">
+					<h2 style="color:#F98400">Real-time Twitter Streaming</h2>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Need to convert tweet texts in sparse vector of features on real-time</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Change adaption fast (can not store tweets on memory)</li>
+						</ul>
+					</p>
+				</section>
+
+                <section data-background="white" data-background-size="2200px">
+					<h2 style="color:#F98400">Detecting Sentiment Change in Real-time</h2>
+					<img  align="right" class="fragment roll-in" height=350 width=900 data-src="IMG08.jpg">
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+					<h2 style="color:#F98400">Noise in Data</h2>
+					<img  align="right" class="fragment roll-in" height=550 width=900 data-src="IMG03.jpg">
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+					<h2 style="color:#F98400">negative times negative</h2>
+					<img  align="right" class="fragment roll-in" height=300 width=900 data-src="IMG12.jpg">
+				</section>
+
+				<section data-background="white" data-background-size="1700px">
+					<h2 style="color:#F98400">Noise Reduction Strategy</h2>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Identify semantics inferred from words’ occurrences in pair</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Capture the contextual semantics and sentiment of words</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Extract semantic sentiment patterns</li>
+						</ul>
+					</p>
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+					<h2 style="color:#F98400">Framework</h2>
+					<img  align="right" class="fragment roll-in" height=320 width=900 data-src="IMG04.jpg">
+				</section>
+
+</section>				
+
+<section data-background="white" data-background-size="2200px">
+					<h2 style="color:#F98400">Key Points</h2>
+					<p>
+						<ul>
+						<li style="font-size:40px; color:black" class="fragment roll-in">Twitter is an enormous source of public opinion</li>
+						<li style="font-size:40px; color:black" class="fragment roll-in">Real-time sentiment analysis will be useful in understanding problems and anomalies</li>
+						<li style="font-size:40px; color:black" class="fragment roll-in">Have great potentials in understanding rider satisfaction</li>
+						<li style="font-size:40px; color:black" class="fragment roll-in">Cutting edge algorithms can remove noise in data significantly</li>
+						<li style="font-size:40px; color:black" class="fragment roll-in"></li>
+						</ul>
+						</p>
+						</section>
+
+<section data-transition="slide" data-background="bw_traff3.gif" data-background-transition="zoom">
+					<h2>Questions?</h2>
+				    </section>
+</section>
+
+			</div>
+</font>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme || 'night', // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				parallaxBackgroundImage: 'bw_traff3.gif',
+				parallaxBackgroundSize: '28400px 42200px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+        <script src="js/raphael-min.js"></script>
+        <script src="js/underscore-min.js"></script>
+        <script src="js/sequence-diagram-min.js"></script>
+
+
+	</body>
+</html>
