@@ -1,0 +1,40 @@
+{
+ "name": "Dissertation",
+ "children": [
+  {
+   "name": "Introduction",
+   "children": [
+    {
+     "name": "DMADV Procedure"
+    },
+    {
+     "name": "Dissertation Outline"
+    }
+   ]
+  },
+  {
+   "name": "Before-after Studies",
+   "children": [
+    {"name": "Paper 1", "size": 5842},
+    {"name": "Paper 2", "size": 2047},
+    {"name": "Paper 3", "size": 1375}
+   ]
+  },
+  {
+   "name": "Commercialization",
+   "children": [
+    {"name": "Lean Six Sigma Procedure", "size": 772},
+    {"name": "Systems Thinking Approach", "size": 3322},
+    {"name": "Webtool Development on the Research Findings", "size": 3332}
+   ]
+  },
+
+  {
+   "name": "Conclusions",
+      "children": [
+    {"name": "Research Contribution", "size": 772},
+    {"name": "Concluding remarks", "size": 3322}
+   ]
+  }
+ ]
+}
