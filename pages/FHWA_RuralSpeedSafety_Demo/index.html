@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<!--<title>reveal.js - The HTML Presentation Framework</title>-->
+		<title>Safe Speed on Austin Roadways with Bike Paths</title>
+
+		<meta name="description" content="TTI presentation">
+		<meta name="author" content="Subasish Das">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+		<font style="color:#D5D5D3">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-transition="slide" data-background="bw_traff3.gif" data-background-transition="zoom">
+					<h2 style="color:#C27D38">Rural Speed Safety Project  for USDOT SDI</h2>
+					<h4 style="color:#7294D4">Demo Visualization using Washington Data</h4>
+					<br>
+					<br>
+<br>
+					<br><br>
+					<span style="background-color: #CCC591"><p style="color:#CCC591"> Subasish Das, Ph.D.</p></span>
+					<p style="font-size:18px;color:#798E87">September 10, 2018</p>
+					<br>
+					<img width="180" height="40" align="middle" data-src="tti_lg.jpg">
+
+				</section>
+				<section data-background="white" data-background-size="1700px">
+					<h2 style="color:#F98400">Outline</h2>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Data Conflation</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Exploratory Data Analysis</li>
+						</ul>
+					</p>
+<br>
+<br>
+<br>
+
+					<p style="font-size:20px;color:blue"; class="fragment roll-in">Note: This presentation is for demontration purpose only.</p>
+				</section>
+
+
+				<section data-background="atx3.png" data-background-size="1200px">
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+					<img  align="right" class="fragment roll-in" height=600 width=1400 data-src="atx7.png">
+				</section>
+
+				<section data-background="black" data-background-size="2200px" >
+					<h3 style="color:#E1AF00">Washington Rural NHS Roadway Crashes</h3>
+					<div class="stretch">
+					<iframe src="16/index.html" frameborder="0" scrolling="no" height="100%" width="100%" marginheight="0" marginwidth="0"></iframe>
+				</section>
+
+				<section data-background="black" data-background-size="2200px" >
+					<h3 style="color:#E1AF00">Washington TMC Level Crashes</h3>
+					<div class="stretch">
+					<iframe src="viz03.html" frameborder="0" scrolling="no" height="100%" width="100%" marginheight="0" marginwidth="0"></iframe>
+				</section>
+
+
+
+				<section data-background="white" data-background-size="1900px" >
+				<h3 style="color:black">Same plot by using CartoDB</h3>
+				<iframe width="100%" height="520" frameborder="0" src="https://subasishsn.cartodb.com/viz/31337abc-c95e-11e5-9a5b-0ef7f98ade21/embed_map" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+				</section>
+
+
+
+				<section data-background="white" data-background-size="1700px">
+					<h2 style="color:#F98400">What to Hack?</h2>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Austin Bicycle Crash Data (2011-2015)</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Austin Traffic Volume Data</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Austin Bicycle Path Road Geometry</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Austin Bicycle Volume Data</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Austin’s Newly Released Bluetooth Data for Vehicle Speed</li>
+						</ul>
+					</p>
+				</section>
+
+
+				<section data-background="white" data-background-size="2200px">
+					<h2 style="color:#F98400">Data Sources</h2>
+					<img  align="left" class="fragment roll-in" height=500 width=300 data-src="atx11.png">
+
+					<img  align="right" class="fragment roll-in" height=500 width=600 data-src="atx2.png"> 
+				</section>
+
+
+				<section data-background="atx8.png" data-background-size="1200px">
+				</section>
+
+
+
+
+<section data-transition="slide" data-background="bike2.gif" data-background-transition="zoom">
+					<h2 style="color:#9B110E">Join us to help him!</h2>
+				    </section>
+</section>
+
+			</div>
+</font>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme || 'night', // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				parallaxBackgroundImage: 'bw_traff3.gif',
+				parallaxBackgroundSize: '28400px 42200px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+        <script src="js/raphael-min.js"></script>
+        <script src="js/underscore-min.js"></script>
+        <script src="js/sequence-diagram-min.js"></script>
+
+
+	</body>
+</html>
