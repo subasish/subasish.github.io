@@ -1,0 +1,39 @@
+.dscrptholder {
+  position: relative;
+  left: 600px;
+  top: 150px;
+  width: 400px;
+}
+.idx {
+  width: 10px;
+  height: 10px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.idxholder {
+  position: fixed;
+  left: 1000px;
+  top: 220px;
+}
+.description {
+  height: 500px;
+  width: 360px;
+  font-family: 'PT Serif', Georgia, serif;
+}
+.descriptionH4 {
+  background-color: #fff;
+}
+.svgholder {
+  position: fixed;
+}
+svg text {
+  font-family: Helvatica, sans-serif;
+  font-weight: 100;
+}
+.rd {
+  color: #c90000;
+}
+.gn {
+  color: #008000;
+}
