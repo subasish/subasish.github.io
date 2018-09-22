@@ -1,0 +1,80 @@
+{
+ "name": "Conflation",
+ "children": [
+  {
+   "name": "Process 1",
+   "children": [
+    {
+     "name": "OH",
+     "children": [
+      {"name": "TMC_HSIS_Conflated_Data",
+      "children": [
+      {"name": "codes", "size": 3812},
+      {"name": "csv_files", "size": 6714},
+      {"name": "shape_files", "size": 743}
+     ]
+    }]},
+    {
+    "name": "WA",
+     "children": [
+      {"name": "TMC_HSIS_Conflated_Data",
+      "children": [
+      {"name": "codes", "size": 3812},
+      {"name": "csv_files", "size": 6714},
+      {"name": "shape_files", "size": 743}
+     ]
+    }]}
+   ]
+  },
+  {
+   "name": "Process 2",
+   "children": [
+    {
+     "name": "OH",
+     "children": [
+      {"name": "TMC_HSIS_Conflated_Data",
+      "children": [
+      {"name": "codes", "size": 3812},
+      {"name": "csv_files", "size": 6714},
+      {"name": "shape_files", "size": 743}
+     ]
+    }]},
+    {
+    "name": "WA",
+     "children": [
+      {"name": "TMC_HSIS_Conflated_Data",
+      "children": [
+      {"name": "codes", "size": 3812},
+      {"name": "csv_files", "size": 6714},
+      {"name": "shape_files", "size": 743}
+     ]
+    }]}
+   ]
+  },
+  {
+   "name": "Process 3",
+   "children": [
+    {
+     "name": "OH",
+     "children": [
+      {"name": "TMC_HSIS_Conflated_Data",
+      "children": [
+      {"name": "codes", "size": 3812},
+      {"name": "csv_files", "size": 6714},
+      {"name": "shape_files", "size": 743}
+     ]
+    }]},
+    {
+    "name": "WA",
+     "children": [
+      {"name": "TMC_HSIS_Conflated_Data",
+      "children": [
+      {"name": "codes", "size": 3812},
+      {"name": "csv_files", "size": 6714},
+      {"name": "shape_files", "size": 743}
+     ]
+    }]}
+   ]
+  },
+]
+}

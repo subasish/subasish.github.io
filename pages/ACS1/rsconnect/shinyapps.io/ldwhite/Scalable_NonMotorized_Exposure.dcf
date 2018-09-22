@@ -1,0 +1,13 @@
+name: Scalable_NonMotorized_Exposure
+title: Scalable_NonMotorized_Exposure
+username:
+account: ldwhite
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 248729
+bundleId: 1134810
+url: https://ldwhite.shinyapps.io/Scalable_NonMotorized_Exposure/
+when: 1513262893.16338
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: State_NonMooto_Performance_Measure1.xlsx|State_NonMooto_Performance_Measure1_GeoID.xlsx
