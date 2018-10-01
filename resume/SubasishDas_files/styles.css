@@ -1,7 +1,7 @@
 html, body {
   margin: 0;
-  padding: -1;
-  background-color: #D5D5D3;
+  padding: 0;
+  background-color: #F9F9F9;
   color: #000;
   font-size: 14px;
   font-weight: 300; }
@@ -11,7 +11,7 @@ html, button, input, select, textarea,
   font-family: "Source Sans Pro", sans-serif; }
 
 a {
-  color: #D69C4E;
+  color: #C06363;
   text-decoration: none;
   cursor: pointer; }
 
@@ -34,7 +34,7 @@ a:hover {
 
 #center {
   margin: 0 auto;
-  max-width: 1200px; }
+  max-width: 1080px; }
 
 #center .pure-g > div {
   -webkit-box-sizing: border-box;
@@ -52,11 +52,11 @@ a:hover {
     margin-top: 5px; }
 
 h2 {
-  font-family: "Avenir", serif;
+  font-family: "Alegreya", serif;
   font-weight: 400;
-  font-size: 23px;
+  font-size: 24px;
   color: #333;
-  margin: 28px 0 -1px 15px; }
+  margin: 30px 0 -4px 15px; }
 
 /* pure-hidden-xs */
 @media screen and (max-width: 567px) {
@@ -111,7 +111,7 @@ h2 {
     display: none; } }
 
 /* pure-hidden-xl */
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .pure-visible-xs {
     display: none; }
   .pure-visible-sm {
@@ -150,7 +150,7 @@ h2 {
 #about div.greeting {
   font-weight: 700;
   font-size: 36px;
-  font-family: "Futura", serif; }
+  font-family: "Alegreya", serif; }
 
 #about .email span {
   font-size: 10px;
@@ -181,7 +181,6 @@ h2 {
 #about .job-materials {
   margin-top: 10px; }
 
-
 .project {
   padding: 15px;
   padding-bottom: 0; }
@@ -200,8 +199,6 @@ h2 {
     margin: 0; }
   .project .try a {
     font-weight: 600; }
-  .project #more-pubs {
-  margin: 0; }
   .project .collaborators {
     font-size: 11px; }
     .project .collaborators a {
