@@ -11,7 +11,7 @@ html, button, input, select, textarea,
   font-family: "Source Sans Pro", sans-serif; }
 
 a {
-  color: #D67236;
+  color: #C27D38;
   text-decoration: none;
   cursor: pointer; }
 
@@ -52,11 +52,11 @@ a:hover {
     margin-top: 5px; }
 
 h2 {
-  font-family: "Alegreya", serif;
+  font-family: "Avenir", serif;
   font-weight: 400;
   font-size: 20px;
   color: #333;
-  margin: 30px 0 -4px 15px; }
+  margin: 30px 0 1px 12px; }
 
 /* pure-hidden-xs */
 @media screen and (max-width: 567px) {
@@ -185,7 +185,7 @@ h2 {
   padding: 18px;
   padding-bottom: 0; }
   .project h3 {
-    font-size: 15px;
+    font-size: 13.5px;
     font-weight: 800;
     margin-top: 0;
     margin-bottom: 6px; }
