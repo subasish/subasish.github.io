@@ -3,7 +3,7 @@ html, body {
   padding: 0;
   background-color: #F9F9F9;
   color: #000;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 300; }
 
 html, button, input, select, textarea,
@@ -11,7 +11,7 @@ html, button, input, select, textarea,
   font-family: "Source Sans Pro", sans-serif; }
 
 a {
-  color: #C06363;
+  color: #D67236;
   text-decoration: none;
   cursor: pointer; }
 
@@ -54,7 +54,7 @@ a:hover {
 h2 {
   font-family: "Alegreya", serif;
   font-weight: 400;
-  font-size: 24px;
+  font-size: 20px;
   color: #333;
   margin: 30px 0 -4px 15px; }
 
@@ -169,31 +169,31 @@ h2 {
   padding-bottom: 0; }
 
 #about #news a {
-  font-weight: 300; }
+  font-weight: 340; }
 
 #about #news li {
   margin-bottom: 15px; }
 
 #about #news .date {
   color: #999 !important;
-  font-size: 11px; }
+  font-size: 13px; }
 
 #about .job-materials {
   margin-top: 10px; }
 
 .project {
-  padding: 15px;
+  padding: 18px;
   padding-bottom: 0; }
   .project h3 {
-    font-size: 17px;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 800;
     margin-top: 0;
-    margin-bottom: 5px; }
+    margin-bottom: 6px; }
   .project .thumbnail {
     float: left;
-    margin: 4px 15px 0 0; }
+    margin: 5px 15px 0 0; }
     .project .thumbnail img {
-      width: 120px;
+      width: 140px;
       /*border-radius: 10px;*/ }
   .project .abstract {
     margin: 0; }
@@ -206,7 +206,7 @@ h2 {
       .project .collaborators a:hover {
         color: #C06363; }
 
-@media screen and (min-width: 568px) {
+@media screen and (min-width: 540px) {
   #papers {
     padding-left: 7.5px; } }
 
