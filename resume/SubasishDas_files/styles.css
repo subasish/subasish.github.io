@@ -56,7 +56,7 @@ h2 {
   font-weight: 400;
   font-size: 20px;
   color: #333;
-  margin: 30px 0 1px 12px; }
+  margin: 30px 0 2px 12px; }
 
 /* pure-hidden-xs */
 @media screen and (max-width: 567px) {
@@ -131,8 +131,7 @@ h2 {
 
 #about p {
   font-size: 17px;
-  line-height: 1.6em;
-  text-align: justify; }
+  line-height: 1.6em;}
 
 #about h2 {
   font-size: 18px;
