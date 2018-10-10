@@ -36,7 +36,7 @@ output:
 * [Missing Values and Speed Distribution](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MC_1.html)
 * [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MC_desSTAT_save.html)
 * [Crash-Speed Associations-- Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MC_dygraphs.html)
-* [Time Series Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MC_daily_ARIMA.html)
+* Time Series Models
 
 ### Rural Minor Arterial
 * [Missing Values and Speed Distribution](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MA_1.html)
