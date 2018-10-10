@@ -1,0 +1,66 @@
+---
+title: "FHWA Road safety Project"
+author: "Subasish Das"
+date: "October 10, 2018"
+output:
+  html_document:
+    theme: flatly
+    highlight: haddock
+    includes:
+      in_header: include/in_header.html
+      before_body: include/navbar.html
+---
+
+# Task 4: Analysis [Data Analysis and Modeling Links]
+## **Washington**
+### Rural Interstate
+* [Missing Values and Speed Distribution](https://rstudio.github.io/leaflet/)
+* Descriptive Statistics
+* [Association of Crash and Speeds in Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_RI_dygraphs1.html)
+* Time Series Models
+
+### Rural Other Expressways
+* Missing Values and Speed Distribution
+* Descriptive Statistics
+* Association of Crash and Speeds in Dygraphs
+* Time Series Models
+
+
+### Rural Principal Arterial
+* Missing Values and Speed Distribution
+* Descriptive Statistics
+* Association of Crash and Speeds in Dygraphs
+* Time Series Models
+
+### Rural Major Collector
+* Missing Values and Speed Distribution
+* Descriptive Statistics
+* Association of Crash and Speeds in Dygraphs
+* Time Series Models
+
+### Rural Minor Arterial
+* Missing Values and Speed Distribution
+* Descriptive Statistics
+* Association of Crash and Speeds in Dygraphs
+* Time Series Models
+
+
+
+## **Ohio**
+### Rural Principal Arterial- Interstate
+* [Missing Values and Speed Distribution](https://rstudio.github.io/leaflet/)
+* Descriptive Statistics
+* Association of Crash and Speeds in Dygraphs
+* Time Series Models
+
+### Rural Principal Arterial- Other Expressways
+* Missing Values and Speed Distribution
+* Descriptive Statistics
+* Association of Crash and Speeds in Dygraphs
+* Time Series Models
+
+### Rural Minor Arterial
+* Missing Values and Speed Distribution
+* Descriptive Statistics
+* Association of Crash and Speeds in Dygraphs
+* Time Series Models
