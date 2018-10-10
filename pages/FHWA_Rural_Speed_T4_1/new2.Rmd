@@ -34,7 +34,7 @@ output:
 
 ### Rural Major Collector
 * [Missing Values and Speed Distribution](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MC_1.html)
-* [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MC_desSTAT_save.html)
+* [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MC_desSTAT_save1.html)
 * [Crash-Speed Associations-- Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MC_dygraphs.html)
 * Time Series Models
 
