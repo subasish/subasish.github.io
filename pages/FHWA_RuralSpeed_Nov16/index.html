@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<!--<title>reveal.js - The HTML Presentation Framework</title>-->
+		<title>USDOT Rural Speed Project</title>
+
+		<meta name="description" content="TTI presentation">
+		<meta name="author" content="Subasish Das">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+		<font style="color:#D5D5D3">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-transition="slide" data-background="bw_traff3.gif" data-background-transition="zoom">
+					<h2 style="color:#C27D38">Rural Speed Safety Project  for USDOT SDI</h2>
+					<h4 style="color:#7294D4">Statistical Analysis and Decision Support Tool</h4>
+					<br>
+					<br>
+<br>
+					<br><br>
+					<p style="font-size:26px;color:#C27D38">Subasish Das, Ph.D.</p>
+					<p style="font-size:24px;color:white">November 16, 2018</p>
+					<br>
+					<img width="180" height="40" align="middle" data-src="tti_lg.jpg">
+
+				</section>
+
+				<section data-background="white" data-background-size="1700px">
+					<h2 style="color:#F98400">Outline</h2>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Overview</li>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Data Preparation</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Exploratory Data Analysis</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Statistical Models</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Decision Support Tool</li>
+
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Next Steps</li>
+						</ul>
+				</section>
+
+				<section data-background="white" data-background-size="1700px">
+					<h2 style="color:#F98400">Overview</h2>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">About this Project</li>
+						<ul><li style="color: #3F5151 ; font-size:34px;" class="fragment roll-in">One of the Four USDOT Safety Data Initiative (SDI) Projects</li></ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Research Problem</li>
+						<ul><li style="color: #3F5151 ; font-size:34px;" class="fragment roll-in">A data-driven procedure to better understand the relationships between motor vehicle travel speed, roadway design elements, traffic volumes, and crash risks and severities has not yet established.</li></ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Objective</li>
+						<ul><li style="color: #3F5151 ; font-size:33px;" class="fragment roll-in">Examine the prevailing operating speeds on a large scale to see how speed and speed differentials interact with roadway characteristics to influence the likelihood of crashes.</li></ul>
+						</ul>
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+					<img  align="right" class="fragment roll-in" height=600 width=1400 data-src="scd1.jpg">
+				</section>
+
+				<section data-background="white" data-background-size="1700px">
+					<h2 style="color:#F98400">Data Preparation</h2>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Three States: North Carolina, Washington, and Ohio</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Three Databases</li>
+						<ul>
+							<li style="color: #3F5151 ; font-size:34px;" class="fragment roll-in">Highway Safety Information System (HSIS)</li>
+							<li style="color: #3F5151 ; font-size:34px;" class="fragment roll-in">Highway Performance Monitoring System (HPMS)</li>
+							<li style="color: #3F5151 ; font-size:34px;" class="fragment roll-in">National Performance Management Research Data Set (NPMRDS)</li>
+						</ul>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Year: 2015</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Task</li>
+						<ul>
+							<li style="color: #3F5151 ; font-size:34px;" class="fragment roll-in">Conflate 3 databases for 3 states</li>
+						</ul>
+						</ul>
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+				<div class="stretch">
+					<img  align="right" class="fragment roll-in" height=600 width=1400 data-src="Conf.jpg">
+				</section>
+
+				<section data-background="black" data-background-size="2200px" >
+					<div class="stretch">
+					<iframe src="viz01.html" frameborder="0" scrolling="no" height=100% width=100% marginheight="0" marginwidth="0"></iframe>
+				</section>
+
+				<section data-background="white" data-background-size="2200px" >
+				<div class="stretch">
+					<iframe src="5/index.html" frameborder="0" scrolling="no" height="100%" width="100%" marginheight="0" marginwidth="0"></iframe>
+				</section>
+
+
+				<section data-background="white" data-background-size="2300px" >
+				<div class="stretch">
+				<iframe width="1400" height="580" frameborder="0" src="DSt.html" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+				</section>
+
+				<section data-background="white" data-background-size="2300px" >
+				<iframe width="1400" height="580" frameborder="0" src="http://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+				<div class="stretch">
+					<img  align="right" height=400 width=1400 data-src="Piccc01.PNG">
+				</section>
+
+
+				<section data-background="white" data-background-size="2200px">
+				<h4 style="color:#F98400">Safety Performance Functions (SPFs)</h2>
+				<div class="stretch">
+					<img  align="right" height=300 width=1400 data-src="Piccc02.PNG">
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+				<h4 style="color:#F98400">SPFs at Segment level (Washington)</h2>
+				<div class="stretch">
+					<img  align="right" height=800 width=1400 data-src="SPF01.PNG">
+				</section>
+				
+				<section data-background="white" data-background-size="2200px">
+				<h4 style="color:#F98400">SPFs at Segment-temporal level (Washington)</h2>
+				<div class="stretch">
+					<img  align="right" height=800 width=1400 data-src="SPF02.PNG">
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+				<h4 style="color:#F98400">Proximity of Crashes at Segment-temporal Level</h2>
+				<div class="stretch">
+					<img  align="right" height=400 width=800 data-src="DS03a.PNG">
+				</section>
+
+
+				<section data-background="white" data-background-size="1900px" >
+				<h3 style="color:black">Decision Support Tool</h3>
+				<iframe width="100%" height="520" frameborder="0" src="https://ldwhite.shinyapps.io/RuralSpdSafety_Demo/" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+				</section>
+
+				<section data-background="white" data-background-size="1700px">
+					<h2 style="color:#F98400">Key Takes</h2>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Developed SPFs at both segment and segment-temporal levels for different facility types</li>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">SPFs show that speed measure has effect on crash frequencies</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Developed time-series model to forecast speed</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Analysis on proximity of crashes at segment-temporal level aimed to classify crash and non-crash event</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Developed Decision Support Tool at segment level for Washington and Ohio</li>
+						</ul>
+				</section>
+
+				<section data-background="white" data-background-size="1700px">
+					<h2 style="color:#F98400">Next Steps</h2>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Refine segment-temporal level SPFs</li>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Refine analysis on proximity of crashes at segment-temporal level</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Add North Carolina data in Decision Supprt Tool</li>
+						</ul>
+				</section>
+
+				<section data-background="black" data-background-size="2200px" >
+					<h3 style="color:#E1AF00">Questions?</h3>
+					<div class="stretch">
+					<iframe src="circ1.html" frameborder="0" scrolling="no" height="100%" width="100%" marginheight="0" marginwidth="0"></iframe>
+				</section>
+
+
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme || 'night', // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				parallaxBackgroundImage: 'bw_traff3.gif',
+				parallaxBackgroundSize: '28400px 42200px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+        <script src="js/raphael-min.js"></script>
+        <script src="js/underscore-min.js"></script>
+        <script src="js/sequence-diagram-min.js"></script>
+
+
+	</body>
+</html>

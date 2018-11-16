@@ -26,7 +26,7 @@ output:
 * [Crash-Speed Associations-- Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/WA_RMU_dygraphs.html)
 * [Time Series Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/WA_RMU_ARIMA.html)
 
-### Rural Multi-lane Undivided
+### Rural Multi-lane Divided
 * [Missing Values and Speed Distribution](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/WA_RMD_md.html)
 * [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/WA_RMD_desSTAT.html)
 * [Crash-Speed Associations-- Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/WA_RMD_dygraphs.html)
@@ -53,7 +53,7 @@ output:
 * [Crash-Speed Associations-- Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/OH_RMU_dygraphs.html)
 * [Time Series Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/OH_RMU_ARIMA.html)
 
-### Rural Multi-lane Undivided
+### Rural Multi-lane Divided
 * [Missing Values and Speed Distribution](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/OH_RMD_md.html)
 * [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/OH_RMD_desSTAT.html)
 * [Crash-Speed Associations-- Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/OH_RMD_dygraphs.html)
@@ -81,7 +81,7 @@ output:
 * [Crash-Speed Associations-- Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/NC_RMU_dygraphs.html)
 * [Time Series Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/NC_RMU_ARIMA.html)
 
-### Rural Multi-lane Undivided
+### Rural Multi-lane Divided
 * [Missing Values and Speed Distribution](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/NC_RMD_md.html)
 * [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/NC_RMD_desSTAT.html)
 * [Crash-Speed Associations-- Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/NC_RMD_dygraphs.html)
