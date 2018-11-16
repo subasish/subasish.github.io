@@ -92,5 +92,5 @@ output:
 * [Missing Values and Speed Distribution](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/NC_RI_md.html)
 * [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/NC_RI_desSTAT.html)
 * [Crash-Speed Associations-- Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/NC_RI_dygraphs.html)
-* [Time Series Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/NC_RI_daily_ARIMA.html)
+* [Time Series Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/NC_RI_ARIMA.html)
 
