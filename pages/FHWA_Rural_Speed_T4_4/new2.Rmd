@@ -1,0 +1,66 @@
+---
+title: "FHWA Rural Speed Safety Project"
+author: "Subasish Das"
+date: "October 10, 2018"
+output:
+  html_document:
+    theme: flatly
+    highlight: haddock
+    includes:
+      in_header: include/in_header.html
+      before_body: include/navbar.html
+---
+
+# Task 4: Analysis [Data Analysis and Modeling Links]
+## **Washington**
+### Rural Interstate
+* [Missing Values and Speed Distribution](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_RI_1.html)
+* [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_RI_1desSTAT_save.html)
+* [Crash-Speed Associations-- Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_RI_dygraphs1.html)
+* [Time Series Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_RI_daily_ARIMA.html)
+
+### Rural Other Expressways
+* [Missing Values and Speed Distribution](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_OE_1.html)
+* [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_OE_desSTAT_save.html)
+* Crash-Speed Associations-- Dygraphs
+* [Time Series Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_OE_daily_ARIMA.html)
+
+
+### Rural Principal Arterial
+* [Missing Values and Speed Distribution](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_PA_1.html)
+* [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_PA_desSTAT_save.html)
+* Crash-Speed Associations-- Dygraphs
+* [Time Series Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_PA_daily_ARIMA.html)
+
+### Rural Major Collector
+* [Missing Values and Speed Distribution](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MC_1.html)
+* [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MC_desSTAT_save1.html)
+* [Crash-Speed Associations-- Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MC_dygraphs.html)
+* Time Series Models
+
+### Rural Minor Arterial
+* [Missing Values and Speed Distribution](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MA_1.html)
+* [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MA_desSTAT_save.html)
+* [Crash-Speed Associations-- Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MA_dygraphs.html)
+* [Time Series Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/WA_MA_daily_ARIMA.html)
+
+
+
+## **Ohio**
+### Rural Principal Arterial- Interstate
+* [Missing Values and Speed Distribution](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/OH_PAI_1.html)
+* [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/OH_PAI_desSTAT_save.html)
+* Crash-Speed Associations-- Dygraphs
+* [Time Series Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/OH_PAI_daily_ARIMA.html)
+
+### Rural Principal Arterial- Other Expressways
+* Missing Values and Speed Distribution
+* Descriptive Statistics
+* Crash-Speed Associations-- Dygraphs
+* Time Series Models
+
+### Rural Minor Arterial
+* [Missing Values and Speed Distribution](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/OH_MA_1.html)
+* [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/htmls/OH_MA_desSTAT_save.html)
+* Crash-Speed Associations-- Dygraphs
+* Time Series Models
