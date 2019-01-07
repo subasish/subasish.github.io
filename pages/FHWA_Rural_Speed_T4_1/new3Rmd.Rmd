@@ -1,7 +1,7 @@
 ---
 title: "FHWA Rural Speed Safety Project"
 author: "Subasish Das"
-date: "November 16, 2018"
+date: "January 7, 2019"
 output:
   html_document:
     theme: flatly
@@ -39,6 +39,10 @@ output:
 * [Crash-Speed Associations-- Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/WA_RI_dygraphs.html)
 * [Time Series Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/WA_RI_daily_ARIMA.html)
 
+### Modeling
+* [EDA](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html3a/WADataEDA.html)
+* [Correlation Plots](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html3a/WA_VarCorr.html)
+* [Reduced Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html3a/WAReducedModels.html)
 
 ## **Ohio**
 ### Rural Two-lane
@@ -65,6 +69,11 @@ output:
 * [Descriptive Statistics](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/OH_RI_desSTAT.html)
 * [Crash-Speed Associations-- Dygraphs](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/OH_RI_dygraphs.html)
 * [Time Series Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html2a/OH_RI_ARIMA.html)
+
+### Modeling
+* [EDA](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html3a/OHDataEda.html)
+* [Correlation Plots](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html3a/OH_VarCorr.html)
+* [Reduced Models](https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/html3a/OHReducedModels.html)
 
 
 
