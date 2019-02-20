@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Application of Natural Language Processing (NLP) in Transportation Studies</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Subasish Das  Associate Transportation Researcher, TTI   February 21, 2019" />
+    <link href="index_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="index_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="index_files/font-awesome-5.3.1/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Application of Natural Language Processing (NLP) in Transportation Studies
+### Subasish Das <br> Associate Transportation Researcher, TTI <br> February 21, 2019
+<br> <br> <i class="fab  fa-twitter "></i> <a href="https://twitter.com/subasish_das"><span class="citation">@subasish_das</span></a> <br> <i class="fab  fa-github "></i> <a href="https://github.com/subasish"><span class="citation">@subasish</span></a> <br> <i class="fas  fa-envelope "></i> <a href="mailto:s-das@tti.tamu.com" class="email">s-das@tti.tamu.com</a> <br /> <i class="fas  fa-globe "></i> <a href="http://subasish.github.io" class="uri">http://subasish.github.io</a> <br> <br> </a>
+
+---
+
+background-image: url(tti_lg.jpg)
+background-size: 160px
+background-position: 95% 5%
+class: principles
+
+### About me
+
+* Started at TTI in August 2015
+  * Member of the **Roadway Safety** team
+  * Leading one of the four USDOT **Safety Data Initiative (SDI)** project
+  * Passion: Interactive Data Visualization
+
+* Previous Life
+  * Ph.D. student for 5 years (2010-2015)
+  * Roadway Engineer in Dubai, UAE (2008-2009)
+  
+* PhD in Systems Engineering at UL Lafayette (July 2015)
+  * Completed **also** 16 Ph.D level courses in Statistics (dissertation incomplete)
+
+
+
+---
+background-image: url(tti_lg.jpg)
+background-size: 160px
+background-position: 95% 5%
+
+### What is NLP?
+
+* Many R packages. My preference: tidytext, tm, cleanNLP, topicmodels, and stm.
+
+```r
+library(tidytext)
+text_df %>%
+  unnest_tokens(word, text)
+```
+
+<iframe src="https://player.vimeo.com/video/132863038?title=0&amp;byline=0&amp;portrait=0" width="100%" height="400" frameborder="0" seamless="seamless" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+---
+
+background-image: url(IMG04.JPG)
+background-size: 65%
+
+### Some of My NLP Papers
+
+---
+
+background-image: url(IMG02.JPG)
+background-size: 65%
+
+### Some of My NLP Papers
+
+
+---
+
+background-image: url(IMG03.JPG)
+background-size: 65%
+
+### Some of My NLP Papers
+
+
+---
+
+background-image: url(rur.gif)
+background-size: 95%
+
+---
+
+background-image: url(IMG09.JPG)
+background-size: 75%
+
+### Framework (for example: Twitter Mining)
+
+---
+
+background-image: url(IMG12.jpg)
+background-size: 70%
+
+### Framework (for example: Topic Modeling)
+
+---
+background-image: url(tti_lg.jpg)
+background-size: 160px
+background-position: 95% 5%
+
+### Token
+
+.pull-left[
+```r
+library(tidytext)
+library(dplyr)
+
+text &lt;- c("Because I could not stop for Death -",
+          "He kindly stopped for me -",
+          "The Carriage held but just Ourselves -",
+          "and Immortality")
+
+
+text_df &lt;- tibble(line = 1:4, text = text)
+text_df %>%
+  unnest_tokens(word, text)
+
+```
+]
+
+.pull-right[
+&lt;img src="IMG01.jpg" width="90%" &gt;
+]
+
+
+---
+background-image: url(tti_lg.jpg)
+background-size: 160px
+background-position: 95% 5%
+
+### Most Frequent Word
+
+.pull-left[
+```r
+library(ggplot2)
+data(stop_words)
+
+tidy_books &lt;- tidy_books %>%
+* anti_join(stop_words)
+
+tidy_books %>%
+  count(word, sort = TRUE) 
+
+tidy_books %>%
+  count(word, sort = TRUE) %>%
+  filter(n > 600) %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(word, n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip()
+
+```
+]
+
+.pull-right[
+&lt;img src="IMG05.jpg" width="100%" &gt;
+]
+
+---
+
+background-image: url(IMG08.JPG)
+background-size: 90%
+
+### Uni-gram Example 1
+
+---
+
+background-image: url(IMG11.JPG)
+background-size: 90%
+
+### Uni-gram Example 2
+
+---
+background-image: url(cnarr.jpg)
+background-size: 70%
+
+### Raw Text
+
+---
+
+background-image: url(Img2.png)
+background-size: 90%
+
+### Example from a Project
+
+---
+
+background-image: url(bar1_1.png)
+background-size: 90%
+
+### Bi-gram
+
+---
+
+background-image: url(bar3_1.png)
+background-size: 90%
+
+### Tri-gram
+
+---
+
+background-image: url(tti_lg.jpg)
+background-size: 160px
+background-position: 95% 5%
+
+### Word Cloud
+
+```r
+
+library(wordcloud)
+
+tidy_books %>%
+  anti_join(stop_words) %>%
+  count(word) %>%
+  with(wordcloud(word, n, max.words = 100))
+```
+
+
+&lt;img src="IMG10.JPG" width="70%" &gt;
+
+
+---
+
+background-image: url(Sent.jpg)
+background-size: 90%
+
+### Sentiment Analysis
+---
+
+### Related Codes
+
+
+```r
+* get_sentiments("afinn") ## From A. Finn's Senti-Lexicon
+
+finn_joy &lt;- get_sentiments("afinn") %>% 
+  filter(sentiment == "joy")
+
+tidy_books %>%
+  filter(book == "MyBook1") %>%
+*  inner_join(finn_joy) %>%
+  count(word, sort = TRUE)
+
+MyBook1_sentiment <- tidy_books %>%
+*  inner_join(get_sentiments("afinn")) %>%
+*  count(book, index = linenumber %/% 80, sentiment) %>%
+  spread(sentiment, n, fill = 0) %>%
+  mutate(sentiment = positive - negative)
+
+```
+
+---
+background-image: url(whyl.gif)
+background-size: 400px
+background-position: 95% 10%
+class: inverse, bottom, principles
+
+## What have we learnt so far?
+
+* General rule of thumb: cleaning, counts, and lots of bar plots.
+
+* May be some new words: corpus, corpora, stop words, senti-lexicon
+   
+* Things you can do to be a proactive R coder:
+   * Use *dplyr* and *tidyverse*
+   * Create .RMD and .html for reproducibility
+   * Follow top data visualizers on Twitter
+   
+
+---
+
+background-image: url(dplyr.gif)
+background-size: 85%
+
+### dplyr
+
+---
+
+background-image: url(RMD.gif)
+background-size: 75%
+
+### Why RMD?
+
+---
+background-image: url(tti_lg.jpg)
+background-size: 160px
+background-position: 95% 5%
+
+### Breaking down the server logic
+
+```r
+server &lt;- function(input, output) {
+  output$arr_time &lt;- renderPlotly({
+    plot_ly(flights, x = ~arr_time, source = "arr_time") 
+  })
+  
+  output$dep_time &lt;- renderPlotly({
+    p &lt;- plot_ly(flights, x = ~dep_time, source = "dep_time") 
+    brush &lt;- event_data("plotly_brushing", source = "arr_time")
+    if (is.null(brush)) return(p)
+*   p %&gt;%
+*     filter(between(arr_time, brush$x[1], brush$x[2])) %&gt;%
+*     add_histogram()
+  })
+}
+```
+
+1. The `"dep_time"` output depends `"arr_time"` brush
+2. If `"arr_time"` brush isn't active, plot full `dep_time` histogram 
+3. If `"arr_time"` brush *is* active, plot *filtered* histogram
+
+
+---
+background-image: url(ayd.gif)
+background-size: 250px
+background-position: 95% 10%
+class: inverse, bottom, principles
+
+
+* Almost!
+
+* Glimpes of the following:
+   * text mining
+   * n-gram, sentiment analysis
+   * dplyr and rmd
+  
+* More in future:
+   * tf-idf
+   * topic modeling
+   * structural topic modeling
+   
+
+---
+background-image: url(Ceric6.gif)
+background-size: 25%
+class: principles, center
+
+## Thanks for listening! Questions?
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+<i class="fab  fa-twitter "></i> &lt;a href="https://twitter.com/subasish_das"&gt;@subasish_das&lt;/a&gt; &lt;br&gt;
+<i class="fab  fa-github "></i> &lt;a href="https://github.com/subasish"&gt;@subasish&lt;/a&gt; &lt;br&gt;
+<i class="fas  fa-envelope "></i> &lt;s-das@tti.tamu.com&gt; &lt;br&gt;
+<i class="fas  fa-globe "></i> &lt;http://subasish.github.io&gt;
+    </textarea>
+<script src="../templates/remarkjs/libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "14.6:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"navigation": {
+"scroll": false
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
