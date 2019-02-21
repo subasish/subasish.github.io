@@ -255,6 +255,56 @@ MyBook1_sentiment <- tidy_books %>%
   mutate(sentiment = positive - negative)
 
 ```
+---
+### Package cleanNLP
+
+```r
+
+library(cleanNLP)
+cnlp_get_token(sotu) %>%
+  group_by(id) %>%
+  summarize(n = n()) %>%
+  left_join(cnlp_get_document(sotu)) %>%
+  ggplot(aes(year, n)) +
+    geom_line(color = grey(0.8)) +
+*    geom_point(aes(color = sotu_type)) +
+    geom_smooth()
+```
+
+
+&lt;img src="clean01.jpg" width="60%" &gt;
+
+
+---
+### Principle Component Analysis
+
+```r
+
+library(cleanNLP)
+pca <- cnlp_get_token(sotu) %>%
+  filter(pos %in% c("NN", "NNS")) %>%
+*  cnlp_get_tfidf(min_df = 0.05, max_df = 0.95, type = "tfidf", tf_weight = "dnorm") %>%
+  cnlp_pca(cnlp_get_document(sotu))
+```
+
+
+&lt;img src="clean02.jpg" width="80%" &gt;
+
+---
+### Network Plot
+
+```r
+
+library(cleanNLP)
+pca <- cnlp_get_token(sotu) %>%
+  filter(pos %in% c("NN", "NNS")) %>%
+*  cnlp_get_tfidf(min_df = 0.05, max_df = 0.95, type = "tfidf", tf_weight = "dnorm") %>%
+  cnlp_pca(cnlp_get_document(sotu))
+```
+
+
+&lt;img src="clean02.jpg" width="80%" &gt;
+
 
 ---
 background-image: url(whyl.gif)
@@ -264,9 +314,9 @@ class: inverse, bottom, principles
 
 ## What have we learnt so far?
 
-* General rule of thumb: cleaning, counts, and lots of bar plots.
+* General rule of thumb: data cleaning, frequency, and knowledge extraction.
 
-* May be some new words: corpus, corpora, stop words, senti-lexicon
+* Some new words: corpus, corpora, stop words, senti-lexicon
    
 * Things you can do to be a proactive R coder:
    * Use *dplyr* and *tidyverse*
