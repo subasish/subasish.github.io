@@ -20,7 +20,7 @@ class: center, middle, inverse, title-slide
 ---
 
 background-image: url(tti_lg.jpg)
-background-size: 160px
+background-size: 350px
 background-position: 95% 5%
 class: principles
 
@@ -36,18 +36,17 @@ class: principles
   * Roadway Engineer in Dubai, UAE (2008-2009)
   
 * PhD in Systems Engineering at UL Lafayette (July 2015)
-  * Completed **also** 16 Ph.D level courses in Statistics (dissertation incomplete)
+  * Fun Fact: Tried to get another PhD in Statistics. Failed to do so. Completed 16 Graduate level courses in Statistics. 
 
 
 
 ---
-background-image: url(tti_lg.jpg)
+background-image: url( )
 background-size: 160px
 background-position: 95% 5%
 
 ### What is NLP?
 
-* Many R packages. My preference: tidytext, tm, cleanNLP, topicmodels, and stm.
 
 ```r
 library(tidytext)
@@ -60,7 +59,7 @@ text_df %>%
 ---
 
 background-image: url(IMG04.JPG)
-background-size: 65%
+background-size: 62%
 
 ### Some of My NLP Papers
 
@@ -86,8 +85,46 @@ background-image: url(rur.gif)
 background-size: 95%
 
 ---
+background-image: url(CC01.gif)
+background-size: 280px
+background-position: 95% 10%
+class: inverse, bottom, principles
 
-background-image: url(New.gif)
+## Basic Workflow
+
+* General guideline
+  * Using *tidyverse*
+  * Familiarity with dplyr, markdown, and git. 
+  * Use 'RProject' from raw data to model delopement.
+   
+* dplyr Package
+  * A great tool for data manipulation
+
+* Markdown
+  * Can create html and pdf files
+  * Reproducibility in works
+
+* Git
+  * Share code with others
+  * Can reach to a broad community
+
+---
+
+background-image: url(dplyr.gif)
+background-size: 85%
+
+### dplyr
+
+---
+
+background-image: url(RMD.gif)
+background-size: 75%
+
+### Why RMD?
+
+---
+
+background-image: url(screen.gif)
 background-size: 95%
 
 
@@ -106,7 +143,7 @@ background-size: 70%
 ### Framework (for example: Topic Modeling)
 
 ---
-background-image: url(tti_lg.jpg)
+background-image: url( )
 background-size: 160px
 background-position: 95% 5%
 
@@ -136,7 +173,7 @@ text_df %>%
 
 
 ---
-background-image: url(tti_lg.jpg)
+background-image: url( )
 background-size: 160px
 background-position: 95% 5%
 
@@ -212,7 +249,7 @@ background-size: 90%
 
 ---
 
-background-image: url(tti_lg.jpg)
+background-image: url( )
 background-size: 160px
 background-position: 95% 5%
 
@@ -297,22 +334,6 @@ pca <- cnlp_get_token(sotu) %>%
 &lt;img src="clean02.jpg" width="80%" &gt;
 
 ---
-### Network Plot
-
-```r
-
-library(cleanNLP)
-pca <- cnlp_get_token(sotu) %>%
-  filter(pos %in% c("NN", "NNS")) %>%
-*  cnlp_get_tfidf(min_df = 0.05, max_df = 0.95, type = "tfidf", tf_weight = "dnorm") %>%
-  cnlp_pca(cnlp_get_document(sotu))
-```
-
-
-&lt;img src="clean02.jpg" width="80%" &gt;
-
-
----
 background-image: url(whyl.gif)
 background-size: 400px
 background-position: 95% 10%
@@ -326,72 +347,151 @@ class: inverse, bottom, principles
    
 * Things you can do to be a proactive R coder:
    * Use *dplyr* and *tidyverse*
-   * Create .RMD and .html for reproducibility
-   * Follow top data visualizers on Twitter
+   * Create *.RMD* and .html for reproducibility
+   * Use *git* to push your code
    
 
 ---
 
-background-image: url(dplyr.gif)
+
+background-image: url(whyi.jpg)
 background-size: 85%
 
-### dplyr
+### Black Box Model= Artificial Intelligence
 
 ---
 
-background-image: url(RMD.gif)
+
+background-image: url(awes.jpg)
 background-size: 75%
 
-### Why RMD?
+### Git Repository
+
+
 
 ---
-background-image: url(tti_lg.jpg)
+background-image: url( )
 background-size: 160px
 background-position: 95% 5%
 
-### Breaking down the server logic
+### Text Mining with Interpretable Machine Learning
 
 ```r
-server &lt;- function(input, output) {
-  output$arr_time &lt;- renderPlotly({
-    plot_ly(flights, x = ~arr_time, source = "arr_time") 
-  })
-  
-  output$dep_time &lt;- renderPlotly({
-    p &lt;- plot_ly(flights, x = ~dep_time, source = "dep_time") 
-    brush &lt;- event_data("plotly_brushing", source = "arr_time")
-    if (is.null(brush)) return(p)
-*   p %&gt;%
-*     filter(between(arr_time, brush$x[1], brush$x[2])) %&gt;%
-*     add_histogram()
-  })
+library(lime)
+library(xgboost) # the classifier
+library(text2vec) # used to build the BoW matrix
+data(train_sentences)
+data(test_sentences)
+
+# Tokenize data
+get_matrix <- function(text) {
+*  it <- itoken(text, progressbar = FALSE)
+*  create_dtm(it, vectorizer = hash_vectorizer())
 }
+
+# BoW matrix generation
+dtm_train = get_matrix(train_sentences$text)
+dtm_test = get_matrix(test_sentences$text)
+
 ```
 
-1. The `"dep_time"` output depends `"arr_time"` brush
-2. If `"arr_time"` brush isn't active, plot full `dep_time` histogram 
-3. If `"arr_time"` brush *is* active, plot *filtered* histogram
+1. The `"itoken"` is used to develop *document term matrix*
+2. In built 'train' and 'test' data
+
+---
+### XGBoost Model
+
+```r
+# Create boosting model for binary classification (-> logistic loss)
+# Other parameters are quite standard
+param <- list(max_depth = 7, 
+              eta = 0.1, 
+              objective = "binary:logistic", 
+              eval_metric = "error", 
+              nthread = 1)
+
+xgb_model <- xgb.train(
+  param, 
+  xgb.DMatrix(dtm_train, label = train_sentences$class.text == "OWNX"),
+  nrounds = 50
+# We use a (standard) threshold of 0.5
+predictions <- predict(xgb_model, dtm_test) > 0.5
+test_labels <- test_sentences$class.text == "OWNX"
+
+# Accuracy
+print(mean(predictions == test_labels))
+# 0.84
+
+```
+
+1. Develop model from train data
+2. Apply the model on test data
+
+---
+### Interpretation
+
+.pull-left[
+```r
+sentence_to_explain <- head(test_sentences[test_labels,]$text, 5)
+explainer <- lime(sentence_to_explain, model = xgb_model, 
+                  preprocess = get_matrix)
+explanation <- explain(sentence_to_explain, explainer, n_labels = 1, 
+                       n_features = 2)
+plot_features(explanation)
+
+```
+]
+
+.pull-right[
+&lt;img src="IMG15.jpg" width="110%" &gt;
+]
+
+
+---
+background-image: url( )
+background-size: 160px
+background-position: 95% 5%
+
+### Codes from Rpubs 1
+<iframe src="https://rpubs.com/subasish/87100" frameborder="0" scrolling="yes" height="100%" width="100%" marginheight="0" marginwidth="0"></iframe>
+
+
+---
+background-image: url( )
+background-size: 160px
+background-position: 95% 5%
+
+### Codes from Rpubs 2
+<iframe src="https://rpubs.com/subasish/94112" frameborder="0" scrolling="yes" height="100%" width="100%" marginheight="0" marginwidth="0"></iframe>
+
+---
+background-image: url( )
+background-size: 160px
+background-position: 95% 5%
+
+### What about Punctuation? 
+<iframe src="https://www.c82.net/work/?id=347" frameborder="0" scrolling="yes" height="100%" width="100%" marginheight="0" marginwidth="0"></iframe>
 
 
 ---
 background-image: url(ayd.gif)
-background-size: 250px
+background-size: 350px
 background-position: 95% 10%
 class: inverse, bottom, principles
 
 
 * Almost!
 
-* Glimpes of the following:
+* Glimpse of the following:
    * text mining
    * n-gram, sentiment analysis
    * dplyr and rmd
   
 * More in future:
    * tf-idf
-   * topic modeling
    * structural topic modeling
-   
+   * keras and tensorflow
+
 
 ---
 background-image: url(Ceric6.gif)
