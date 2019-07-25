@@ -10,7 +10,7 @@
   "text": {
     "more": "",
     "intro": "",
-    "title": "TRR Coauthor Graph"
+    "title": "TRR Coauthor Graph (2001-2018)"
   },
   "legend": {
     "edgeLabel": "Coauthorship",
@@ -40,8 +40,8 @@
       "defaultLabelSize": 14
     },
     "graphProperties": {
-      "maxEdgeSize": 0.5,
-      "minEdgeSize": 0.2,
+      "maxEdgeSize": 2.5,
+      "minEdgeSize": 0.5,
       "minNodeSize": 1,
       "maxNodeSize": 7
     },
