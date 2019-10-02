@@ -1,0 +1,286 @@
+div.info-left {
+    margin-left: 10px;
+    display: inline-block;
+}
+div.info-left h6 {
+    font-size: small;
+    font-weight: bold;
+    text-decoration: underline;
+}
+div.info-left span {
+    font-size: smaller;
+}
+div.info-right {
+    float: right;
+}
+div.info-right h6 {
+    font-size: small;
+    font-weight: bold;
+    text-decoration: underline;
+}
+div.warnings span {
+    color: red;
+    font-size: small;
+    font-weight: bold;
+}
+div.btn-sizing button {
+    width: 200px;
+    height: 50px;
+}
+div.btn-sizing span {
+    margin-top: 15px;
+    padding-right: 15px;
+    float: left;
+    font-size: medium;
+    font-weight: bold;
+}
+div.info-right span {
+    font-size: smaller;
+}
+table#measurements {
+    width: 100%;
+}
+table#measurements caption {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border: solid forestgreen 1px;
+}
+table#measurements td {
+    padding: 0 5px 0 5px;
+}
+
+table#area {
+    width: 100%;
+}
+table#area caption {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border: solid forestgreen 1px;
+}
+table#area td {
+    padding: 0 5px 0 5px;
+}
+
+table.core-mix {
+    width: 60%;
+    float: left;
+    border: solid black 1px;
+}
+table.core-mix caption {
+    font-size: medium;
+    font-weight: bold;
+    color: black;
+}
+table.core-mix th {
+    font-size: small;
+    text-align: center;
+    border: solid black 1px;
+    padding: 3px 5px 3px 5px;
+}
+table.core-mix td {
+    font-size: smaller;
+    text-align: center;
+    border: solid black 1px;
+}
+table.core-mix td input {
+    height: 10px;
+    font-size: small;
+    display: inline;
+    position: relative;
+    top: 7px;
+    border: none;
+    background: #4cae4c;
+    color: white;
+}
+table.core-mix td select {
+    background: #4cae4c;
+    text-align: center;
+    color: white;
+}
+table.core-mix td select option {
+    color: white;
+    font-size: small;
+}
+
+table.table-body {
+    width: 55%;
+    margin: 5px 0px 0px 260px;
+}
+
+table.table-body caption {
+    font-size: large;
+    font-weight: bold;
+    color: black;
+}
+
+table.table-body tr td {
+    font-size: 12px;
+    width: 25%;
+    padding-top: 2px;
+    border-bottom: dotted #3e8f3e 1px;
+}
+table.table-body tr td input {
+    height: 10px;
+    font-size: small;
+    display: inline-block;
+    position: relative;
+    top: 7px;
+    border: none;
+    overflow-x: hidden;
+}
+
+table.table-body tr td button {
+    font-size: 12px;
+    border-radius: 12px;
+    width: 75%;
+}
+
+table.table-body tr td button a {
+    color: white;
+}
+table.table-body tr td select option {
+    font-size: small;
+}
+button.add {
+    width: 80px;
+    margin-left: 280px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+/* ************************************************************************** */
+/* ******************* vdot.html ******************************************** */
+/* ************************************************************************** */
+
+p,
+th,
+td,
+li,
+ul,
+ol {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+li {
+    margin-bottom: 5px;
+}
+h3 {
+    font-size: 28px;
+}
+h4 {
+    font-size: 24px;
+}
+h5 {
+    font-size: 20px;
+    color: white;
+}
+h6 {
+    font-size: 18px;
+}
+
+header#top {
+    margin-bottom: 0;
+}
+
+.menu-text {
+    color: white;
+}
+
+/* ***************** header content ******************************* */
+
+.navbar-inverse {
+    background-image: -webkit-linear-gradient(top, #81b74d 0, #4f881a 100%);
+    background-image: -o-linear-gradient(top,#81b74d 0,#4f881a 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#81b74d),to(#4f881a));
+    background-image: linear-gradient(to bottom,#81b74d 0,#4f881a 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff265a88', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    border-color: #4a8029;
+}
+.navbar-inverse .navbar-nav>li>a,
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav>li>a {
+    color: #efefef;
+}
+.nav.navbar-nav li {
+    margin-bottom: 0;
+}
+.nav.navbar-nav li button {
+    margin-top: 7px;
+    margin-left: 30px;
+}
+.navbar-collapse .nav.navbar-nav li button {
+    margin-left: 15px;
+}
+
+/* **************** pop-over content **************************************** */
+/* ************************************************************************** */
+
+
+#info-table tr td {
+    padding-right: 7px;
+}
+
+.popover {
+    max-width: 100%;
+}
+
+/* **************** body **************************************** */
+/* ************************************************************** */
+
+#toolbar {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#toolbar .wrapper {
+    width: 350px;
+    margin: 0 auto;
+}
+
+h4.slide-header {
+    color: black;
+    font-family: "Verdana", Geneva, sans-serif;
+    text-align: center;
+}
+
+button.dot {
+    height: 65px;
+    background-color: #bbb;
+    border-radius: 40%;
+}
+
+.pad {
+    padding-bottom: 20px;
+}
+
+.modal-loading {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 )
+    url('http://i.stack.imgur.com/FhHRx.gif')
+    50% 50%
+    no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading .modal-loading {
+    overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal-loading {
+    display: block;
+}
