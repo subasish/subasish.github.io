@@ -37,6 +37,7 @@ var DropdownOne = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      /* NOTE: the column parameter passed in to the component selects the certain row from the total data*/
       var column = this.props.column;
       var totalOptions = ["--Choose an option--"];
       var data = this.props.data;
@@ -90,6 +91,7 @@ var DropdownOne = function (_React$Component) {
 Multi Dropdown
 --------------------*/
 /* generic component for a dropdown menu with columns that contain arrays */
+/* use this with columns like location1/location2/location3/location4 */
 
 
 var DropdownMult = function (_React$Component2) {
@@ -173,22 +175,40 @@ var MethodList = function (_React$Component3) {
   _createClass(MethodList, [{
     key: 'render',
     value: function render() {
-      var selState = this.props.selected.state.toLowerCase();
-      var selDuration = this.props.selected.cost.toLowerCase();
+      /* NOTE: instantiate these variables to each field in the selected object*/
+      var selLoc = this.props.selected.location.toLowerCase();
+      var selFacility = this.props.selected.facility.toLowerCase();
+      var selConstruction = this.props.selected.construction.toLowerCase();
+      var selicost = this.props.selected.icost.toLowerCase();
+      var sellcost = this.props.selected.lcost.toLowerCase();
       var data = this.props.data;
       var filter = [];
       /* makeshift iterator to save the results that match the search to the filter array */
       var iter = 0;
       {
         data.map(function (opt) {
-          if (selDuration == opt.cost.trim()) {
-            /* since state is an array of states */
-            {
-              opt.state.split("/").map(function (indivState) {
-                if (selState == indivState.trim()) {
-                  filter.push(data[iter]);
-                }
-              });
+          if (selicost == opt.icost.trim()) {
+            if (sellcost == opt.lcost.trim()) {
+              /* since state is an array of states */
+              {
+                opt.location.split("/").map(function (indivState) {
+                  if (selLoc == indivState.trim()) {
+                    {
+                      opt.facility.split("/").map(function (indivFac) {
+                        if (selFacility == indivFac.trim()) {
+                          {
+                            opt.construction.split("/").map(function (indivCons) {
+                              if (selConstruction == indivCons.trim()) {
+                                filter.push(data[iter]);
+                              }
+                            });
+                          }
+                        }
+                      });
+                    }
+                  }
+                });
+              }
             }
           }
           iter++;
@@ -201,7 +221,7 @@ var MethodList = function (_React$Component3) {
       return React.createElement(
         'div',
         null,
-        filter.length == 0 && selState != "--choose an option--" && selDuration != "--choose an option--" ? React.createElement(
+        filter.length == 0 && (selLoc || selFacility || selConstruction || selicost || sellcost) != "--choose an option--" ? React.createElement(
           'h2',
           { 'class': 'listcontainer' },
           'No information available.'
@@ -296,8 +316,12 @@ var ControlMethods = function (_React$Component5) {
       data: undefined,
       example: "",
       selected: {
-        state: "--Choose an option--",
-        cost: "--Choose an option--"
+        /* this is where you add the selected fields for the options*/
+        location: "--Choose an option--",
+        facility: "--Choose an option--",
+        construction: "--Choose an option--",
+        icost: "--Choose an option--",
+        lcost: "--Choose an option--"
       }
     };
     /* because of the async nature of jsx, need to ensure data is fetched before updating state*/
@@ -326,7 +350,7 @@ var ControlMethods = function (_React$Component5) {
   }, {
     key: 'componentWillMount',
     value: function componentWillMount() {
-      Papa.parse("data/VegeSheet.csv", {
+      Papa.parse("data/VegeSheetNew.csv", {
         download: true,
         header: true,
         delimiter: "|",
@@ -341,6 +365,7 @@ var ControlMethods = function (_React$Component5) {
       this.setState({
         data: tempdat
       });
+      console.log(this.state.data);
     }
     /* the if statement in render makes sure data is fetched before displaying */
 
@@ -356,8 +381,11 @@ var ControlMethods = function (_React$Component5) {
           React.createElement(
             'div',
             null,
-            React.createElement(DropdownMult, { title: 'State (for climate determination)', onChangeElem: this.onChangeElem, data: this.state.data, column: 'state' }),
-            React.createElement(DropdownOne, { title: 'Control Cost', onChangeElem: this.onChangeElem, data: this.state.data, column: 'cost' })
+            React.createElement(DropdownMult, { title: 'Location Type', onChangeElem: this.onChangeElem, data: this.state.data, column: 'location' }),
+            React.createElement(DropdownMult, { title: 'Facility Type', onChangeElem: this.onChangeElem, data: this.state.data, column: 'facility' }),
+            React.createElement(DropdownMult, { title: 'Construction Type', onChangeElem: this.onChangeElem, data: this.state.data, column: 'construction' }),
+            React.createElement(DropdownOne, { title: 'Initial Cost', onChangeElem: this.onChangeElem, data: this.state.data, column: 'icost' }),
+            React.createElement(DropdownOne, { title: 'Lifecycle Cost', onChangeElem: this.onChangeElem, data: this.state.data, column: 'lcost' })
           ),
           React.createElement(MethodList, { data: this.state.data, selected: this.state.selected })
         ) : React.createElement(
