@@ -2,6 +2,10 @@
 	text-align: center!important;
 }
 
+
+th { font-size: 12px!important; }
+td { font-size: 12px!important; }
+
 p {
 	font-size: 16px;
 	line-height: 1.5;
