@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Control Methods: NCHRP 14-41</title>
+   <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+    <link href="css/acrp0911.css?v=20160525" rel="stylesheet" media="screen,print">
+    <link href="css/acrp0911-facility.css?v=20160525" rel="stylesheet" media="screen,print">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  
+
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' media="print">
+    <script type="text/javascript" src="//cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <link href="css/report.css?v=20160525" rel="stylesheet" media="print">
+</head>
+
+<body class="facility">
+  <header class="navbar navbar-static-top navbar-inverse" id="top" role="banner">
+  <div class="container v2">
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="index.htm" class="navbar-brand">NCHRP 14-41</a>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="index.htm">Home</a>
+        </li>
+        <li>
+          <a href="facility.htm">Your Facility</a>
+        </li>
+        <li class="active">
+          <a href="methods.htm">Common Control Methods</a>
+        </li>
+        <!--<li>
+          <a href="appendix.htm">
+            Appendix
+          </a>
+        </li>-->
+
+      </ul>
+      
+    </nav>
+  </div><!-- end .container -->
+  </header>
+
+
+
+  <div class="container noprint">
+    <div class="page-header">
+      <h1>Common Control Methods</h1>
+    </div> 
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <table id="example-merp" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th rowspan="2">Name</th>
+                    <th rowspan="2">Image</th>
+                    <th rowspan="4">Locations</th>
+                    <th colspan="4" class="dt-head-center">Relative Costs</th>
+                    <th rowspan="2">Requires Leave Out</th>
+                    <th colspan="4" class="dt-head-center">Ease of Material</th>
+                    <th rowspan="2">Relative effective longevity</th>
+                    <th rowspan="2">Limitations</th>
+                </tr>
+                <tr>
+                    <th>Init. Installation</th>
+                    <th>Life-cycle</th>
+                    <th>Maintenance</th>
+                    <th>Repair</th>
+                    <th>New construction</th>
+                    <th>Retrofit</th>
+                    <th>Repair</th>
+                    <th>Maintenance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Standard Concrete Pavement</td>
+                    <td><img src="images/table/image001.png"></td>
+                    <td>GR, SP, GM SE, EP, ME, CB, U, R</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>High</td>
+                    <td>Yes</td>
+                    <td>All locations</td>
+                    <td>Difficult</td>
+                    <td>Difficult</td>
+                    <td>Moderate</td>
+                    <td>High</td>
+                    <td>Difficult and expensive repairs. Not usually applicable for retrofit,</td>
+                </tr>
+                <tr>
+                    <td>Minor Concrete</td>
+                    <td><img src="images/table/image002.png"></td>
+                    <td>GR, SP, GM SE, ME, CB, U, R</td>
+                    <td>High</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>High</td>
+                    <td>Yes</td>
+                    <td>All locations</td>
+                    <td>Difficult</td>
+                    <td>Difficult</td>
+                    <td>Moderate</td>
+                    <td>High</td>
+                    <td>Difficult and expensive repairs. Not usually applicable for retrofit,</td>
+                </tr>
+                <tr>
+                    <td>Patterned Concrete</td>
+                    <td><img src="images/table/image004.png"></td>
+                    <td>GR, GM, SE, ME, CB, U </td>
+                    <td>High</td>
+                    <td>Moderate</td>
+                    <td>Moderate/High</td>
+                    <td>High</td>
+                    <td>Yes</td>
+                    <td>GR, CB more difficult</td>
+                    <td>Difficult</td>
+                    <td>Difficult</td>
+                    <td>Difficult</td>
+                    <td>High</td>
+                    <td>Difficult to match colors and patterns for repairs. Not usually applicable for retrofit.</td>
+                </tr>
+                <tr>
+                    <td>Asphalt Concrete Pavement</td>
+                    <td><img src="images/table/image005.png"></td>
+                    <td>GR, SP, GM, EP, ME, CB, U, R</td>
+                    <td>Moderate</td>
+                    <td>Moderate</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>Yes</td>
+                    <td>All locations</td>
+                    <td>Moderate</td>
+                    <td>Moderate</td>
+                    <td>Moderate</td>
+                    <td>Moderate/High</td>
+                    <td>Surface damage, limited on slopes</td>
+                </tr>
+                <tr>
+                    <td>Stamped Asphalt</td>
+                    <td><img src="images/table/image006.png"></td>
+                    <td>GR, SP, GM, ME, CB, U </td>
+                    <td>High</td>
+                    <td>Moderate</td>
+                    <td>Moderate/High</td>
+                    <td>High</td>
+                    <td>Yes</td>
+                    <td>GR, CB more difficult</td>
+                    <td>Difficult</td>
+                    <td>Difficult</td>
+                    <td>Difficult</td>
+                    <td>High</td>
+                    <td>Difficult to match colors and patterns for repairs. Not usually applicable for retrofit.</td>
+                </tr>
+                <tr>
+                    <td>Asphalt Composite</td>
+                    <td><img src="images/table/image011.png"></td>
+                    <td>GR, SP, ME, CB, U, R</td>
+                    <td>Moderate</td>
+                    <td>Moderate</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>No</td>
+                    <td>All locations</td>
+                    <td>Moderate</td>
+                    <td>Easy</td>
+                    <td>Easy</td>
+                    <td>Moderate</td>
+                    <td>Requires installation temperature >50°</td>
+                </tr>
+                <tr>
+                    <td>Recycled Asphalt Millings</td>
+                    <td><img src="images/table/image010.png"></td>
+                    <td>GR, SP, GM, EP, ME, CB, U, R </td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>No</td>
+                    <td>All locations</td>
+                    <td>Easy</td>
+                    <td>Easy</td>
+                    <td>Easy</td>
+                    <td>Moderate</td>
+                    <td>Subject to availability. May be dislodged if not compacted.</td>
+                </tr>
+                <tr>
+                    <td>Rock Blanket</td>
+                    <td><img src="images/table/image008.png"></td>
+                    <td>SP, GM, SE, EP, U, R</td>
+                    <td>High</td>
+                    <td>High</td>
+                    <td>High</td>
+                    <td>High</td>
+                    <td>Yes</td>
+                    <td>All locations</td>
+                    <td>Difficult</td>
+                    <td>Difficult</td>
+                    <td>Easy</td>
+                    <td>High</td>
+                    <td>Difficult repairs</td>
+                </tr>
+                <tr>
+                    <td>Rock Slope Protection</td>
+                    <td><img src="images/table/image012.png"></td>
+                    <td>SE, R</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>No</td>
+                    <td>All locations</td>
+                    <td>Easy</td>
+                    <td>Easy</td>
+                    <td>Easy</td>
+                    <td>Moderate</td>
+                    <td>Maximum slope 1:1</td>
+                </tr>
+                <tr>
+                    <td>Aggregate Base</td>
+                    <td><img src="images/table/image009.png"></td>
+                    <td>GR, SP, EP, CB, R</td>
+                    <td>Moderate</td>
+                    <td>Moderate</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>No</td>
+                    <td>All locations</td>
+                    <td>Easy</td>
+                    <td>Easy</td>
+                    <td>Easy</td>
+                    <td>Moderate</td>
+                    <td>May require spot herbicide treatment and recompaction.</td>
+                </tr>
+                <tr>
+                    <td>Rubber Weed Mat</td>
+                    <td><img src="images/table/image014.png"></td>
+                    <td>GR, SP, CB, U</td>
+                    <td>Moderate</td>
+                    <td>High</td>
+                    <td>Moderate/High</td>
+                    <td>Moderate</td>
+                    <td>No</td>
+                    <td>All locations</td>
+                    <td>Easy</td>
+                    <td>Easy</td>
+                    <td>Moderate</td>
+                    <td>Low/Moderate</td>
+                    <td>Subject to wind, mowers, snow removal equipment damage, joint separation and UV degradation </td>
+                </tr>
+                <tr>
+                    <td>Rock/Gravel Mulch</td>
+                    <td><img src="images/table/image016.png"></td>
+                    <td>GR, SP, GM, SE, ME, CB, U, R</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>Low</td>
+                    <td>No</td>
+                    <td>All locations</td>
+                    <td>Easy</td>
+                    <td>Easy</td>
+                    <td>Easy</td>
+                    <td>Moderate</td>
+                    <td>Displacement by errant vehicles</td>
+                </tr>
+                <tr>
+                    <td>Weed Control Fiber Mat</td>
+                    <td><img src="images/table/image018.png"></td>
+                    <td>GR, SP, CB, U</td>
+                    <td>Moderate</td>
+                    <td>Moderate</td>
+                    <td>Moderate</td>
+                    <td>Moderate</td>
+                    <td>Yes</td>
+                    <td>All locations</td>
+                    <td>Easy</td>
+                    <td>Easy</td>
+                    <td>Easy</td>
+                    <td>Low/Moderate</td>
+                    <td>Subject to damage from wind, mowers, snow removal equipment </td>
+                </tr>
+                <tr>
+                    <td>Herbicidal Geofabric</td>
+                    <td><img src="images/table/image019.png"></td>
+                    <td>GR, SP, GM, SE, EP, ME, CB, U, R</td>
+                    <td>High</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Organic Mulch</td>
+                    <td><img src="images/table/image017.png"></td>
+                    <td>GM, SE, U, R</td>
+                    <td>Low</td>
+                    <td>Moderate</td>
+                    <td>Moderate</td>
+                    <td>Low</td>
+                    <td>No</td>
+                    <td>All locations</td>
+                    <td>Easy</td>
+                    <td>Easy</td>
+                    <td>Easy</td>
+                    <td>Low</td>
+                    <td>Limited 2-3 year life-cycle</td>
+                </tr>
+                <tr>
+                    <td>Select Vegetation</td>
+                    <td><img src="images/table/image021.png"></td>
+                    <td>GR, GM, SE, CB, U, R</td>
+                    <td>High</td>
+                    <td>Moderate/High</td>
+                    <td>Moderate</td>
+                    <td>Low</td>
+                    <td>No</td>
+                    <td>All locations</td>
+                    <td>Moderate</td>
+                    <td>Moderate</td>
+                    <td>Moderate</td>
+                    <td>Moderate</td>
+                    <td>Requires establishment period</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  
+  
+    <div class="row show-grid">
+      <div class="col-md-12">
+      
+        <div class="noprint rct-comp-div">
+
+        </div>
+
+  
+        <div style="clear: both;">&nbsp;</div>
+        <div class="stage distress-guru-stage">&nbsp;</div><!-- stage -->
+        <button class="btn btn-new-scenario btn-primary btn-lg noprint display-none"><i class="fa fa-plus"></i> Add / Identify a Vegetation Control Method</button>
+        <br />
+
+        <div class="initial-analysis-wrap" style="display:none;">
+          <h3>Initial Analysis</h3>        
+          <div class="stage summary-stage initial-summary-stage">&nbsp;</div>
+        </div><!-- initial-analysis-wrap -->
+  
+        <div class="pci-curves-wrap onlyprint page">
+        
+        </div><!-- pci-curves-wrap -->
+  
+  
+      </div><!-- end col-md-12 -->
+    </div><!-- end .row.show-grid -->
+
+    <div class="ballpark-wrap" style="display:none;">
+
+
+      <div class="noprint">
+        <input class="ballpark-checkbox" type="checkbox"> Use the Ballpark Benefit/Cost Estimator for all treatments?
+      </div>
+
+      <div class="ballpark" style="display:none;">
+        <div class="ballpark-inputs">
+          Please enter the length and width, in feet, of feature<br/>
+          <input class="length" type="text" placeholder=" length (feet)">
+          <input class="width" type="text" placeholder=" width (feet)">
+        </div><!-- ballpark-inputs -->
+        <div class="ballpark-output"></div><!-- ballpark-output -->
+      </div><!-- ballpark -->
+      <br />
+      <br />
+      
+      <div class="final-analysis-wrap">
+        <h2>Final Analysis</h2>
+        <div class="final-analysis"></div>
+        <p>For all treatments except sealing and patching, it is recommended that a professional engineering firm with airport experience be engaged</p>
+          <div class="stage summary-stage final-summary-stage" style="display: none;">&nbsp;</div>
+      </div>
+      
+      <button class="btn btn-success btn-pdf btn-lg noprint"><i class="fa fa-print"></i> Print Report</button>
+      <div class="output"></div>
+    </div><!-- ballpark-wrap -->
+  </div><!-- container -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="jquery-1.11.3.min.js"></script>
+    <!--datatables-->
+    <script src="jquery.dataTables.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="lib/accounting.min.js"></script>
+
+    <script src="js/array.js"></script>
+    <script src="js/eachify.js"></script>
+    <script src="js/dom.js"></script>
+    <script src="js/tti.pubsub.js"></script>
+    <script src="js/tti.storage.js"></script>
+    <script src="js/csvjson.js"></script>
+
+    <!--<script src="js/tti.widgets.tco-estimator.js"></script>-->
+    <script src="js/tti.widgets.procrastinator.js"></script>
+    <script src="js/tti.widgets.lightbox.js"></script>
+    <script src="js/tti.guru.js?v=20160525"></script>
+    <script src="js/tti.widgets.summarytable.js"></script>
+    
+    <script src="lib/TTI.js"></script>
+    <script src="js/tti.distress.js?v=20160525"></script>
+    <script src="js/tti.distresscategory.js?v=20160525"></script>
+    <script src="js/tti.datastore.js?v=20160525"></script>
+    <script src="js/tti.scenario.js"></script>
+    <script src="js/bootup.js?v=20160525"></script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+            var table = $('#example-merp').dataTable( {
+                dom: "t", 
+                scrollX: true, 
+                scrollY: false, 
+                "initComplete": function(settings, json) {
+                    setInterval(function() { 
+                        $('.dataTables_scrollBody thead tr').css({visibility:'collapse'})
+                    }, 500);
+                },
+            });
+
+        } );
+    </script>
+</body>
+</html>
