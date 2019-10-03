@@ -1,0 +1,223 @@
+header { display: none; }
+
+
+
+
+/** CB HERE WE GO **/
+
+
+table {
+}
+
+.white-fg {
+    color: #fff;
+}
+.black-fg {
+    color: #000;
+}
+.red-fg {
+    color: red
+}
+.blue-fg {
+    color: blue
+}
+.green-fg {
+    color: green
+}
+.orange-fg {
+    color: orange
+}
+.padding-top {
+    padding-top: 60px
+}
+.center {
+    margin: auto;
+    width: 60%;
+    /*  border: 3px solid #73AD21; */
+    padding: 10px;
+}
+.right {
+    float: right;
+}
+.collapse {
+    display: none;
+}
+tr.header-row {
+    background-color: #173A79;
+    color: #fff;
+}
+.page-header {
+    width: 100%;
+}
+.page {
+    page-break-inside: avoid;
+    page-break-after: always;
+}
+.clear-both {
+    clear: both;
+}
+.outputs table td {
+    background-color: white;
+}
+.outputs table tr.total-benefits td {
+    background-color: #FCD006;
+}
+.outputs table tr.total-costs td {
+    background-color: #FCD006;
+}
+.outputs table tr.benefit-cost-ratio td {
+    background-color: #FCD006;
+}
+.outputs table td, .outputs table th {
+    padding: 0.35rem;
+    padding-right: 3px;
+}
+
+.outputs table tr.dart-yellow-bg th {
+    text-align: center;
+    font-weight: normal;
+    color: #173A79;
+    border-right: 1px solid #db0;
+}
+.outputs table td {
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.outputs table td:first-child {
+    border-left: 1px solid #ddd;
+}
+.cost-outputs th {
+    width: 33.3%;
+}
+
+.report-title {
+    background-color: #173A79;
+    color: white
+}
+td.value-cell {
+    text-align: right;
+}
+tr.title-row th {
+    background: #ddd;
+}
+
+/**
+tr.remain th, tr.remain td { background-color: #afa; }
+**/
+
+tr.year-row th {
+    text-align: right;
+}
+.table-sm {
+    font-size: 50%;
+}
+.table-md {
+    font-size: 85%;
+}
+.table-width33pct {
+    width: 33.3%;
+}
+.table-width20pct {
+    width: 20%;
+}
+.table-width25pct {
+    width: 25%;
+}
+.error {
+    background: red;
+    color: white;
+    padding: 1rem;
+}
+.warn {
+    background: yellow;
+    color: black;
+    padding: 1rem;
+}
+.land-use-percentage {
+    padding: 1rem;
+}
+
+/* opacity/transparency */
+
+.white-bg-90pct {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+.white-bg-80pct {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.white-bg-70pct {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+.white-bg-60pct {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+.white-bg-50pct {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.white-bg-40pct {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.white-bg-30pct {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.white-bg-20pct {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.white-bg-10pct {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.black-bg-90pct {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+.black-bg-80pct {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.black-bg-70pct {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.black-bg-60pct {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.black-bg-50pct {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.black-bg-40pct {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.black-bg-30pct {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.black-bg-20pct {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.black-bg-10pct {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.width-20pct {
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.width-50pct {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.width-60pct {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.width-80pct {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.width-100pct {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.padding-left-5pct {
+    padding-left: 5%;
+}
