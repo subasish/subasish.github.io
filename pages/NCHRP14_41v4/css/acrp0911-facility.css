@@ -1,0 +1,425 @@
+/* Modified 14-41 Styles */
+.rct-comp-div {
+  margin-bottom: 30px;
+}
+
+.rct-method-card {
+  background-color: rgba(248, 248, 248, 0.8); 
+  color: rgb(70, 70, 70);
+  /* background-color: rgba(36, 36, 36, 0.9);
+  color: rgb(216, 216, 216); */
+  border-radius: 0px;
+  margin: 30px 0px 30px 0px;
+  padding: 20px 50px 20px 50px;
+  overflow: hidden;
+
+}
+
+.rct-method-card .rct-card-img {
+  float: right;
+  text-align: center;
+  width: 35%;
+}
+
+.rct-card-img img {
+  border-radius: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.rct-method-card .rct-card-txt {
+  float: left;
+  padding-right: 40px;
+  width: 65%;
+}
+
+
+select.rct-dropdown {
+  max-width: 200px;
+}
+
+input.rct-dropdown {
+  max-width: 400px;
+}
+
+.listcontainer {
+  color: white;
+  margin-top: 100px;
+}
+
+
+/* Modified styles end */
+
+body.facility .drill-down {
+	background-color: #eee;
+	background-color: rgba(248, 248, 248, 0.5);
+	margin: 30px 0;
+	padding: 0 30px 30px 30px;
+}
+
+body.facility .drill-down td img {
+	border: 2px solid #5eb718;
+	content: url('../images/design/click-to-view-pci-curve.png');
+}
+body.facility .drill-down td img:hover,
+body.facility .drill-down td img:focus,
+body.facility .drill-down td img:active {
+	border-color: #88de37;
+}
+
+
+body.facility .hit-count {
+	visibility: hidden;
+}
+
+body.facility .ballpark-wrap,
+body.facility .controls-wrap {
+	font-size: 20px;
+	line-height: 1.5;
+	margin: 24px 0;
+}
+
+
+body.facility .ballpark-wrap .ballpark-checkbox {
+	-ms-transform: scale(2);
+	-moz-transform: scale(2);
+	-webkit-transform: scale(2);
+	-o-transform: scale(2);
+	padding: 10px;
+	margin: 10px 10px 30px 10px;
+}
+
+
+body.facility .summary-stage {
+  margin-top: 2rem;
+
+}
+
+
+body.facility .guru-title {
+	background-color: #d9534f;
+	color: #fff;
+	display: inline-block;
+	margin: -40px 0 0 -40px;
+	padding: 5px;
+	text-transform: uppercase;
+	width: auto;
+}
+
+      .hit-count { font-size: 2rem; font-weight: bold; }
+      .th-inverse { 
+        color: #FFF;
+        background-color: #363636;
+      }    
+
+      .sticky-controls li { list-style-type: none; }
+      .controls .control { float: left; display: inline; margin: 1rem; list-style-type: none; }
+
+
+      select[disabled=disabled] { color: #999; text-indent: -900px; }
+
+
+      .more-info { margin-left: 0.5rem; font-size: 1.5rem; }
+
+      .thumbs img { 
+        width: 100%; 
+        /*margin-right: 2%; **/
+        /* margin-bottom: 2rem; */
+        box-shadow: 2px 2px 2px #777; 
+        cursor: pointer; 
+      }
+
+      
+
+      img.pci-curve { width: 100px; float: right; cursor: pointer; }
+
+
+      .output { display: none; }
+
+      .required { color: #f02; }
+      sup.required { font-size: 2rem; }
+
+
+      .tool {
+        /* background: #bad1e6 url(../images/design/overgrown-veg.jpg) 0 bottom no-repeat; */
+        background: #bad1e6 url(../images/design/sunset-roadside.jpg) center top no-repeat;
+        background-size: 100%;
+        /* background-color: #b1d8bb; */
+        background-color: #000000;
+        margin-bottom: 25px;
+        padding: 50px;
+        border-radius: 5px;
+
+      }
+
+      th,
+      td {
+        background-color: #fff;
+        padding: 15px !important;
+      }
+
+
+      .th-inverse, th.th-inverse { 
+        color: #FFF;
+        background-color: #363636;
+      }
+
+
+
+      /** lightbox stuff **/      
+      .box {
+        width: 100%;
+        padding: 0;
+        border-radius: 0.5rem;
+        box-shadow: 0rem 0rem 2rem #333;
+        margin-top: 50px;
+        padding: 1rem; 
+      }      
+      .box .close {
+        font-weight: normal;
+        letter-spacing: 0.1rem;
+        top: 25px;
+        right: 25px;
+        border-radius: 5px;
+        opacity: 0.6;
+        font-size: 2.5rem;
+      }
+      .box img {
+        cursor: pointer;
+        width: 100%;
+        border-radius: 0.5rem; /* 20px;*/
+      }      
+      .overlay { opacity: 0.7; }
+
+
+      .category-wrap ul { 
+        list-style-type: none; 
+        margin: 0;
+        padding: 0;
+      }
+      .category-wrap ul li ul { 
+        padding-left: 2rem;
+      }
+      .category-wrap li.child-category { 
+        cursor: pointer;
+        padding-left: 2rem;
+      }
+      
+      .child-category { cursor: pointer; }
+      .child-category.selected { background: #9bc; color: white; }
+
+      .drill-down .distresses { font-size: 18px; }
+
+
+      .drill-down h5 strong { font-size: 3rem; color: #d9534f; }
+
+
+      .distresses ul { 
+        list-style-type: none; 
+        margin: 0;
+        padding: 0;
+      }
+
+      .distresses .distress { cursor: pointer; padding-left: 2rem; }
+      .distresses .distress.selected { background: #9bc; color: white; }
+
+
+
+      .faa-airport-classification div {
+        font-size: 15px;
+      }
+      .faa-title { 
+        font-size: 2rem; 
+        line-height: 2.2rem;
+        text-align: center;
+        background: #def;
+        color: black; 
+      }
+
+      .faa-details ol {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      } 
+
+      .faa-details ol li { 
+        font-size: 1.5rem;
+        line-height: 1.8rem; 
+      }
+
+      label {
+          color: white !important;
+      }
+      
+      .blip-box {
+        display: none;
+        position: absolute;
+        top: 25%;
+        left: 35%;  
+        width: 30%;
+        background: #fff;
+       
+        padding: 2rem;
+        box-shadow: 1px 1px 38px #222;
+        z-index: 45;
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+      
+      .blip-box h4 { margin-bottom: 1em; }
+
+
+      body.facility .summary-stage .cost-input { width: 60px; display: inline; }
+
+
+      .value-cell { text-align: right; }
+
+
+      .distress-remove { 
+        cursor: pointer; 
+        margin: 1rem; 
+        font-size: 1.8rem;
+      }
+      .display-none { display: none; }
+
+      
+      .final-analysis-wrap p { color: #666; font-style: italic; }
+
+
+      img.relative-benefit { display: block; width: 50%; margin: 0 auto; }
+  
+      .fa-info-circle { cursor: pointer; }
+
+      .onlyprint { display: none; }
+      
+      /** PRINT GOES HERE **/
+      
+      @media print {
+      
+        header { display: none; }
+        body, * { 
+          font-family: Helvetica, Arial sans-serif;
+          font-size: 12pt; 
+          margin: 0; 
+          padding: 0; 
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+        h1 { font-size: 20pt; }        
+        h2 { font-size: 18pt; }        
+        h3 { font-size: 16pt; }        
+        h4 { font-size: 14pt; }        
+        h5 { font-size: 13pt; }        
+        h6 { font-size: 12pt; }   
+        
+        p, th, td, li, ul, ol { font-size: 12pt; }
+             
+        li ul {
+          padding-left: 0;
+        }
+      
+      
+        .onlyprint { display: block; }
+        .noprint { display: none; }
+        .selected { font-weight: bold; font-size: 12pt; }
+
+        .no-height { height: 0; }
+
+        body.facility .drill-down {
+          padding: 0;
+          margin: 0;
+          border: 1px solid #eee;
+        }
+
+        body.facility .drill-down .guru-inner {
+          padding: 0.5rem;
+          margin: 0;
+        }
+
+        body.facility .guru-title { 
+          font-weight: bold; 
+          font-size: 12pt;
+          margin: 0;
+        }
+        
+        input,select { border: none; border-width: 0; padding: 0; }
+
+        .btn-new-scenario { display: none; }
+      
+      
+      
+        table {
+            margin: auto;
+            width: 100%;
+            border-left: 1px solid #eee;
+        }
+
+
+      
+        table, table tr td, table tr th {
+          page-break-inside: avoid;
+        }
+
+        .final-analysis-wrap { 
+          page-break-inside: avoid;
+        }
+
+       th,
+       td {
+          background-color: #fff;
+          padding: 0 !important;
+          border-right: 1px solid #eee;
+          border-bottom: 1px solid #eee;
+        }
+        
+        tbody tr.title-row th { 
+          background-color: #003;
+          color: white; 
+        }
+        
+        .tool { 
+          background: none; 
+          margin-bottom: 0;
+          padding: 0;
+        }
+        
+        .ballpark-inputs { display: none; }
+        
+        
+        td img.pci-curve { 
+          display: none;
+        }
+        
+        .pci-curves-wrap img.pci-curve { 
+          float: left;
+          width: 45%; 
+          margin-right: 2px;
+        }
+      
+        
+        /* FYI//FIXME//NOTE: photobox and thumbs are the same element */
+        .photobox { 
+          margin-top: 0.3rem; 
+        }
+        .photobox a { 
+          width: 25%;
+          max-height: none;
+        }
+        .photobox a img { 
+          width: 100%;
+          max-height: none;
+          box-shadow: none;
+        }
+        
+        .photobox a .caption { padding: 0; font-size: 11pt; display: none; }
+        
+        
+        li.parent-category span.desc { display: none; }
+        li.child-category { display: none; }
+        li.child-category.selected { display: none; }
+        
+        .distresses .distress { display: none; }
+        .distresses .distress.selected { display: none; }
+      
+      
+      }

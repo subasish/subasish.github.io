@@ -1,0 +1,13 @@
+method, state, duration, image
+control1, california, nonpermanent, img1.jpg
+control2, texas, permanent, img2.jpg
+control3, wisconsin, nonpermanent, img3.jpg
+control4, texas/arizona/florida, permanent, img4.jpg
+control5, texas, nonpermanent, img5.jpg
+control6, california, permanent, img6.jpg
+control7, california/nevada, nonpermanent, img1.jpg
+control8, texas, permanent, img2.jpg
+control9, wisconsin/kentucky/alabama, nonpermanent, img3.jpg
+control10, texas, permanent, img4.jpg
+control11, texas/florida, nonpermanent, img5.jpg
+control12, california/new york, permanent, img6.jpg
