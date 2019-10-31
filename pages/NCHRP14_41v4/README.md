@@ -10,4 +10,4 @@ The website can be hosted through the file system or a local server. An internet
 
 This project uses the Babel preprocessor to translate JSX into JS for Reactjs. Nodejs is required on your system. To install all dependencies run `npm install` in the project directory. While working on files in /src, start the translator for JSX with `npm run watch` or `npx babel --watch src --out-dir . --presets react-app/prod` 
 
-> Anthony Teo 2019
+> Anthony Teo and Subasish Das 2019
