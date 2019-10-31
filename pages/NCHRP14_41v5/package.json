@@ -1,0 +1,33 @@
+{
+  "name": "NCHRP-14-41",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jquery-1.11.3.min.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npx babel --watch src --out-dir . --presets react-app/prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/eightants/NCHRP-14-41.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eightants/NCHRP-14-41/issues"
+  },
+  "homepage": "https://github.com/eightants/NCHRP-14-41#readme",
+  "dependencies": {
+    "babel-preset-react-app": "^3.1.2",
+    "braces": "^3.0.2",
+    "papaparse": "^5.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}
