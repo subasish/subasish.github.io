@@ -34,7 +34,7 @@ $(document).ready(function() {
 		pdf.setFont("times");
 		pdf.setFontType("bold");
 		// pdf.setFontSize(16);
-		pdf.text(XMG, ycoord, "Roadside Calculator\n");
+		pdf.text(XMG, ycoord, "Roadside Managemet Tool\n");
 		/* find all input boxes on the general info slide */
 		const GENINFOS = $("input", "#slide-one-content");
 		// console.log(GENINFOS);
@@ -148,7 +148,7 @@ $(document).ready(function() {
 			}
 		}
 		pdf.addPage();
-		ycoord = 60;
+		ycoord = 360;
 		pdf.setFontType("bold");
 		pdf.text(XMG, ycoord, "Project Questionnaire");
 		pdf.setFontType("normal");

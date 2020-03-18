@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NCHRP 14-40</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script>if (window.define) delete window.define.amd;</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.1.3/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <!--link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css"-->
+    <!--script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/1.6.2/jquery.mockjax.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <link href="css/vdot.css" rel="stylesheet">
+
+
+    <script src="js/calc.js"></script>
+    <script src="js/vdot.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="js/report-writer.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/form.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <!-- ------------------ HEADER ----------------------------------------------------------------------- -->
+    <!-- ************************************************************************************************* -->
+
+    <header class="navbar navbar-static-top navbar-inverse" id="top" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="index.htm" class="navbar-brand">NCHRP 14-40</a>
+            </div>
+            <nav class="collapse navbar-collapse bs-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="index.htm">Home</a>
+                    </li>
+                    <li class="active"><a href="rmtool.html">Roadside Management Tool</a></li>
+                    <li>
+                        <a href="appendix1.htm">
+                            Appendix
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div><!-- end .container -->
+    </header>
+
+    <!-- ------------------ BODY ------------------------------------------------------------------------- -->
+    <!-- ************************************************************************************************* -->
+
+    <div class="container-fluid">
+        <div class="page-header" style="text-align: center;">
+            <h2>Roadside Management Tool</h2>
+        </div>
+    </div>
+    <div class="container" id="toolbar">
+        <div class="wrapper text-center">
+                <a href="instructions.html" class="btn btn-default">General Instructions</a>
+        </div>
+    </div>
+    <br><br>
+
+
+    <div class="container">
+        <div class="well" id="project-information">
+
+            <!-- ********** SLIDE ONE ********** -->
+            <!-- ******************************* -->
+            <div id="slide-one-content">
+                <h4 class="slide-header" style="text-align: center;">Project Information</h4>
+                <div class="row">
+                    <br>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="project-name">Project Name</label>
+                            <input type="text" class="form-control" id="project-name" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="project-ppms">Current Vegetation Management</label>
+                            <input type="text" class="form-control" id="project-ppms" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="project-planting-date">User Name</label>
+                            <input type="text" class="form-control" id="project-planting-date" placeholder=" ">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="ld-data">Project Location</label>
+                            <input type="text" class="form-control" id="ld-data" placeholder="">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="date-data">Project Start Date</label>
+                            <div class='input-group date' id='datetimepicker'>
+                                <input type='text' class="form-control" id="date-data"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                            <script>
+                                $(function () {
+                                    $('#datetimepicker').datetimepicker({format: 'YYYY-MM-DD'});
+                                })
+                            </script>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="project-planting-date">User Email</label>
+                            <input type="text" class="form-control" id="project-planting-date" placeholder=" ">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="form-group text-center">
+                            <label for="project-desc">Project Description</label>
+                            <textarea class="form-control center-block" id="project-desc" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+
+            <!-- ********** SLIDE TWO ********** -->
+            <!-- ******************************* -->
+
+            <div id="slide-two-content">
+                <h4 class="slide-header" style="text-align: center;">Selection Criteria For Managed Succession</h4><br>
+                <div class="row">
+                    <div class="col-md-12" style="padding-left: 15%; padding-right: 15%;">
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[1] Managed succession complies with agency state or regional roadside vegetation management plan.</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q1" id="yes-q1" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q1" id="no1-q1" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q1" id="no2-q1" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[2] The project location has enough ROW width beyond safety clear zone to eliminate a minimum of one full mow pass (approximate minimum 15’).</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q2" id="yes-q2" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q2" id="no1-q2" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q2" id="no2-q2" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[3] The project location has enough median ROW width beyond safety clear zone to eliminate a minimum of one full mow pass (approximate minimum 15’).</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q3" id="yes-q3" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q3" id="no1-q3" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q3" id="no2-q3" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[4] The project location has enough interchange ROW area beyond the dafety clear zone to eliminate a minimum of on full mow pass (approximate minimum 15').</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q4" id="yes-q4" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q4" id="no1-q4" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q4" id="no2-q4" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div>
+                        </div>
+
+
+
+                       <div class="form-group">
+                       <h7 style="font-weight: bold; font-size: 18px;">[5] Larger/taller vegetation impact on safety/performance/maintenance/viability of the following:</h7>
+                       <ul>
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[5a] Median barrier</h6>          
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q5" id="yes-q5" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q5" id="no1-q5" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q5" id="no2-q5" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[5b] Sight distance and/or conflicts at access points in the urban/suburban context for vehicles, bicycles, pedestrians, etc.</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q6" id="yes-q6" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q6" id="no1-q6" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q6" id="no2-q6" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[5c] Sight distance issues due to roadway geometry (i.e., curves and changing elevation)</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q7" id="yes-q7" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q7" id="no1-q7" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q7" id="no2-q7" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[5d] Existing signs, signals, luminaire supports, overhead or underground utilities, and similar roadside features</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q8" id="yes-q8" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q8" id="no1-q8" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q8" id="no2-q8" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+
+
+
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[5e] Prevalence of illegal/unauthorized use of the ROW or other safety related issues (particularly urban/suburban)</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q9" id="yes-q9" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q9" id="no1-q9" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q9" id="no2-q9" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[5f] Drainage structures</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q10" id="yes-q10" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q10" id="no1-q10" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q10" id="no2-q10" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[5g] Vegetation requirements for pollinators/wildlife habitat conservation and/or habitat establishment</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q11" id="yes-q11" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q11" id="no1-q11" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q11" id="no2-q11" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[5h] Cooperative agreements/volunteer groups for other uses of the ROW such as hay and timber harvesting, support for pollinators/wildlife</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q12" id="yes-q12" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q12" id="no1-q12" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q12" id="no2-q12" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[5i] Local agency resolution/cooperative agreement ability to maintain the site using their personnel, equipment, etc.</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q13" id="yes-q13" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q13" id="no1-q13" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q13" id="no2-q13" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[5j] Management of drifting/blowing snow</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q14" id="yes-q14" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q14" id="no1-q14" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q14" id="no2-q14" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[5k] Winter maintenance (i.e., snow melt drainage, snow storage, winter shadow)</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q15" id="yes-q15" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q15" id="no1-q15" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q15" id="no2-q15" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+                        </ul>
+                        </div>
+
+
+                       <div class="form-group">
+                       <h7 style="font-weight: bold; font-size: 18px;">[6] Larger/taller vegetation impact on safety/performance/viability of the roadway context and/or classification:</h7>
+                       <ul>
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[6a] Urban interstate, freeway or expressway</h6>              
+                           <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q16" id="yes-q16" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                          <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q16" id="no1-q16" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q16" id="no2-q16" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[6b] Urban principal artertial</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q17" id="yes-q17" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q17" id="no1-q17" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q17" id="no2-q17" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[6c] Rural interate, freeway or expressway</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q18" id="yes-q18" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q18" id="no1-q18" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q18" id="no2-q18" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[6d] Rural low-volume road</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q19" id="yes-q19" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q19" id="no1-q19" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q19" id="no2-q19" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+                        </ul>
+                        </div>
+
+
+                     <div class="form-group">
+                       <h7 style="font-weight: bold; font-size: 18px;">[7] Larger/taller vegetation impact on or conflicts with the adjacent land use/landowner:</h7>
+                       <ul>
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[7a] Existing forest/heavily vegetated areas</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q20" id="yes-q20" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q20" id="no1-q20" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q20" id="no2-q20" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[7b] Agricultural</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q21" id="yes-q21" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q21" id="no1-q21" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q21" id="no2-q21" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[7c] Suburban/urban</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q22" id="yes-q22" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q22" id="no1-q22" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q22" id="no2-q22" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[7d] Commercial</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q23" id="yes-q23" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q23" id="no1-q23" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q23" id="no2-q23" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[7e] Industrial</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q24" id="yes-q24" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q24" id="no1-q24" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                           <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q24" id="no2-q24" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[7f] Residential</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q25" id="yes-q25" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q25" id="no1-q25" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q25" id="no2-q25" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+                        </ul>
+                        </div>
+
+
+                        <div class="form-group">
+                       <h7 style="font-weight: bold; font-size: 18px;">[8] Larger/taller vegetation impact as a fire hazard within ROW and beyond:</h7>
+                       <ul>
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[8a] Proximity of larger vegetation to structures</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q26" id="yes-q26" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q26" id="no1-q26" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q26" id="no2-q26" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[8b] Adjacent property fire hazard potential</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q27" id="yes-q27" value="0" points="0">
+                                <label sclass="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q27" id="no1-q27" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q27" id="no2-q27" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[8c] Regional climate – arid/semi-arid</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q28" id="yes-q28" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q28" id="no1-q28" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q28" id="no2-q28" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+
+                       <div class="form-group">
+                       <h6 style="font-weight: bold; font-size: 18px;">[8d] Historical fire data for specific location</h6>              
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q29" id="yes-q29" value="0" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    No Conflict (0)
+                                </label>
+                            </div>
+                           <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q29" id="no1-q29" value="1" points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    Concern (1)
+                                </label>
+                            </div>
+                            <div class="checkbox-inline" style="font-weight: bold; font-size: 14px;">
+                                <input class="form-check-input" type="radio" name="q29" id="no2-q29" value="2" points="2">
+                                <label class="form-check-label" for="no2-q1">
+                                    Critical Concern (2)
+                                </label>
+                            </div></div>
+
+                        </ul>
+                        </div>
+
+
+            <div class="text-center">
+                            <button type="button" id="calc-ms" class="btn btn-success">Recommendation for Managed Succession</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- ********** SLIDES THREE-EIGHT ********** -->
+            <!-- **************************************** -->
+            <!--<div id="slide-three-content">
+                <h4 class="slide-header" style="text-align: center;" id="core-mix-h4">Roadway Classification</h4><br>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <div class="form-group">
+                            <label for="which-project-region">Roadway Functional Class</label><br>
+                            <select class="custom-select mr-sm-2" id="which-project-region">
+                                <option selected>--</option>
+                                <option value="mountian">Urban Interstate, Freeway, or Expressway</option>
+                                <option value="coastal">Urban Principal Arterial</option>
+                                <option value="piedmont">Urban Minor Arterial or Major Collector</option>
+                                <option value="piedmont">Urban Local</option>
+                                <option value="mountian">Rural Interstate, Freeway, or Expressway</option>
+                                <option value="coastal">Rural Principal Arterial</option>
+                                <option value="piedmont">Rural Minor Arterial or Major Collector</option>
+                                <option value="piedmont">Rural Local</option>
+                            </select>
+                        </div>
+                    <br>
+                        <div style="display: flex; justify-content: center;">-->
+
+        <!-- *************** CALCULATOR MODAL BUTTON ***************************************** -->
+        <!-- ********************************************************************************* -->
+
+                        <!--</div>
+                        <label for="how-large-is-area-core-mix">How large is the area?</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="how-large-is-area-core-mix" placeholder="1">
+                            <span class="input-group-addon">Acres</span>
+                        </div>
+                    </div>
+                </div><br>-->
+
+                <!--<div class="row">
+                    <div class="col-md-6">
+                        <label for="mowed-area-seed">How much of the area flatter than 3:1?</label>
+                        <div class="input-group" style="padding-bottom: 20px;">
+                            <input type="number" class="form-control" id="mowed-area-seed" placeholder="1">
+                            <span class="input-group-addon">Acres</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="which-project-region">Adjacent property</label><br>
+                            <select class="custom-select mr-sm-2" id="which-project-region">
+                                <option selected>--</option>
+                                <option value="mountian">Aesthetic issues</option>
+                                <option value="coastal">Clear view to property</option>
+                                <option value="piedmont">Conflict with agricultural uses</option>
+                                <option value="piedmont">Land owner agreements</option>
+                            </select>
+                        </div> 
+                        <div class="form-group">
+                            <label for="which-project-region">Winter/snow issues</label><br>
+                            <select class="custom-select mr-sm-2" id="which-project-region">
+                                <option selected>--</option>
+                                <option value="mountian">Snow fence</option>
+                                <option value="mountian">Snow storage</option>
+                                <option value="coastal">Snow melt drainage</option>
+                                <option value="piedmont">Winter shadow effect</option>
+                            </select>
+                        </div>  
+                    </div>
+                    <div class="col-md-6">
+                        <label for="non-mowed-area-seed">How much of the area has slopes steeper than 3:1?</label>
+                        <div class="input-group" style="padding-bottom: 20px;">
+                            <input type="number" class="form-control" id="non-mowed-area-seed" placeholder="1">
+                            <span class="input-group-addon">Acres</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="which-project-region">Fire hazard</label><br>
+                            <select class="custom-select mr-sm-2" id="which-project-region">
+                                <option selected>--</option>
+                                <option value="mountian">Proximity to adjacent structures</option>
+                                <option value="coastal">Adjacent vegetation fire potential</option>
+                                <option value="piedmont">Regional climate-arid, semi-arid</option>
+                                <option value="piedmont">Historical fire data</option>
+                            </select>
+                        </div> 
+                        <div class="form-group">
+                            <label for="which-project-region">Wildlife habitat issues</label><br>
+                            <select class="custom-select mr-sm-2" id="which-project-region">
+                                <option selected>--</option>
+                                <option value="mountian">Type of widlife</option>
+                                <option value="coastal">Vegetation requirements</option>
+                                <option value="piedmont">Agreements with volunteer groups</option>
+                            </select>
+                        </div> 
+
+                        <script>
+                            function setText(b) {
+                                let c = $(b).parent().parent().prev();
+                                if (b.innerHTML === "Slope, 3:1") {
+                                    c.html("Slope, 3:1 <span class=\"caret\">");
+                                } else {
+                                    c.html("Grade 33% <span class=\"caret\">");
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 14px;">Does this area include both Urban and Rural sections?			</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="disturbed" id="yes-urban-vs-rural" value="yes" checked>
+                                <label class="form-check-label" for="yes-disturbed">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="disturbed" id="no-urban-vs-rural" value="no">
+                                <label class="form-check-label" for="no-disturbed">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <label for="times-normal-rate">Is there any adjustment factor?</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="times-normal-rate" placeholder="1">
+                            <span class="input-group-addon">x Normal Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+
+            <!-- ********** Final Slide ***************** -->
+            <!-- **************************************** -->
+            <div id="final-slide">
+                <h4 class="slide-header" style="text-align: center;">Finalize?</h4><br>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+			    <button type="button" id="download-report" class="btn btn-success">Download As PDF <i class="fa fa-download fa-2x"></i></button>
+			    <!--<button type="button" id="download-pdf" class="btn btn-success">Download As PDF <i class="fa fa-download fa-2x"></i></button>-->
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-sm-1 pull-left">
+                    <button class="btn btn-primary" style="background-color: #D5732F; border-color: #B24C05;" id="prev-slide">&#8678;</button>
+                </div>
+                <div class="col-sm-1 pull-right">
+                    <button class="btn btn-primary" style="background-color: #D5732F; border-color: #B24C05;" id="next-slide">&#8680;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-loading"><!-- Place at bottom of page --></div>
+    <div id="msModal" class="ms-modal">
+        <!-- Modal content -->
+        <div class="ms-modal-content">
+          <span id="msmodBtn" class="close">&times;</span>
+          <p>Lorem ipsum.</p>
+        </div>
+    </div>
+    <br>
+    <br>
+</body>
+</html>
