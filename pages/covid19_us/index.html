@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<script src="https://unpkg.com/d3@5.15.0/dist/d3.min.js"></script>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* Dark theme */
+
+    --bg: #fff;
+    --text: #000;
+    --tickLine: #eee;
+    --baseLine: #aaa;
+    --tickText: #999;
+    --bar: #9b59b6;
+    --font: 'Montserrat', sans-serif;
+/*         --bg: #2c3e50;
+    --text: #fff;
+    --tickLine: rgba(255, 255, 255, 0.3);
+    --tickText: rgba(255, 255, 255, 0.3); */
+  }
+  body {
+    font: 12px sans-serif;
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+
+  }
+  svg {
+    overflow: visible;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+     flex-shrink: 0;
+  }
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .flex-center {
+    align-items: center;
+  }
+  
+  header {
+    margin: 10px 20px 20px;
+  }
+  h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  
+  .filter-item {
+    padding: 10px 20px 0 0;
+  }
+  .cb-container {
+  display: block;
+  position: relative;
+  padding-left: 24px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 20px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.cb-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.cb-mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: #eee;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+  .cb-input:not(:checked) ~ .cb-label {
+    color: #666;
+  }
+  .cb-container:hover .cb-input:not(:checked) ~ .cb-label {
+    color: #444;
+  }
+
+/* On mouse-over, add a grey background color */
+.cb-container:hover .cb-input:not(:checked) ~ .cb-mark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.cb-input:checked ~ .cb-mark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.cb-mark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.cb-input:checked ~ .cb-mark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.cb-mark:after {
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg) scale(0.8);
+}
+ 
+  
+.select-css {
+	display: block;
+	font-size: 16px;
+	color: #666;
+	line-height: 1.6;
+	padding: 2px 1.3em 2px 8px;
+	margin: 0;
+	border: none;
+	box-shadow: 0 1px 0 1px rgba(0,0,0,0);
+	border-radius: 4px;
+	appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: all 0.2s;
+background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='silver'><polygon points='0,0 10,0 5,5'/></svg>") no-repeat scroll 93% 64% #eee; 
+  font-family: var(--font);
+}
+.select-css::-ms-expand {
+	display: none;
+}
+.select-css:hover {
+	background-color: #ddd;
+}
+.select-css:focus {
+	box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+	box-shadow: 0 0 0 3px -moz-mac-focusring;
+	outline: none;
+}
+.select-css option {
+	font-weight:normal;
+}
+  
+  
+  
+  .cell-label {
+		text-shadow: 0px 0px 10px var(--bg);
+    fill: var(--text);
+    opacity: 0.5;
+    font-weight: bold;
+  }
+  .x-tick {
+    dominant-baseline: hanging;
+    font-size: 10px;
+    fill: var(--tickText);
+  }
+  .tick line, .domain {
+    stroke: var(--tickLine);
+  }
+  .tick text {
+    fill: var(--tickText);
+  }
+  .consistent-y .cell:not(:first-child) .tick text,
+  .consistent-y .cell:not(:first-child) .domain {
+    display: none;
+  }
+  .baseline {
+    stroke: var(--baseLine);
+  }
+  
+  .bar {
+    fill: var(--bar);
+  }
+  
+</style>
+
+<header>
+  <div class="flex-row flex-center">
+    <h1>United States COVID-19 Spread</h1>
+  </div>
+  <div class="flex-row flex-center">
+    <div class="filter-item">
+      <select id="field-select" class="select-css">
+        <option value="cases">Confirmed Cases</option>
+        <option value="deaths">Confirmed Deaths</option>
+        <option value="newCases" selected>Daily New Cases</option>
+        <option value="newDeaths">Daily New Deaths</option>
+      </select>
+    </div>
+    <div class="filter-item">
+      <select id="time-select" class="select-css">
+        <option value="last7Days" selected>Last 7 days</option>
+        <option value="last14Days" selected>Last 14 days</option>
+        <option value="lastMonth">Last Month</option>
+        <option value="all">All</option>
+      </select>
+    </div>
+    <div class="filter-item">
+      <label class="cb-container">
+        <input type="checkbox" class="cb-input" id="cb-use-log-scale">
+        <span class="cb-mark"></span>
+        <span class="cb-label">Log Scale</span>
+      </label>
+    </div>
+    <div class="filter-item">
+      <label class="cb-container">
+        <input type="checkbox" class="cb-input" id="cb-consistent-y" checked>
+        <span class="cb-mark"></span>
+        <span class="cb-label">Consistent Y-Axis</span>
+      </label>
+    </div>
+  </div>
+</header>
+
+<div id="viz">
+  <svg id="svg"></svg>
+</div>
+
+<script>
+    
+  let useLog = false;
+  let data = null;
+  let field = 'newCases';
+  let timeFilter = 'last14Days';
+  let consistentY = true;
+ 
+function processStates(csv) {
+  const states = d3.nest()
+    .key(k => k.state)
+    .entries(csv);
+  
+  const extents = {
+    date: [null, null],
+    cases: [null, null],
+    deaths: [null, null],
+    newCases: [null, null],
+    newDeaths: [null, null],
+  };
+  const keys = ['date', 'cases', 'deaths', 'newCases', 'newDeaths'];
+  states.forEach(state => {
+    const newValues = [];
+    for (let i = 0; i < state.values.length; i++) {
+      const prevRow = state.values[i - 1];
+      const row = state.values[i];
+      const [year, month, date] = row.date.split('-');
+      const parsed = {
+        ...row,
+        date: new Date(Number(year), Number(month) - 1, Number(date)),
+        cases: Number(row.cases),
+        deaths: Number(row.deaths),
+      }
+      if (prevRow) {
+        parsed.newCases = parsed.cases - prevRow.cases;
+        parsed.newDeaths = parsed.deaths - prevRow.deaths;
+      } else {
+        parsed.newCases = 0;
+        parsed.newDeaths = 0;
+      }
+      newValues.push(parsed);
+      
+      keys.forEach(key => {
+        if (extents[key][0] === null || parsed[key] < extents[key][0]) {
+          extents[key][0] = parsed[key];
+        }
+        if (extents[key][1] === null || parsed[key] > extents[key][1]) {
+          extents[key][1] = parsed[key];
+        }
+      });
+    }
+    state.values = newValues;
+  });
+  
+  return {
+    byState: states,
+    stateExtents: extents,
+  };
+}
+  
+  function last(arr) {
+    return arr[arr.length - 1];
+  }
+  
+function render() {
+  const {byState} = data;
+  const extents = data.stateExtents;
+  
+  const groups = byState.slice(0);
+  groups.sort((a, b) => {
+    return last(b.values)[field] - last(a.values)[field];
+  });
+  
+  const yScaleType = useLog ? 'scaleLog' : 'scaleLinear';
+  
+  const firstDate = extents.date[0];
+  const lastDate = extents.date[1];
+  
+  let daysToShow;
+  if (timeFilter === 'last7Days') {
+    daysToShow = 7;
+  } else if (timeFilter === 'last14Days') {
+    daysToShow = 14;
+  } else if (timeFilter === 'lastMonth') {
+    daysToShow = 30;
+  } else {
+    daysToShow = d3.max(groups, g => g.values.length);
+  }
+  
+  const numStates = groups.length;
+  const chartWidth = 150;
+  const chartPadding = 25;
+  const chartHeight = 60;
+  const yAxisWidth = 40;
+  const xAxisHeight = 14;
+  const winWidth = window.innerWidth;
+  const barPad = daysToShow > 10 ? 1 : 2;
+  
+  const colWidth = chartWidth + chartPadding;
+  const rowHeight = (chartHeight + xAxisHeight + chartPadding);
+  
+  const numCols = Math.floor((winWidth - yAxisWidth) / colWidth);
+  const numRows = Math.ceil(numStates / numCols);
+  
+  const totalHeight = numRows * rowHeight;
+  
+	const xScale = d3.scaleBand()
+  	.domain(d3.range(daysToShow))
+  	.rangeRound([0, chartWidth])
+  	.paddingInner(barPad * daysToShow / chartWidth)
+  	.paddingOuter(barPad * 5 / chartWidth)
+  const barWidth = xScale.bandwidth();
+  
+  function makeYScale(extent) {
+    const domain = [Math.max(extent[0], 0), extent[1]];
+    if (useLog && domain[0] === 0) {
+      domain[0] = 1;
+    }
+    return d3[yScaleType]()
+      .domain(domain)
+      .range([chartHeight, 0]);
+  }
+  
+  function makeAxis(scale) {
+    const domainMax = scale.domain()[1];
+    return d3.axisLeft(scale).ticks(!useLog ? 4 : domainMax < 100 ? 1 : domainMax < 1000 ? 2 : domainMax < 10000 ? 3 : 4)
+    .tickSizeInner(-chartWidth)
+    .tickSizeOuter(0)
+    .tickFormat(d => {    
+      return formatYTick(d);
+    });
+  }
+  const yScale = makeYScale(extents[field]);
+  debugger;
+  const yAxis = makeAxis(yScale);
+  
+  const $viz = d3.select('#viz');
+  const $svg = d3.select('#svg');
+  
+  $svg.attr('class', consistentY ? 'consistent-y' : '');
+  
+  // Make sure we're starting fresh
+  $svg.selectAll("*").remove();
+  
+  // Create grid of rows and columns
+  const $rows = $svg
+  	.attr("viewBox", [0, 0, winWidth, totalHeight])
+    .selectAll('g.row')
+  	.data(d3.range(numRows))
+  	.enter()
+  	.append('g')
+  	.attr('class', 'row')
+  	.attr('transform', row => `translate(${yAxisWidth}, ${row * rowHeight})`)
+  
+  	// Add cells
+  	$rows.each(function(row) {
+    	d3.select(this)
+    		.selectAll('g.cell')
+      	.data(d3.range(numCols).map(i => ({row, col: i})))
+      	.enter()
+        .append('g')
+        .attr('class', 'cell')
+      	.attr('transform', d => `translate(${d.col * colWidth}, 0)`);
+  	})
+  
+
+  const $cells = $svg.selectAll('g.cell');
+    
+    // Add baseline
+    $cells
+      .append('line')
+    	.attr('class', 'baseline')
+    	.attr('y1', chartHeight)
+    	.attr('y2', chartHeight)
+    	.attr('x2', chartWidth)
+  
+  // Fill each cell with a chart
+  $cells
+  	.each(function(d, index) {
+    	const $cell = d3.select(this);
+			const data = groups[index];
+    	if (!data) {
+        // TODO remove completely? Or is this handled already?
+        return;
+      }
+    	const values = data.values;
+    
+      // Add axis
+    	let cellYScale = yScale;
+    	let cellYAxis = yAxis;
+	    if (!consistentY) {
+        const extent = d3.extent(values, d => d[field]);
+        cellYScale = makeYScale(extent);
+        cellYAxis = makeAxis(cellYScale);
+      }
+    
+      $cell
+        .append("g")
+        .attr("transform", "translate(0,0)")
+        .call(cellYAxis)
+      
+    	// Add label
+    	$cell
+        .append('text')
+      	.text(data.key)
+      	.attr('x', 6)
+      	.attr('y', 14)
+      	.attr('class', 'cell-label')
+      
+      // Get last $daysToShow items
+      const shownValues = values.slice(Math.max(values.length - daysToShow, 0));
+      $cell.selectAll('.bar')
+      	.data(shownValues)
+      	.enter()
+      	.append('rect')
+      	.attr('class', 'bar')
+      	.attr('width', barWidth)
+      	.attr('x', (d, i) => xScale(i))
+	      .attr('y', d => cellYScale(d[field]))
+      	.attr('height', d => chartHeight - cellYScale(d[field]))
+  	});
+  
+		// Add start dates
+  	const endDate = last(groups[0].values).date;
+	  const startDate = new Date(endDate);
+	  startDate.setDate(startDate.getDate() - daysToShow + 1);
+  
+  	$cells
+    	.append('text')
+    	.attr('class', 'x-tick x-tick-start')
+    	.attr('text-anchor', 'start')
+    	.attr('x', 0)
+    	.attr('y', chartHeight + 4)
+    	.text(formatDate(startDate))
+  	
+    $cells
+    	.append('text')
+    	.attr('class', 'x-tick x-tick-end')
+    	.attr('text-anchor', 'end')
+    	.attr('x', chartWidth)
+    	.attr('y', chartHeight + 4)
+    	.text(formatDate(endDate))
+  
+
+}
+  
+function formatDate(d) {
+  return d.toLocaleString('default', {month: 'short', day: 'numeric'});
+}
+  
+function formatYTick(n) {
+  if (n >= 1e6) {
+    return `${Math.round(n / 1e6)}m`;
+  }
+  if (n >= 1e3) {
+    return `${Math.round(n / 1e3)}k`;
+  }
+  return n;
+}
+  
+function attachEvents() {
+  
+  $('#field-select').change(function() {
+    field = $(this).val();
+    render();
+  });
+  $('#time-select').change(function() {
+    timeFilter = $(this).val();
+    console.log(timeFilter);
+    render();
+  });
+  $('#cb-use-log-scale').change(function() {
+    useLog = $(this).is(':checked');
+    render();
+  });
+  $('#cb-consistent-y').change(function() {
+    consistentY = $(this).is(':checked');
+    render();
+  });
+}
+
+d3.csv('us-states.csv').then(csv => {
+  data = processStates(csv);
+  render();
+});
+  
+attachEvents();
+  
+
+</script>
