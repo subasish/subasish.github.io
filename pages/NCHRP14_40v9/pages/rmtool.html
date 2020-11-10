@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NCHRP 14-40</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script>if (window.define) delete window.define.amd;</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.1.3/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <!--link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css"-->
+    <!--script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/1.6.2/jquery.mockjax.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <link href="../css/vdot.css" rel="stylesheet">
+
+
+    <script src="../js/calc.js"></script>
+    <script src="../js/vdot.js"></script>
+    <script src="../js/controls.js"></script>
+    <script src="../js/report-writer.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/form.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <!-- ------------------ HEADER ----------------------------------------------------------------------- -->
+    <!-- ************************************************************************************************* -->
+
+    <header class="navbar navbar-static-top navbar-inverse" id="top" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="../index.htm" class="navbar-brand">NCHRP 14-40</a>
+            </div>
+            <nav class="collapse navbar-collapse bs-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="../index.htm">Home</a>
+                    </li>
+                    <li class="active"><a href="rmtool.html">Roadside Management Tool</a></li>
+                    <li>
+                        <a href="appendix1.htm">
+                            Appendix
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div><!-- end .container -->
+    </header>
+
+    <!-- ------------------ BODY ------------------------------------------------------------------------- -->
+    <!-- ************************************************************************************************* -->
+
+    <div class="container-fluid">
+        <div class="page-header" style="text-align: center;">
+            <h2>Roadside Management Tool</h2>
+        </div>
+    </div>
+    <div class="container" id="toolbar">
+        <div class="wrapper text-center">
+                <a href="../pages/instructions.html" class="btn btn-default">General Instructions</a>
+        </div>
+    </div>
+    <br><br>
+
+
+    <div class="container">
+        <div class="well" id="project-information">
+
+            <!-- ********** SLIDE ONE ********** -->
+            <!-- ******************************* -->
+            <div id="slide-one-content">
+                <h4 class="slide-header" style="text-align: center;">Project Information</h4>
+                <div class="row">
+                    <br>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="project-name">Project Name</label>
+                            <input type="text" class="form-control" id="project-name" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="project-ppms">Current Vegetation Management</label>
+                            <input type="text" class="form-control" id="project-ppms" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="project-planting-date">User Name</label>
+                            <input type="text" class="form-control" id="project-planting-date" placeholder=" ">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="ld-data">Project Location</label>
+                            <input type="text" class="form-control" id="ld-data" placeholder="">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="date-data">Project Start Date</label>
+                            <div class='input-group date' id='datetimepicker'>
+                                <input type='text' class="form-control" id="date-data"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                            <script>
+                                $(function () {
+                                    $('#datetimepicker').datetimepicker({format: 'YYYY-MM-DD'});
+                                })
+                            </script>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="project-planting-date">User Email</label>
+                            <input type="text" class="form-control" id="project-planting-date" placeholder=" ">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="form-group text-center">
+                            <label for="project-desc">Project Description</label>
+                            <textarea class="form-control center-block" id="project-desc" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+
+            <!-- ********** SLIDE TWO ********** -->
+            <!-- ******************************* -->
+
+
+            <div id="slide-two-content">
+
+            <h4 class="slide-header" style="text-align: center;">Project Area</h4><br>
+
+            <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="form-group text-center">
+                            <h6 class="slide-header" style="text-align: center;">Item 1. What is the annual maintenance cost per acre for the current practice (mow 5x annual, etc.)? </h6>
+                            <textarea class="form-control center-block" id="project-desc"></textarea>
+                        </div>
+                    </div>
+           </div>
+
+                       <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="form-group text-center">
+                            <h6 class="slide-header" style="text-align: center;">Item 2. How many acres will be converted to unmown to allow for managed succession of the ROW? </h6>
+                            <textarea class="form-control center-block" id="project-desc"></textarea>
+                        </div>
+                    </div>
+           </div>
+
+                       <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="form-group text-center">
+                            <h6 class="slide-header" style="text-align: center;">Potential cost saving= Cost of Item 1 - Cost of Item 2 (NOTE: The reduction in area is not a direct reduction in cost as there are still costs for overhead, mobilization, etc.) </h6>
+                            <textarea class="form-control center-block" id="project-desc"></textarea>
+                        </div>
+                    </div>
+           </div>
+
+                <h4 class="slide-header" style="text-align: center;">Selection Criteria For Managed Succession</h4><br>
+
+                <div class="row">
+                    <div class="col-md-12" style="padding-left: 15%; padding-right: 15%;">
+                    <h6 class="slide-header" style="text-align: left;">One or more 'Critical Concerns' in this section automatically receive a 'NOT RECOMMENDED' for implementing managed succession.</h6><br>
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[1] Is there enough ROW or median width to eliminate a full width mowing (approximately 15’) to safely allow for larger/taller vegetation? </h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q1" id="yes-q1" value="Yes" points="0">
+                                <label class="form-check-label" for="yes-q1">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q1" id="no1-q1" value="No" points="10">
+                                <label class="form-check-label" for="no1-q1">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q1" id="no2-q1" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q1">
+                                    Not Applicable
+                                </label>
+                            </div>
+
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'No,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q1" id="yes-q1" value="No- Critical Concern" points="35">
+                                <label class="form-check-label" for="yes-q1">
+                                    No- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q1" id="no1-q1" value="No- Manageable Concern " points="1">
+                                <label class="form-check-label" for="no1-q1">
+                                    No- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q1" id="no2-q1" value="No- No Conflict" points="1">
+                                <label class="form-check-label" for="no2-q1">
+                                    No- No Conflict
+                                </label>
+                            </div></p>
+
+                        </div>
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[2] Will larger/taller vegetation create sight distance issues due to roadway geometry (i.e., curves and changing elevation)?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q2" id="yes-q2" value="Yes" points="10">
+                                <label class="form-check-label" for="yes-q2">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q2" id="no1-q2" value="No" points="0">
+                                <label class="form-check-label" for="no1-q2">
+                                    No
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q2" id="no2-q2" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q2">
+                                    Not Applicable
+                                </label>
+                            </div>
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'Yes,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q2" id="yes-q2" value="Yes- Critical Concern" points="35">
+                                <label class="form-check-label" for="yes-q2">
+                                    Yes- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q2" id="yes-q2" value="Yes- Manageable Concern " points="1">
+                                <label class="form-check-label" for="yes-q2">
+                                    Yes- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q2" id="yes-q2" value="Yes- No Conflict" points="1">
+                                <label class="form-check-label" for="yes-q2">
+                                    Yes- No Conflict
+                                </label>
+                            </div></p>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[3] Will larger/taller vegetation interfere with existing signs, signals, luminaire supports, overhead or underground utilities, and similar roadside features?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q3" id="yes-q3" value="Yes" points="10">
+                                <label class="form-check-label" for="yes-q3">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q3" id="no1-q3" value="No" points="0">
+                                <label class="form-check-label" for="no1-q3">
+                                    No
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q3" id="no2-q3" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q3">
+                                    Not Applicable
+                                </label>
+                            </div>
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'Yes,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q3" id="yes-q3" value="Yes- Critical Concern" points="35">
+                                <label class="form-check-label" for="yes-q3">
+                                    Yes- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q3" id="yes-q3" value="Yes- Manageable Concern " points="1">
+                                <label class="form-check-label" for="yes-q3">
+                                    Yes- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q3" id="yes-q3" value="Yes- No Conflict" points="1">
+                                <label class="form-check-label" for="yes-q3">
+                                    Yes- No Conflict
+                                </label>
+                            </div></p>
+
+                        </div>
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[4] Will larger/taller vegetation negatively impact safety/performance of a median barrier?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q4" id="yes-q4" value="Yes" points="10">
+                                <label class="form-check-label" for="yes-q4">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q4" id="no1-q4" value="No" points="0">
+                                <label class="form-check-label" for="no1-q4">
+                                    No
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q4" id="no2-q4" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q4">
+                                    Not Applicable
+                                </label>
+                            </div>
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'Yes,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q4" id="yes-q4" value="Yes- Critical Concern" points="35">
+                                <label class="form-check-label" for="yes-q4">
+                                    Yes- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q4" id="yes-q4" value="Yes- Manageable Concern " points="1">
+                                <label class="form-check-label" for="yes-q4">
+                                    Yes- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q4" id="yes-q4" value="Yes- No Conflict" points="1">
+                                <label class="form-check-label" for="yes-q4">
+                                    Yes- No Conflict
+                                </label>
+                            </div></p>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[5] Will larger/taller vegetation create sight distance and/or conflicts at access points in the urban/suburban context for vehicles, bicycles, pedestrians, etc.?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q5" id="yes-q5" value="Yes" points="10">
+                                <label class="form-check-label" for="yes-q5">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q5" id="no1-q5" value="No" points="0">
+                                <label class="form-check-label" for="no1-q5">
+                                    No
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q5" id="no2-q5" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q5">
+                                    Not Applicable
+                                </label>
+                            </div>
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'Yes,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q5" id="yes-q5" value="Yes- Critical Concern" points="35">
+                                <label class="form-check-label" for="yes-q5">
+                                    Yes- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q5" id="yes-q5" value="Yes- Manageable Concern " points="1">
+                                <label class="form-check-label" for="yes-q5">
+                                    Yes- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q5" id="yes-q5" value="Yes- No Conflict" points="1">
+                                <label class="form-check-label" for="yes-q5">
+                                    Yes- No Conflict
+                                </label>
+                            </div></p>
+                        </div>
+
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[6] Will more or larger/taller vegetation create a fire hazard within ROW and beyond?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q6" id="yes-q6" value="Yes" points="10">
+                                <label class="form-check-label" for="yes-q6">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q6" id="no1-q6" value="No" points="0">
+                                <label class="form-check-label" for="no1-q6">
+                                    No
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q6" id="no2-q6" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q6">
+                                    Not Applicable
+                                </label>
+                            </div>
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'Yes,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q6" id="yes-q6" value="Yes- Critical Concern" points="35">
+                                <label class="form-check-label" for="yes-q6">
+                                    Yes- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q6" id="yes-q6" value="Yes- Manageable Concern " points="1">
+                                <label class="form-check-label" for="yes-q6">
+                                    Yes- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q6" id="yes-q6" value="Yes- No Conflict" points="1">
+                                <label class="form-check-label" for="yes-q6">
+                                    Yes- No Conflict
+                                </label>
+                            </div></p>
+
+                        <p>
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[6a] Proximity of larger vegetation to structures</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q7" id="yes-q7" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q7">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q7" id="no1-q7" value="No" points="0">
+                                <label class="form-check-label" for="no1-q7">
+                                    No
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q7" id="no2-q7" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q7">
+                                    Not Applicable
+                                </label>
+                            </div></div>
+
+                        <div class="form-group">
+
+                            <h6 style="font-weight: bold; font-size: 18px;">[6b] Adjacent property fire hazard potential</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q8" id="yes-q8" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q8">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q8" id="no1-q8" value="No" points="0">
+                                <label class="form-check-label" for="no1-q8">
+                                    No
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q8" id="no2-q8" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q8">
+                                    Not Applicable
+                                </label>
+                            </div></div>
+
+                        <div class="form-group">
+
+                            <h6 style="font-weight: bold; font-size: 18px;">[6c] Regional climate – arid/semi-arid</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q9" id="yes-q9" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q9">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q9" id="no1-q9" value="No" points="0">
+                                <label class="form-check-label" for="no1-q9">
+                                    No
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q9" id="no2-q9" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q9">
+                                    Not Applicable
+                                </label>
+                            </div></div>
+
+                        <div class="form-group">
+
+                            <h6 style="font-weight: bold; font-size: 18px;">[6d] Historical fire data for specific location</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q10" id="yes-q10" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q10">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q10" id="no1-q10" value="No" points="0">
+                                <label class="form-check-label" for="no1-q10">
+                                    No
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q10" id="no2-q10" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q10">
+                                    Not Applicable
+                                </label>
+                            </div>
+                        </div>
+                        </p>
+
+
+                    </div>
+
+                    <div class="row">
+                    <h6 class="slide-header" style="text-align: left;">Three or more 'Critical Concerns' in this section automatically receive a 'NOT RECOMMENDED' for implementing managed succession.</h6><br>
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[7] Will larger/taller vegetation (particularly urban/suburban) provide an environment for prevalence of illegal/unauthorized use of the ROW or other safety related issues?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q11" id="yes-q11" value="Yes" points="10">
+                                <label class="form-check-label" for="yes-q11">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q11" id="no1-q11" value="No" points="0">
+                                <label class="form-check-label" for="no1-q11">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q11" id="no2-q11" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q11">
+                                    Not Applicable
+                                </label>
+                            </div>
+
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'Yes,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q11" id="yes-q11" value="Yes- Critical Concern" points="10">
+                                <label class="form-check-label" for="yes-q11">
+                                    Yes- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q11" id="yes-q11" value="Yes- Manageable Concern " points="1">
+                                <label class="form-check-label" for="yes-q11">
+                                    Yes- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q11" id="yes-q11" value="Yes- No Conflict" points="1">
+                                <label class="form-check-label" for="yes-q11">
+                                    Yes- No Conflict
+                                </label>
+                            </div></p>
+
+                    </div>
+
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[8] Does your site have drainage structures that may be impeded by proximity to larger vegetation?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q12" id="yes-q12" value="Yes" points="10">
+                                <label class="form-check-label" for="yes-q12">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q12" id="no1-q12" value="No" points="0">
+                                <label class="form-check-label" for="no1-q12">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q12" id="no2-q12" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q12">
+                                    Not Applicable
+                                </label>
+                            </div>
+
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'Yes,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q12" id="yes-q12" value="Yes- Critical Concern" points="10">
+                                <label class="form-check-label" for="yes-q12">
+                                    Yes- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q12" id="yes-q12" value="Yes- Manageable Concern " points="1">
+                                <label class="form-check-label" for="yes-q12">
+                                    Yes- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q12" id="yes-q12" value="Yes- No Conflict" points="1">
+                                <label class="form-check-label" for="yes-q12">
+                                    Yes- No Conflict
+                                </label>
+                            </div></p>
+
+                    </div>
+
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[9] Will implementing managed succession adversely affect any of the adjacent land use listed below?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q13" id="yes-q13" value="Yes" points="10">
+                                <label class="form-check-label" for="yes-q13">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q13" id="no1-q13" value="No" points="0">
+                                <label class="form-check-label" for="no1-q13">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q13" id="no2-q13" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q13">
+                                    Not Applicable
+                                </label>
+                            </div>
+
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'Yes,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q13" id="yes-q13" value="Yes- Critical Concern" points="10">
+                                <label class="form-check-label" for="yes-q13">
+                                    Yes- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q13" id="yes-q13" value="Yes- Manageable Concern " points="1">
+                                <label class="form-check-label" for="yes-q13">
+                                    Yes- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q13" id="yes-q13" value="Yes- No Conflict" points="1">
+                                <label class="form-check-label" for="yes-q13">
+                                    Yes- No Conflict
+                                </label>
+                            </div></p>
+
+                            <p>
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[9a] Existing forest/heavily vegetated areas</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q14" id="yes-q14" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q14">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q14" id="no1-q14" value="No" points="0">
+                                <label class="form-check-label" for="no1-q14">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q14" id="no2-q14" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q14">
+                                    Not Applicable
+                                </label>
+                            </div></div>
+
+                        <div class="form-group">
+
+                            <h6 style="font-weight: bold; font-size: 18px;">[9b] Agricultural</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q15" id="yes-q15" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q15">
+                                    Yes
+                                </label>
+                            </div>
+
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q15" id="no1-q15" value="No" points="0">
+                                <label class="form-check-label" for="no1-q15">
+                                    No
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q15" id="no2-q15" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q15">
+                                    Not Applicable
+                                </label>
+                            </div></div>
+
+                        <div class="form-group">
+
+
+                            <h6 style="font-weight: bold; font-size: 18px;">[9c] Suburban/urban</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q16" id="yes-q16" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q16">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q16" id="no1-q16" value="No" points="0">
+                                <label class="form-check-label" for="no1-q16">
+                                    No
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q16" id="no2-q16" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q16">
+                                    Not Applicable
+                                </label>
+                            </div></div>
+
+                        <div class="form-group">
+
+
+                            <h6 style="font-weight: bold; font-size: 18px;">[9d] Commercial</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q17" id="yes-q17" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q17">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q17" id="no1-q17" value="No" points="0">
+                                <label class="form-check-label" for="no1-q17">
+                                    No
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q17" id="no2-q17" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q17">
+                                    Not Applicable
+                                </label>
+                            </div></div>
+
+                        <div class="form-group">
+
+
+                            <h6 style="font-weight: bold; font-size: 18px;">[9e] Industrial</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q18" id="yes-q18" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q18">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q18" id="no1-q18" value="No" points="0">
+                                <label class="form-check-label" for="no1-q18">
+                                    No
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q18" id="no2-q18" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q18">
+                                    Not Applicable
+                                </label>
+                            </div></div>
+
+
+                        </p>
+
+
+
+
+
+                    </div>
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[10] Are there conflicting issues with adjacent landowner that may preclude larger/taller vegetation on the adjacent ROW?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q19" id="yes-q19" value="Yes" points="10">
+                                <label class="form-check-label" for="yes-q19">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q19" id="no1-q19" value="No" points="0">
+                                <label class="form-check-label" for="no1-q19">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q19" id="no2-q19" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q19">
+                                    Not Applicable
+                                </label>
+                            </div>
+
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'Yes,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q19" id="yes-q19" value="Yes- Critical Concern" points="10">
+                                <label class="form-check-label" for="yes-q19">
+                                    Yes- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q19" id="yes-q19" value="Yes- Manageable Concern " points="1">
+                                <label class="form-check-label" for="yes-q19">
+                                    Yes- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q19" id="yes-q19" value="Yes- No Conflict" points="1">
+                                <label class="form-check-label" for="yes-q19">
+                                    Yes- No Conflict
+                                </label>
+                            </div></p>
+
+                    </div>
+
+
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[11] Are there cooperative agreements in place for other uses of the ROW such as hay and timber harvesting that will be adversely impacted by managed succession?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q20" id="yes-q20" value="Yes" points="10">
+                                <label class="form-check-label" for="yes-q20">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q20" id="no1-q20" value="No" points="0">
+                                <label class="form-check-label" for="no1-q20">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q20" id="no2-q20" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q20">
+                                    Not Applicable
+                                </label>
+                            </div>
+
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'Yes,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q20" id="yes-q20" value="Yes- Critical Concern" points="10">
+                                <label class="form-check-label" for="yes-q20">
+                                    Yes- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q20" id="yes-q20" value="Yes- Manageable Concern " points="1">
+                                <label class="form-check-label" for="yes-q20">
+                                    Yes- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q20" id="yes-q20" value="Yes- No Conflict" points="1">
+                                <label class="form-check-label" for="yes-q20">
+                                    Yes- No Conflict
+                                </label>
+                            </div></p>
+
+                    </div>
+
+
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[12] If agreements are in place, will local agency resolution/cooperative agreement be able to maintain the site with larger/taller vegetation using their personnel, equipment, etc.?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q21" id="yes-q21" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q21">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q21" id="no1-q21" value="No" points="10">
+                                <label class="form-check-label" for="no1-q21">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q21" id="no2-q21" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q21">
+                                    Not Applicable
+                                </label>
+                            </div>
+
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'No,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q21" id="no1-q21" value="No- Critical Concern" points="10">
+                                <label class="form-check-label" for="no1-q21">
+                                    No- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q21" id="no1-q21" value="No- Manageable Concern " points="1">
+                                <label class="form-check-label" for="no1-q21">
+                                    No- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q21" id="no1-q21" value="No- No Conflict" points="1">
+                                <label class="form-check-label" for="no1-q21">
+                                    No- No Conflict
+                                </label>
+                            </div></p>
+
+                    </div>
+
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[13] If this corridor being managed for pollinators and other wildlife habitat conservation and/or habitat establishment can managed succession potentially create an attractive nuisance for wildlife in terms of traffic safety and potential for animal/vehicle conflicts?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q22" id="yes-q22" value="Yes" points="10">
+                                <label class="form-check-label" for="yes-q22">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q22" id="no1-q22" value="No" points="0">
+                                <label class="form-check-label" for="no1-q22">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q22" id="no2-q22" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q22">
+                                    Not Applicable
+                                </label>
+                            </div>
+
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'Yes,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q22" id="yes-q22" value="Yes- Critical Concern" points="10">
+                                <label class="form-check-label" for="yes-q22">
+                                    Yes- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q22" id="yes-q22" value="Yes- Manageable Concern " points="1">
+                                <label class="form-check-label" for="yes-q22">
+                                    Yes- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q22" id="yes-q22" value="Yes- No Conflict" points="1">
+                                <label class="form-check-label" for="yes-q22">
+                                    Yes- No Conflict
+                                </label>
+                            </div></p>
+
+                    </div>
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[14] Can the types of vegetation requirements for pollinators/wildlife be reasonably maintained through managed succession?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q23" id="yes-q23" value="Yes" points="0">
+                                <label class="form-check-label" for="yes-q23">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q23" id="no1-q23" value="No" points="0">
+                                <label class="form-check-label" for="no1-q23">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q23" id="no2-q23" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q23">
+                                    Not Applicable
+                                </label>
+                            </div>
+
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'No,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q23" id="no1-q23" value="No- Critical Concern" points="10">
+                                <label class="form-check-label" for="no1-q23">
+                                    No- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q23" id="no1-q23" value="No- Manageable Concern " points="1">
+                                <label class="form-check-label" for="no1-q23">
+                                    No- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q23" id="no1-q23" value="No- No Conflict" points="1">
+                                <label class="form-check-label" for="no1-q23">
+                                    No- No Conflict
+                                </label>
+                            </div></p>
+
+                    </div>
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[15] Will implementing managed succession interfere with cooperative agreements and/or volunteer groups supporting pollinators/wildlife within the ROW and/or adjacent properties?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q24" id="yes-q24" value="Yes" points="10">
+                                <label class="form-check-label" for="yes-q24">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q24" id="no1-q24" value="No" points="0">
+                                <label class="form-check-label" for="no1-q24">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q24" id="no2-q24" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q24">
+                                    Not Applicable
+                                </label>
+                            </div>
+
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'Yes,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q24" id="yes-q24" value="Yes- Critical Concern" points="10">
+                                <label class="form-check-label" for="yes-q24">
+                                    Yes- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q24" id="yes-q24" value="Yes- Manageable Concern " points="1">
+                                <label class="form-check-label" for="yes-q24">
+                                    Yes- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q24" id="yes-q24" value="Yes- No Conflict" points="1">
+                                <label class="form-check-label" for="yes-q24">
+                                    Yes- No Conflict
+                                </label>
+                            </div></p>
+
+                    </div>
+
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 18px;">[16] Will larger/taller vegetation interfere with winter maintenance (i.e., winter shadow effect, ssnow melt drainage, snow storage)?</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q25" id="yes-q25" value="Yes" points="10">
+                                <label class="form-check-label" for="yes-q25">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q25" id="no1-q25" value="No" points="0">
+                                <label class="form-check-label" for="no1-q25">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q25" id="no2-q25" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q25">
+                                    Not Applicable
+                                </label>
+                            </div>
+
+                            <p>
+                            <h7 style="font-weight: bold; font-size: 16px;">If 'Yes,' is this:</h7>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q25" id="yes-q25" value="Yes- Critical Concern" points="10">
+                                <label class="form-check-label" for="yes-q25">
+                                    Yes- Critical Concern
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q25" id="yes-q25" value="Yes- Manageable Concern " points="1">
+                                <label class="form-check-label" for="yes-q25">
+                                    Yes- Manageable Concern    
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q25" id="yes-q25" value="Yes- No Conflict" points="1">
+                                <label class="form-check-label" for="yes-q25">
+                                    Yes- No Conflict
+                                </label>
+                            </div></p>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+                       <h6 class="slide-header" style="text-align: left;">Potential assets to your project using larger/taller vegetation</h6><br>
+                        <h6 style="font-weight: bold; font-size: 18px;">[17a] Potentially improve stormwater management through increased runoff infiltration and/or adsorption</h6>              
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q26" id="yes-q26" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q26">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q26" id="no1-q26" value="No" points="0">
+                                <label class="form-check-label" for="no1-q26">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q26" id="no2-q26" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q26">
+                                    Not Applicable
+                                </label>
+                            </div>
+                        </div>
+
+                     <div class="form-group">   
+
+                        <h6 style="font-weight: bold; font-size: 18px;">[17b] May reduce headlight glare in medians</h6>              
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q27" id="yes-q27" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q27">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q27" id="no1-q27" value="No" points="0">
+                                <label class="form-check-label" for="no1-q27">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q27" id="no2-q27" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q27">
+                                    Not Applicable
+                                </label>
+                            </div>
+                        </div>
+
+                     <div class="form-group">  
+
+
+                        <h6 style="font-weight: bold; font-size: 18px;">[17c] Management of drifting/blowing snow</h6>              
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q28" id="yes-q28" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q28">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q28" id="no1-q28" value="No" points="0">
+                                <label class="form-check-label" for="no1-q28">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q28" id="no2-q28" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q28">
+                                    Not Applicable
+                                </label>
+                            </div>
+
+                        </div>
+
+                     <div class="form-group">  
+                        <h6 style="font-weight: bold; font-size: 18px;">[17d] Does the project site have mower damage on the slopes greater than or equal to 3:1 (rutting, rill formation, erosion) that can benefit from conversion to managed succession?</h6>              
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q29" id="yes-q29" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q29">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q29" id="no1-q29" value="No" points="0">
+                                <label class="form-check-label" for="no1-q29">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q29" id="no2-q29" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q29">
+                                    Not Applicable
+                                </label>
+                            </div>
+
+                        </div>
+
+                     <div class="form-group">  
+                        <h6 style="font-weight: bold; font-size: 18px;">[17e] Guardrail/barrier present in project locations with narrower ROW width allows larger/taller vegetation closer to the travel lanes without negatively impacting safety or maintenance</h6>              
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q30" id="yes-q30" value="Yes" points="1">
+                                <label class="form-check-label" for="yes-q30">
+                                    Yes
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q30" id="no1-q30" value="No" points="0">
+                                <label class="form-check-label" for="no1-q30">
+                                    No
+                                </label>
+                            </div>
+
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="q30" id="no2-q30" value="Not Applicable" points="0">
+                                <label class="form-check-label" for="no2-q30">
+                                    Not Applicable
+                                </label>
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+                       
+                        </div>
+
+
+            <div class="text-center">
+                            <button type="button" id="calc-ms" class="btn btn-success">Recommendation for Managed Succession</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- ********** SLIDES THREE-EIGHT ********** -->
+            <!-- **************************************** -->
+            <!--<div id="slide-three-content">
+                <h4 class="slide-header" style="text-align: center;" id="core-mix-h4">Roadway Classification</h4><br>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <div class="form-group">
+                            <label for="which-project-region">Roadway Functional Class</label><br>
+                            <select class="custom-select mr-sm-2" id="which-project-region">
+                                <option selected>--</option>
+                                <option value="mountian">Urban Interstate, Freeway, or Expressway</option>
+                                <option value="coastal">Urban Principal Arterial</option>
+                                <option value="piedmont">Urban Minor Arterial or Major Collector</option>
+                                <option value="piedmont">Urban Local</option>
+                                <option value="mountian">Rural Interstate, Freeway, or Expressway</option>
+                                <option value="coastal">Rural Principal Arterial</option>
+                                <option value="piedmont">Rural Minor Arterial or Major Collector</option>
+                                <option value="piedmont">Rural Local</option>
+                            </select>
+                        </div>
+                    <br>
+                        <div style="display: flex; justify-content: center;">-->
+
+        <!-- *************** CALCULATOR MODAL BUTTON ***************************************** -->
+        <!-- ********************************************************************************* -->
+
+                        <!--</div>
+                        <label for="how-large-is-area-core-mix">How large is the area?</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="how-large-is-area-core-mix" placeholder="1">
+                            <span class="input-group-addon">Acres</span>
+                        </div>
+                    </div>
+                </div><br>-->
+
+                <!--<div class="row">
+                    <div class="col-md-6">
+                        <label for="mowed-area-seed">How much of the area flatter than 3:1?</label>
+                        <div class="input-group" style="padding-bottom: 20px;">
+                            <input type="number" class="form-control" id="mowed-area-seed" placeholder="1">
+                            <span class="input-group-addon">Acres</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="which-project-region">Adjacent property</label><br>
+                            <select class="custom-select mr-sm-2" id="which-project-region">
+                                <option selected>--</option>
+                                <option value="mountian">Aesthetic issues</option>
+                                <option value="coastal">Clear view to property</option>
+                                <option value="piedmont">Conflict with agricultural uses</option>
+                                <option value="piedmont">Land owner agreements</option>
+                            </select>
+                        </div> 
+                        <div class="form-group">
+                            <label for="which-project-region">Winter/snow issues</label><br>
+                            <select class="custom-select mr-sm-2" id="which-project-region">
+                                <option selected>--</option>
+                                <option value="mountian">Snow fence</option>
+                                <option value="mountian">Snow storage</option>
+                                <option value="coastal">Snow melt drainage</option>
+                                <option value="piedmont">Winter shadow effect</option>
+                            </select>
+                        </div>  
+                    </div>
+                    <div class="col-md-6">
+                        <label for="non-mowed-area-seed">How much of the area has slopes steeper than 3:1?</label>
+                        <div class="input-group" style="padding-bottom: 20px;">
+                            <input type="number" class="form-control" id="non-mowed-area-seed" placeholder="1">
+                            <span class="input-group-addon">Acres</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="which-project-region">Fire hazard</label><br>
+                            <select class="custom-select mr-sm-2" id="which-project-region">
+                                <option selected>--</option>
+                                <option value="mountian">Proximity to adjacent structures</option>
+                                <option value="coastal">Adjacent vegetation fire potential</option>
+                                <option value="piedmont">Regional climate-arid, semi-arid</option>
+                                <option value="piedmont">Historical fire data</option>
+                            </select>
+                        </div> 
+                        <div class="form-group">
+                            <label for="which-project-region">Wildlife habitat issues</label><br>
+                            <select class="custom-select mr-sm-2" id="which-project-region">
+                                <option selected>--</option>
+                                <option value="mountian">Type of widlife</option>
+                                <option value="coastal">Vegetation requirements</option>
+                                <option value="piedmont">Agreements with volunteer groups</option>
+                            </select>
+                        </div> 
+
+                        <script>
+                            function setText(b) {
+                                let c = $(b).parent().parent().prev();
+                                if (b.innerHTML === "Slope, 3:1") {
+                                    c.html("Slope, 3:1 <span class=\"caret\">");
+                                } else {
+                                    c.html("Grade 33% <span class=\"caret\">");
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <div class="form-group">
+                            <h6 style="font-weight: bold; font-size: 14px;">Does this area include both Urban and Rural sections?			</h6>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="disturbed" id="yes-urban-vs-rural" value="yes" checked>
+                                <label class="form-check-label" for="yes-disturbed">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <input class="form-check-input" type="radio" name="disturbed" id="no-urban-vs-rural" value="no">
+                                <label class="form-check-label" for="no-disturbed">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <label for="times-normal-rate">Is there any adjustment factor?</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="times-normal-rate" placeholder="1">
+                            <span class="input-group-addon">x Normal Rate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+
+            <!-- ********** Final Slide ***************** -->
+            <!-- **************************************** -->
+            <div id="final-slide">
+                <h4 class="slide-header" style="text-align: center;">Finalize?</h4><br>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+			    <button type="button" id="download-report" class="btn btn-success">Download As PDF <i class="fa fa-download fa-2x"></i></button>
+			    <!--<button type="button" id="download-pdf" class="btn btn-success">Download As PDF <i class="fa fa-download fa-2x"></i></button>-->
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="row">
+                <div class="col-sm-1 pull-left">
+                    <button class="btn btn-primary" style="background-color: #D5732F; border-color: #B24C05;" id="prev-slide">&#8678;</button>
+                </div>
+                <div class="col-sm-1 pull-right">
+                    <button class="btn btn-primary" style="background-color: #D5732F; border-color: #B24C05;" id="next-slide">&#8680;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-loading"><!-- Place at bottom of page --></div>
+    <div id="msModal" class="ms-modal">
+        <!-- Modal content -->
+        <div class="ms-modal-content">
+          <span id="msmodBtn" class="close">&times;</span>
+          <p>Lorem ipsum.</p>
+        </div>
+    </div>
+    <br>
+    <br>
+</body>
+</html>
