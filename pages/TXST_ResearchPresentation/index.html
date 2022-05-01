@@ -13,7 +13,6 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/night.css" id="theme">
@@ -38,6 +37,7 @@
 	<body>
 
 		<div class="reveal">
+		<div class="slides">
 		<font style="color:#D5D5D3">
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
@@ -53,6 +53,19 @@
 					<br>
 
 				</section>
+
+				<section data-background="black" data-background-size="200%">
+				<div style="line-height:0">
+					<iframe frameborder="-10" allowfullscreen align="center" width="2100" height="580" style="border:0;display:block" allowfullscreen=""
+loading="lazy" src="regression/index.html" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+					</div>
+				</section>
+
+
+<section class="fig-container" 
+         data-file="https://students.brown.edu/seeing-theory/" >
+</section>
+
 
 				<section data-background="white" data-background-size="1700px">
 					<h2 style="color:#F98400">Outline</h2>
@@ -81,7 +94,7 @@
 						</ul>
 				</section>
 
-				<section data-background="white" data-background-size="2200px">
+				<section data-background="black" data-background-size="2200px">
 					<img  align="right" height=600 width=1400 data-src="scd1.jpg">
 				</section>
 
@@ -116,12 +129,12 @@
 				</section>
 
 
-				<section data-background="white" data-background-size="2200px" >
+				<section data-background="black" data-background-size="2200px" >
 				<div class="stretch">
 					<iframe src="5/index.html" frameborder="0" scrolling="no" height="100%" width="100%" marginheight="0" marginwidth="0"></iframe>
 				</section>
 
-				<section data-background="white" data-background-size="2300px" >
+				<section data-background="black" data-background-size="2300px" >
 				<div class="stretch">
 				<iframe width="1400" height="580" frameborder="0" src="DSt.html" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
 				</section>
@@ -205,38 +218,60 @@
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
+<script>
 
-		<script>
+// Full list of configuration options available at:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+    controls: false,
+    progress: true,
+    history: true,
+    center: false,
+    transition: 'fade',
+    viewDistance: 3, // to lazy load iframes
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+    // // optional configurations for reveald3
+    reveald3: {
 
-				theme: Reveal.getQueryHash().theme || 'night', // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+         // If the previous slide is a slide further in the deck (i.e. we come back to
+         // slide from the next slide), by default the last fragment transition will be
+         // triggered to to get the last state of the visualization and simulate the
+         // the state the simulation was in when we left the slide. This can be
+         // discarded.
+         runLastState: true, //default true
 
-				// Parallax scrolling
-				parallaxBackgroundImage: 'bw_traff3.gif',
-				parallaxBackgroundSize: '28400px 42200px',
+         // If a special onSlideChanged transition has been set (if for example the visualization
+         // has been preloaded using the data-preload attribute, and you want a specific transition
+         // to happen only when you arrive on the slide), you can choose the delay with which such 
+         // a transition will occur (note that in the case of no data-preload, if no delay is set then
+         // the transition might not occur since the iframe might not be fully loaded yet when the 
+         // function is triggered). // default 0. 
+         onSlideChangedDelay: 400,
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/math/math.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+         // This will prefix the path attributes of the source html paths with the given path.
+         // (by default "src" if set to true or with the specified path if string)
+         mapPath: false, // default: false
 
-		</script>
+         // If true, will try to locate the file at a fallback url without the mapPath prefix in case no file is found
+         // at the stipulated url with mapPath
+         tryFallbackURL: false, //default false
+
+         // Checking for file existance has been reported to fail in rare 
+         // cases though files did exist. This option is to disable the file checking.
+         //see: https://github.com/gcalmettes/reveal.js-d3/issues/10
+         disableCheckFile: false, //default false,
+    },
+
+    // Reveal.js plugins
+    dependencies: [
+
+        { src: 'plugin/reveald3/reveald3.js' },
+
+    ]
+});
+
+</script>
+
 
         <script src="js/raphael-min.js"></script>
         <script src="js/underscore-min.js"></script>
