@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head> 
+<meta charset="utf-8">
+<center><h2 class = "title">Ratio of Women to Men Pay, by State -- All Occupations</h2></center>
+<div id="scatter"></div>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.3/d3-tip.min.js"></script>
+<style>
+
+path:hover
+{
+	fill-opacity: .5;
+}
+  
+.axis path {
+  fill: none;
+}
+  
+.axis line {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.5);
+}
+  
+.background
+{
+	fill: transparent;
+	pointer-events: all;
+}
+
+.legend
+{
+	position:absolute;
+	left:20px;
+	top:30px;
+}
+  
+.d3-tip
+{
+	line-height: 1;
+	font-weight: bold;
+	padding: 12px;
+	background: rgba(255, 255, 255, 0.8);
+  color: black;
+	border-radius: 2px;
+}
+
+.d3-tip:after
+{
+	box-sizing: border-box;
+	display: inline;
+	font-size: 10px;
+	width: 100%;
+	line-height: 1;
+	color: rgba(255, 255, 255, 0.8);
+	content: "\25BC";
+	position: absolute;
+	text-align: center;
+}
+
+.d3-tip.n:after
+{
+	margin: -1px 0 0 0;
+	top: 100%;
+	left: 0;
+}
+
+body
+{
+  background: silver;
+	font: 11px sans-serif;
+}
+      
+.main
+{
+	margin: 0px 25px;
+}
+
+.chart rect
+{
+	fill: #4ea7db;
+}
+
+.chart text
+{
+	fill: white;
+	font: 10px sans-serif;
+	text-anchor: end;
+}
+
+
+
+</style>
+</head>
+<body>
+<script>
+
+var width = 960;
+var height = 600;
+var map =  height/1.15;
+var lowColor = '#bd0026';
+var highColor = '#ffffb2';
+var active = d3.select(null);
+
+var projection = d3.geo.albersUsa()
+	.translate([width/2, map/2])
+	.scale([800]);
+         
+var path = d3.geo.path()
+	.projection(projection);
+
+
+var svg = d3.select("#scatter")
+	.append("svg")
+	.attr("width", width)
+	.attr("height", map);
+  
+svg.append("rect")
+	.attr("class", "background")
+	.on("click", reset);
+
+var g = svg.append("g")
+	.style("stroke-width", "1.5px");
+
+d3.csv("data.csv", function(data)
+{
+	var dataArray = [];
+	for (var d = 0; d < data.length; d++)
+	{
+		dataArray.push(parseFloat(data[d].value))
+	}
+	
+	var minVal = d3.min(dataArray);
+	var maxVal = d3.max(dataArray);
+	var ramp = d3.scale.linear()
+		.domain([minVal,maxVal])
+		.range([lowColor,highColor]);
+
+	d3.json("data.json", function(json)
+	{
+		for (var i = 0; i < data.length; i++)
+		{
+			var dataState = data[i].state;
+			var dataValue = data[i].value;
+			var dataMen = data[i].MenEarning;
+			var dataWomen = data[i].WomenEarning;
+		
+			for (var j = 0; j < json.features.length; j++)
+			{
+				var jsonState = json.features[j].properties.name;
+				if (dataState == jsonState)
+				{
+					json.features[j].properties.value = dataValue; 
+					json.features[j].properties.men = dataMen;
+					json.features[j].properties.women = dataWomen;
+					break;
+				}
+			}
+		}
+	
+		var tip = d3.tip()
+			.attr("class", "d3-tip")
+			.offset([-40, 0])
+    	.html(function(d)
+			{
+        var x = +d.properties.value;
+        x = x.toPrecision(2);
+        return "State: " + d.properties.name + "<br><br>"
+				+ "Averages:" + "<br>"
+        + "<div id='tipDiv'></div><br>" 
+				+ "Women make " + x + " cents per dollar" + "<br>" 
+        + "that a man makes in " + d.properties.name;
+			});
+
+		svg.call(tip);
+	
+		g.selectAll("path")
+			.data(json.features)
+			.enter()
+			.append("path")
+			.attr("d", path)
+			.style("stroke", "#fff")
+			.style("stroke-width", "1")
+			.style("fill", function(d)
+			{
+				return ramp(d.properties.value)
+			})
+			.attr("class", "feature")
+			.on("click", clicked)
+			.on("mouseover",  function(d)
+			{
+				tip.show(d);
+				var state = d.properties.name;
+				var men = d.properties.men;
+				var women = d.properties.women;
+				var dataset = [men, women];
+				var barHeight = 15;
+      			
+      			var tipSVG = d3.select("#tipDiv")
+      				.append("svg")
+      				.attr("width", 150)
+      				.attr("height", barHeight * 2);
+     				
+     			var x = d3.scale.linear()
+     				.domain([0, d3.max(dataset)])
+     				.range([0, 150]);
+
+				var bar = tipSVG.selectAll("g")
+					.data(dataset)
+					.enter().append("g")
+					.attr("transform", function(d, i)
+					{
+						return "translate(0," + i * barHeight + ")";
+					});
+				
+				bar.append("rect")
+        .attr("width", 0)
+      	//.attr("height", bar)
+      	.transition()
+      	.duration(1000)
+					.attr("width", x)
+					.attr("height", barHeight - 1)
+					.attr("fill", function(d)
+               {
+          if(d === d3.max(dataset))
+            {
+              return highColor;
+            }
+          else
+            {
+              return lowColor;
+            }
+        });
+
+				bar.append("text")
+					.attr("x", 2)
+					.attr("y", barHeight / 2)
+					.attr("dy", ".35em")
+					.attr("fill", function(d)
+               {
+          if(d === d3.max(dataset))
+            {
+             return "black";
+             }
+          else
+            {
+              return "black";
+            }
+        })
+        	.style("font-size", "12px")
+					.text(function(d)
+					{
+						if(d === d3.max(dataset))
+						{
+							return "Mens Salary: $" + d;
+						}
+						else
+						{
+							return "Womens Salary: $" + d;
+						}
+					});
+				})
+				.on("mouseout", tip.hide);; 
+			});
+	
+	var w = 140, h = 250;
+	
+	var key = d3.select("body")
+		.append("svg")
+		.attr("width", w)
+		.attr("height", h)
+		.attr("class", "legend");
+
+	var legend = key.append("defs")
+		.append("svg:linearGradient")
+		.attr("id", "gradient")
+		.attr("x1", "100%")
+		.attr("y1", "0%")
+		.attr("x2", "100%")
+		.attr("y2", "100%")
+		.attr("spreadMethod", "pad");
+
+	legend.append("stop")
+		.attr("offset", "0%")
+		.attr("stop-color", highColor)
+		.attr("stop-opacity", 1);
+			
+	legend.append("stop")
+		.attr("offset", "100%")
+		.attr("stop-color", lowColor)
+		.attr("stop-opacity", 1);
+
+	key.append("rect")
+		.attr("width", w - 100)
+		.attr("height", h)
+		.style("fill", "url(#gradient)")
+		.attr("transform", "translate(0,10)");
+  
+	var y = d3.scale.linear()
+		.range([h, 0])
+		.domain([minVal, maxVal]);
+
+	var yAxis = d3.svg.axis()
+		.scale(y)
+		.orient("right")
+		.tickFormat(function(d, i)
+		{
+			return d + "%";
+		});
+
+	key.append("g")
+		.attr("class", "y axis")
+		.attr("transform", "translate(41,10)")
+		.call(yAxis);
+});
+
+function clicked(d)
+{
+	if (active.node() === this)
+	{
+		return reset();
+	}
+	
+	active.classed("active", false);
+	active = d3.select(this).classed("active", true);
+  
+	var bounds = path.bounds(d),
+		dx = bounds[1][0] - bounds[0][0],
+		dy = bounds[1][1] - bounds[0][1],
+		x = (bounds[0][0] + bounds[1][0]) / 2,
+		y = (bounds[0][1] + bounds[1][1]) / 2,
+		scale = .6 / Math.max(dx / width, dy / height),
+		translate = [width / 2 - scale * x, height / 2 - scale * y];
+
+	g.transition()
+		.duration(750)
+		.style("stroke-width", 1.5 / scale + "px")
+		.attr("transform", "translate(" + translate + ")scale(" + scale + ")");
+}
+
+function reset()
+{
+	active.classed("active", false);
+	active = d3.select(null);
+	
+	g.transition()
+		.duration(750)
+		.style("stroke-width", "1.5px")
+		.attr("transform", "");
+}
+d3.select(self.frameElement).style("height", height + "px");
+</script>
+</body>
+</html>

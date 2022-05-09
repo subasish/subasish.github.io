@@ -1,32 +1,65 @@
-# [Seeing Theory](http://students.brown.edu/seeing-theory/) 
+<p align="center">
+  <a href="https://revealjs.com">
+  <img src="https://hakim-static.s3.amazonaws.com/reveal-js/logo/v1/reveal-black-text-sticker.png" alt="reveal.js" width="500">
+  </a>
+  <br><br>
+  <a href="https://github.com/hakimel/reveal.js/actions"><img src="https://github.com/hakimel/reveal.js/workflows/tests/badge.svg"></a>
+  <a href="https://slides.com/"><img src="https://s3.amazonaws.com/static.slid.es/images/slides-github-banner-320x40.png?1" alt="Slides" width="160" height="20"></a>
+</p>
 
-[![Landing page screenshot](img/landing_page.png)](http://students.brown.edu/seeing-theory/) 
+reveal.js is an open source HTML presentation framework. It enables anyone with a web browser to create beautiful presentations for free. Check out the live demo at [revealjs.com](https://revealjs.com/).
 
-Seeing Theory is a project designed and created by Daniel Kunin with support from Brown University's [Royce Fellowship](https://www.brown.edu/academics/college/fellowships/royce/) Program and National Science Foundation group [STATS4STEM](http://www.stats4stem.org/). The goal of the project is to make statistics more accessible to a wider range of students through interactive visualizations.
+The framework comes with a powerful feature set including [nested slides](https://revealjs.com/vertical-slides/), [Markdown support](https://revealjs.com/markdown/), [Auto-Animate](https://revealjs.com/auto-animate/), [PDF export](https://revealjs.com/pdf-export/), [speaker notes](https://revealjs.com/speaker-view/), [LaTeX typesetting](https://revealjs.com/math/), [syntax highlighted code](https://revealjs.com/code/) and an [extensive API](https://revealjs.com/api/).
 
-## About
+---
 
-Statistics, is quickly becoming the most important and multi-disciplinary field of mathematics. According to the American Statistical Association, statistician is one of the top ten fastest-growing occupations and statistics is one of the fastest-growing bachelor degrees. Statistical literacy is essential to our data driven society. Yet, for all the increased importance and demand for statistical competence, the pedagogical approaches in statistics have barely changed. Using Mike Bostock’s data visualization software, D3.js, Seeing Theory visualizes the fundamental concepts covered in an introductory college statistics or Advanced Placement statistics class. Students are encouraged to use Seeing Theory as an additional resource to their textbook, professor and peers.
+### Sponsors
+Hakim's open source work is supported by <a href="https://github.com/sponsors/hakimel">GitHub sponsors</a>. Special thanks to:
+<div align="center">
+  <table>
+    <td align="center">
+      <a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=revealjs&utm_source=github">
+        <div>
+          <img src="https://user-images.githubusercontent.com/629429/151508669-efb4c3b3-8fe3-45eb-8e47-e9510b5f0af1.svg" width="290" alt="WorkOS">
+        </div>
+        <b>Your app, enterprise-ready.</b>
+        <div>
+          <sub>Start selling to enterprise customers with just a few lines of code. Add Single Sign-On (and more) in minutes instead of months.</sup>
+        </div>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://www.doppler.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=revealjs&utm_source=github">
+        <div>
+          <img src="https://user-images.githubusercontent.com/629429/151510865-9fd454f1-fd8c-4df4-b227-a54b87313db4.png" width="290" alt="Doppler">
+        </div>
+        <b>All your environment variables, in one place</b>
+        <div>
+          <sub>Stop struggling with scattered API keys, hacking together home-brewed tools, and avoiding access controls. Keep your team and servers in sync with Doppler.</sup>
+        </div>
+      </a>
+    </td>
+  </table>
+</div>
 
-## Feedback and Suggestions
+---
 
-Found a bug or an issue with a visualization?  Have general feedback?  Want to get involved in the project?  [Contact us](mailto:info@seeingtheory.io).
+### Getting started
+- 🚀 [Install reveal.js](https://revealjs.com/installation)
+- 👀 [View the demo presentation](https://revealjs.com/demo)
+- 📖 [Read the documentation](https://revealjs.com/markup/)
+- 🖌 [Try the visual editor for reveal.js at Slides.com](https://slides.com/)
+- 🎬 [Watch the reveal.js video course (paid)](https://revealjs.com/course)
 
-## Integrating Seeing Theory
+---
 
-Embed a Seeing Theory visualization into your own page with an HTML iframe as shown below.
+### Online Editor
+Want to create your presentation using a visual editor? Try the official reveal.js presentation platform for free at [Slides.com](https://slides.com). It's made by the same people behind reveal.js.
 
-```
-<iframe 
-	src="http://students.brown.edu/seeing-theory/[unit]/index.html#[number]" 
-	width="100%" 
-	height="700px" 
-	scrolling="no"
-	style="margin-top: -70px;"
-	frameborder="0">
-</iframe>
-```
+<br>
+<br>
 
-## Copyright and License
-
-Copyright 2016-2017.
+--- 
+<div align="center">
+  MIT licensed | Copyright © 2011-2022 Hakim El Hattab, https://hakim.se
+</div>

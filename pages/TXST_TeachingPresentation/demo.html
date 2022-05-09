@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Fundamentals on Traffic Flow</title>
+
+		<meta name="description" content="Fundamentals on Traffic Flow">
+		<meta name="author" content="Subasish Das">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/night.css" id="theme">
+  <link rel="stylesheet" href="main.css">
+
+  <link >
+
+
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+		<font style="color:#D5D5D3">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-transition="slide" data-background="tf3.gif" data-background-transition="zoom">
+					<br>
+                    <br>
+					<h3 align="left" style="color:#D3DDDC">Fundamentals on Traffic Flow</h3>
+					<h4 align="left" style="color:#446455">Lecture</h4>
+					<br>
+<br><br><br>
+					<h6 align="left" style="font-size:32px; color:#C7B19C">Subasish Das, Ph.D.</h6>
+					<p align="left" style="font-size:24px;color:#FDD262">May 9, 2022</p>
+					<br>
+
+				</section>
+
+				
+				<section data-transition="slide" data-background="#D3DDDC" data-background-transition="zoom">
+				<div class="container">
+				<div class="col">
+									<h3 align="left" style="color:#798E87">About me</h3>
+					<p>
+						<ul >
+						<li style="color: black ; font-size:32px;" class="fragment roll-in">B.S., M.S., and Ph.D. in Civil Engineering. </li>
+						<li style="color: black ; font-size:32px;" class="fragment roll-in">Teaching focus: transportation engineering, traffic engineering, sustainable infrastructure, CAV readiness, and AOOOOOOOI</li>
+						<li style="color:black; font-size:32px;" class="fragment roll-in">Took many graduate and undergraduate courses during my Ph.D. years</li>
+						<li style="color:black; font-size:32px;" class="fragment roll-in">Guest lectured on different transportation courses in UTSA, WSU, and TSU</li>
+						<li style="color:black; font-size:32px;" class="fragment roll-in">Mentored many graduate and undergraduate students at Institute of Data Science - Texas A&M University (TAMIDS) </li>
+						<li style="color:black; font-size:32px;" class="fragment roll-in">Conducted several 2 days long 'Data Sceince Hackthon' workshops at TAMU Civil Engineering Department </li>
+						</ul>
+				</div>
+			</p>
+		</div>
+</section>
+
+			<section data-transition="slide" data-background="#F5CDB4" data-background-transition="zoom">
+				
+<div class="r-stack">
+  <img class="fragment current-visible" src="https://placekitten.com/450/300" width="450" height="300">
+  <img class="fragment current-visible" src="https://placekitten.com/300/450" width="300" height="450">
+  <img class="fragment" src="https://placekitten.com/400/400" width="400" height="400">
+</div></section>
+
+
+
+				<section data-transition="slide" data-background="#F5CDB4" data-background-transition="zoom">
+				<div class="container">
+
+				<div class="col">
+									<h3 align="left" style="color:#798E87">Lecture Overview</h3>
+					<p>
+						<ul >
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Concepts of Traffic Flow</li>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Traffic Speed</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Traffic Volume</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Traffic Density</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Real-world Application</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">What we have learned</li>
+						</ul>
+				</div>
+
+			</section>
+
+		<section data-background="#000" data-state="dark">
+        <h4>A slide with videos that autoplay (intelligently)</h4>
+        <video data-autoplay height="450" loop controls>
+          <source
+            data-src="vid1.mp4">
+          </source>
+        </video>
+        <video data-autoplay height="450" loop controls>
+          <source
+            data-src="vid2.mp4">
+          </source>
+        </video>
+      </section>
+
+
+<section data-background="white" data-background-size="2200px">
+<div class="container">
+				<div class="col">
+<h3 align="left" style="color:#798E87; font-size:36px;">Time mean speed (TMS)</h3>
+
+<p align="left" style="color: black ; font-size:26px;">TMS ($v_t$) is the average of all vehicles passing a point over a duration of time. It is the simple average of spot speed. Time mean speed $v_t$ is given by,</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+	v_{t}=\frac{1}{n}\sum_{i=1}^nv_{i}
+  \end{aligned} \]</p>
+
+<p align="left" style="color: black ; font-size:26px;">where $v$ is the spot speed of $i^{th}$ vehicle, and $n$ is the number of observations. In many speed studies, speeds are represented in the form of frequency table. Then the time mean speed is given by,</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+v_t = \frac{{\sum_{i=1}^{n}{q_i v_i}}}{\sum_{i=1}^{n}{q_i}},
+  \end{aligned} \]</p>
+
+  <p align="left" style="color: black ; font-size:26px;">where $q_i$ is the number of vehicles having speed $v_i$, and $n$ is the number of such speed categories.</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+	v_{t}=\frac{1}{n}\sum_i^nv_{i}
+  \end{aligned} \]</p>
+
+
+     
+</div>
+</section>	
+
+
+<section data-background="white" data-background-size="2200px">
+<div class="container">
+				<div class="col">
+<h3 align="left" style="color:#798E87 ; font-size:36px;">Space Mean Speed (SMS)</h3>
+
+<p align="left" style="color: black ; font-size:26px;">SMS ($v_s$) provides spatial weightage instead of temporal. Consider 1 unit road, and let $v_i$ is the spot speed of $i_{th}$ vehicle. Let $t_i$ is the time the vehicle takes to complete unit distance and is given by $\frac{1}{v_i}$. For $n$ vehicles, the average travel time $t_s$ is given by,</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+t_s = \frac{\Sigma {t_i}}{n} = \frac {1}{n}{\Sigma\frac{1}{v_i}}
+  \end{aligned} \]</p>
+
+<p align="left" style="color: black ; font-size:26px;">We can transfor it like below</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+v_s = \frac{n}{\sum_{i=1}^{n}\frac{1}{v_i}}
+  \end{aligned} \]</p>
+
+  <p align="left" style="color: black ; font-size:26px;">This is simply the harmonic mean of the spot speed. If the spot speeds are expressed as a frequency table, then,</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+v_s = \frac{\sum_{i=1}^{n}{q_i}}{\sum_{i=1}^{n}{\frac{q_i}{v_i}}}
+  \end{aligned} \]</p>
+
+  <p align="left" style="color: black ; font-size:26px;">where $q_i$ vehicle will have $v_i$ speed and $n_i$ is the number of such observations.</p>
+
+     
+</div>
+</section>	
+
+
+
+
+
+
+
+				<section data-background="white" data-background-size="2200px">
+				<div class="container">
+
+				<div class="col">
+				<h3 align="left" style="color:#798E87; font-size:34px;">Example Problem</h3>
+
+				 <p align="left" style="color: black ; font-size:26px;">The results of a speed study is given in the form of a frequency distribution table. Find the time mean speed and space mean speed.</p>
+
+					<table align="left" style="color: black ; font-size:20px;">
+						<thead>
+							<tr>
+								<th>Speed Range (mph)</th>
+								<th>Count</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>2-10</td>
+								<td>5</td>
+							</tr>
+							<tr>
+								<td>11-20</td>
+								<td>8</td>
+							</tr>
+
+							<tr>
+							<tr>
+								<td>21-30</td>
+								<td>21</td>
+							</tr>
+							<tr>
+								<td>31-40</td>
+								<td>17</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+<style>
+.container1 {
+    width: 800px;
+    height: 600px;
+    display:table;
+    text-align: center;
+    position: relative;
+}
+.row1 {
+    display:table-row;
+    max-height: 200px;
+}
+.row2 {
+    display:table-row;
+    height: 300px;
+}
+</style>
+
+
+<section data-background="white" data-background-size="2800px">
+<div class="container1">
+    <div class="row1">
+				<h3 align="left" style="color:#798E87; font-size:34px;">Solution</h3>
+
+					<table align="left" style="color: black ; font-size:20px;">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>Speed Range (mph)</th>
+								<th>Avg. Speed (mph) or $v_i$</th>
+								<th>Flow ($q_i$)</th>
+								<th>$v_i.q_i$</th>
+								<th>$\frac{q_i}{v_i}$</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>2-10</td>
+								<td>6</td>
+								<td>5</td>
+								<td>30</td>
+								<td>0.83</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>11-20</td>
+								<td>15.5</td>
+								<td>8</td>
+								<td>124</td>
+								<td>0.52</td>
+							</tr>
+
+							<tr>
+							<tr>
+								<td>3</td>
+								<td>21-30</td>
+								<td>25.5</td>
+								<td>21</td>
+								<td>535.5</td>
+								<td>0.82</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>31-40</td>
+								<td>35.5</td>
+								<td>17</td>
+								<td>603.5</td>
+								<td>0.48</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>51</td>
+								<td>1293</td>
+								<td>2.65</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+
+    <div class="row2">
+
+		<p class="fragment roll-in" align="left" style="color: black ; font-size:26px;" >					
+		The TMS and SMS can be found out from the frequency table given above. First, the average speed is computed, which is the mean of the speed range. For example, for the first speed range, average speed, $v_i = \frac{2+10}{2}$ = 6 mph. The volume of flow $q_i$ for that speed range is same as the frequency. The terms $v_i.q_i$ and $\frac{q_i}{v_i}$ are also tabulated, and their summations in the last row. Time mean speed can be computed as, $v_t = \frac{\Sigma {q_iv_i}}{\Sigma q_i} = \frac{1293}{51} = $ 25.35 mph. Similarly, space mean speed can be computed as, $v_s = \frac{\Sigma q_i}{\Sigma \frac{q_i}{v_i}} = \frac{51}{2.65} = $ 19.23 mph.
+		</p>
+</div>
+
+	</section>
+
+
+<section data-background="white" data-background-size="2800px">
+<div class="container1">
+    <div class="row1">
+				<h3 align="left" style="color:#798E87; font-size:34px;">Illustrative Example</h3>
+
+	<img  class="fragment roll-in" align="right" height=220 width=1400 data-src="TSMS.PNG">
+
+    <div class="row2">
+
+		<p class="fragment roll-in" align="left" style="color: black ; font-size:26px;" >					
+		The first vehicle is traveling at 10 ft/s with 50 ft spacing, and the second set at 20 ft/s with 100 ft spacing. Therefore, the headway of the slow vehicle $h_s$ will be 50 ft divided by 10 ft/s which is 5 sec. Therefore, the number of slow moving vehicles observed at A in one hour $n_s$ will be 600/5 = 120 vehicles. The density $K$ is the number of vehicles in 1000 ft, and is the inverse of spacing. Therefore, $K_s = 1000/50$ = 20 vehicles/1000 ft. Therefore, by definition, TMS $v_t$ is given by $v_t = \frac{12\times10+12\times20}{24}$ = 15 m/s. Similarly, by definition, SMS is the mean of vehicle speeds over time. Therefore, $v_s = \frac{20\times10 + 10\times20}{30}$ = 13.3 m/s This is same as the harmonic mean of spot speeds obtained at location A; ie $v_s = \frac{24}{12\times\frac{1}{10}+12\times\frac{1}{20}}$ = 13.3 m/s. It may be noted that since harmonic mean is always lower than the arithmetic mean, and also as observed , space mean speed is always lower than the time mean speed. In other words, space mean speed weights slower vehicles more heavily as they occupy the road stretch for longer duration of time. For this reason, in many fundamental traffic equations, space mean speed is preferred over time mean speed.
+
+		</p>
+</div>
+
+	</section>
+
+
+<section data-background="white" data-background-size="2200px">
+<div class="container">
+				<div class="col">
+<h3 align="left" style="color:#798E87; font-size:36px;">Relation between TMS and SMS ($_1$)</h3>
+
+<p align="left" style="color: black ; font-size:26px;">The relation between TMS and SMS can be derived as below. Consider a stream of vehicles with a set of substream flow $q_1$,$q_2$, ... $q_i$, ...$q_n$ having speed $v_1$,$v_2$, ...$v_i$, ...$v_n$. The fundamental relation between flow($q$), density($k$) and mean speed $v_s$ is,</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+q = k\times v_s
+  \end{aligned} \]</p>
+
+<p align="left" style="color: black ; font-size:26px;">Therefore for any substream $q_i$, the following relationship will be valid.</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+q_i = k_i\times v_i
+  \end{aligned} \]</p>
+
+
+  <p align="left" style="color: black ; font-size:26px;">The summation of all substream flows will give the total flow $q$.</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+\Sigma q_i = q
+  \end{aligned} \]</p>
+
+  <p align="left" style="color: black ; font-size:26px;">Similarly the summation of all substream density will give the total density $k$.</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+\Sigma k_i = k
+  \end{aligned} \]</p>
+
+  <p align="left" style="color: black ; font-size:26px;">Let $f_i$ denote the proportion of substream density $k_i$ to the total density $k$,</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+f_i = \frac{k_i}{k}
+  \end{aligned} \]</p>
+
+     
+</div>
+</section>	
+
+
+
+<section data-background="white" data-background-size="2200px">
+<div class="container">
+				<div class="col">
+<h3 align="left" style="color:#798E87; font-size:36px;">Relation between TMS and SMS ($_2$)</h3>
+
+<p align="left" style="color: black ; font-size:26px;">Space mean speed averages the speed over space. Therefore, if $k_i$ vehicles has $v_i$ speed, then space mean speed is given by,</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+v_s = \frac{\Sigma k_i v_i}{k}
+  \end{aligned} \]</p>
+
+<p align="left" style="color: black ; font-size:26px;">Time mean speed averages the speed over time.Therefore,</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+v_t = \frac{\Sigma q_i v_i}{q}
+  \end{aligned} \]</p>
+
+
+  <p align="left" style="color: black ; font-size:26px;">Substituting in 2 $v_t$ can be written as,</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+v_t = \frac{\Sigma {k_i}{{v_i}^2}}{q}
+  \end{aligned} \]</p>
+
+  <p align="left" style="color: black ; font-size:26px;">Rewriting the above equation and substituting 6, and then substituting 1, we get,</p>
+
+ <p align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+v_t& =&k\Sigma\frac{k_i}{k}v_i^2&=&\frac{k\Sigma {f_i}{{v_i}^2}}{q}=\frac{\Sigma {f_i}{{v_i}^2}}{v_s}
+  \end{aligned} \]</p>
+
+    
+</div>
+</section>	
+
+
+
+
+
+
+
+
+
+
+<style>.container{
+   									 display: flex;
+										}
+									.col{
+    										flex: 1;
+								}
+				</style>
+				<section data-background="white" data-background-size="2200px">
+				<div class="container">
+
+				<div class="col">
+					<h3 align="left" style="color:#798E87; font-size:36px;">Speed-Density Diagram</h3>
+					<p align="left" style="color: black ; font-size:26px;">Similar to the flow-density relationship, speed will be maximum, referred to as the free flow speed, and when the density is maximum, the speed will be zero. The most simple assumption is that this variation of speed with density is linear as shown by the solid line in figure 1. Corresponding to the zero density, vehicles will be flowing with their desire speed, or free flow speed. When the density is jam density, the speed of the vehicles becomes zero. </p>
+
+
+
+				</div>
+
+				<div class="col">
+					<br>
+				<img  class="fragment roll-in" align="right" height=400 width=400 data-src="sd.png">
+				</div>
+
+				</div>
+
+			</section>		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>.container{
+   									 display: flex;
+										}
+									.col{
+    										flex: 1;
+								}
+				</style>
+				<section data-background="white" data-background-size="2200px">
+				<div class="container">
+
+				<div class="col">
+									<h3 align="left" style="color:#798E87">Outline</h3>
+					<p>
+						<ul >
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Overview</li>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Data Preparation</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Exploratory Data Analysis</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Statistical Models</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Decision Support Tool</li>
+
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Next Steps</li>
+						</ul>
+				</div>
+
+				<div class="col">
+					<br>
+				<img  class="fragment roll-in" align="right" height=320 width=400 data-src="v2x.gif">
+				</div>
+
+				</div>
+
+			</section>		
+
+
+
+
+<section data-background="white" data-background-size="2200px">
+<div class="container1">
+    <div class="row1">
+	<h3 align="left" style="color:#798E87">Outline</h3>
+					<p>
+						<ul >
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Overview</li>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Data Preparation</li>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Data Preparation</li>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Data Preparation</li>
+						</ul>
+					</p></div>
+    <div class="row2">
+				<p class="fragment roll-in">
+					<img  align="left" height=300 data-src="lev.gif"></p>
+    </div>
+</div>
+</section>
+
+				<section data-background-iframe="https://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/" data-background-interactive>
+				</section>		
+
+
+
+				<section data-background-iframe="https://subasish.github.io" data-background-interactive>
+				</section>
+
+
+				<section data-background-iframe="freq/index.html" data-background-interactive>
+				</section>	
+
+				<section data-background="white" data-background-size="2200px" >
+				<div class="stretch">
+					<iframe src="5/index.html" frameborder="0" scrolling="no" height="100%" width="100%" marginheight="0" marginwidth="0"></iframe>
+				</section>
+
+				<section data-background-iframe="viz01.html" data-background-interactive>
+				</section>	
+
+				<section data-background-iframe="DSt.html" data-background-interactive>
+				</section>	
+
+				<section data-background="white" data-background-size="2200px">
+				<div class="stretch">
+					<img  align="right" height=600 width=1400 data-src="Conf.jpg">
+				</section>	
+
+				<section data-background="VIMP.jpg" data-background-size="1200px">
+				</section>	
+
+
+
+				<section data-background-iframe="https://ruralspeedsafety.shinyapps.io/0_7051Tool/" data-background-interactive>
+				</section>	
+							
+
+				<section data-background="white" data-background-size="1700px">
+					<h3 align="left" style="color:#798E87">Overview</h3>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">About this Project</li>
+						<ul><li style="color: #3F5151 ; font-size:34px;" class="fragment roll-in">One of the Four USDOT Safety Data Initiative (SDI) Projects</li></ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Research Problem</li>
+						<ul><li style="color: #3F5151 ; font-size:34px;" class="fragment roll-in">A data-driven procedure to better understand the relationships between motor vehicle travel speed, roadway design elements, traffic volumes, and crash risks and severities has not yet established.</li></ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Objective</li>
+						<ul><li style="color: #3F5151 ; font-size:33px;" class="fragment roll-in">Examine the prevailing operating speeds on a large scale to see how speed and speed differentials interact with roadway characteristics to influence the likelihood of crashes.</li></ul>
+						</ul>
+				</section>	
+
+				<section data-background="VIMP.jpg" data-background-size="1200px">
+				</section>	
+
+
+
+				<section data-background="white" data-background-size="1700px">
+					<h3 align="left" style="color:#798E87">Code</h3>
+					<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+						import React, { useState } from 'react';
+
+						function Example() {
+						  const [count, setCount] = useState(0);
+
+						  return (
+						    ...
+						  );
+						}
+					</code></pre>
+				</section>
+
+				<section data-background-iframe="circ1.html" data-background-interactive>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/search/search.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath ]
+
+			});
+
+		</script>
+
+	</body>
+</html>
