@@ -1,40 +1,1342 @@
 <!doctype html>
-<html>
+<html lang="en">
+
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Congestion, Infrastructure, and Safety</title>
+
+		<meta name="description" content="Fundamentals on Traffic Flow">
+		<meta name="author" content="Subasish Das">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/night.css" id="theme">
+  <link rel="stylesheet" href="main.css">
 
-		<!-- Theme used for syntax highlighted code -->
+  <link >
+
+
+
+		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
 	</head>
+
 	<body>
+
 		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+		<font style="color:#D5D5D3">
+			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section data-transition="slide" data-background="TF8.gif" data-background-transition="zoom">
+					<br>
+                    <br>
+					<h3 align="left" style="color:#FDD262">Congestion, Infrastructure, and Safety</h3>
+					<h4 align="left" style="color:#446455">Teaching Presentation</h4>
+					<br>
+<br><br><br>
+					<h6 align="right" style="font-size:32px; color:#C7B19C">Subasish Das, Ph.D.</h6>
+					<p align="right" style="font-size:24px;color:#FDD262">May 9, 2022</p>
+					<br>
+
+				</section>
+
+				
+				<section data-transition="slide" data-background="#D3DDDC" data-background-transition="zoom">
+				<div class="container">
+				<div class="col">
+									<h3 align="left" style="color:#798E87">About me</h3>
+					<p>
+						<ul >
+						<li style="color: black ; font-size:32px;" class="fragment roll-in">B.S., M.S., and Ph.D. in Civil Engineering. </li>
+						<li style="color: black ; font-size:32px;" class="fragment roll-in">Teaching focus: transportation engineering, traffic engineering, sustainable infrastructure, CAV readiness, and AI</li>
+						<li style="color:black; font-size:32px;" class="fragment roll-in">Took many graduate and undergraduate courses during my Ph.D. years</li>
+						<li style="color:black; font-size:32px;" class="fragment roll-in">Guest lectured on different transportation courses in UTSA, WSU, and TSU</li>
+						<li style="color:black; font-size:32px;" class="fragment roll-in">Mentored many graduate and undergraduate students at Institute of Data Science - Texas A&M University (TAMIDS) </li>
+						<li style="color:black; font-size:32px;" class="fragment roll-in">Conducted several 2 days long 'Data Sceince Hackthon' workshops at TAMU Civil Engineering Department </li>
+						</ul>
+				</div>
+			</p>
+		</div>
+</section>
+
+<style>.container{
+   				display: flex;
+					}
+				.col{
+    				flex: 1;
+					}
+</style>
+
+
+
+
+				<section data-transition="slide" data-background="#F5CDB4" data-background-transition="zoom">
+				<div class="container">
+
+				<div class="col">
+									<h3 align="left" style="color:#798E87">Lecture Overview</h3>
+					<p>
+						<ul >
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Learning Objectives</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Congestion</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Infrastructure</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">Safety</li>
+						<li style="color:black; font-size:38px;" class="fragment roll-in">What we learned</li>
+						</ul>
+				</div>
+
+			</section>
+
+<section data-transition="slide" data-background="#D5D5D3" data-background-transition="zoom">
+				<div class="col">
+									<h3 align="left" style="color:#798E87">Learning Objectives</h3>
+					<p>
+						<ul >
+						<li style="color: black ; font-size:32px;" class="fragment roll-in">Learn about key fundamentals of congestion, infrastructure, and safety</li>
+						<li style="color:black; font-size:32px;" class="fragment roll-in">Understand key traffic flow parameters</li>
+						<li style="color:black; font-size:32px;" class="fragment roll-in">Understand key highway functional classes</li>
+						<li style="color:black; font-size:32px;" class="fragment roll-in">Understand safety modeling framework</li>						
+						<li style="color:black; font-size:32px;" class="fragment roll-in">Explore a real world application </li>
+						</ul>
+				</div>
+
+			</section>
+
+			 <section data-transition="slide" data-background="bw_traff3.gif" data-background-transition="zoom">
+					<h1 style="font-size:60px; color:#D8A499">Part 1</h1>
+					<h3 style="font-size:50px; color:#CCC591">Congestion</h3>
+				</section>
+
+
+				<section data-background="white" data-background-size="1700px">
+				<h3 align="left" style="color:#798E87">Congestion</h3>
+				<div class="container">
+
+				<div class="col">
+					<p>
+						<ul >
+						<li class="fragment roll-in" style="color: black ; font-size:28px;" class="fragment roll-in">Congestion indicates roadways occupied with roadway users with slight or no mobility. Alternative words are "clog," "impede," and "excessive fullness." 
+						<li class="fragment roll-in" style="color:black; font-size:28px;" class="fragment roll-in">An excess of vehicles on a road at a particular time resulting in speeds that are slower than normal or "free flow" speeds. Congestion often means stopped or stop-and-go traffic. </li>
+						<li class="fragment roll-in" style="color:black; font-size:28px;" class="fragment roll-in">Congestion is keenly related with both infrastructure and safety.</li>
+						</ul>
+				</div>
+
+				<div class="col">
+				<img  align="right" height=400 width=400 data-src="Jam.gif">
+				</div>
+
+				</div>
+
+			</section>	
+
+
+				<section data-background-iframe="https://mobility.tamu.edu/umr/congestion-data/" data-background-interactive>
+				</section>
+
+
+
+
+				<section data-background="white" data-background-size="1700px">
+					<h3 align="left" style="color:#798E87; font-size:42px;">Traffic Flow Parameters</h3>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Macroscopic Parameters</li>
+						<ul><li style="color: #3F5151 ; font-size:34px;" class="fragment roll-in">Speed</li></ul>
+						<ul><li style="color: #3F5151 ; font-size:34px;" class="fragment roll-in">Traffic flow or volume</li></ul>
+						<ul><li style="color: #3F5151 ; font-size:34px;" class="fragment roll-in">Traffic Density</li></ul>
+
+						<li style="color: black ; font-size:38px;" class="fragment roll-in">Microscopic Parameters</li>
+						<ul><li style="color: #3F5151 ; font-size:34px;" class="fragment roll-in">Headway</li></ul>
+						</ul>
+				</section>	
+
+
+
+<section data-background="white" data-background-size="2200px">
+<div class="container">
+				<div class="col">
+<h3 align="left" style="color:#798E87; font-size:42px;">Time mean speed (TMS)</h3>
+
+<p align="left" style="color: black ; font-size:26px;">TMS ($v_t$) is the average of all vehicles passing a point over a duration of time. <span style="color: #9A8822">It is the arithmatic mean of speeds observed at a point. </span> TMS $v_t$ is given by,</p>
+
+ <p class="fragment roll-in" align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+	v_{t}=\frac{1}{n}\sum_{i=1}^nv_{i}
+  \end{aligned} \]</p>
+
+<p  class="fragment roll-in" align="left" style="color: black ; font-size:26px;">where $v$ is the spot speed of $i^{th}$ vehicle, and $n$ is the number of observations. In many speed studies, speeds are represented in the form of frequency table. So, TMS can be written as,</p>
+
+ <p class="fragment roll-in" align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+v_t = \frac{{\sum_{i=1}^{n}{q_i v_i}}}{\sum_{i=1}^{n}{q_i}},
+  \end{aligned} \]</p>
+
+  <p  class="fragment roll-in" align="left" style="color: black ; font-size:26px;">where $q_i$ is the number of vehicles having speed $v_i$, and $n$ is the number of such speed categories.</p>
+
+
+     
+</div>
+</section>	
+
+
+<section data-background="white" data-background-size="2200px">
+<div class="container">
+				<div class="col">
+<h3 align="left" style="color:#798E87 ; font-size:42px;">Space Mean Speed (SMS)</h3>
+
+<p class="fragment roll-in"align="left" style="color: black ; font-size:26px;">SMS ($v_s$) provides spatial weightage instead of temporal. SMS is the average speed of vehicles on a road at any time. <span style="color: #9A8822">It is the harmonic mean of speeds observed at a point. </span> 
+
+<p class="fragment roll-in"align="left" style="color: black ; font-size:26px;"> For $n$ vehicles, the average travel time $t_s$ is given by,</p>
+
+ <p class="fragment roll-in" align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+t_s = \frac{\Sigma {t_i}}{n} = \frac{1}{n}{\Sigma\frac{D}{v_i}}
+  \end{aligned} \]</p>
+
+<p class="fragment roll-in"align="left" style="color: black ; font-size:26px;">SMS can be written as,
+
+ <p class="fragment roll-in" align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+v_s = \frac{D}{t_s} =\frac{n}{\sum_{i=1}^{n}\frac{1}{v_i}}=\frac{\sum_{i=1}^{n}{q_i}}{\sum_{i=1}^{n}{\frac{q_i}{v_i}}}
+  \end{aligned} \]</p>
+
+       <p  class="fragment roll-in"  align="left" style="color: black ; font-size:26px;">where $q_i$ vehicle will have $v_i$ speed and $n$ is the number of such observations. TMS and SMS can be related as (where $\sigma^2$ is variance):</p>
+ <p class="fragment roll-in" align="left" style="color: black ; font-size:20px;">
+  	\[\begin{aligned}
+       \displaystyle v_t	\textstyle =	\displaystyle v_s + \frac{\sigma^2}{v_s}
+  \end{aligned} \]</p>
+</div>
+</section>
+
+
+				<section data-background-iframe="freq/index.html" data-background-interactive>
+				</section>	
+
+
+
+			<section data-background="white" data-background-size="2200px">
+				<div class="container">
+
+				<div class="col">
+				<h3 align="left" style="color:#798E87; font-size:42px;">Example Problem 1</h3>
+
+				 <p align="left" style="color: black ; font-size:26px;">Five cars are traveling with speed 40 mph, 42 mph, 51 mph, 55 mph, and 60 mph. What are the TMS and SMS? </p>
+
+
+</div></div></section>
+
+
+			<section data-background="white" data-background-size="2200px">
+				<div class="container">
+
+				<div class="col">
+				<h3 align="left" style="color:#798E87; font-size:42px;">Solution</h3>
+
+				 <p class="fragment roll-in" align="left" style="color: black ; font-size:26px;">At a point along D the TMS would be</p>
+				 <p class="fragment roll-in" align="left" style="color: black ; font-size:20px;">
+					\[\begin{aligned}
+					\bar{u_t} = \frac{1}{N}\Sigma^{N}_{i=1}u_i&=(40+42+51+55+60)/5=49.6\: mph
+				\end{aligned} \]</p>
+
+				<p class="fragment roll-in" align="left" style="color: black ; font-size:26px;">Now, average travel time</p>
+				<p class="fragment roll-in" align="left" style="color: black ; font-size:20px;">
+				   \[\begin{aligned}
+				   \bar{t} = \frac{1}{5}[\frac{D}{40}+\frac{D}{42}+\frac{D}{51}+\frac{D}{55}+\frac{D}{60}]=\frac{1}{N}\Sigma^{N}_{i=1}\frac{D}{u_i}
+			   \end{aligned} \]</p>
+
+			   <p class="fragment roll-in" align="left" style="color: black ; font-size:26px;">SMS would be</p>
+			   <p class="fragment roll-in" align="left" style="color: black ; font-size:20px;">
+				  \[\begin{aligned}
+				  \bar{u_s} = \frac{D}{\bar{t}}=\frac{D}{\frac{1}{N}\Sigma^{N}_{i=1}\frac{D}{u_i}}=\frac{1}{\frac{1}{N}\Sigma^{N}_{i=1}\frac{1}{u_i}}\\
+				  =\frac{1}{\frac{1}{5}(\frac{1}{40}+\frac{1}{42}+\frac{1}{51}+\frac{1}{55}+\frac{1}{60})}\\
+				  =48.4\: mph
+			  \end{aligned} \]</p>
+
+
+
+</div></div></section>
+
+
+
+
+				<section data-background="white" data-background-size="2200px">
+				<div class="container">
+
+				<div class="col">
+				<h3 align="left" style="color:#798E87; font-size:42px;">Example Problem 2</h3>
+
+				 <p align="left" style="color: black ; font-size:26px;">The results of a speed study is given in the form of a frequency distribution table. Find the time mean speed and space mean speed.</p>
+
+					<table align="left" style="color: black ; font-size:20px;">
+						<thead>
+							<tr>
+								<th>Speed Range (mph)</th>
+								<th>Count</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>2-10</td>
+								<td>5</td>
+							</tr>
+							<tr>
+								<td>11-20</td>
+								<td>8</td>
+							</tr>
+
+							<tr>
+							<tr>
+								<td>21-30</td>
+								<td>21</td>
+							</tr>
+							<tr>
+								<td>31-40</td>
+								<td>17</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+<style>
+.container1 {
+    width: 800px;
+    height: 600px;
+    display:table;
+    text-align: center;
+    position: relative;
+}
+.row1 {
+    display:table-row;
+    max-height: 200px;
+}
+.row2 {
+    display:table-row;
+    height: 300px;
+}
+</style>
+
+
+<section data-background="white" data-background-size="2800px">
+<div class="container1">
+    <div class="row1">
+				<h3 align="left" style="color:#798E87; font-size:42px;">Solution</h3>
+
+					<table align="left" style="color: black ; font-size:20px;">
+						<thead>
+							<tr>
+								<th>No.</th>
+								<th>Speed Range (mph)</th>
+								<th>Avg. Speed (mph) or $v_i$</th>
+								<th>Flow ($q_i$)</th>
+								<th>$v_i.q_i$</th>
+								<th>$\frac{q_i}{v_i}$</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>2-10</td>
+								<td>6</td>
+								<td>5</td>
+								<td>30</td>
+								<td>0.83</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>11-20</td>
+								<td>15.5</td>
+								<td>8</td>
+								<td>124</td>
+								<td>0.52</td>
+							</tr>
+
+							<tr>
+							<tr>
+								<td>3</td>
+								<td>21-30</td>
+								<td>25.5</td>
+								<td>21</td>
+								<td>535.5</td>
+								<td>0.82</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>31-40</td>
+								<td>35.5</td>
+								<td>17</td>
+								<td>603.5</td>
+								<td>0.48</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>51</td>
+								<td>1293</td>
+								<td>2.65</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+
+    <div class="row2">
+
+		<p class="fragment roll-in" align="left" style="color: black ; font-size:20px;" >					
+		The TMS and SMS can be found out from the frequency table given above. First, the average speed is computed, which is the mean of the speed range. For example, for the first speed range, average speed, $v_i = \frac{2+10}{2}$ = 6 mph. </p>
+		<p class="fragment roll-in" align="left" style="color: black ; font-size:20px;" >The volume of flow $q_i$ for that speed range is same as the frequency. The terms $v_i.q_i$ and $\frac{q_i}{v_i}$ are also tabulated, and their summations in the last row. Time mean speed can be computed as, $v_t = \frac{\Sigma {q_iv_i}}{\Sigma q_i} = \frac{1293}{51} = $ 25.35 mph.</p>
+		<p class="fragment roll-in" align="left" style="color: black ; font-size:20px;" >Similarly, space mean speed can be computed as, $v_s = \frac{\Sigma q_i}{\Sigma \frac{q_i}{v_i}} = \frac{51}{2.65} = $ 19.23 mph.</p>
+		</p>
+</div>
+
+	</section>
+
+
+
+
+
+
+
+<section data-background="white" data-background-size="2200px">
+				<div class="container">
+
+				<div class="col">
+				<h3 align="left" style="color:#798E87; font-size:42px;">Traffic Volume</h3>
+
+				 <p class="fragment fade-in-then-semi-out" align="left" style="color: black ; font-size:26px;"> Number of vehicles passing a particular point of roadway during unit time. 
+					Traffic volume is expressed as vehicle/h or vehicle/day</p>
+					<ul>
+						<li style="color: black ; font-size:26px;" class="fragment fade-in-then-semi-out">Daily Volumes: Used in Highway planning</li>
+						<ul><li style="color: #3F5151 ; font-size:26px;" class="fragment fade-in-then-semi-out">Average Daily Traffic (ADT): Considers day to day variation of traffic</li></ul>
+						<ul><li style="color: #3F5151 ; font-size:26px;" class="fragment fade-in-then-semi-out">Annual Average Daily Traffic (AADT): Considers seasonal variation of daily traffic within a year</li></ul>
+
+						<li style="color: black ; font-size:26px;" class="fragment fade-in-then-semi-out">Hourly Volumes: Used in capacity analysis</li>
+						<ul><li style="color: #3F5151 ; font-size:26px;" class="fragment fade-in-then-semi-out">Reflects hourly variation of traffic within a day</li></ul>
+
+						<li style="color: black ; font-size:26px;" class="fragment fade-in-then-semi-out">Directional Design Hourly Volume (DDHV) </li>
+	
+							<ul><li style="color: #3F5151 ; font-size:26px;" class="fragment fade-in-then-semi-out">Used in control measures, safety and capacity. Can be computed as: $DDHV=AADT \times K \times D$,  where $K$ is proportion of daily traffic 
+								occurring during the peak hour and $D$ is directional distribution factor</li></ul>
+
+						<li style="color: black ; font-size:26px;" class="fragment fade-in-then-semi-out">Sub hourly volumes</li>
+	
+							<ul><li style="color: #3F5151 ; font-size:26px;" class="fragment fade-in-then-semi-out">Variation within a given hours is also of considerable interest, 
+								but short term peaks of flow within the peak hour may exceed the capacity.</li></ul>
+						
+
+							
+						</ul>
+
+
+</div></div></section>
+
+
+<section data-background="white" data-background-size="2200px">
+				<div class="container">
+
+				<div class="col">
+				<h3 align="left" style="color:#798E87; font-size:42px;">Traffic Density (K)</h3>
+
+				 <p align="left" style="color: black ; font-size:26px;" class="fragment roll-in">Number of vehicle occupying a unit length of roadway at a given instants, usually expressed as vehivles per km 
+				</p>
+				<ul>
+					<li style="color: black ; font-size:26px;" class="fragment roll-in">Difficult to measure directly. Can be computed from speed and volume. </li>
+					<p class="fragment roll-in" align="left" style="color: black ; font-size:20px;">
+						\[\begin{aligned}
+				  		K = \frac{Q}{\bar{V_s}} 
+					\end{aligned} \]</p>
+					</ul>
+				<h3 class="fragment roll-in" align="left" style="color:#9C964A; font-size:28px;">Congestion density</h3>
+				<p class="fragment roll-in" align="left" style="color: black ; font-size:26px;"> Highest density occurs when the vehicles are standstill (i.e. in jam conditions). 
+				In this case, thraffic volume approaches to zero</p>
+
+
+
+</div></div></section>
+
+
+
+
+<section data-background="white" data-background-size="2200px">
+<div class="container1">
+    <div class="row1">
+	<h3 align="left" style="color:#798E87; font-size:42px;">Headway</h3>
+	<h3 class="fragment roll-in" align="left" style="color:#9C964A; font-size:28px;">Space Headway (s)</h3>
+					<p class="fragment roll-in"align="left" style="color: black ; font-size:26px;">Distance between fronts of successive vehicles in meters.
+					</p>
+
+	<h3 class="fragment roll-in" align="left" style="color:#9C964A; font-size:28px;">Time Headway (h)</h3>
+					<p class="fragment roll-in"align="left" style="color: black ; font-size:26px;"> Time interval between the passage of the fronts of successive vehicles at a specific point.
+					</p>
+
+
+    <div class="row2">
+				<p class="fragment roll-in">
+					<img  align="center" height=180 data-src="TimeHeadway.gif"></p>
+    </div>
+</div>
+</section>
+
+
+<section data-background="white" data-background-size="2200px">
+						<h3 align="left" style="color:#798E87; font-size:42px;">Fundamental diagrams of traffic flow</h3>
+				<div class="container">
+
+				<div class="col">
+					<p align="left" style="color: black ; font-size:26px;">The relation between the density and the corresponding flow on a given stretch of road is referred to as one of the fundamental diagram of traffic flow.</p>
+						<ol >
+							<li style="color: black ; font-size:20px;">When the density is zero, flow will also be zero.</li>
+							<li style="color: black ; font-size:20px;">When the number of vehicles increases, the density and flow increases.</li>
+							<li style="color:black; font-size:20px;" >When more and more vehicles are added, it reaches a situation where vehicles can't move. 
+								This is referred to as the congestion density or the maximum density where the flow will be zero.</li>
+							<li style="color: black ; font-size:20px;">There will be some density between zero density and congestion density, when the flow is maximum.</li>
+							</ol>
+
+
+
+				</div>
+
+    <div class="col" class="stretch">
+<br>
+<br>
+<iframe class="fragment roll-in"  align="center" src="FlwDen.html" frameborder="0" scrolling="no" height=510 width=500 marginheight="0" marginwidth="0"></iframe>
+</div>
+
+
+
+			</section>		
+
+<style>.container{
+   									 display: flex;
+										}
+									.col{
+    										flex: 1;
+								}
+				</style>
+
+
+
+
+<style>.container{
+   									 display: flex;
+										}
+									.col{
+    										flex: 1;
+								}
+				</style>
+				<section data-background="white" data-background-size="2200px">
+					<h3 align="left" style="color:#798E87; font-size:42px;">Speed-Density Diagram</h3>
+				<div class="container">
+				<div class="col">
+					<ul >
+						<li style="color: black ; font-size:24px;">When speed is maximum, it is referred to as the free flow speed, and 
+								when the density is maximum, the speed will be zero.</li>
+						<li style="color: black ; font-size:24px;">The most simple assumption is that this variation of speed with density is linear. </li>
+						<li style="color: black ; font-size:24px;">Corresponding to the zero density, vehicles will be flowing with free flow speed. When the density is congestion density, 
+							the speed of the vehicles becomes zero.</li>
+						<li style="color:black; font-size:24px;" >It is also possible to have non-linear relationships.</li>
+						</ul>
+
+				</div>
+
+    <div class="col" class="stretch">
+<iframe class="fragment roll-in"  align="center" src="SpdDen.html" frameborder="0" scrolling="no" height=500 width=500 marginheight="0" marginwidth="0"></iframe>
+</div>
+
+			</section>	
+
+
+<section data-background="white" data-background-size="2200px">
+						<h3 align="left" style="color:#798E87; font-size:42px;">Speed flow relation and Combined diagrams</h3>
+				<div class="container">
+				<div class="col">
+			<p>
+					
+					</p>
+			<ul >
+				<li class="fragment roll-in" align="left" style="color: black ; font-size:26px;" >					
+						The flow is zero either because there is no vehicles or there are too many vehicles so that they cannot move. 
+					</li>
+				<p>
+
+				</p>
+				<li class="fragment roll-in" align="left" style="color: black ; font-size:26px;" >					
+						At maximum flow, the speed will be in between zero and free flow speed. 
+					</li>
+				<p>
+					
+					</p>
+				<li class="fragment roll-in" align="left" style="color: black ; font-size:26px;" >					
+					It is possible to have two different speeds for a given flow. 
+					</li>
+				</ul>
+						
+
+				</div>
+    <div class="col" class="stretch">
+<iframe class="fragment roll-in"  align="center" src="SpdDen.html" frameborder="0" scrolling="no" height=210 marginheight="0" marginwidth="0"></iframe>
+<iframe class="fragment roll-in" align="center" src="SpdFlw.html" frameborder="0" scrolling="no" height=180 marginheight="0" marginwidth="0"></iframe>
+<iframe class="fragment roll-in" align="center" src="FlwDen.html" frameborder="0" scrolling="no" height=210 marginheight="0" marginwidth="0"></iframe>
+
+
+</div>
+ 
+			</section>
+
+
+
+
+
+
+
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- -----------------------------------------------------------   INFRASTRUCTUREE -----  ------------------------------------------>
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+
+			 <section data-transition="slide" data-background="bw_traff3.gif" data-background-transition="zoom">
+					<h1 style="font-size:60px; color:#D8A499">Part 2</h1>
+					<h3 style="font-size:50px; color:#CCC591">Infrastructure</h3>
+				</section>
+
+<style>.container{
+   									 display: flex;
+										}
+									.col{
+    										flex: 1;
+								}
+				</style>
+				<section data-background="white" data-background-size="2200px">
+				<div class="container">
+
+				<div class="col">
+									<h3 align="left" style="color:#798E87; font-size:42px;"">Road Infrastructure</h3>
+					<p>
+						<ul >
+						<li style="color: black ; font-size:28px; class="fragment roll-in">Road infrastructure is the set of fundamental facilities and systems that support the sustainable, safe, and secure travels of general public.</li>
+						<li style="color: black ; font-size:28px;" class="fragment roll-in">It comprises of both public and private physical structures such as roads, railways, bridges, tunnels, waterways, and aviation.
+						<li style="color:black; font-size:28px;" class="fragment roll-in">Role of infrastructure is critifical for traffic safety, operation, and security. </li>
+						</ul>
+				</div>
+
+				<div class="col">
+					<br>
+					<br>
+				<img  class="fragment roll-in" align="right" height=300 width=600 data-src="CS01.gif">
+				</div>
+
+				</div>
+
+			</section>	
+
+
+				<section data-background="black" data-background-size="2200px">
+				<div class="stretch">
+					<img  align="center" height=600 width=1400 data-src="Cminus.PNG">
+				</section>	
+
+
+
+				<section data-background="white" data-background-size="2200px">
+										<h3 align="left" style="color:#798E87; font-size:36px;">Functional Classification of Highways </h3>
+				<div class="container">
+
+				<div class="col">
+						<ul>
+						<li style="color: black ; font-size:34px;" class="fragment roll-in">Highways are classified based on two primary functions:</li>
+						<ul><li style="color: #3F5151 ; font-size:30px;" class="fragment roll-in">Mobility</li></ul>
+						<ul><li style="color: #3F5151 ; font-size:30px;" class="fragment roll-in">Accessibility</li></ul>
+						<li style="color: black ; font-size:34px;" class="fragment roll-in">Major classification includes:</li>
+						<ul><li style="color: #3F5151 ; font-size:30px;" class="fragment roll-in">Freeway or interstate</li></ul>
+						<ul><li style="color: #3F5151 ; font-size:30px;" class="fragment roll-in">Arterial: major and minor</li></ul>
+						<ul><li style="color: #3F5151 ; font-size:30px;" class="fragment roll-in">Collector: major and minor</li></ul>
+						<ul><li style="color: #3F5151 ; font-size:30px;" class="fragment roll-in">Local</li></ul>
+					</ul>
+				</div>
+
+				<div class="col">
+				<img  class="fragment roll-in" align="right" height=400 width=400 data-src="Free.png">
+				</div>
+
+				</div>
+
+			</section>	
+
+						<section data-background="white" data-background-size="1700px">
+				<h3 align="left" style="color:#798E87; font-size:42px;">Functional Class</h3>
+<div class="r-stack">
+  <img class="fragment current-visible" src="figures/5a.png" width="1400" height="520">
+    <img class="fragment current-visible" src="figures/5b.png" width="1400" height="520">
+  <img class="fragment" src="figures/5c.png" width="1400" height="520">
+  <img class="fragment" src="figures/5d.png" width="1400" height="520">
+  <img class="fragment" src="figures/5e.png" width="1400" height="520">
+  <img class="fragment" src="figures/5f.png" width="1400" height="520">
+  <img class="fragment" src="figures/5g.png" width="1400" height="520">
+</div>
+
+			</section>	
+
+
+
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- -----------------------------------------------------------   SAFETY   ------------------------------------------>
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+
+
+			 <section data-transition="slide" data-background="bw_traff3.gif" data-background-transition="zoom">
+					<h1 style="font-size:60px; color:#D8A499">Part 3</h1>
+					<h3 style="font-size:50px; color:#CCC591">Safety</h3>
+				</section>
+
+
+
+				<section data-background="white" data-background-size="2200px">
+				<div class="container">
+
+				<div class="col">
+									<h3 align="left" style="color:#798E87; font-size:42px;">Safety</h3>
+					<p>
+						<ul >
+						<li style="color: black ; font-size:26px; class="fragment roll-in">Highway safety encompasses the study of traffic crashes and their effects on transportation systems.</li>
+						<li style="color: black ; font-size:26px;" class="fragment roll-in">Safety experts conduct research about these crashes to learn about effective prevention measures. </li>
+						<li style="color:black; font-size:26px;" class="fragment roll-in">During 2020-2021, traffic volume decreased by 10 to 30%, but traffic fatalities increased substantrially.</li>
+						</ul>
+				</div>
+
+				<div class="col">
+
+				<div class="r-stack">
+  <img class="fragment current-visible" src="figures/22b.png" width="280" height="600">
+    <img class="fragment current-visible" src="figures/22a.png" width="280" height="600">
+</div>
+				</div>
+
+				</div>
+
+			</section>	
+
+
+		<section data-background="#000" data-state="dark">
+        <video data-autoplay height="320" width="400" loop controls>
+          <source
+            data-src="Mgra1.mp4">
+          </source>
+        </video>
+        <video data-autoplay height="320" width="400" loop controls>
+          <source
+            data-src="CrAv1.mp4">
+          </source>
+        </video>
+      </section>
+
+
+
+
+
+
+				<section data-background="white" data-background-size="2200px">
+					<h3 align="left" style="color:#798E87; font-size:42px;">Science behind Safety Modeling</h3>
+					<p>
+						<ul>
+						<li style="font-size:28px; color:black" class="fragment roll-in">The goal of transportation safety research is to reduce crashes frequencies and degree of crash severity through various actions.</li>
+						<li style="font-size:28px; color:black" class="fragment roll-in">Key research areas</li>
+						<ul>
+				<li class="fragment" style="font-size:28px; color:#00A08A">Effectiveness of crash countermeasure</li>
+					<ul>
+						<li style="font-size:24px;color:black" class="fragment roll-in">Data Modeling (before-after analysis; e.g. Naïve Bayes, Empirical Bayes)
+						</li>
+					</ul>
+			    <li class="fragment" style="font-size:28px; color:#00A08A">Crash frequency modeling</li>
+                    <ul>
+	                    <li style="font-size:24px;color:black" class="fragment roll-in">Data Modeling (e.g., Poisson, Negative-binomial)</li>
+	                    <li style="font-size:24px;color:black" class="fragment roll-in">Algorithmic Modeling (e.g., Neural networks, Support Vector Machine)</li>
+                    </ul>
+			    <li class="fragment" style="font-size:28px; color:#00A08A">Crash severity modeling</li>
+                    <ul>
+	                    <li style="font-size:24px;color:black" class="fragment roll-in">Data Modeling (e.g., Logistic, Probit)</li>
+	                    <li style="font-size:24px;color:black" class="fragment roll-in">Algorithmic Modeling (e.g., Cluster, K-nearest neighbor, Random forest)</li>
+                    </ul>				
+ 				<li class="fragment" style="font-size:28px; color:#00A08A">Safety risk modeling (e.g. crash prone driver risk modeling)</li>
+ 				<li class="fragment" style="font-size:28px; color:#00A08A">Inclusion of social factors and equity</li>
+				</ul>
+
+					</p>
+				</section>
+
+
+			<section data-background="white" data-background-size="2200px">
+			<!--<p style="color:#F98400">Traffic crash data</p> 
+			<img  width="600" align="middle" data-src="tti_001.jpg">-->
+			<p align="left" style="font-size:36px; color:#798E87">Data modeling</p> 
+			<ul>
+			<li style="font-size:28px; color:black" class="fragment roll-in">Response variables = f(Predictor variables, Random noise, Parameters) </li>
+			<li style="font-size:28px; color:black" class="fragment roll-in">Assumption based. Estimation of the parameters.</li>
+			<li style="font-size:28px; color:black" class="fragment roll-in">Emphasis on inference.</li>
+			<p class="fragment roll-in"><img  height="90" width="600" align="middle" data-src="tti_002.jpg"></p>
+			</ul>
+			<p align="left" style="font-size:36px; color:#798E87">Algorithmic modeling</p> 
+			<ul>
+			<li style="font-size:28px; color:black" class="fragment roll-in">Inside of the box complex and unknown.</li>
+			<li style="font-size:28px; color:black" class="fragment roll-in">Find a function f(x)—an algorithm that operates on x to predict y.</li>
+			<li style="font-size:28px; color:black" class="fragment roll-in">In many cases, no assumptions. Emphasis on prediction accuracy.</li>
+			<p class="fragment roll-in"><img  height="110" width="600" align="middle" data-src="tti_003.jpg"></p>
+			</ul>
+
+</section>
+
+
+				<section data-background="white" data-background-size="1700px">
+				<h3 align="left" style="color:#798E87; font-size:42px;">Safe System</h3>
+<div class="r-stack">
+  <img class="fragment current-visible" src="figures/1a.png" width="1400" height="520">
+  <img class="fragment" src="figures/1b.png" width="1400" height="520">
+</div>
+
+			</section>	
+
+			
+			<section data-background="white" data-background-size="1700px">
+				<h3 align="left" style="color:#798E87; font-size:42px;">USDOT Safe System</h3>
+<div class="r-stack">
+  <img class="fragment current-visible" src="figures/12a.png" width="1400" height="520">
+    <img class="fragment current-visible" src="figures/12b.png" width="1400" height="520">
+</div>
+
+			</section>
+
+			<section data-background="white" data-background-size="1700px">
+				<h3 align="left" style="color:#798E87; font-size:42px;">Safe System Pillars</h3>
+<div class="r-stack">
+  <img class="fragment current-visible" src="figures/13a.png" width="1400" height="520">
+    <img class="fragment current-visible" src="figures/13b.png" width="1400" height="520">
+</div>
+
+			</section>
+
+
+
+
+			<section data-background="white" data-background-size="1700px">
+				<h3 align="left" style="color:#798E87; font-size:42px;">Collective risk</h3>
+<div class="r-stack">
+  <img class="fragment current-visible" src="figures/10a.png" width="1400" height="520">
+    <img class="fragment current-visible" src="figures/10b.png" width="1400" height="520">
+	<img class="fragment current-visible" src="figures/10c.png" width="1400" height="520">
+	<img class="fragment current-visible" src="figures/10d.png" width="1400" height="520">
+	<img class="fragment current-visible" src="figures/10e.png" width="1400" height="520">
+</div>
+
+			</section>
+
+
+			<section data-background="white" data-background-size="1700px">
+				<h3 align="left" style="color:#798E87; font-size:42px;">How to Select Safe System Projects</h3>
+<div class="r-stack">
+  <img class="fragment current-visible" src="figures/8a.png" width="1400" height="520">
+    <img class="fragment current-visible" src="figures/8b.png" width="1400" height="520">
+	<img class="fragment current-visible" src="figures/8c.png" width="1400" height="520">
+</div>
+
+			</section>
+
+
+
+			 <section data-transition="slide" data-background="bw_traff3.gif" data-background-transition="zoom">
+					<h1 style="font-size:60px; color:#D8A499">Real-world Tool Design</h1>
+					<h3 style="font-size:32px; color:#CCC591">Develop an interactive tool that addresses issues with congestion, infrastructure, and safety</h3>
+				</section>
+
+
+				<section data-background="white" data-background-size="1700px">
+					<h3 align="left" style="color:#798E87; font-size:42px;">Questions Identified</h3>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:34px;" class="fragment roll-in"><strong>Q1: </strong>How can we improve infrastructure risk scoring?</li>
+						<br>
+						<li style="color: black ; font-size:34px;" class="fragment roll-in"><strong>Q2: </strong>How can we integrate traffic exposures in the scoring method?</li>
+						<br>
+						<li style="color: black ; font-size:34px;" class="fragment roll-in"><strong>Q3: </strong>Can we make this process replicable?</li>
+						</ul>
+				</section>
+
+
+
+				<section data-background="white" data-background-size="1700px">
+					<h3 align="left" style="color:#798E87; font-size:42px;">Study Design</h3>
+					<p>
+						<ul>
+						<li style="color: black ; font-size:32px;">Collect data from two States: Washington, and Ohio</li>
+						<li style="color:black; font-size:32px;" >Prepare final database using data from:</li>
+						<ul>
+							<li style="color: #3F5151 ; font-size:28px;">Highway Safety Information System (HSIS)</li>
+							<li style="color: #3F5151 ; font-size:28px;">Highway Performance Monitoring System (HPMS)</li>
+							<li style="color: #3F5151 ; font-size:28px;">National Performance Management Research Data Set (NPMRDS)</li>
+						</ul>
+						<li style="color:black; font-size:32px;">Develop model and tool</li>
+						</ul>
+				</section>
+
+				<section data-background="white" data-background-size="2200px">
+				<div class="stretch">
+					<img  align="right" height=600 width=1400 data-src="Conf.jpg">
+				</section>
+
+ 
+				<section data-background-iframe="DSt.html" data-background-interactive>
+				</section>	
+
+
+
+
+				<section data-background="AB0.jpg" data-background-size="1200px">
+				</section>	
+
+				<section data-background-iframe="http://subasish.github.io/pages/FHWA_Rural_Speed_T4_1/" data-background-interactive>
+				</section>	
+
+
+				<section data-background="AB1.jpg" data-background-size="1250px">
+				</section>
+
+				<section data-background="AB7.jpg" data-background-size="1250px">
+				</section>
+
+
+								<section data-background="white" data-background-size="1700px">
+						<h3 align="left" style="color:#798E87; font-size:42px;">Tool Design</h3>
+						<div class="box-green" data-title="" style="float:right;width:40%;">
+						<img width="600" height="380" align="middle" data-src="a4.gif">
+						<br>
+						</div>
+						<div class="box-green" data-title="" style="float:left;width:40%;font-size:32px;">
+						<ul>
+						<li style="color: black ; font-size:30px;">Year</li>
+						<ul><li style="color: #3F5151 ; font-size:24px;">2015</li></ul>
+						<li style="color: black ; font-size:30px;">County</li>
+						<ul>
+						<li style="color: #3F5151 ; font-size:24px;">All counties</li>
+						<li style="color: #3F5151 ; font-size:24px;">Select a county</li>
+						</ul>
+						<li style="color: black ; font-size:30px;">Faciltity Type</li>
+						<ul>
+						<li style="color: #3F5151 ; font-size:24px;">Rural two lane</li>
+						<li style="color: #3F5151 ; font-size:24px;">Rural Interstate</li>
+						<li style="color: #3F5151 ; font-size:24px;">Rural multilane divided</li>
+						<li style="color: #3F5151 ; font-size:24px;">Rural multilane undivided</li>
+						<li style="color: #3F5151 ; font-size:24px;">Rural others</li>
+						</ul>
+						<li style="color: black ; font-size:30px;">Severity</li>
+						<ul>
+						<li style="color: #3F5151 ; font-size:24px;">All</li>
+						<li style="color: #3F5151 ; font-size:24px;">Fatal and Injury</li>
+						</ul>
+
+						</ul>
+					</section>
+
+				<section data-background-iframe="https://ruralspeedsafety.shinyapps.io/rss_sdi/" data-background-interactive>
+				</section>	
+  
+
+
+
+
+				<section data-background="white" data-background-size="1700px">
+				<h3 align="left" style="color:#798E87; font-size:42px;">Code Behind this Tool</h3>
+					<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers>
+
+library(shiny)
+library(shinydashboard)
+library(shinyjs)
+library(sf)
+library(leaflet)
+library(leaflet.extras)
+library(dplyr)
+library(DT)
+library(htmltools)
+
+# Read State/Counties CSV File
+#StateCountyData = read.csv("C:/Subasish/FHWA Rural Speed Safety Project For USDOT SDI/app/www/US_Counties/USCounties.csv")  
+StateCountyData = read.csv("www/US_Counties/USCounties.csv")  
+
+# Create State and Initial County List
+StateCountyData$State <- as.character(StateCountyData$State)
+StateCountyData$County <- as.character(StateCountyData$County)
+### Temporarily filter for only 3 states - WA, NC, OH
+#StateCountyData <- filter(StateCountyData, State == 'WA' | State == 'NC' | State == 'OH')
+StateCountyData <- filter(StateCountyData, State == 'WA' | State == 'OH')
+StatesList <- unique(StateCountyData$State)
+StateCountyList <- subset(StateCountyData$County, StateCountyData$State == "WA")
+StateNameList <- data.frame(
+  unique(StateCountyData[c("State","StateID")])
+)
+
+# Read WA SHP file
+#WA_shp = st_transform(st_read("www/WA_shp/new1.shp"), 4326)
+#WA_shp$Fatal_Injury <- WA_shp$Fatal + WA_shp$Injury
+WA_shp = st_transform(st_read("www/WA_shp2/WA_TMC_Census.shp"), 4326)
+
+# Read OH SHP file
+OH_shp = st_transform(st_read("www/OH_shp2/OH_Fin2.shp"), 4326)
+
+# Read NC SHP file
+#NC_shp = st_transform(st_read("www/NC_shp/Final1_NC.shp"), 4326)
+
+# Read Counties SHP file
+UScounties_shp = st_transform(st_read("www/US_Counties/tl_2018_us_county.shp"), 4326)
+
+
+
+# Start Creating Dashboard layout
+header <- dashboardHeader(
+  title = "Rural Speed Tool (BETA)"
+)
+
+body <- dashboardBody(useShinyjs(),
+                      tabsetPanel(
+                        tabPanel(HTML(paste(tags$span(style="font-size: 18px", "RuralSpeedSafetyX"))), id="RuralSpeedTool",
+                                 tags$h1(tags$b("Interactive Decision Support Tool to Improve Safety")),
+                                 fluidRow(
+                                   column(width = 8,
+                                          box(width = NULL, solidHeader = TRUE,
+                                              leafletOutput("MapOut", height = 500),
+                                              h2()                                          )
+                                   ),
+                                   column(width = 3,
+                                          box(width = NULL, status = "warning",
+                                              selectInput("YearInput","Year",choices = list("2015" = 2015), selected = 2015),
+                                              selectInput("StateInput","State",choices = StatesList,selected = 'WA'),
+                                              selectInput("CountyInput","County",choices = c("All Counties",StateCountyList)),
+                                              selectInput("FacilityInput","Facility",choices = c("All","Interstate/Freeway/Expressway","Multilane","Two-lane")),
+                                              radioButtons("Severity", label = "Severity", choices = list("All", "Fatal and Injury"), inline=TRUE),
+                                              actionButton(inputId = "RefreshMap", label = "Refresh Map", class = "butt"),
+                                              tags$head(tags$style(".butt{background-color:#0000FF;} .butt{color: white;}")), # background color and font color
+                                              downloadButton("downloadData",label ="Download Data")
+                                          )
+                                   )
+                                   
+                                 ),
+                                 DT::dataTableOutput('outputDT'),
+                                 h2(),tags$br(),
+                                 h2(),tags$br()
+                                 
+                                 
+                        )
+                      )
+)
+
+# Put them together into a dashboardPage
+ui <- dashboardPage(
+  #header,
+  dashboardHeader(disable = TRUE),
+  dashboardSidebar(disable = TRUE),
+  body
+)
+
+server <- function(input, output, session) {
+  
+  StateCountyList <- eventReactive(input$StateInput, {
+    subset(StateCountyData$County, StateCountyData$State == input$StateInput)
+  })  
+  observeEvent(input$StateInput, 
+               updateSelectInput(session, "CountyInput","County",
+                                 choices = c("All Counties",
+                                             subset(StateCountyData$County, StateCountyData$State == input$StateInput)))
+  )  
+  observeEvent(input$StateInput, 
+               updateSelectInput(session, "FacilityInput","Facility",
+                                 choices = c("All","Interstate/Freeway/Expressway","Multilane","Two-lane"))
+  )  
+  
+  output$MapOut <- renderLeaflet({
+    leaflet() %>%
+      addTiles(urlTemplate = "//cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}{r}.png", layerId = 'Carto DB Dark Matter') %>%
+      setView(lng = -95.7129, lat = 37.0902, zoom = 4)
+    #setView(lng = -120.740135, lat = 47.376903, zoom = 7)
+  })
+  
+  observeEvent(input$RefreshMap, {
+    
+    STATEFPin <- switch(input$StateInput,
+                        "NC"= 37,
+                        "OH" = 39,
+                        "WA" = 53
+                        )
+    COUNTYin = input$CountyInput
+    if (COUNTYin != "All Counties"){
+      Countyin_Code <- select(filter(filter(StateCountyData, StateID == STATEFPin), (County == COUNTYin)), StateCounty)
+    } else {
+      Countyin_Code <- 0
+    }
+    FacilityIn = input$FacilityInput
+    if (FacilityIn == "Interstate/Freeway/Expressway"){
+      FacilityIn_Code <- "Interstate"
+    } else {
+      FacilityIn_Code <- FacilityIn
+    }
+    
+    ### Will need to change MapOutputData switch to include other states
+    #MapOutputData <- WA_shp
+    MapOutputData <- switch(input$StateInput,
+                        "NC"= WA_shp,
+                        "OH" = OH_shp,
+                        "WA" = WA_shp
+    )
+    
+    if (Countyin_Code == 0){
+      MapOutputDataTempCounty <- MapOutputData
+      
+      UScounties_shp_selected <- st_as_sf(filter(as.data.frame(UScounties_shp), STATEFP == STATEFPin))
+      LATzoom <- switch(input$StateInput,
+                        "NC"= 35.782169,
+                        "OH" = 40.367474,
+                        "WA" = 47.376903
+      )
+      LONzoom <- switch(input$StateInput,
+                        "NC"= -80.793457,
+                        "OH" = -82.996216,
+                        "WA" = -120.740135
+      )
+      
+      zoomLevel <- 6
+    } else {
+      MapOutputDataTempCounty <- st_as_sf(filter(as.data.frame(MapOutputData), COUNTYFP == sprintf('%03d', as.integer(Countyin_Code) %% 1000)))
+      
+      UScounties_shp_selected <- st_as_sf(filter(filter(as.data.frame(UScounties_shp), STATEFP == STATEFPin), COUNTYFP == sprintf('%03d', as.integer(Countyin_Code) %% 1000)))
+      
+      LATzoomTemp <- select(as.data.frame(UScounties_shp_selected), INTPTLAT)
+      LONzoomTemp <- select(as.data.frame(UScounties_shp_selected), INTPTLON)
+      
+      LATzoom <- as.numeric(as.character(unlist(LATzoomTemp[[1]])))
+      LONzoom <- as.numeric(as.character(unlist(LONzoomTemp[[1]])))
+      
+      zoomLevel <- 8
+    }
+    
+    if (FacilityIn_Code == 'All'){
+      MapOutputDataFinal <- MapOutputDataTempCounty
+    } else {
+      MapOutputDataFinal <- st_as_sf(filter(as.data.frame(MapOutputDataTempCounty), Facility == FacilityIn_Code))
+    }
+    
+    DataForPal <- switch(input$Severity,
+                         "All" =  MapOutputDataFinal$Total_Exp,
+                         "Fatal and Injury" = MapOutputDataFinal$FI_Exp)
+  
+    pal_Total <- colorNumeric("YlOrRd", DataForPal)
+    labelOut <- as.list(paste0('TMC: ', MapOutputDataFinal$TMC, "<br>",
+                               'Road: ',MapOutputDataFinal$ROAD_NUMBE, "<br>",
+                               'State: ',input$StateInput, "<br>",
+                    'County: ', input$CountyInput, "<br>",
+                    'Facility: ', MapOutputDataFinal$Facility, "<br>",
+                    'Total Expected: ', MapOutputDataFinal$Total_Exp, "<br>",
+                    'Fatal, Injury Expected: ', MapOutputDataFinal$FI_Exp, "<br>",
+                    'AADT: ', round(MapOutputDataFinal$AADT, 0), "<br>",
+                    #'Freeflow Speed: ', round(MapOutputDataFinal$SpdFF, 2), "<br>",
+                    'Speed Variance 1: ', round(MapOutputDataFinal$SpdVarr1, 2), "<br>"
+    ))
+    popupOut <- paste0('TMC: ', MapOutputDataFinal$TMC, "<br>",
+                       'Road: ',MapOutputDataFinal$ROAD_NUMBE, "<br>",
+                       'State: ',input$StateInput, "<br>",
+                       'County: ', input$CountyInput, "<br>",
+                       'Facility: ', MapOutputDataFinal$Facility, "<br>",
+                    'Total Expected: ', MapOutputDataFinal$Total_Exp, "<br>",
+                    'Fatal, Injury Expected: ', MapOutputDataFinal$FI_Exp, "<br>",
+                    'AADT: ', round(MapOutputDataFinal$AADT, 0), "<br>",
+                    #'Freeflow Speed: ', round(MapOutputDataFinal$SpdFF, 2), "<br>",
+                    'Speed Variance 1: ', round(MapOutputDataFinal$SpdVarr1, 2), "<br>"
+    )
+
+    leafletProxy("MapOut") %>% clearPopups() %>% clearGroup("Total/Fata/Injury") %>% clearGroup("CountiesSHP") %>% clearControls() %>%
+      ###setView(lng = -120.740135, lat = 47.376903, zoom = 7) %>% 
+      setView(lng = LONzoom, lat = LATzoom, zoom = zoomLevel) %>% 
+      addPolylines(data=MapOutputDataFinal, 
+                   color=~pal_Total(
+                     switch(input$Severity,
+                            "All" =  MapOutputDataFinal$Total_Exp,
+                            "Fatal and Injury" = MapOutputDataFinal$FI_Exp)
+                   ), 
+                   group="Total/Fata/Injury",
+                   popup = popupOut,
+                   label = lapply(labelOut, HTML)) %>%
+      addPolylines(data=UScounties_shp_selected, 
+                   color='green', 
+                   group="CountiesSHP", 
+                   weight = 1) %>%
+      addLegend("bottomright", pal = pal_Total, 
+                values = switch(input$Severity,
+                                "All" =  MapOutputDataFinal$Total_Exp,
+                                "Fatal and Injury" = MapOutputDataFinal$FI_Exp), 
+                title = paste0(input$Severity, " Crashes")
+                )
+if (nrow(as.data.frame(MapOutputDataFinal)) > 0){
+  MapOutputDataFinalDTtemp <- cbind(input$StateInput,input$CountyInput,
+                                    select(as.data.frame(MapOutputDataFinal), 
+                                           c('TMC', 
+                                             #'ADMIN_LE_1',
+                                             #'ADMIN_LE_2',
+                                             'ROAD_NUMBE',
+                                             'Facility',
+                                             'DISTANCE',
+                                             'Population',
+                                             'Household',
+                                             'AADT',
+                                             'NO_LANES',
+                                             'SPD_LIMT',
+                                             'OptSpd',
+                                             #'SpdFF',
+                                             'SpdVarr1',
+                                             'Total_Exp',
+                                             'FI_Exp'
+                                           )
+                                    )
+  ) 
+  
+  MapOutputDataFinalDTtemp <- distinct(MapOutputDataFinalDTtemp, TMC, .keep_all = TRUE)
+} else {
+  MapOutputDataFinalDTtemp <- cbind(input$StateInput,
+                                    input$CountyInput,
+                                    'None', 
+                                    #'None',
+                                    #'None',
+                                    'None',
+                                    'None',
+                                    'None',
+                                    'None',
+                                    'None',
+                                    'None',
+                                    'None',
+                                    'None',
+                                    'None',
+                                    'None',
+                                    'None',
+                                    #'None',
+                                    'None'
+  ) 
+  
+}
+    
+    MapOutputDataFinalDT <- datatable(MapOutputDataFinalDTtemp,
+                                      class = 'cell-border stripe', 
+                                      colnames = c('State',
+                                                   'County',
+                                                   'TMC',
+                                                   #'State',
+                                                   #'County',
+                                                   'Road',
+                                                   'Facility',
+                                                   'Segment Length',
+                                                   'Population',
+                                                   'Household',
+                                                   'AADT',
+                                                   'Number of Lanes',
+                                                   'Speed Limit',
+                                                   'Avg. Ope. Speed - Yearly',
+                                                   #'Freeflow Speed',
+                                                   'Std. Dev. of Ope. Speed - Hourly',
+                                                   'Total - Expected',
+                                                   'Fatal and Injury - Expected'
+                                      )
+    ) 
+    
+    output$outputDT = DT::renderDataTable(MapOutputDataFinalDT, options = list(lengthChange = FALSE))
+    
+    outputDTdowload <- MapOutputDataFinalDTtemp
+    names(outputDTdowload) <- c('State',
+                                'County',
+                                'TMC',
+                                #'State',
+                                #'County',
+                                'Road',
+                                'Facility',
+                                'Segment Length',
+                                'Population',
+                                'Household',
+                                'AADT',
+                                'Number of Lanes',
+                                'Speed Limit',
+                                'Avg. Ope. Speed - Yearly',
+                                #'Freeflow Speed',
+                                'Std. Dev. of Ope. Speed - Hourly',
+                                'Total - Expected',
+                                'Fatal and Injury - Expected'
+    )
+    
+    output$downloadData <- downloadHandler(
+      #filename = function() {paste("test.csv")},
+      #filename = function() {gsub(" ","",paste(input$StateInput,"_",input$CountyInput,"_",input$YearInput,".csv"))},
+      filename = function() {gsub(" ","",paste(input$StateInput,"_",
+                                               input$CountyInput,"_",
+                                               switch(input$FacilityInput,
+                                                      "All"= "All",
+                                                      "Interstate/Freeway/Expressway" = "IntFwayExpway",
+                                                      "Multilane" = "Multilane",
+                                                      "Two-lane" = "Twolane"
+                                               ),
+                                               "_",input$YearInput,".csv"))},
+      content = function(file) {
+        write.csv(outputDTdowload,file, row.names=FALSE)
+      })
+  })  
+  
+  
+}
+
+shinyApp(ui, server)
+					</code></pre>
+				</section>
+
+
+				<section data-background-iframe="circ1.html" data-background-interactive>
+				</section>
+
 			</div>
+
 		</div>
 
 		<script src="dist/reveal.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
 		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/search/search.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
 		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
 			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath ]
+
 			});
+
 		</script>
+
 	</body>
 </html>
