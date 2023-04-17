@@ -1,0 +1,301 @@
+<div class="fluid-container" style="margin-bottom: 10em;">
+  <form>
+  <h3>DataTable with built-in buttons</h3>
+  <hr/>
+  <table id="example" class="dataTable table table-hover table-striped" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Owner</th>
+        <th></th>
+        <th>Case Title</th>
+        <th>Case Owner</th>
+        <th>Created Date</th>
+        <th>Modified Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td><input type="checkbox" name="Id" value="111"></td>
+        <td>AAA</td>
+        <td>BBB</td>
+        <td>10/21/2016</td>
+        <td>10/21/2016</td>
+        <td><a class="btn btn-primary">Manage</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="checkbox" name="Id" value="111"></td>
+        <td>AAA</td>
+        <td>BBB</td>
+        <td>10/21/2016</td>
+        <td>10/21/2016</td>
+        <td><a class="btn btn-primary">Manage</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="checkbox" name="Id" value="111"></td>
+        <td>AAA</td>
+        <td>BBB</td>
+        <td>10/21/2016</td>
+        <td>10/21/2016</td>
+        <td><a class="btn btn-primary">Manage</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="checkbox" name="Id" value="111"></td>
+        <td>AAA</td>
+        <td>BBB</td>
+        <td>10/21/2016</td>
+        <td>10/21/2016</td>
+        <td><a class="btn btn-primary">Manage</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="checkbox" name="Id" value="111"></td>
+        <td>AAA</td>
+        <td>BBB</td>
+        <td>10/21/2016</td>
+        <td>10/21/2016</td>
+        <td><a class="btn btn-primary">Manage</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="checkbox" name="Id" value="111"></td>
+        <td>AAA</td>
+        <td>BBB</td>
+        <td>10/21/2016</td>
+        <td>10/21/2016</td>
+        <td><a class="btn btn-primary">Manage</a></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="form-actions" colspan="7">
+          <input type="submit" name="command" class="btn btn-action btn-primary disabled" disabled="disabled" value="Copy" data-loading-text="Copying..." />
+          <input type="submit" name="command" class="btn btn-action btn-admin-permission disabled" data-loading-text="Archiving..." disabled="disabled" value="Archive" />
+          <input type="submit" name="command" class="btn btn-action btn-admin-permission disabled" disabled="disabled" data-ui="confirm" value="Delete" />
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</form>
+  
+  <br/>
+  
+  <form>
+
+<script>  
+  var table = $('#example').DataTable({
+    paging: true,
+    scrollX: true,
+    pageLength: 3,
+    processing: true,
+    pagingType: 'full_numbers',
+    lengthMenu: [
+      [10, 25, 50, -1],
+      [10, 25, 50, "All"]
+    ],
+    order: [2, "asc"],
+    columns: [
+      {
+        name: 'user',
+        visible: false,
+        orderable: false
+      },
+      {
+        name: 'instanceId',
+        orderable: false
+      },
+      {
+        name: 'name'
+      },
+      {
+        name: 'owner'
+      },
+      {
+        name: 'createdOn'
+      },
+      {
+        name: 'modifiedOn'
+      },
+      {
+        name: 'actions',
+        orderable: false,
+        searchable: false
+      }
+    ],
+    //dom: 'frtip',
+    //dom: 'frtilp',
+    //dom: "<'row'<'col-sm-6'Bf><'col-sm-6'l>>" + "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+    //dom: '<"top"i>rt<"bottom"flp><"clear">',
+    //dom: "<'row'<'col-sm-6'l><'col-sm-6'f>>" + "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+    //dom: "<'row'<'small-6 columns'l><'small-6 columns'f>r>"+ "t"+ "<'row'<'small-6 columns'i><'small-6 columns'p>>",
+    //dom: '<"fg-toolbar ui-toolbar ui-widget-header ui-helper-clearfix ui-corner-tl ui-corner-tr"lfr>'+'t'+'<"fg-toolbar ui-toolbar ui-widget-header ui-helper-clearfix ui-corner-bl ui-corner-br"ip>'
+    //dom: "<'row'<'col-sm-12'B>" + "<'row'<'col-sm-6'l><'col-sm-6'f>>" + "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+    dom: 'Blfrtip',
+    buttons: [
+      {
+        text: 'My Cases',
+        action: function(e, dt, node, config) {
+        $.fn.dataTable.ext.search.push(
+          function(settings, data, dataIndex) {
+            return data[5] == 'dokonané'
+          }
+        )
+        table.draw();
+        $.fn.dataTable.ext.search.pop();
+      }
+      },
+      {
+        text: 'All Cases',
+        action: function(e, dt, node, config) {
+          table.draw();
+        }
+      },
+      {
+        text: 'Custom Cases',
+        action: function(e, dt, node, config) {
+          table.draw();
+        }
+      }
+    ],
+  });
+
+  var table = $('#example2').DataTable({
+    paging: true,
+    scrollX: true,
+    pageLength: 3,
+    processing: true,
+    pagingType: 'full_numbers',
+    lengthMenu: [
+      [10, 25, 50, -1],
+      [10, 25, 50, "All"]
+    ],
+    order: [2, "asc"],
+    columns: [
+      {
+        name: 'user',
+        visible: false,
+        orderable: false
+      },
+      {
+        name: 'instanceId',
+        orderable: false
+      },
+      {
+        name: 'name'
+      },
+      {
+        name: 'owner'
+      },
+      {
+        name: 'createdOn'
+      },
+      {
+        name: 'modifiedOn'
+      },
+      {
+        name: 'actions',
+        orderable: false,
+        searchable: false
+      }
+    ],
+    //dom: 'frtip',
+    //dom: 'frtilp',
+    //dom: "<'row'<'col-sm-6'Bf><'col-sm-6'l>>" + "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+    //dom: '<"top"i>rt<"bottom"flp><"clear">',
+    //dom: "<'row'<'col-sm-6'l><'col-sm-6'f>>" + "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+    //dom: "<'row'<'small-6 columns'l><'small-6 columns'f>r>"+ "t"+ "<'row'<'small-6 columns'i><'small-6 columns'p>>",
+    //dom: '<"fg-toolbar ui-toolbar ui-widget-header ui-helper-clearfix ui-corner-tl ui-corner-tr"lfr>'+'t'+'<"fg-toolbar ui-toolbar ui-widget-header ui-helper-clearfix ui-corner-bl ui-corner-br"ip>'
+    //dom: "<'row'<'col-sm-12'B>" + "<'row'<'col-sm-6'l><'col-sm-6'f>>" + "<'row'<'col-sm-12'tr>>" + "<'row'<'col-sm-5'i><'col-sm-7'p>>",
+  });
+  
+  // below code is used to remove all check property if user select/unselect options with name=option2 options.  
+  $("#second").find('input[type="checkbox"]').click(function(){
+    //$("#selectall").prop("checked", false);   
+    var allChecked = $("#second").find('input[type="checkbox"]').not(':checked').length <= 0;
+
+    $("#selectall").prop("checked", allChecked);
+  });
+        
+  $("#selectall").click(function(){
+    $("#second").find('input[type="checkbox"]').prop("checked", $("#selectall").prop("checked"))
+  }) 
+
+</script>
+
+<style>
+.fluid-container {
+  margin-right: 30px;
+  margin-left: 30px;
+}
+</style>
+
+
+  <h3>DataTable with external buttons</h3>
+  <hr/>
+    <div class="btn-group">
+    <a id="my-cases" href="#" class="action active btn btn-primary filter-btn">My Cases</a>
+    <a id="all-cases" class="action btn btn-primary filter-btn" href="#">All Cases in My Institution</a>
+    <a id="custom-cases" id="customized-cases" class="action btn btn-primary" data-url="/Scenario/LoadCustomCases">Customized Cases</a>
+  </div>
+  <table id="example2" class="dataTable table table-hover table-striped" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th>Owner</th>
+        <th><input id="selectall" type="checkbox"></th>
+        <th>Case Title</th>
+        <th>Case Owner</th>
+        <th>Created Date</th>
+        <th>Modified Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="second">
+      <tr>
+        <td></td>
+        <td><input type="checkbox" name="Id" value="111"></td>
+        <td>AAA</td>
+        <td>BBB</td>
+        <td>10/21/2016</td>
+        <td>10/21/2016</td>
+        <td><a class="btn btn-primary">Manage</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="checkbox" name="Id" value="111"></td>
+        <td>AAA</td>
+        <td>BBB</td>
+        <td>10/21/2016</td>
+        <td>10/21/2016</td>
+        <td><a class="btn btn-primary">Manage</a></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="checkbox" name="Id" value="111"></td>
+        <td>AAA</td>
+        <td>BBB</td>
+        <td>10/21/2016</td>
+        <td>10/21/2016</td>
+        <td><a class="btn btn-primary">Manage</a></td>
+      </tr>
+      
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="form-actions" colspan="7">
+          <input type="submit" name="command" class="btn btn-action btn-primary disabled" disabled="disabled" value="Copy" data-loading-text="Copying..." />
+          <input type="submit" name="command" class="btn btn-action btn-admin-permission disabled" data-loading-text="Archiving..." disabled="disabled" value="Archive" />
+          <input type="submit" name="command" class="btn btn-action btn-admin-permission disabled" disabled="disabled" data-ui="confirm" value="Delete" />
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  </form>
+  
+  <br/>
+  
+ 
+</div>
