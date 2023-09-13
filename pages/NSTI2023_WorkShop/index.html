@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Application of Natural Language Processing (NLP) in Transportation Studies</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Subasish Das  Associate Transportation Researcher, TTI   February 21, 2019" />
+    <link href="index_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="index_files/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <link href="index_files/font-awesome-5.3.1/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/main.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Application of Natural Language Processing (NLP) in Transportation Studies
+### Subasish Das <br> Assistant Professor, TXST <br> 20 July, 2023
+<br> <br> <i class="fab  fa-twitter "></i> <a href="https://twitter.com/subasish_das"><span class="citation">@subasish_das</span></a> <br> <i class="fab  fa-github "></i> <a href="https://github.com/subasish"><span class="citation">@subasish</span></a> <br> <i class="fas  fa-envelope "></i> <a href="mailto:s-das@tti.tamu.com" class="email">subasish@txst.edu</a> <br /> <i class="fas  fa-globe "></i> <a href="http://subasish.github.io/ait_lab/" class="uri">hhttp://subasish.github.io/ait_lab/</a> <br> <br> </a>
+
+
+
+---
+background-image: url( )
+background-size: 160px
+background-position: 95% 5%
+
+### What is NLP?
+
+
+```r
+library(tidytext)
+text_df %>%
+  unnest_tokens(word, text)
+```
+
+<iframe src="https://player.vimeo.com/video/132863038?title=0&amp;byline=0&amp;portrait=0" width="100%" height="400" frameborder="0" seamless="seamless" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+
+---
+
+background-image: url(IMG04.JPG)
+background-size: 62%
+
+### Example NLP Papers
+
+---
+
+background-image: url(IMG02.JPG)
+background-size: 65%
+
+### Example NLP Papers
+
+
+---
+
+background-image: url(IMG03.JPG)
+background-size: 65%
+
+### Example NLP Papers
+
+
+---
+
+background-image: url(rur.gif)
+background-size: 95%
+
+---
+background-image: url(CC01.gif)
+background-size: 280px
+background-position: 95% 10%
+class: inverse, bottom, principles
+
+## Basic Workflow
+
+* General guideline
+  * Using *tidyverse*
+  * Familiarity with dplyr, markdown, and git. 
+  * Use 'RProject' from raw data to model delopement.
+   
+* dplyr Package
+  * A great tool for data manipulation
+
+* Markdown
+  * Can create html and pdf files
+  * Reproducibility in works
+
+* Git
+  * Share code with others
+  * Can reach to a broad community
+
+---
+
+background-image: url(dplyr.gif)
+background-size: 85%
+
+### dplyr
+
+---
+
+background-image: url(RMD.gif)
+background-size: 75%
+
+### Why RMD?
+
+---
+
+background-image: url(screen.gif)
+background-size: 95%
+
+
+---
+
+background-image: url(IMG09.JPG)
+background-size: 75%
+
+### Framework (for example: Twitter Mining)
+
+---
+
+background-image: url(IMG12.jpg)
+background-size: 70%
+
+### Framework (for example: Topic Modeling)
+
+---
+background-image: url( )
+background-size: 160px
+background-position: 95% 5%
+
+### Token
+
+.pull-left[
+```r
+library(tidytext)
+library(dplyr)
+
+text &lt;- c("Because I could not stop for Death -",
+          "He kindly stopped for me -",
+          "The Carriage held but just Ourselves -",
+          "and Immortality")
+
+
+text_df &lt;- tibble(line = 1:4, text = text)
+text_df %>%
+  unnest_tokens(word, text)
+
+```
+]
+
+.pull-right[
+&lt;img src="IMG01.jpg" width="90%" &gt;
+]
+
+
+---
+background-image: url( )
+background-size: 160px
+background-position: 95% 5%
+
+### Most Frequent Word
+
+.pull-left[
+```r
+library(ggplot2)
+data(stop_words)
+
+tidy_books &lt;- tidy_books %>%
+* anti_join(stop_words)
+
+tidy_books %>%
+  count(word, sort = TRUE) 
+
+tidy_books %>%
+  count(word, sort = TRUE) %>%
+  filter(n > 600) %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(word, n)) +
+  geom_col() +
+  xlab(NULL) +
+  coord_flip()
+
+```
+]
+
+.pull-right[
+&lt;img src="IMG05.jpg" width="100%" &gt;
+]
+
+---
+
+background-image: url(IMG08.JPG)
+background-size: 90%
+
+### Uni-gram Example 1
+
+---
+
+background-image: url(IMG11.JPG)
+background-size: 90%
+
+### Uni-gram Example 2
+
+---
+background-image: url(cnarr.jpg)
+background-size: 70%
+
+### Raw Text
+
+---
+
+background-image: url(Img2.png)
+background-size: 90%
+
+### Example from a Project
+
+---
+
+background-image: url(bar1_1.png)
+background-size: 90%
+
+### Bi-gram
+
+---
+
+background-image: url(bar3_1.png)
+background-size: 90%
+
+### Tri-gram
+
+---
+
+background-image: url( )
+background-size: 160px
+background-position: 95% 5%
+
+### Word Cloud
+
+```r
+
+library(wordcloud)
+
+tidy_books %>%
+  anti_join(stop_words) %>%
+  count(word) %>%
+  with(wordcloud(word, n, max.words = 100))
+```
+
+
+&lt;img src="IMG10.JPG" width="70%" &gt;
+
+
+---
+
+background-image: url(Sent.jpg)
+background-size: 90%
+
+### Sentiment Analysis
+---
+
+### Related Codes
+
+
+```r
+* get_sentiments("afinn") ## From A. Finn's Senti-Lexicon
+
+finn_joy &lt;- get_sentiments("afinn") %>% 
+  filter(sentiment == "joy")
+
+tidy_books %>%
+  filter(book == "MyBook1") %>%
+*  inner_join(finn_joy) %>%
+  count(word, sort = TRUE)
+
+MyBook1_sentiment <- tidy_books %>%
+*  inner_join(get_sentiments("afinn")) %>%
+*  count(book, index = linenumber %/% 80, sentiment) %>%
+  spread(sentiment, n, fill = 0) %>%
+  mutate(sentiment = positive - negative)
+
+```
+---
+### Package cleanNLP
+
+```r
+
+library(cleanNLP)
+cnlp_get_token(sotu) %>%
+  group_by(id) %>%
+  summarize(n = n()) %>%
+  left_join(cnlp_get_document(sotu)) %>%
+  ggplot(aes(year, n)) +
+    geom_line(color = grey(0.8)) +
+*    geom_point(aes(color = sotu_type)) +
+    geom_smooth()
+```
+
+
+&lt;img src="clean01.jpg" width="60%" &gt;
+
+
+---
+### Principle Component Analysis
+
+```r
+
+library(cleanNLP)
+pca <- cnlp_get_token(sotu) %>%
+  filter(pos %in% c("NN", "NNS")) %>%
+*  cnlp_get_tfidf(min_df = 0.05, max_df = 0.95, type = "tfidf", tf_weight = "dnorm") %>%
+  cnlp_pca(cnlp_get_document(sotu))
+```
+
+
+&lt;img src="clean02.jpg" width="80%" &gt;
+
+---
+background-image: url(whyl.gif)
+background-size: 400px
+background-position: 95% 10%
+class: inverse, bottom, principles
+
+## What have we learnt so far?
+
+* General rule of thumb: data cleaning, frequency, and knowledge extraction.
+
+* Some new words: corpus, corpora, stop words, senti-lexicon
+   
+* Things you can do to be a proactive R coder:
+   * Use *dplyr* and *tidyverse*
+   * Create *.RMD* and .html for reproducibility
+   * Use *git* to push your code
+   
+
+---
+
+
+background-image: url(whyi.jpg)
+background-size: 85%
+
+### Black Box Model= Artificial Intelligence
+
+---
+
+
+background-image: url(awes.jpg)
+background-size: 75%
+
+### Git Repository
+
+
+
+---
+background-image: url( )
+background-size: 160px
+background-position: 95% 5%
+
+### Text Mining with Interpretable Machine Learning
+
+```r
+library(lime)
+library(xgboost) # the classifier
+library(text2vec) # used to build the BoW matrix
+data(train_sentences)
+data(test_sentences)
+
+# Tokenize data
+get_matrix <- function(text) {
+*  it <- itoken(text, progressbar = FALSE)
+*  create_dtm(it, vectorizer = hash_vectorizer())
+}
+
+# BoW matrix generation
+dtm_train = get_matrix(train_sentences$text)
+dtm_test = get_matrix(test_sentences$text)
+
+```
+
+1. The `"itoken"` is used to develop *document term matrix*
+2. In built 'train' and 'test' data
+
+---
+### XGBoost Model
+
+```r
+# Create boosting model for binary classification (-> logistic loss)
+# Other parameters are quite standard
+param <- list(max_depth = 7, 
+              eta = 0.1, 
+              objective = "binary:logistic", 
+              eval_metric = "error", 
+              nthread = 1)
+
+xgb_model <- xgb.train(
+  param, 
+  xgb.DMatrix(dtm_train, label = train_sentences$class.text == "OWNX"),
+  nrounds = 50
+# We use a (standard) threshold of 0.5
+predictions <- predict(xgb_model, dtm_test) > 0.5
+test_labels <- test_sentences$class.text == "OWNX"
+
+# Accuracy
+print(mean(predictions == test_labels))
+# 0.84
+
+```
+
+1. Develop model from train data
+2. Apply the model on test data
+
+---
+### Interpretation
+
+.pull-left[
+```r
+sentence_to_explain <- head(test_sentences[test_labels,]$text, 5)
+explainer <- lime(sentence_to_explain, model = xgb_model, 
+                  preprocess = get_matrix)
+explanation <- explain(sentence_to_explain, explainer, n_labels = 1, 
+                       n_features = 2)
+plot_features(explanation)
+
+```
+]
+
+.pull-right[
+&lt;img src="IMG15.jpg" width="110%" &gt;
+]
+
+
+---
+background-image: url( )
+background-size: 160px
+background-position: 95% 5%
+
+### Codes from Rpubs 1
+<iframe src="https://rpubs.com/subasish/94112" frameborder="0" scrolling="yes" height="100%" width="100%" marginheight="0" marginwidth="0"></iframe>
+
+
+---
+background-image: url( )
+background-size: 160px
+background-position: 95% 5%
+
+### Codes from Rpubs 2
+<iframe src="https://rpubs.com/subasish/469641" frameborder="0" scrolling="yes" height="100%" width="100%" marginheight="0" marginwidth="0"></iframe>
+
+---
+background-image: url( )
+background-size: 160px
+background-position: 95% 5%
+
+### What about Punctuation? 
+<iframe src="https://www.c82.net/work/?id=347" frameborder="0" scrolling="yes" height="100%" width="100%" marginheight="0" marginwidth="0"></iframe>
+
+
+---
+background-image: url(ayd.gif)
+background-size: 350px
+background-position: 95% 10%
+class: inverse, bottom, principles
+
+
+* Almost!
+
+* Glimpse of the following:
+   * text mining
+   * n-gram, sentiment analysis
+   * dplyr and rmd
+  
+* More in future:
+   * tf-idf
+   * structural topic modeling
+   * keras and tensorflow
+
+
+---
+background-image: url(Ceric6.gif)
+background-size: 25%
+class: principles, center
+
+## Thanks for listening! Questions?
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+<i class="fab  fa-twitter "></i> &lt;a href="https://twitter.com/subasish_das"&gt;@subasish_das&lt;/a&gt; &lt;br&gt;
+<i class="fab  fa-github "></i> &lt;a href="https://github.com/subasish"&gt;@subasish&lt;/a&gt; &lt;br&gt;
+<i class="fas  fa-envelope "></i> &lt;subasish@txst.edu&gt; &lt;br&gt;
+<i class="fas  fa-globe "></i> &lt;http://subasish.github.io/ait_lab&gt;
+    </textarea>
+<script src="../templates/remarkjs/libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "14.6:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"navigation": {
+"scroll": false
+}
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
