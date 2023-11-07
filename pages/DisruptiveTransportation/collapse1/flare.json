@@ -1,0 +1,84 @@
+{
+ "name": "Ohio Conflation",
+ "children": [
+  {
+   "name": "Process 1 \n (Linear Conflation)",
+   "children": [
+    {
+     "name": "shape files",
+     "children": [
+      {"name": "HSIS (oh15road_no0length.shp)", "size": 3938},
+      {"name": "Conflated (join_TMC_2015Q4...shp)", "size": 3812}
+     ]
+    },
+    {
+     "name": "csv files",
+     "children": [
+      {"name": "Conflated data table (RURAL...csv)", "size": 3534}
+     ]
+    },
+    {
+     "name": "codes",
+
+     "children": [
+      {"name": "R code for csv (weighting)", "size": 7074}
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Process 2 (Assign Crash)",
+   "children": [
+    {
+     "name": "Crash Level",
+     "children": [
+    {
+     "name": "csv files (Crash Level TMC HSIS)"
+    },
+    {
+     "name": "R Code (direction)"
+    }
+     ]
+    },
+    {
+     "name": "TMC Level",
+     "children": [
+    {
+     "name": "csv files (TMC Level Crash)"
+    },
+    {
+     "name": "R code (crash and severity)"
+    }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Process 3 (Travel Time)",
+   "children": [
+    {
+     "name": "All TMCs",
+     "children": [
+    {
+     "name": "15 minute bin wide (passenger cars)"
+    }
+     ]
+    },
+    {
+     "name": "Conflated TMCs",
+     "children": [
+    {
+     "name": "15 minute bin wide (passenger cars)"
+    },
+    {
+     "name": "15 minute bin long (all epochs)"
+    },
+    {
+     "name": "5 minute bin long (available epochs)"
+    }
+     ]
+    }
+   ]
+  }
+ ]
+}
